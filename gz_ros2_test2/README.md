@@ -1,0 +1,6 @@
+-xml file with a 2 joint robotic arm description
+-gazebo simulation
+-publish joint states into a topic
+-use ROS2 and ros_gz_bridge to subscribe to the topic
+-create a python node to retrieve joint data and process it
+-send output data back to gazebo to move the robot

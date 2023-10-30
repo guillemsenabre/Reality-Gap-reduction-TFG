@@ -1,0 +1,34 @@
+[1.040s] Invoking command in '/home/kyu8/gz_ros2_test2/src/robotic_arm_pkg': PYTHONPATH=/home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/prefix_override:/home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/robotic_arm_pkg build --build-base /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build install --record /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/install.log --single-version-externally-managed
+[1.358s] running egg_info
+[1.359s] writing ../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info/PKG-INFO
+[1.359s] writing dependency_links to ../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info/dependency_links.txt
+[1.359s] writing entry points to ../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info/entry_points.txt
+[1.360s] writing requirements to ../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info/requires.txt
+[1.360s] writing top-level names to ../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info/top_level.txt
+[1.363s] reading manifest file '../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info/SOURCES.txt'
+[1.364s] writing manifest file '../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info/SOURCES.txt'
+[1.365s] running build
+[1.365s] running build_py
+[1.365s] copying robotic_arm_pkg/joint_listener.py -> /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build/lib/robotic_arm_pkg
+[1.365s] copying robotic_arm_pkg/joint_storage.py -> /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build/lib/robotic_arm_pkg
+[1.365s] copying robotic_arm_pkg/joint_processor.py -> /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build/lib/robotic_arm_pkg
+[1.366s] running install
+[1.366s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.366s]   warnings.warn(
+[1.367s] running install_lib
+[1.368s] copying /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build/lib/robotic_arm_pkg/joint_listener.py -> /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg
+[1.369s] copying /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build/lib/robotic_arm_pkg/joint_storage.py -> /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg
+[1.369s] copying /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build/lib/robotic_arm_pkg/joint_processor.py -> /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg
+[1.369s] byte-compiling /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg/joint_listener.py to joint_listener.cpython-310.pyc
+[1.370s] byte-compiling /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg/joint_storage.py to joint_storage.cpython-310.pyc
+[1.371s] byte-compiling /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg/joint_processor.py to joint_processor.cpython-310.pyc
+[1.372s] running install_data
+[1.372s] running install_egg_info
+[1.374s] removing '/home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[1.374s] Copying ../../build/robotic_arm_pkg/robotic_arm_pkg.egg-info to /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg-0.0.0-py3.10.egg-info
+[1.375s] running install_scripts
+[1.402s] Installing listener script to /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/robotic_arm_pkg
+[1.403s] Installing processor script to /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/robotic_arm_pkg
+[1.403s] Installing storage script to /home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/robotic_arm_pkg
+[1.403s] writing list of installed files to '/home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/install.log'
+[1.459s] Invoked command in '/home/kyu8/gz_ros2_test2/src/robotic_arm_pkg' returned '0': PYTHONPATH=/home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/prefix_override:/home/kyu8/gz_ros2_test2/install/robotic_arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/robotic_arm_pkg build --build-base /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/build install --record /home/kyu8/gz_ros2_test2/build/robotic_arm_pkg/install.log --single-version-externally-managed
