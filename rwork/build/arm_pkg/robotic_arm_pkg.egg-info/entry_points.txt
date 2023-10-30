@@ -1,0 +1,6 @@
+[console_scripts]
+controller = robotic_arm_pkg.joint_controller:main
+listener = robotic_arm_pkg.joint_listener:main
+processor = robotic_arm_pkg.joint_processor:main
+storage = robotic_arm_pkg.joint_storage:main
+

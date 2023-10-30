@@ -1,0 +1,49 @@
+[1.430s] Invoking command in '/home/kyu8/tfg/rwork/src/arm_pkg': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed
+[1.792s] running egg_info
+[1.792s] creating ../../build/arm_pkg/robotic_arm_pkg.egg-info
+[1.792s] writing ../../build/arm_pkg/robotic_arm_pkg.egg-info/PKG-INFO
+[1.792s] writing dependency_links to ../../build/arm_pkg/robotic_arm_pkg.egg-info/dependency_links.txt
+[1.793s] writing entry points to ../../build/arm_pkg/robotic_arm_pkg.egg-info/entry_points.txt
+[1.793s] writing requirements to ../../build/arm_pkg/robotic_arm_pkg.egg-info/requires.txt
+[1.793s] writing top-level names to ../../build/arm_pkg/robotic_arm_pkg.egg-info/top_level.txt
+[1.793s] writing manifest file '../../build/arm_pkg/robotic_arm_pkg.egg-info/SOURCES.txt'
+[1.795s] reading manifest file '../../build/arm_pkg/robotic_arm_pkg.egg-info/SOURCES.txt'
+[1.797s] writing manifest file '../../build/arm_pkg/robotic_arm_pkg.egg-info/SOURCES.txt'
+[1.797s] running build
+[1.797s] running build_py
+[1.797s] creating /home/kyu8/tfg/rwork/build/arm_pkg/build
+[1.797s] creating /home/kyu8/tfg/rwork/build/arm_pkg/build/lib
+[1.797s] creating /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg
+[1.797s] copying arm_pkg/__init__.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg
+[1.798s] copying arm_pkg/joint_listener.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg
+[1.798s] copying arm_pkg/joint_controller.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg
+[1.798s] copying arm_pkg/joint_storage.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg
+[1.798s] copying arm_pkg/joint_processor.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg
+[1.798s] running install
+[1.798s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.798s]   warnings.warn(
+[1.799s] running install_lib
+[1.800s] creating /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.800s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/__init__.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.800s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/joint_listener.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.801s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/joint_controller.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.801s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/joint_storage.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.801s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/joint_processor.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.802s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__init__.py to __init__.cpython-310.pyc
+[1.802s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/joint_listener.py to joint_listener.cpython-310.pyc
+[1.804s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/joint_controller.py to joint_controller.cpython-310.pyc
+[1.804s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/joint_storage.py to joint_storage.cpython-310.pyc
+[1.804s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/joint_processor.py to joint_processor.cpython-310.pyc
+[1.804s] running install_data
+[1.805s] copying resource/robotic_arm_pkg -> /home/kyu8/tfg/rwork/install/arm_pkg/share/ament_index/resource_index/packages
+[1.805s] creating /home/kyu8/tfg/rwork/install/arm_pkg/share/robotic_arm_pkg
+[1.805s] copying package.xml -> /home/kyu8/tfg/rwork/install/arm_pkg/share/robotic_arm_pkg
+[1.805s] running install_egg_info
+[1.809s] Copying ../../build/arm_pkg/robotic_arm_pkg.egg-info to /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/robotic_arm_pkg-0.0.0-py3.10.egg-info
+[1.810s] running install_scripts
+[1.841s] Installing controller script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/robotic_arm_pkg
+[1.841s] Installing listener script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/robotic_arm_pkg
+[1.842s] Installing processor script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/robotic_arm_pkg
+[1.842s] Installing storage script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/robotic_arm_pkg
+[1.843s] writing list of installed files to '/home/kyu8/tfg/rwork/build/arm_pkg/install.log'
+[1.901s] Invoked command in '/home/kyu8/tfg/rwork/src/arm_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed
