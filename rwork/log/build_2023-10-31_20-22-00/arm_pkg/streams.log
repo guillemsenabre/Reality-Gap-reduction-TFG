@@ -1,0 +1,29 @@
+[1.045s] Invoking command in '/home/kyu8/tfg/rwork/src/arm_pkg': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed
+[1.369s] running egg_info
+[1.370s] writing ../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+[1.371s] writing dependency_links to ../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+[1.371s] writing entry points to ../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+[1.371s] writing requirements to ../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+[1.371s] writing top-level names to ../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+[1.375s] reading manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.377s] writing manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.377s] running build
+[1.377s] running build_py
+[1.378s] copying arm_pkg/joint_listener.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg
+[1.379s] running install
+[1.379s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.379s]   warnings.warn(
+[1.380s] running install_lib
+[1.381s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/joint_listener.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.382s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/joint_listener.py to joint_listener.cpython-310.pyc
+[1.383s] running install_data
+[1.384s] running install_egg_info
+[1.386s] removing '/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[1.387s] Copying ../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+[1.389s] running install_scripts
+[1.418s] Installing controller script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.418s] Installing listener script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.418s] Installing processor script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.418s] Installing storage script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.419s] writing list of installed files to '/home/kyu8/tfg/rwork/build/arm_pkg/install.log'
+[1.481s] Invoked command in '/home/kyu8/tfg/rwork/src/arm_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed
