@@ -317,7 +317,7 @@
 
 
       <joint name="joint1" type="revolute">
-        <parent>motor0</parent>
+        <parent>segment0</parent>
          <child>motor1</child>
          <axis>
              <xyz>0 0 1</xyz>
@@ -330,7 +330,7 @@
               <friction>1</friction>  <!-- N m / s-->
              </dynamics>
          </axis>
-         <pose>0 0 0 0 0 0</pose>
+         <pose>0 0 -0.02625 0 0 0</pose>
       </joint>     
 
                             <!-- fixed joint 0  -->
