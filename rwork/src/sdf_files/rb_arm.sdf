@@ -162,6 +162,50 @@
         </inertial>
       </link>
 
+                          <!-- Segment 0 -->
+
+      <link name="segment0">
+
+        <pose relative_to="motor0">0.015 0 0 0 1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment0 collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.01</radius>
+                    <length>0.1</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment0 visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.01</radius> <!-- 4 cm diameter -->
+                    <length>0.15</length> <!-- 10 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+                      
+
                             <!-- Motor 1 link -->
 
       <link name="motor1">
@@ -212,7 +256,7 @@
         <pose relative_to="motor1">-0.06 0 0.005 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor1 collision">
+        <collision name="segment1 collision">
             <geometry>
                 <cylinder>
                     <radius>0.01</radius>
@@ -222,7 +266,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor1 visual">
+        <visual name="segment1 visual">
             <geometry>
                 <cylinder>
                     <radius>0.01</radius> <!-- 4 cm diameter -->
