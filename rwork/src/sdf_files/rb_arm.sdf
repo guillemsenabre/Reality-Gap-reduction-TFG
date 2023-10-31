@@ -302,6 +302,10 @@
          <parent>base_link</parent>
           <child>motor0</child>
           <axis>
+              <dynamics>
+                <damping>0.000000</damping>
+                <friction>0.000000</friction>
+              </dynamics>
               <xyz>0 0 1</xyz> <!-- Z-axis rotation -->
               <limit>
                 <lower>-3.14159265359</lower> <!-- -180 degrees -->
@@ -320,15 +324,16 @@
         <parent>segment0</parent>
          <child>motor1</child>
          <axis>
+             <dynamics>
+               <friction>0.100000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
              <xyz>0 0 1</xyz>
              <limit>
-                <lower>-3.14159265359</lower> 
-                <upper>3.14159265359</upper>  
+                <lower>-1.3</lower> 
+                <upper>1.3</upper>  
                 <effort>1e6</effort>
              </limit>
-             <dynamics>
-              <friction>0.1</friction>  <!-- N m / s-->
-             </dynamics>
          </axis>
          <pose>0 0 -0.02625 0 0 0</pose>
       </joint>     
