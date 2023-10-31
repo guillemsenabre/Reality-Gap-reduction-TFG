@@ -193,7 +193,7 @@
             </material>
         </visual>
         <inertial>
-          <mass>0.1</mass>
+          <mass>1</mass>
           <inertia>
               <ixx>0.00013125</ixx>
               <ixy>0</ixy>
@@ -327,11 +327,16 @@
                 <effort>1e6</effort>
              </limit>
              <dynamics>
-              <friction>1</friction>  <!-- N m / s-->
+              <friction>0.1</friction>  <!-- N m / s-->
              </dynamics>
          </axis>
          <pose>0 0 -0.02625 0 0 0</pose>
       </joint>     
+
+
+                        <!--      FIXED JOINTS      -->
+
+
 
                             <!-- fixed joint 0  -->
 
