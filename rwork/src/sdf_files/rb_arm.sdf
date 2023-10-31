@@ -282,6 +282,9 @@
                 <upper>3.14159265359</upper>  
                 <effort>1e6</effort>
              </limit>
+             <dynamics>
+              <friction>1</friction>  <!-- N m / s-->
+             </dynamics>
          </axis>
          <pose>0 0 0 0 0 0</pose>
       </joint>     
