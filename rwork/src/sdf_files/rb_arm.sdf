@@ -162,6 +162,49 @@
         </inertial>
       </link>
 
+                            <!-- Motor 1 link -->
+
+      <link name="motor1">
+
+        <pose relative_to="segment0">0 0 0.02625 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.02</radius>
+                    <length>0.03</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.02</radius> <!-- 4 cm diameter -->
+                    <length>0.03</length> <!-- 3 cm length -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.0002291666667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.0002291666667</iyy>
+                <iyz>0</iyz>
+                <izz>0.0001</izz>
+            </inertia>
+        </inertial>
+      </link>
+
                           <!-- Segment 0 -->
 
       <link name="segment0">
@@ -205,49 +248,6 @@
         </inertial>
       </link>
                       
-
-                            <!-- Motor 1 link -->
-
-      <link name="motor1">
-
-        <pose relative_to="segment0">0 0 0.02625 0 0 0</pose> 
-
-        <!-- COLLISION -->
-        <collision name="motor1 collision">
-            <geometry>
-                <cylinder>
-                    <radius>0.02</radius>
-                    <length>0.03</length>
-                </cylinder>
-            </geometry>
-        </collision>
-
-        <!-- VISUAL -->
-        <visual name="motor1 visual">
-            <geometry>
-                <cylinder>
-                    <radius>0.02</radius> <!-- 4 cm diameter -->
-                    <length>0.03</length> <!-- 3 cm length -->
-                </cylinder>
-            </geometry>
-            <material>
-                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
-                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
-                <specular>1.0 1.0 1.0 1</specular>
-            </material>
-        </visual>
-        <inertial>
-            <mass>1</mass>
-            <inertia>
-                <ixx>0.0002291666667</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>0.0002291666667</iyy>
-                <iyz>0</iyz>
-                <izz>0.0001</izz>
-            </inertia>
-        </inertial>
-      </link>
 
                             <!-- first segment-->
 
