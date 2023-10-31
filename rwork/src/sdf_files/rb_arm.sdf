@@ -335,11 +335,19 @@
 
                             <!-- fixed joint 0  -->
 
+      <joint name="fixed0" type="fixed">
+        <parent>motor0</parent>
+        <child>segment0</child>
+        <pose>0.018 0 0 0 1.57079632679 0</pose>
+      </joint>
+      
+                            <!-- fixed joint 1  -->
+
       <joint name="fixed1" type="fixed">
         <parent>motor1</parent>
         <child>segment1</child>
-        <pose>-0.057 0 0.005 0 -1.57079632679 0</pose>
-      </joint>                              
+        <pose>-0.06 0 0 0 -1.57079632679 0</pose>
+      </joint>   
     </model>
   </world>
 </sdf>
