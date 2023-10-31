@@ -9,9 +9,10 @@ class JointTorqueController(Node):
         super().__init__('joint_torque_controller')
         self.publisher_joint0 = self.create_publisher(Float64, '/two_joint_arm/joint0/pos_eff', 10)
         self.publisher_joint1 = self.create_publisher(Float64, '/two_joint_arm/joint1/pos_eff', 10)
-        self.timer = self.create_timer(1.0, self.timer_callback)
-        self.direction = 1.0 # Initial direction of the joint
+        
         self.timer = self.create_timer(0.1, self.timer_callback)
+        self.direction = 1.0 # Initial direction of the joint
+        self.start_time = time.time()
 
     def timer_callback(self):
         
