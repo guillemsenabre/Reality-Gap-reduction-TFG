@@ -1,5 +1,5 @@
 import rclpy
-import time
+import math
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
@@ -10,34 +10,23 @@ class JointTorqueController(Node):
         self.publisher_joint0 = self.create_publisher(Float64, '/two_joint_arm/joint0/pos_eff', 10)
         self.publisher_joint1 = self.create_publisher(Float64, '/two_joint_arm/joint1/pos_eff', 10)
         
-        self.timer = self.create_timer(0.1, self.timer_callback)
-        self.direction = 1.0 # Initial direction of the joint
-        self.start_time = time.time()
+        self.timer = self.create_timer(1, self.move_joints)
 
-    def timer_callback(self):
+        self.angle = 0
+
+    def move_joints(self):
+
+        self.angle += 10
         
-        new_direction = self.change_direction()
         msg_joint0 = Float64()
         msg_joint1 = Float64()
-        msg_joint0.data = 0.5  * new_direction # Apply a constant torque of x Nm
+        msg_joint0.data = 0.5  * math.sin(self.angle)# Apply a constant torque of x Nm
         msg_joint1.data = 10.5
         self.publisher_joint0.publish(msg_joint0)
         self.publisher_joint1.publish(msg_joint1)
 
         self.get_logger().info('Joint 0 torque: "%s"' % msg_joint0.data)
         self.get_logger().info('Joint 1 torque: "%s"' % msg_joint1.data)
-    
-    def change_direction(self):
-
-        # Change direction every 3 seconds
-
-        elapsed_time = time.time() - self.start_time
-        if elapsed_time > 3.0:
-            self.direction *= -1.0 
-            self.start_time = time.time()
-        
-        return self.direction
-
 
 def main(args=None):
     rclpy.init(args=args)
