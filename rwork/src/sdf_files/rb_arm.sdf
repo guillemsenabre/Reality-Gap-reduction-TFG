@@ -415,7 +415,15 @@
         <parent>segment1</parent>
         <child>segment2</child>
         <pose>0 0 0.075 0 -1.57079632679 0</pose>
-      </joint> 
+      </joint>
+      
+                            <!-- fixed joint 3  -->
+
+      <joint name="fixed3" type="fixed">
+        <parent>segment2</parent>
+        <child>segment3</child>
+        <pose>0 0 0.075 0 0 0</pose>
+      </joint>
     </model>
   </world>
 </sdf>
