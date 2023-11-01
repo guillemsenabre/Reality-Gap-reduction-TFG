@@ -274,8 +274,8 @@
         <visual name="segment1 visual">
             <geometry>
                 <cylinder>
-                    <radius>0.01</radius> <!-- 4 cm diameter -->
-                    <length>0.15</length> <!-- 10 cm height -->
+                    <radius>0.01</radius> <!-- 2 cm diameter -->
+                    <length>0.15</length> <!-- 15 cm height -->
                 </cylinder>
             </geometry>
             <material>
@@ -296,29 +296,30 @@
           </inertia>
         </inertial>
       </link>
+
 
                                   <!-- second segment-->
 
       <link name="segment2">
 
-        <pose relative_to="segment1">-0.06 0 0 0 -1.57079632679 0</pose> 
+        <pose relative_to="segment1">-0 0 0.075 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="segment2_collision">
+        <collision name="segment2 collision">
             <geometry>
                 <cylinder>
-                    <radius>0.01</radius>
-                    <length>0.15</length>
+                    <radius>0.015</radius>
+                    <length>0.03</length>
                 </cylinder>
             </geometry>
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment2_visual">
+        <visual name="segment2 visual">
             <geometry>
                 <cylinder>
-                    <radius>0.01</radius> <!-- 4 cm diameter -->
-                    <length>0.15</length> <!-- 10 cm height -->
+                    <radius>0.015</radius> <!-- 2 cm diameter -->
+                    <length>0.03</length> <!-- 15 cm height -->
                 </cylinder>
             </geometry>
             <material>
@@ -339,6 +340,7 @@
           </inertia>
         </inertial>
       </link>
+      
 
                         <!--      JOINTS      -->
 
@@ -405,7 +407,15 @@
         <parent>motor1</parent>
         <child>segment1</child>
         <pose>-0.06 0 0 0 -1.57079632679 0</pose>
-      </joint>   
+      </joint>
+
+                            <!-- fixed joint 2  -->
+
+      <joint name="fixed2" type="fixed">
+        <parent>segment1</parent>
+        <child>segment2</child>
+        <pose>0 0 0.075 0 -1.57079632679 0</pose>
+      </joint> 
     </model>
   </world>
 </sdf>
