@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+
+  <world name="gripper_world">
+
+    <!-- LIGHT -->
+    <!-- ... [keeping the light part as is] ... -->
+
+    <model name="simple_gripper">
+      <!-- RISER LINK (kept as is) -->
+      <link name="riser">
+        <!-- ... -->
+      </link>
+      
+      <!-- PALM LINK (kept as is) -->
+      <link name="palm">
+        <!-- ... -->
+      </link>
+
+      <!-- LEFT FINGER LINK -->
+      <link name="left_finger">
+        <pose>0.1 0.2 0.05 0 0 0</pose>
+        <inertial>
+          <mass>0.1</mass>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 0.3 0.1</size>
+            </box>
+          </geometry>
+          <!-- ... [rest of the properties] ... -->
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 0.3 0.1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+
+      <!-- RIGHT FINGER LINK -->
+      <link name="right_finger">
+        <pose>0.1 -0.2 0.05 0 0 0</pose>
+        <inertial>
+          <mass>0.1</mass>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 0.3 0.1</size>
+            </box>
+          </geometry>
+          <!-- ... [rest of the properties] ... -->
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 0.3 0.1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+
+      <!-- JOINT BETWEEN PALM AND LEFT FINGER -->
+      <joint name="palm_left_finger" type="revolute">
+        <pose>0 -0.15 0 0 0 0</pose>
+        <child>left_finger</child>
+        <parent>palm</parent>
+        <axis>
+          <limit>
+            <lower>-0.8</lower>
+            <upper>0.8</upper>
+          </limit>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>
+
+      <!-- JOINT BETWEEN PALM AND RIGHT FINGER -->
+      <joint name="palm_right_finger" type="revolute">
+        <pose>0 0.15 0 0 0 0</pose>
+        <child>right_finger</child>
+        <parent>palm</parent>
+        <axis>
+          <limit>
+            <lower>-0.8</lower>
+            <upper>0.8</upper>
+          </limit>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>
+
+      <!-- PRISMATIC JOINT BETWEEN PALM AND RISER (kept as is) -->
+      <joint name="palm_riser" type="prismatic">
+        <!-- ... -->
+      </joint>
+
+      <!-- GRIPPER -->
+      <gripper name="simple_gripper">
+        <!-- ... [keeping the gripper part as is] ... -->
+      </gripper>
+
+    </model>
+  </world>
+</sdf>
