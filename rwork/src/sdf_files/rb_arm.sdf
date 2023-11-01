@@ -72,11 +72,11 @@
       </plugin>
       
       <plugin
-      filename="libignition-gazebo-joint-controller-system.so"
-      name="ignition::gazebo::systems::JointController">
-      <joint_name>joint2</joint_name>
-      <topic>/two_joint_arm/joint/pos_eff</topic>
-    </plugin>
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint2</joint_name>
+        <topic>/two_joint_arm/joint2/pos_eff</topic>
+      </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-state-publisher-system.so"
@@ -435,6 +435,49 @@
         </inertial>
       </link>
 
+                            <!-- fourth segment-->
+
+      <link name="segment4">
+
+        <pose relative_to="segment3">0 0 0.075 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment4_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.012</radius>
+                    <length>0.027</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment4_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.012</radius> <!-- 2.4 cm diameter -->
+                    <length>0.027</length> <!-- 3 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
                         <!--      JOINTS      -->
 
 
@@ -489,7 +532,7 @@
          <child>motor2</child>
          <axis>
              <dynamics>
-               <friction>0.030000</friction>  <!-- N m / s-->
+               <friction>0.000000</friction>  <!-- N m / s-->
                <damping>0.000000</damping>
              </dynamics>
              <xyz>0 0 1</xyz>
@@ -538,6 +581,15 @@
         <child>segment3</child>
         <pose>0.075 0 0 0 -1.57079632679 0</pose>
       </joint>
+
+                            <!-- fixed joint 4  -->
+
+      <joint name="fixed4" type="fixed">
+        <parent>segment3</parent>
+        <child>segment4</child>
+        <pose>0.075 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
     </model>
   </world>
 </sdf>
