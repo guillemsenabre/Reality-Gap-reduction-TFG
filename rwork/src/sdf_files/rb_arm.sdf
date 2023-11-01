@@ -318,8 +318,8 @@
         <visual name="segment2 visual">
             <geometry>
                 <cylinder>
-                    <radius>0.012</radius> <!-- 2 cm diameter -->
-                    <length>0.03</length> <!-- 15 cm height -->
+                    <radius>0.012</radius> <!-- 2.4 cm diameter -->
+                    <length>0.03</length> <!-- 3 cm height -->
                 </cylinder>
             </geometry>
             <material>
@@ -351,8 +351,8 @@
         <collision name="segment3 collision">
             <geometry>
                 <cylinder>
-                    <radius>0.015</radius>
-                    <length>0.03</length>
+                    <radius>0.01</radius>
+                    <length>0.025</length>
                 </cylinder>
             </geometry>
         </collision>
@@ -361,8 +361,8 @@
         <visual name="segment3 visual">
             <geometry>
                 <cylinder>
-                    <radius>0.015</radius> <!-- 2 cm diameter -->
-                    <length>0.03</length> <!-- 15 cm height -->
+                    <radius>0.01</radius> <!-- 2 cm diameter -->
+                    <length>0.025</length> <!-- 2.5 cm height -->
                 </cylinder>
             </geometry>
             <material>
