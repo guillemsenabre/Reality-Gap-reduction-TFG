@@ -2,7 +2,6 @@
 <sdf version="1.8">
 
   <world name="gripper_world">
-
     <!-- LIGHT -->
 
     <light type="directional" name="sun">
