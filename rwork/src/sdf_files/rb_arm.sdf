@@ -325,7 +325,7 @@
          <child>motor1</child>
          <axis>
              <dynamics>
-               <friction>0.100000</friction>  <!-- N m / s-->
+               <friction>0.000000</friction>  <!-- N m / s-->
                <damping>0.000000</damping>
              </dynamics>
              <xyz>0 0 1</xyz>
