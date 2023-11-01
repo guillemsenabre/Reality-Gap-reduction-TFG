@@ -439,7 +439,7 @@
 
       <link name="segment4">
 
-        <pose relative_to="segment3">0 0 0.075 0 -1.57079632679 0</pose> 
+        <pose relative_to="segment3">0 0 -0.075 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment4_collision">
@@ -587,7 +587,7 @@
       <joint name="fixed4" type="fixed">
         <parent>segment3</parent>
         <child>segment4</child>
-        <pose>0.075 0 0 0 -1.57079632679 0</pose>
+        <pose>-0.075 0 0 0 -1.57079632679 0</pose>
       </joint>
 
     </model>
