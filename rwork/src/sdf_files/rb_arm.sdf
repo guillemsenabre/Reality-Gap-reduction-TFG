@@ -383,7 +383,49 @@
           </inertia>
         </inertial>
       </link>
-      
+
+                            <!-- third segment-->
+
+      <link name="segment3">
+
+        <pose relative_to="motor2">-0.06 0 0 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment3_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.007</radius>
+                    <length>0.15</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment3_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.007</radius> <!-- 2 cm diameter -->
+                    <length>0.15</length> <!-- 15 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
 
                         <!--      JOINTS      -->
 
@@ -429,7 +471,28 @@
              </limit>
          </axis>
          <pose>0 0 -0.02625 0 0 0</pose>
-      </joint>     
+      </joint>
+      
+                            <!-- joint 2  -->
+
+
+      <joint name="joint2" type="revolute">
+        <parent>segment2</parent>
+         <child>motor2</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.026 0 0 0</pose>
+      </joint> 
 
 
                         <!--      FIXED JOINTS      -->
@@ -459,15 +522,14 @@
         <child>segment2</child>
         <pose>0 0 0.075 0 -1.57079632679 0</pose>
       </joint>
-      
-                            <!-- fixed joint 3  -->
+
+                            <!-- fixed joint 2  -->
 
       <joint name="fixed3" type="fixed">
-        <parent>segment2</parent>
-        <child>motor2</child>
-        <pose>0 0 0.075 0 0 0</pose>
+        <parent>motor2</parent>
+        <child>segment3</child>
+        <pose>-0.06 0 0 0 -1.57079632679 0</pose>
       </joint>
-
     </model>
   </world>
 </sdf>
