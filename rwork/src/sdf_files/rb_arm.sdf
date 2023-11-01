@@ -62,6 +62,11 @@
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint0</joint_name>
         <topic>/two_joint_arm/joint0/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>joint1</joint_name>
         <topic>/two_joint_arm/joint1/pos_eff</topic>
       </plugin>
@@ -236,7 +241,7 @@
             </material>
         </visual>
         <inertial>
-          <mass>1</mass>
+          <mass>0.1</mass>
           <inertia>
               <ixx>0.00013125</ixx>
               <ixy>0</ixy>
