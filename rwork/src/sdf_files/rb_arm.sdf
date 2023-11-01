@@ -445,8 +445,8 @@
         <collision name="segment4_collision">
             <geometry>
                 <cylinder>
-                    <radius>0.012</radius>
-                    <length>0.027</length>
+                    <radius>0.01</radius>
+                    <length>0.025</length>
                 </cylinder>
             </geometry>
         </collision>
@@ -455,8 +455,8 @@
         <visual name="segment4_visual">
             <geometry>
                 <cylinder>
-                    <radius>0.012</radius> <!-- 2.4 cm diameter -->
-                    <length>0.027</length> <!-- 3 cm height -->
+                    <radius>0.01</radius> <!-- 2.4 cm diameter -->
+                    <length>0.025</length> <!-- 3 cm height -->
                 </cylinder>
             </geometry>
             <material>
