@@ -263,14 +263,14 @@
 
       <link name="motor3">
 
-        <pose relative_to="segment4">0 0 0.025 0 0 0</pose> 
+        <pose relative_to="segment4">0 0 0.022 0 0 0</pose> 
 
         <!-- COLLISION -->
         <collision name="motor3 collision">
             <geometry>
                 <cylinder>
-                    <radius>0.007</radius>
-                    <length>0.025</length>
+                    <radius>0.0085</radius>
+                    <length>0.022</length>
                 </cylinder>
             </geometry>
         </collision>
@@ -279,8 +279,8 @@
         <visual name="motor3 visual">
             <geometry>
                 <cylinder>
-                    <radius>0.007</radius> <!-- 2 cm diameter -->
-                    <length>0.025</length> <!-- 2.5 cm height -->
+                    <radius>0.0085</radius> <!-- 2 cm diameter -->
+                    <length>0.022</length> <!-- 2.5 cm height -->
                 </cylinder>
             </geometry>
             <material>
@@ -607,7 +607,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0 0 0.025 0 0 0</pose>
+         <pose>0 0 0.022 0 0 0</pose>
       </joint> 
 
 
