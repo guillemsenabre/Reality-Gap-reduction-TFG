@@ -313,29 +313,29 @@
 
       <link name="motor4">
 
-        <pose relative_to="segment5">0 0 0.005 0 0 0</pose> 
+        <pose relative_to="segment5">0 0 0.01 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="segment5_collision">
+        <collision name="motor4_collision">
             <geometry>
                 <cylinder>
-                    <radius>0.007</radius>
-                    <length>0.007</length>
+                    <radius>0.005</radius>
+                    <length>0.01</length>
                 </cylinder>
             </geometry>
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment5_visual">
+        <visual name="motor4_visual">
             <geometry>
                 <cylinder>
-                    <radius>0.007</radius> <!-- 1.4 cm diameter -->
-                    <length>0.01</length> <!-- 0.5 cm height -->
+                    <radius>0.005</radius> <!-- 1 cm diameter -->
+                    <length>0.01</length> <!-- 1 cm height -->
                 </cylinder>
             </geometry>
             <material>
-                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
-                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
                 <specular>1.0 1.0 1.0 1</specular>
             </material>
         </visual>
@@ -583,7 +583,7 @@
             <geometry>
                 <cylinder>
                     <radius>0.007</radius>
-                    <length>0.007</length>
+                    <length>0.01</length>
                 </cylinder>
             </geometry>
         </collision>
