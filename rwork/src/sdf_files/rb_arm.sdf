@@ -540,7 +540,7 @@
             <geometry>
                 <cylinder>
                     <radius>0.007</radius>
-                    <length>0.005</length>
+                    <length>0.007</length>
                 </cylinder>
             </geometry>
         </collision>
