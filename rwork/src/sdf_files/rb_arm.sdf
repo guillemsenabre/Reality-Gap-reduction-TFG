@@ -533,7 +533,7 @@
 
       <link name="segment5">
 
-        <pose relative_to="motor3">0.0150 0 0 0 -1.57079632679 0</pose> 
+        <pose relative_to="motor3">-0.0150 0 0 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment5_collision">
@@ -704,6 +704,14 @@
         <parent>segment3</parent>
         <child>segment4</child>
         <pose>-0.075 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 4  -->
+
+      <joint name="fixed5" type="fixed">
+        <parent>motor3</parent>
+        <child>segment5</child>
+        <pose>-0.0150 0 0 0 -1.57079632679 0</pose>
       </joint>
 
     </model>
