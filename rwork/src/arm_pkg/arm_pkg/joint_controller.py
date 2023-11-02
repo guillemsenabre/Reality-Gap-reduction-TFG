@@ -18,7 +18,7 @@ class JointTorqueController(Node):
 
     def move_joints(self):
 
-        self.angle += 10
+        self.angle = (self.angle + 10) % (2 * math.pi) # keep the angle between 0 and 2π
         
         msg_joint0 = Float64()
         msg_joint1 = Float64()
