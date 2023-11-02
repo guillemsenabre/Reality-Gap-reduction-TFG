@@ -524,7 +524,7 @@
                         <!--      JOINTS      -->
 
 
-                            <!-- joint 0  -->
+                            <!-- revolute joint 0  -->
 
 
       <joint name="joint0" type="continuous">
@@ -546,7 +546,7 @@
       </joint>
       
 
-                            <!-- joint 1  -->
+                            <!-- revolute joint 1  -->
 
 
       <joint name="joint1" type="revolute">
@@ -567,7 +567,7 @@
          <pose>0 0 -0.02625 0 0 0</pose>
       </joint>
       
-                            <!-- joint 2  -->
+                            <!-- revolute joint 2  -->
 
 
       <joint name="joint2" type="revolute">
@@ -589,7 +589,7 @@
       </joint>
 
 
-                            <!-- joint 3  -->
+                            <!-- revolute joint 3  -->
 
 
       <joint name="joint3" type="revolute">
