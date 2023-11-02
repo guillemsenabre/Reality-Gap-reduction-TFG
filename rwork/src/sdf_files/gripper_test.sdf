@@ -1,95 +1,58 @@
 <?xml version="1.0" ?>
 <sdf version="1.8">
+  <world name="gripper_world">
+    <model name="simple_gripper">
+      <!-- Base (Static part of the gripper) -->
+      <link name="base">
+        <pose>0 0 0.05 0 0 0</pose>
+        <inertial>
+          <mass>0.5</mass>
+        </inertial>
+      </link>
 
-  <world name="one_joint_gripper_world">
-
-    <!-- LIGHT -->
-
-    <light type="directional" name="sun">
-        <cast_shadows>true</cast_shadows>
-        <pose>0 0 10 0 0 0</pose>
-        <diffuse>0.8 0.8 0.8 1</diffuse>
-        <specular>0.2 0.2 0.2 1</specular>
-        <attenuation>
-            <range>1000</range>
-            <constant>0.9</constant>
-            <linear>0.01</linear>
-            <quadratic>0.001</quadratic>
-        </attenuation>
-        <direction>-0.5 0.1 -0.9</direction>
-    </light>
-
-    <model name="one_joint_gripper">
-      
-      <!-- Base link -->
-      <link name="base_link">
-        <pose>0 0 0 0 0 0</pose>
-        <collision name="base_collision">
+      <!-- Moving Finger (Using prismatic joint) -->
+      <link name="moving_finger">
+        <pose>0.1 0 0.05 0 0 0</pose>
+        <inertial>
+          <mass>0.1</mass>
+        </inertial>
+        <collision name="collision">
           <geometry>
             <box>
-              <size>0.1 0.05 0.01</size>
+              <size>0.1 0.02 0.1</size>
             </box>
           </geometry>
         </collision>
-        <visual name="base_visual">
+        <visual name="visual">
           <geometry>
             <box>
-              <size>0.1 0.05 0.01</size>
+              <size>0.1 0.02 0.1</size>
             </box>
           </geometry>
         </visual>
       </link>
 
-      <!-- Left finger -->
-      <link name="finger_left">
-        <pose>0.05 0.025 0 0 0 0</pose>
-        <collision name="finger_left_collision">
-          <geometry>
-            <box>
-              <size>0.05 0.01 0.01</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="finger_left_visual">
-          <geometry>
-            <box>
-              <size>0.05 0.01 0.01</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-
-      <!-- Right finger (static, does not move) -->
-      <link name="finger_right">
-        <pose>-0.05 0.025 0 0 0 0</pose>
-        <collision name="finger_right_collision">
-          <geometry>
-            <box>
-              <size>0.05 0.01 0.01</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="finger_right_visual">
-          <geometry>
-            <box>
-              <size>0.05 0.01 0.01</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-
-      <!-- Joint for left finger -->
-      <joint name="left_finger_joint" type="revolute">
-        <parent>base_link</parent>
-        <child>finger_left</child>
+      <!-- Prismatic Joint (for moving the finger linearly) -->
+      <joint name="finger_slide_joint" type="prismatic">
+        <parent>base</parent>
+        <child>moving_finger</child>
         <axis>
-          <xyz>0 1 0</xyz>
           <limit>
-            <lower>-0.5</lower>
-            <upper>0</upper>
+            <lower>0</lower>
+            <upper>0.05</upper>
           </limit>
+          <xyz>1 0 0</xyz>
+          <dynamics>
+            <friction>0.5</friction>
+          </dynamics>
         </axis>
       </joint>
+
+      <!-- The gripper definition (to specify which links participate in gripping) -->
+      <gripper name="simple_gripper">
+        <gripper_link>moving_finger</gripper_link>
+        <palm_link>base</palm_link>
+      </gripper>
     </model>
   </world>
 </sdf>

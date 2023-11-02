@@ -259,6 +259,49 @@
         </inertial>
       </link>
 
+                              <!-- Motor 3 Link-->
+
+      <link name="motor3">
+
+        <pose relative_to="segment4">0 0 0.026 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor3 collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.01</radius>
+                    <length>0.025</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor3 visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.01</radius> <!-- 2 cm diameter -->
+                    <length>0.025</length> <!-- 2.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
                           <!-- Segment 0 -->
 
       <link name="segment0">
@@ -484,7 +527,7 @@
                             <!-- joint 0  -->
 
 
-      <joint name="joint0" type="revolute">
+      <joint name="joint0" type="continuous">
          <parent>base_link</parent>
           <child>motor0</child>
           <axis>
@@ -530,6 +573,28 @@
       <joint name="joint2" type="revolute">
         <parent>segment2</parent>
          <child>motor2</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.026 0 0 0</pose>
+      </joint>
+
+
+                            <!-- joint 3  -->
+
+
+      <joint name="joint3" type="revolute">
+        <parent>segment4</parent>
+         <child>motor3</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
