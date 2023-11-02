@@ -352,6 +352,53 @@
         </inertial>
       </link>
 
+                    <!-- CUSTOM SIMPLE GRIPPER -->
+
+
+                      <!-- right finger Link -->
+                      
+      <link name="right_finger">
+
+        <pose relative_to="segment6">0 0 0.0345 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+
+        <!-- COLLISION -->
+        <collision name="right_finger_collision">
+            <geometry>
+                <box>
+                    <size>0.016 0.016 0.064</size> <!-- 4 times taller than wide -->
+                </box>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="right_finger_visual">
+            <geometry>
+                <box>
+                    <size>0.016 0.016 0.064</size>
+                </box>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+
+        <inertial>
+          <mass>0.1</mass>
+          <!-- The inertia tensor values would need to be recalculated for the box shape. The values below are placeholders. -->
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
                           <!-- Segment 0 -->
 
       <link name="segment0">
