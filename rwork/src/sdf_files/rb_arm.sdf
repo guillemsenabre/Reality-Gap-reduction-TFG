@@ -704,6 +704,27 @@
          <pose>0 0 0.022 0 0 0</pose>
       </joint> 
 
+                            <!-- revolute joint 4  -->
+
+
+      <joint name="joint4" type="revolute">
+        <parent>segment5</parent>
+         <child>motor4</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.005 0 0 0</pose>
+      </joint> 
+
 
                         <!--      FIXED JOINTS      -->
 
