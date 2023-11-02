@@ -1,2 +1,3 @@
 JOINT POSITIONS: ros2 run ros_gz_bridge parameter_bridge /world/two_joint_arm_world/model/two_joint_arm/joint_state@sensor_msgs/msg/JointState]gz.msgs.ModelW
 JOINT CONTROLLER: ros2 run ros_gz_bridge parameter_bridge /two_joint_arm/joint0/pos_eff@std_msgs/msg/Float64]gz.msgs.Double
+4 JOINTS COTROL: ros2 run ros_gz_bridge parameter_bridge /two_joint_arm/joint0/pos_eff@std_msgs/msg/Float64]gz.msgs.Double /two_joint_arm/joint1/pos_eff@std_msgs/msg/Float64]gz.msgs.Double /two_joint_arm/joint2/pos_eff@std_msgs/msg/Float64]gz.msgs.Double /two_joint_arm/joint3/pos_eff@std_msgs/msg/Float64]gz.msgs.Double
