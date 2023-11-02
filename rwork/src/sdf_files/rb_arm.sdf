@@ -309,6 +309,49 @@
         </inertial>
       </link>
 
+                            <!-- Motor 4 Link-->
+
+      <link name="motor4">
+
+        <pose relative_to="segment5">0 0 0.005 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment5_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.007</radius>
+                    <length>0.007</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment5_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.007</radius> <!-- 1.4 cm diameter -->
+                    <length>0.01</length> <!-- 0.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
                           <!-- Segment 0 -->
 
       <link name="segment0">
@@ -711,7 +754,7 @@
       <joint name="fixed5" type="fixed">
         <parent>motor3</parent>
         <child>segment5</child>
-        <pose>-0.0150 0 0 0 -1.57079632679 0</pose>
+        <pose>-0.00745 0 0 0 -1.57079632679 0</pose>
       </joint>
 
     </model>
