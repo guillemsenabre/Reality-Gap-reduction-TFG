@@ -18,16 +18,22 @@ class JointTorqueController(Node):
 
     def move_joints(self):
 
-        self.angle += 10
+        self.angle = (self.angle + 10) % (2 * math.pi) # keep the angle between 0 and 2π
         
-        msg_joint0, msg_joint1, msg_joint2, msg_joint3 = Float64()
+        msg_joint0 = Float64()
+        msg_joint1 = Float64()
+        msg_joint2 = Float64()
+        msg_joint3 = Float64()
         
         msg_joint0.data = 0.5 * math.sin(self.angle)# Apply a constant torque of x Nm
         msg_joint1.data = 10 * math.sin(self.angle)
         msg_joint2.data = 3 * math.sin(self.angle)
         msg_joint3.data = 1 * math.sin(self.angle)
+
         self.publisher_joint0.publish(msg_joint0)
         self.publisher_joint1.publish(msg_joint1)
+        self.publisher_joint2.publish(msg_joint2)
+        self.publisher_joint3.publish(msg_joint3)
 
         self.get_logger().info('Joint 0 torque: "%s"' % msg_joint0.data)
         self.get_logger().info('Joint 1 torque: "%s"' % msg_joint1.data)
