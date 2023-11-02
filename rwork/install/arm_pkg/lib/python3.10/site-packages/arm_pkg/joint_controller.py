@@ -25,8 +25,8 @@ class JointTorqueController(Node):
         msg_joint2 = Float64()
         msg_joint3 = Float64()
         
-        msg_joint0.data = 0.5 * math.sin(self.angle)# Apply a constant torque of x Nm
-        msg_joint1.data = 10 * math.sin(self.angle)
+        msg_joint0.data = 8.5 * math.sin(self.angle)# Apply a constant torque of x Nm
+        msg_joint1.data = 9 * math.sin(self.angle)
         msg_joint2.data = 3 * math.sin(self.angle)
         msg_joint3.data = 1 * math.sin(self.angle)
 
