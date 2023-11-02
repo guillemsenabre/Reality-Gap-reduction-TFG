@@ -813,12 +813,20 @@
         <pose>-0.075 0 0 0 -1.57079632679 0</pose>
       </joint>
 
-                            <!-- fixed joint 4  -->
+                            <!-- fixed joint 5  -->
 
       <joint name="fixed5" type="fixed">
         <parent>motor3</parent>
         <child>segment5</child>
         <pose>-0.00745 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 6 -->
+
+      <joint name="fixed6" type="fixed">
+        <parent>motor4</parent>
+        <child>segment6</child>
+        <pose>0 0 0.0065 0 0 0</pose>
       </joint>
 
     </model>
