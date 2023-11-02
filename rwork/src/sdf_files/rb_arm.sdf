@@ -359,7 +359,7 @@
 
       <link name="right_finger">
 
-        <pose relative_to="segment6">0 0 0.0055 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment6">0.00375 0 0.0055 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
         <collision name="right_finger_collision">
