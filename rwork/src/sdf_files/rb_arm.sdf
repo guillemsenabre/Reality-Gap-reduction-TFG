@@ -534,7 +534,7 @@
                             <!-- revolute joint 0  -->
 
 
-      <joint name="joint0" type="continuous">
+      <joint name="joint0" type="revolute">
          <parent>base_link</parent>
           <child>motor0</child>
           <axis>
