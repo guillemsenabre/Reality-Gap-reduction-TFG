@@ -79,6 +79,13 @@
       </plugin>
 
       <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint3</joint_name>
+        <topic>/two_joint_arm/joint3/pos_eff</topic>
+      </plugin>
+
+      <plugin
         filename="libignition-gazebo-joint-state-publisher-system.so"
         name="ignition::gazebo::systems::JointStatePublisher">
       </plugin>
