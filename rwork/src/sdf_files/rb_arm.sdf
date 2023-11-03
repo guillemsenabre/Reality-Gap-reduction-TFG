@@ -1,4 +1,4 @@
-ign gazebo ~/tfg/rwork/src/sdf_files/rb_arm.sdf<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <sdf version="1.8">
   <world name="two_joint_arm_world">
 
@@ -859,7 +859,7 @@ ign gazebo ~/tfg/rwork/src/sdf_files/rb_arm.sdf<?xml version="1.0" ?>
       </joint> 
 
 
-                            <!-- revolute joint 4  -->
+                            <!-- right finger prismatic joint  -->
 
 
       <joint name="right_finger_joint" type="prismatic">
@@ -879,7 +879,30 @@ ign gazebo ~/tfg/rwork/src/sdf_files/rb_arm.sdf<?xml version="1.0" ?>
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0 0 0.005 0 0 0</pose>
+         <pose>0.00375 0 0.008 0 0 0</pose>
+      </joint> 
+
+                            <!-- left finger prismatic joint  -->
+
+
+      <joint name="left_finger_joint" type="prismatic">
+
+         <parent>segment6</parent>
+         <child>left_finger</child>
+
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>0</lower> 
+                <upper>0.05</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>-0.00375 0 0.008 0 0 0</pose>
       </joint> 
 
 
