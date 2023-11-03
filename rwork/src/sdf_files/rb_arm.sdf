@@ -895,7 +895,7 @@
                <friction>0.000000</friction>  <!-- N m / s-->
                <damping>0.000000</damping>
              </dynamics>
-             <xyz>0 0 1</xyz>
+             <xyz>1 0 0</xyz>
              <limit>
                 <lower>0</lower> 
                 <upper>0.05</upper>  
@@ -918,7 +918,7 @@
                <friction>0.000000</friction>  <!-- N m / s-->
                <damping>0.000000</damping>
              </dynamics>
-             <xyz>0 0 1</xyz>
+             <xyz>1 0 0</xyz>
              <limit>
                 <lower>0</lower> 
                 <upper>0.05</upper>  
