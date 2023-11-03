@@ -879,7 +879,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0.00375 0 0.008 0 0 0</pose>
+         <pose>0.00375 0 0.0080 0 0 0</pose>
       </joint> 
 
                             <!-- left finger prismatic joint  -->
@@ -902,7 +902,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>-0.00375 0 0.008 0 0 0</pose>
+         <pose>-0.00375 0 0.0080 0 0 0</pose>
       </joint> 
 
 
