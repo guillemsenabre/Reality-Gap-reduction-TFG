@@ -7,10 +7,21 @@ from std_msgs.msg import Float64
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
-        self.publisher_joint0 = self.create_publisher(Float64, '/two_joint_arm/joint0/pos_eff', 1)
-        self.publisher_joint1 = self.create_publisher(Float64, '/two_joint_arm/joint1/pos_eff', 1)
-        self.publisher_joint2 = self.create_publisher(Float64, '/two_joint_arm/joint2/pos_eff', 1)
-        self.publisher_joint3 = self.create_publisher(Float64, '/two_joint_arm/joint3/pos_eff', 1)
+        
+        self.joint_publishers = []
+        self.joint_names = [
+                            'joint0', 
+                            'joint1', 
+                            'joint2',
+                            'joint3',
+                            'joint4',
+                            'right_finger_joint',
+                            'left_finger_joint'
+                            ]
+        
+        for joint_name in self.joint_names:
+            publisher = self.create_publisher(Float64, f'/two_joint_arm/{joint_name}/pos_eff', 1)
+            self.joint_publishers.append(publisher)
 
         self.timer = self.create_timer(1, self.move_joints)
 
@@ -18,7 +29,8 @@ class JointTorqueController(Node):
 
     def move_joints(self):
 
-        self.angle = (self.angle + 10) % (2 * math.pi) # keep the angle between 0 and 2π
+        # keep the angle between 0 and 2π
+        self.angle = (self.angle + 10) % (2 * math.pi) 
         
         msg_joint0 = Float64()
         msg_joint1 = Float64()
