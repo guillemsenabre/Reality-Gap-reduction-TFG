@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+ign gazebo ~/tfg/rwork/src/sdf_files/rb_arm.sdf<?xml version="1.0" ?>
 <sdf version="1.8">
   <world name="two_joint_arm_world">
 
@@ -372,6 +372,49 @@
 
         <!-- VISUAL -->
         <visual name="right_finger_visual">
+            <geometry>
+                <box>
+                    <size>0.003 0.003 0.013</size>
+                </box>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+
+        <inertial>
+          <mass>0.1</mass>
+          <!-- The inertia tensor values would need to be recalculated for the box shape. The values below are placeholders. -->
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                      <!-- left finger Link -->
+
+      <link name="left_finger">
+
+        <pose relative_to="segment6">-0.00375 0 0.008 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+
+        <!-- COLLISION -->
+        <collision name="left_finger_collision">
+            <geometry>
+                <box>
+                    <size>0.003 0.003 0.013</size> <!-- 4 times taller than wide -->
+                </box>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="left_finger_visual">
             <geometry>
                 <box>
                     <size>0.003 0.003 0.013</size>
