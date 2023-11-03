@@ -988,7 +988,7 @@
         <child>segment6</child>
         <pose>0 0 0.0065 0 0 0</pose>
       </joint>
-
+      
     </model>
   </world>
 </sdf>
