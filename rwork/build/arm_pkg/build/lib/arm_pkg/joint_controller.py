@@ -7,10 +7,21 @@ from std_msgs.msg import Float64
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
-        self.publisher_joint0 = self.create_publisher(Float64, '/two_joint_arm/joint0/pos_eff', 1)
-        self.publisher_joint1 = self.create_publisher(Float64, '/two_joint_arm/joint1/pos_eff', 1)
-        self.publisher_joint2 = self.create_publisher(Float64, '/two_joint_arm/joint2/pos_eff', 1)
-        self.publisher_joint3 = self.create_publisher(Float64, '/two_joint_arm/joint3/pos_eff', 1)
+        
+        self.joint_publishers = []
+        self.joint_names = [
+                            'joint0', 
+                            'joint1', 
+                            'joint2',
+                            'joint3',
+                            'joint4',
+                            'right_finger_joint',
+                            'left_finger_joint'
+                            ]
+        
+        for joint_name in self.joint_names:
+            publisher = self.create_publisher(Float64, f'/two_joint_arm/{joint_name}/pos_eff', 1)
+            self.joint_publishers.append(publisher)
 
         self.timer = self.create_timer(1, self.move_joints)
 
@@ -18,27 +29,17 @@ class JointTorqueController(Node):
 
     def move_joints(self):
 
-        self.angle = (self.angle + 10) % (2 * math.pi) # keep the angle between 0 and 2π
+        # keep the angle between 0 and 2π
+        self.angle = (self.angle + 10) % (2 * math.pi) 
         
-        msg_joint0 = Float64()
-        msg_joint1 = Float64()
-        msg_joint2 = Float64()
-        msg_joint3 = Float64()
-        
-        msg_joint0.data = 8.5 * math.sin(self.angle)# Apply a constant torque of x Nm
-        msg_joint1.data = 9 * math.sin(self.angle)
-        msg_joint2.data = 3 * math.sin(self.angle)
-        msg_joint3.data = 1 * math.sin(self.angle)
+        # Test multipliers for each joint 
+        joint_multipliers_test = [8.5, 9, 3, 2]
 
-        self.publisher_joint0.publish(msg_joint0)
-        self.publisher_joint1.publish(msg_joint1)
-        self.publisher_joint2.publish(msg_joint2)
-        self.publisher_joint3.publish(msg_joint3)
-
-        self.get_logger().info('Joint 0 torque: "%s"' % msg_joint0.data)
-        self.get_logger().info('Joint 1 torque: "%s"' % msg_joint1.data)
-        self.get_logger().info('Joint 2 torque: "%s"' % msg_joint2.data)
-        self.get_logger().info('Joint 3 torque: "%s"' % msg_joint3.data)
+        for idx, publisher in enumerate(self.joint_publishers):
+            msg = Float64
+            msg.data = joint_multipliers_test[idx] * math.sin(self.angle)
+            publisher.publish(msg)
+            self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
 
 def main(args=None):
     rclpy.init(args=args)
