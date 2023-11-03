@@ -33,7 +33,7 @@ class JointTorqueController(Node):
         self.angle = (self.angle + 10) % (2 * math.pi) 
         
         # Test multipliers for each joint 
-        joint_multipliers_test = [8.5, 9, 3, 2]
+        joint_multipliers_test = [8.5, 9, 3, 2, 2, 1, 1]
 
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float64()
