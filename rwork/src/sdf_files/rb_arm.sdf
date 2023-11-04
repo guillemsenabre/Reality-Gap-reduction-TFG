@@ -1042,7 +1042,7 @@
              <xyz>1 0 0</xyz>
              <limit>
                 <lower>0</lower> 
-                <upper>0.0025</upper>  
+                <upper>0.00375</upper>  
                 <effort>1e6</effort>
              </limit>
          </axis>
@@ -1065,7 +1065,7 @@
              <xyz>1 0 0</xyz>
              <limit>
                 <lower>0</lower> 
-                <upper>0.0025</upper>  
+                <upper>0.00375</upper>  
                 <effort>1e6</effort>
              </limit>
          </axis>
