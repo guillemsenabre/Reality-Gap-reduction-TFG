@@ -703,14 +703,14 @@
 
       <link name="segment2">
 
-        <pose relative_to="segment1">0 0 0.075 0 -1.57079632679 0</pose> 
+        <pose relative_to="segment1">0 0 0.13275 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment2 collision">
             <geometry>
                 <cylinder>
-                    <radius>0.012</radius>
-                    <length>0.027</length>
+                    <radius>0.0180</radius>
+                    <length>0.0405</length>
                 </cylinder>
             </geometry>
         </collision>
@@ -719,8 +719,8 @@
         <visual name="segment2 visual">
             <geometry>
                 <cylinder>
-                    <radius>0.012</radius> <!-- 2.4 cm diameter -->
-                    <length>0.027</length> <!-- 3 cm height -->
+                    <radius>0.0180</radius> <!-- 2.4 cm diameter -->
+                    <length>0.0405</length> <!-- 3 cm height -->
                 </cylinder>
             </geometry>
             <material>
