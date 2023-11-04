@@ -266,7 +266,7 @@
       <!-- Base Link -->
       <link name="base_link">
 
-        <pose>0 0 1.03 0 0 0</pose>
+        <pose>0 0 1.0525 0 0 0</pose>
 
         <collision name="base_collision">
           <geometry>
