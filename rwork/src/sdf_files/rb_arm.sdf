@@ -936,7 +936,7 @@
                 <effort>1e6</effort>
               </limit>
           </axis>
-          <pose>0 0 -0.025 0 0 0</pose>
+          <pose>0 0 0.07875 0 0 0</pose>
       </joint>
       
 
@@ -958,7 +958,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0 0 -0.02625 0 0 0</pose>
+         <pose>0 0 0.04125 0 0 0</pose>
       </joint>
       
                             <!-- revolute joint 2  -->
@@ -979,7 +979,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0 0 0.026 0 0 0</pose>
+         <pose>0 0 0.0390 0 0 0</pose>
       </joint>
 
 
@@ -1001,7 +1001,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0 0 0.022 0 0 0</pose>
+         <pose>0 0 0.034 0 0 0</pose>
       </joint> 
 
                             <!-- revolute joint 4  -->
@@ -1022,7 +1022,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0 0 0.005 0 0 0</pose>
+         <pose>0 0 0.015 0 0 0</pose>
       </joint> 
 
 
