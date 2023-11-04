@@ -703,7 +703,7 @@
 
       <link name="segment2">
 
-        <pose relative_to="segment1">0 0 0.13275 0 -1.57079632679 0</pose> 
+        <pose relative_to="segment1">0 0 0.1125 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment2 collision">
