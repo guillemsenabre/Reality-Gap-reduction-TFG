@@ -796,7 +796,7 @@
             <geometry>
                 <cylinder>
                     <radius>0.0150</radius>
-                    <length>0.0375</length>
+                    <length>0.0350</length>
                 </cylinder>
             </geometry>
         </collision>
@@ -806,7 +806,7 @@
             <geometry>
                 <cylinder>
                     <radius>0.0150</radius> <!-- 2.4 cm diameter -->
-                    <length>0.0375</length> <!-- 3 cm height -->
+                    <length>0.0350</length> <!-- 3 cm height -->
                 </cylinder>
             </geometry>
             <material>
