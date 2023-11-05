@@ -243,6 +243,13 @@
           </visual>
         </link>
 
+
+
+
+                            <!-- SUPPORT LINKS -->
+
+                            <!-- START SUPPORT -->
+
         <link name="body_support_start">
             <pose relative_to="table_link">0 0.2 1.2 0 0 0</pose>
 
@@ -297,19 +304,93 @@
             </visual>
         </link>
 
-                                <!-- weld support to table  -->
 
-        <joint name="support_table" type="fixed">
+                            <!-- GOAL SUPPORT -->
+
+        <link name="body_support_goal">
+            <pose relative_to="table_link">0 -0.2 1.2 0 0 0</pose>
+
+            <collision name="body_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="body_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+        <link name="platform_support_goal">
+            <pose relative_to="body_support_goal">0 0 0.1025 0 0 0</pose>
+
+            <collision name="platform_collision">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+            </collision>
+            <visual name="platform_visual">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+                                <!-- START: weld support to table  -->
+
+        <joint name="support_table_start" type="fixed">
             <parent>table_link</parent>
             <child>body_support_start</child>
             <pose>0 0.2 1.2 0 0 0</pose>
         </joint>
 
-                                <!-- weld platform to support body -->
+                                <!-- START: weld platform to support body -->
 
-        <joint name="platform_body" type="fixed">
+        <joint name="platform_body_start" type="fixed">
             <parent>body_support_start</parent>
             <child>platform_support_start</child>
+            <pose>0 0 0.1025 0 0 0</pose>
+        </joint>
+
+
+                                <!-- GOAL: weld support to table  -->
+
+        <joint name="support_table_goal" type="fixed">
+            <parent>table_link</parent>
+            <child>body_support_goal</child>
+            <pose>0 -0.2 1.2 0 0 0</pose>
+        </joint>
+
+                                <!-- GOAL: weld platform to support body -->
+
+        <joint name="platform_body_goal" type="fixed">
+            <parent>body_support_goal</parent>
+            <child>platform_support_goal</child>
             <pose>0 0 0.1025 0 0 0</pose>
         </joint>
 
