@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.8">
-  <world name="two_joint_arm_world">
+  <world name="full_env">
 
     <!-- LIGHT -->
 
@@ -259,58 +259,58 @@
 
 
 
-                            <!-- Robotic Arm Model -->
+                            <!-- Robotic Arm Model 1 -->
 
     
-    <model name="two_joint_arm">
+    <model name="arm 1">
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint0</joint_name>
-        <topic>/two_joint_arm/joint0/pos_eff</topic>
+        <topic>/arm1/joint0/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint1</joint_name>
-        <topic>/two_joint_arm/joint1/pos_eff</topic>
+        <topic>/arm1/joint1/pos_eff</topic>
       </plugin>
       
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint2</joint_name>
-        <topic>/two_joint_arm/joint2/pos_eff</topic>
+        <topic>/arm1/joint2/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint3</joint_name>
-        <topic>/two_joint_arm/joint3/pos_eff</topic>
+        <topic>/arm1/joint3/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint4</joint_name>
-        <topic>/two_joint_arm/joint4/pos_eff</topic>
+        <topic>/arm1/joint4/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>right_finger_joint</joint_name>
-        <topic>/two_joint_arm/right_finger_joint/pos_eff</topic>
+        <topic>/arm1/right_finger_joint/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>left_finger_joint</joint_name>
-        <topic>/two_joint_arm/left_finger_joint/pos_eff</topic>
+        <topic>/arm1/left_finger_joint/pos_eff</topic>
       </plugin>
 
 
