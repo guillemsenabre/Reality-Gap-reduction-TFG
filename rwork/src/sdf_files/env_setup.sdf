@@ -251,7 +251,7 @@
                             <!-- START SUPPORT -->
 
         <link name="body_support_start">
-            <pose relative_to="table_link">0 0.2 1.2 0 0 0</pose>
+            <pose relative_to="table_link">0 0.2 1.115 0 0 0</pose>
 
             <collision name="body_collision">
                 <geometry>
@@ -308,7 +308,7 @@
                             <!-- GOAL SUPPORT -->
 
         <link name="body_support_goal">
-            <pose relative_to="table_link">0 -0.2 1.2 0 0 0</pose>
+            <pose relative_to="table_link">0 -0.2 1.115 0 0 0</pose>
 
             <collision name="body_collision">
                 <geometry>
@@ -366,7 +366,7 @@
         <joint name="support_table_start" type="fixed">
             <parent>table_link</parent>
             <child>body_support_start</child>
-            <pose>0 0.2 1.2 0 0 0</pose>
+            <pose>0 0.2 1.115 0 0 0</pose>
         </joint>
 
                                 <!-- START: weld platform to support body -->
@@ -383,7 +383,7 @@
         <joint name="support_table_goal" type="fixed">
             <parent>table_link</parent>
             <child>body_support_goal</child>
-            <pose>0 -0.2 1.2 0 0 0</pose>
+            <pose>0 -0.2 1.115 0 0 0</pose>
         </joint>
 
                                 <!-- GOAL: weld platform to support body -->
