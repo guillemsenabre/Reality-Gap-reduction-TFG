@@ -1538,12 +1538,12 @@
 
                       <!-- right finger Link -->
 
-      <link name="right_finger_1">
+      <link name="right_finger_2">
 
-        <pose relative_to="segment6_1">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment6_2">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
-        <collision name="right_finger_1_collision">
+        <collision name="right_finger_2_collision">
             <geometry>
                 <box>
                     <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
@@ -1552,7 +1552,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="right_finger_1_visual">
+        <visual name="right_finger_2_visual">
             <geometry>
                 <box>
                     <size>0.0045 0.0045 0.0195</size>
@@ -1581,12 +1581,12 @@
 
                       <!-- left finger Link -->
 
-      <link name="left_finger_1">
+      <link name="left_finger_2">
 
-        <pose relative_to="segment6_1">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment6_2">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
-        <collision name="left_finger_1_collision">
+        <collision name="left_finger_2_collision">
             <geometry>
                 <box>
                   <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
@@ -1595,7 +1595,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="left_finger_1_visual">
+        <visual name="left_finger_2_visual">
             <geometry>
                 <box>
                   <size>0.0045 0.0045 0.0195</size>
