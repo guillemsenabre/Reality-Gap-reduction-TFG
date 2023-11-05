@@ -52,11 +52,57 @@
       </link>
     </model>
 
-                            <!-- Table Model -->
+                                <!-- OBJECT MODEL -->
+
+
+    <model name="wood_object">
+        <link name="wood">
+            <pose>0 0.2 1.3200 0 0 0</pose>
+            <collision name="surface">
+                <geometry>
+                    <box>
+                        <size>0.25 0.1333 0.0050</size>
+                    </box>
+                </geometry>
+                <surface>
+                    <friction>
+                        <ode>
+                            <mu>0.6</mu>
+                            <mu2>0.6</mu2>
+                        </ode>
+                    </friction>
+                </surface>
+            </collision>
+            <visual name="visual1">
+                <geometry>
+                    <box>
+                        <size>0.25 0.1333 0.005</size>
+                    </box>
+                </geometry>
+                <material>
+                    <diffuse>1.0 1.0 1.0</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Wood</name>
+                    </script>
+                    <!-- PBR for Ignition, material scripts for gazebo classic-->
+                    <pbr>
+                        <metal>
+                            <albedo_map>https://fuel.gazebosim.org/1.0/openrobotics/models/table/4/files/Table_Diffuse.jpg</albedo_map>
+                        </metal>
+                    </pbr>
+                </material>
+            </visual>
+        </link>
+    </model>
+
+
+                                <!-- Table and Supports Model -->
+
 
     <model name="Table">
-      <static>true</static>
-      <link name="link">
+        <static>true</static>
+        <link name="table_link">
           <collision name="surface">
               <pose>0 0 1.0 0 0 0</pose>
               <geometry>
@@ -194,69 +240,159 @@
                   </script>
               </material>
           </visual>
-      </link>
-    </model>
+        </link>
 
-                            <!-- Object cuboid Model -->
 
-    <model name="grasping_object">
-        <link name="cuboid">
-            <pose>0 0 1.065 0 0 0</pose>
-            <inertial>
-                <mass>0.5167</mass>
-                <inertia>
-                    <ixx>0.0008611666666666669</ixx>
-                    <ixy>0</ixy>
-                    <ixz>0</ixz>
-                    <iyy>0.0008611666666666669</iyy>
-                    <iyz>0</iyz>
-                    <izz>0.0008611666666666669</izz>
-                </inertia>
-            </inertial>
-            <collision name="cuboid_collision">
+
+                            <!-- SUPPORT LINKS -->
+
+                            <!-- START SUPPORT -->
+
+        <link name="body_support_start">
+            <pose relative_to="table_link">0 0.2 1.1150 0 0 0</pose>
+
+            <collision name="body_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="body_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+        <link name="platform_support_start">
+            <pose relative_to="body_support_start">0 0 0.1025 0 0 0</pose>
+
+            <collision name="platform_collision">
                 <geometry>
                     <box>
-                        <size>0.1 0.1 0.1</size>
+                        <size>0.06 0.06 0.005</size>
                     </box>
                 </geometry>
-                <surface>
-                    <contact>
-                        <!-- Red Pine coefficients for longitudinal axis of the wood
-                 according to:
-                 http://www.fpl.fs.fed.us/documnts/fplgtr/fplgtr113/ch04.pdf -->
-                        <poissons_ratio>0.347</poissons_ratio>
-                        <elastic_modulus>8.8e+09</elastic_modulus>
-                        <ode>
-                            <kp>100000</kp>
-                            <kd>100</kd>
-                            <max_vel>100.0</max_vel>
-                            <min_depth>0.001</min_depth>
-                        </ode>
-                    </contact>
-                    <friction>
-                        <torsional>
-                            <coefficient>1.0</coefficient>
-                            <use_patch_radius>0</use_patch_radius>
-                            <surface_radius>0.01</surface_radius>
-                        </torsional>
-                    </friction>
-                </surface>
             </collision>
-            <visual name="cuboid_visual">
+            <visual name="platform_visual">
                 <geometry>
                     <box>
-                        <size>0.1 0.1 0.1</size>
+                        <size>0.06 0.06 0.005</size>
                     </box>
                 </geometry>
                 <material>
-                    <ambient>0 0 1 1</ambient> <!-- Bright blue -->
-                    <diffuse>0 0 1 1</diffuse> <!-- Bright blue -->
-                    <specular>0.1 0.1 0.1 1</specular> <!-- Low specular to reduce shininess -->
-                </material>                
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
             </visual>
         </link>
-    </model>
 
+
+                            <!-- GOAL SUPPORT -->
+
+        <link name="body_support_goal">
+            <pose relative_to="table_link">0 -0.2 1.115 0 0 0</pose>
+
+            <collision name="body_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="body_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+        <link name="platform_support_goal">
+            <pose relative_to="body_support_goal">0 0 0.1025 0 0 0</pose>
+
+            <collision name="platform_collision">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+            </collision>
+            <visual name="platform_visual">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+                                <!-- START: weld support to table  -->
+
+        <joint name="support_table_start" type="fixed">
+            <parent>table_link</parent>
+            <child>body_support_start</child>
+            <pose>0 0.2 1.115 0 0 0</pose>
+        </joint>
+
+                                <!-- START: weld platform to support body -->
+
+        <joint name="platform_body_start" type="fixed">
+            <parent>body_support_start</parent>
+            <child>platform_support_start</child>
+            <pose>0 0 0.1025 0 0 0</pose>
+        </joint>
+
+
+                                <!-- GOAL: weld support to table  -->
+
+        <joint name="support_table_goal" type="fixed">
+            <parent>table_link</parent>
+            <child>body_support_goal</child>
+            <pose>0 -0.2 1.115 0 0 0</pose>
+        </joint>
+
+                                <!-- GOAL: weld platform to support body -->
+
+        <joint name="platform_body_goal" type="fixed">
+            <parent>body_support_goal</parent>
+            <child>platform_support_goal</child>
+            <pose>0 0 0.1025 0 0 0</pose>
+        </joint>
+
+    </model>
 
 
 
