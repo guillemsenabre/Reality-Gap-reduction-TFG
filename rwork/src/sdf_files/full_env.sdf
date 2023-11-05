@@ -1218,50 +1218,50 @@
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint0_1</joint_name>
-        <topic>/arm1/joint0_1/pos_eff</topic>
+        <joint_name>joint0_2</joint_name>
+        <topic>/arm1/joint0_2/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint1_1</joint_name>
-        <topic>/arm1/joint1_1/pos_eff</topic>
+        <joint_name>joint1_2</joint_name>
+        <topic>/arm1/joint1_2/pos_eff</topic>
       </plugin>
       
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint2_1</joint_name>
-        <topic>/arm1/joint2_1/pos_eff</topic>
+        <joint_name>joint2_2</joint_name>
+        <topic>/arm1/joint2_2/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint3_1</joint_name>
-        <topic>/arm1/joint3_1/pos_eff</topic>
+        <joint_name>joint3_2</joint_name>
+        <topic>/arm1/joint3_2/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint4_1</joint_name>
-        <topic>/arm1/joint4_1/pos_eff</topic>
+        <joint_name>joint4_2</joint_name>
+        <topic>/arm1/joint4_2/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>right_finger_1_joint</joint_name>
-        <topic>/arm1/right_finger_1_joint/pos_eff</topic>
+        <joint_name>right_finger_2_joint</joint_name>
+        <topic>/arm1/right_finger_2_joint/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>left_finger_1_joint</joint_name>
-        <topic>/arm1/left_finger_1_joint/pos_eff</topic>
+        <joint_name>left_finger_2_joint</joint_name>
+        <topic>/arm1/left_finger_2_joint/pos_eff</topic>
       </plugin>
 
 
