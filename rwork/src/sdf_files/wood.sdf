@@ -18,60 +18,44 @@
         <direction>-0.5 0.1 -0.9</direction>
     </light>
 
-    <model name="wood_cube_10cm">
-        <link name="link">
-            <pose>0 0 0.05 0 0 0</pose>
-            <inertial>
-                <mass>0.5167</mass>
-                <inertia>
-                    <ixx>0.0008611666666666669</ixx>
-                    <ixy>0</ixy>
-                    <ixz>0</ixz>
-                    <iyy>0.0008611666666666669</iyy>
-                    <iyz>0</iyz>
-                    <izz>0.0008611666666666669</izz>
-                </inertia>
-            </inertial>
-            <collision name="collision">
+    <model name="wood_object">
+        <link name="wood">
+            <collision name="surface">
+                <pose>0 0 1.0 0 0 0</pose>
                 <geometry>
                     <box>
-                        <size>0.1 0.1 0.1</size>
+                        <size>1.5 0.8 0.03</size>
                     </box>
                 </geometry>
                 <surface>
-                    <contact>
-                        <!-- Red Pine coefficients for longitudinal axis of the wood
-                 according to:
-                 http://www.fpl.fs.fed.us/documnts/fplgtr/fplgtr113/ch04.pdf -->
-                        <poissons_ratio>0.347</poissons_ratio>
-                        <elastic_modulus>8.8e+09</elastic_modulus>
-                        <ode>
-                            <kp>100000</kp>
-                            <kd>100</kd>
-                            <max_vel>100.0</max_vel>
-                            <min_depth>0.001</min_depth>
-                        </ode>
-                    </contact>
                     <friction>
-                        <torsional>
-                            <coefficient>1.0</coefficient>
-                            <use_patch_radius>0</use_patch_radius>
-                            <surface_radius>0.01</surface_radius>
-                        </torsional>
+                        <ode>
+                            <mu>0.6</mu>
+                            <mu2>0.6</mu2>
+                        </ode>
                     </friction>
                 </surface>
             </collision>
-            <visual name="visual">
+            <visual name="visual1">
+                <pose>0 0 1.0 0 0 0</pose>
                 <geometry>
                     <box>
-                        <size>0.1 0.1 0.1</size>
+                        <size>1.5 0.8 0.03</size>
                     </box>
                 </geometry>
                 <material>
-                    <ambient>0 0 1 1</ambient> <!-- Bright blue -->
-                    <diffuse>0 0 1 1</diffuse> <!-- Bright blue -->
-                    <specular>0.1 0.1 0.1 1</specular> <!-- Low specular to reduce shininess -->
-                </material>                
+                    <diffuse>1.0 1.0 1.0</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Wood</name>
+                    </script>
+                    <!-- PBR for Ignition, material scripts for gazebo classic-->
+                    <pbr>
+                        <metal>
+                            <albedo_map>https://fuel.gazebosim.org/1.0/openrobotics/models/table/4/files/Table_Diffuse.jpg</albedo_map>
+                        </metal>
+                    </pbr>
+                </material>
             </visual>
         </link>
     </model>
