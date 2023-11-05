@@ -325,7 +325,7 @@
                                 <!-- BASE LINK -->
 
       <!-- Base Link -->
-      <link name="base_link">
+      <link name="base_link_1">
 
         <pose>-0.375 0 1.0525 0 0 1.57079632679</pose>
 
@@ -371,7 +371,7 @@
 
       <link name="motor0">
 
-        <pose relative_to="base_link">0 0 0.07875 0 0 0</pose> 
+        <pose relative_to="base_link_1">0 0 0.07875 0 0 0</pose> 
 
         <!-- COLLISION -->
         <collision name="motor0_collision">
@@ -983,7 +983,7 @@
 
 
       <joint name="joint0" type="revolute">
-         <parent>base_link</parent>
+         <parent>base_link_1</parent>
           <child>motor0</child>
           <axis>
               <dynamics>
