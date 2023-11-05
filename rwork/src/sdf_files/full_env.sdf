@@ -259,10 +259,16 @@
 
 
 
-                            <!-- Robotic Arm Model 1 -->
+
+
+
+                            <!-- ARM MODEL 2 -->
+
+
+
 
     
-    <model name="arm 1">
+    <model name="arm_1">
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
@@ -1213,7 +1219,7 @@
 
 
     
-    <model name="arm 2">
+    <model name="arm_2">
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
