@@ -412,12 +412,12 @@
 
                             <!-- Motor 1 link -->
 
-      <link name="motor1">
+      <link name="motor1_1">
 
-        <pose relative_to="segment0">0 0 0.04125 0 0 0</pose> 
+        <pose relative_to="segment0_1">0 0 0.04125 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor1_collision">
+        <collision name="motor1_0_collision">
             <geometry>
                 <cylinder>
                     <radius>0.030</radius>
@@ -427,7 +427,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor1_visual">
+        <visual name="motor1_0_visual">
             <geometry>
                 <cylinder>
                     <radius>0.030</radius> <!-- 4 cm diameter -->
@@ -674,12 +674,12 @@
 
                           <!-- Segment 0 -->
 
-      <link name="segment0">
+      <link name="segment0_1">
 
         <pose relative_to="motor0_1">0.03 0 0 0 1.57079632679 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="segment0 collision">
+        <collision name="segment0_1_collision">
             <geometry>
                 <cylinder>
                     <radius>0.0360</radius>
@@ -689,7 +689,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment0 visual">
+        <visual name="segment0_1_visual">
             <geometry>
                 <cylinder>
                     <radius>0.0360</radius> <!-- 7.2cm diameter -->
@@ -720,7 +720,7 @@
 
       <link name="segment1">
 
-        <pose relative_to="motor1">-0.1275 0 0 0 -1.57079632679 0</pose> 
+        <pose relative_to="motor1_1">-0.1275 0 0 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment1 collision">
@@ -1005,8 +1005,8 @@
 
 
       <joint name="joint1" type="revolute">
-        <parent>segment0</parent>
-         <child>motor1</child>
+        <parent>segment0_1</parent>
+         <child>motor1_1</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -1142,14 +1142,14 @@
 
       <joint name="fixed0" type="fixed">
         <parent>motor0_1</parent>
-        <child>segment0</child>
+        <child>segment0_1</child>
         <pose>0.03 0 0 0 1.57079632679 0</pose>
       </joint>
       
                             <!-- fixed joint 1  -->
 
       <joint name="fixed1" type="fixed">
-        <parent>motor1</parent>
+        <parent>motor1_1</parent>
         <child>segment1</child>
         <pose>-0.1275 0 0 0 -1.57079632679 0</pose>
       </joint>
