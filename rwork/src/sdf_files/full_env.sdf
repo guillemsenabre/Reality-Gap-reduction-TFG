@@ -1933,7 +1933,7 @@
                             <!-- revolute joint 0  -->
 
 
-      <joint name="joint0_1" type="revolute">
+      <joint name="joint0_2" type="revolute">
          <parent>base_link_1</parent>
           <child>motor0_1</child>
           <axis>
@@ -1955,7 +1955,7 @@
                             <!-- revolute joint 1  -->
 
 
-      <joint name="joint1_1" type="revolute">
+      <joint name="joint1_2" type="revolute">
         <parent>segment0_1</parent>
          <child>motor1_1</child>
          <axis>
@@ -1976,7 +1976,7 @@
                             <!-- revolute joint 2  -->
 
 
-      <joint name="joint2_1" type="revolute">
+      <joint name="joint2_2" type="revolute">
         <parent>segment2_1</parent>
          <child>motor2_1</child>
          <axis>
@@ -1998,7 +1998,7 @@
                             <!-- revolute joint 3  -->
 
 
-      <joint name="joint3_1" type="revolute">
+      <joint name="joint3_2" type="revolute">
         <parent>segment4_1</parent>
          <child>motor3_1</child>
          <axis>
@@ -2019,7 +2019,7 @@
                             <!-- revolute joint 4  -->
 
 
-      <joint name="joint4_1" type="revolute">
+      <joint name="joint4_2" type="revolute">
         <parent>segment5_1</parent>
          <child>motor4_1</child>
          <axis>
@@ -2041,7 +2041,7 @@
                             <!-- right finger prismatic joint  -->
 
 
-      <joint name="right_finger_1_joint" type="prismatic">
+      <joint name="right_finger_2_joint" type="prismatic">
 
          <parent>segment6_1</parent>
          <child>right_finger_1</child>
@@ -2064,7 +2064,7 @@
                             <!-- left finger prismatic joint  -->
 
 
-      <joint name="left_finger_1_joint" type="prismatic">
+      <joint name="left_finger_2_joint" type="prismatic">
 
          <parent>segment6_1</parent>
          <child>left_finger_1</child>
