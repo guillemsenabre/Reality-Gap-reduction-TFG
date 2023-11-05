@@ -302,8 +302,8 @@
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>right_finger_joint</joint_name>
-        <topic>/arm1/right_finger_joint/pos_eff</topic>
+        <joint_name>right_finger_1_joint</joint_name>
+        <topic>/arm1/right_finger_1_joint/pos_eff</topic>
       </plugin>
 
       <plugin
@@ -587,12 +587,12 @@
 
                       <!-- right finger Link -->
 
-      <link name="right_finger">
+      <link name="right_finger_1">
 
-        <pose relative_to="segment6">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment6_1">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
-        <collision name="right_finger_collision">
+        <collision name="right_finger_1_collision">
             <geometry>
                 <box>
                     <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
@@ -601,7 +601,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="right_finger_visual">
+        <visual name="right_finger_1_visual">
             <geometry>
                 <box>
                     <size>0.0045 0.0045 0.0195</size>
@@ -632,7 +632,7 @@
 
       <link name="left_finger">
 
-        <pose relative_to="segment6">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment6_1">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
         <collision name="left_finger_collision">
@@ -935,12 +935,12 @@
 
                             <!-- sixth segment-->
 
-      <link name="segment6">
+      <link name="segment6_1">
 
         <pose relative_to="motor4_1">0 0 0.0065 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="segment6_collision">
+        <collision name="segment6_1_collision">
             <geometry>
                 <cylinder>
                     <radius>0.0075</radius>
@@ -950,7 +950,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment6_visual">
+        <visual name="segment6_1_visual">
             <geometry>
                 <cylinder>
                     <radius>0.0075</radius> <!-- 1.6 cm diameter -->
@@ -1090,10 +1090,10 @@
                             <!-- right finger prismatic joint  -->
 
 
-      <joint name="right_finger_joint" type="prismatic">
+      <joint name="right_finger_1_joint" type="prismatic">
 
-         <parent>segment6</parent>
-         <child>right_finger</child>
+         <parent>segment6_1</parent>
+         <child>right_finger_1</child>
 
          <axis>
              <dynamics>
@@ -1115,7 +1115,7 @@
 
       <joint name="left_finger_joint" type="prismatic">
 
-         <parent>segment6</parent>
+         <parent>segment6_1</parent>
          <child>left_finger</child>
 
          <axis>
@@ -1190,7 +1190,7 @@
 
       <joint name="fixed6" type="fixed">
         <parent>motor4_1</parent>
-        <child>segment6</child>
+        <child>segment6_1</child>
         <pose>0 0 0.0065 0 0 0</pose>
       </joint>
       
