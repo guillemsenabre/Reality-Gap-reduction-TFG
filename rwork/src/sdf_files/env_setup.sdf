@@ -62,7 +62,7 @@
 
 
                                 <!-- Table Model -->
-                                
+
 
     <model name="Table">
       <static>true</static>
@@ -205,6 +205,36 @@
               </material>
           </visual>
       </link>
+    </model>
+
+    <model name="support_start">
+        <link name="body_support_start">
+            <pose relative_to="Table">0 0 0.015 0 0 0</pose>
+
+            <collision name="body_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.02</radius>
+                        <length>1.0</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="body_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.02</radius>
+                        <length>1.0</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
     </model>
 
   </world>
