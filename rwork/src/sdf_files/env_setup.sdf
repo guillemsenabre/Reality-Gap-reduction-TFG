@@ -56,7 +56,6 @@
 
 
     <model name="wood_object">
-        <static>true</static>
         <link name="wood">
             <collision name="surface">
                 <pose>0 0 1.3 0 0 0</pose>
@@ -99,10 +98,11 @@
     </model>
 
 
-                                <!-- Table Model -->
+                                <!-- Table and SUpports Model -->
 
 
     <model name="Table">
+        <static>true</static>
         <link name="table_link">
           <collision name="surface">
               <pose>0 0 1.0 0 0 0</pose>
