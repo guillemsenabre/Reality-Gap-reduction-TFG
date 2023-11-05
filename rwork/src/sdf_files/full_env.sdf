@@ -309,8 +309,8 @@
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>left_finger_joint</joint_name>
-        <topic>/arm1/left_finger_joint/pos_eff</topic>
+        <joint_name>left_finger_1_joint</joint_name>
+        <topic>/arm1/left_finger_1_joint/pos_eff</topic>
       </plugin>
 
 
@@ -630,12 +630,12 @@
 
                       <!-- left finger Link -->
 
-      <link name="left_finger">
+      <link name="left_finger_1">
 
         <pose relative_to="segment6_1">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
-        <collision name="left_finger_collision">
+        <collision name="left_finger_1_collision">
             <geometry>
                 <box>
                   <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
@@ -644,7 +644,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="left_finger_visual">
+        <visual name="left_finger_1_visual">
             <geometry>
                 <box>
                   <size>0.0045 0.0045 0.0195</size>
@@ -1113,10 +1113,10 @@
                             <!-- left finger prismatic joint  -->
 
 
-      <joint name="left_finger_joint" type="prismatic">
+      <joint name="left_finger_1_joint" type="prismatic">
 
          <parent>segment6_1</parent>
-         <child>left_finger</child>
+         <child>left_finger_1</child>
 
          <axis>
              <dynamics>
