@@ -2091,63 +2091,60 @@
 
                             <!-- fixed joint 0  -->
 
-      <joint name="fixed0_1" type="fixed">
-        <parent>motor0_1</parent>
-        <child>segment0_1</child>
+      <joint name="fixed0_2" type="fixed">
+        <parent>motor0_2</parent>
+        <child>segment0_2</child>
         <pose>0.03 0 0 0 1.57079632679 0</pose>
       </joint>
       
                             <!-- fixed joint 1  -->
 
-      <joint name="fixed1_1" type="fixed">
-        <parent>motor1_1</parent>
-        <child>segment1_1</child>
+      <joint name="fixed1_2" type="fixed">
+        <parent>motor1_2</parent>
+        <child>segment1_2</child>
         <pose>-0.1275 0 0 0 -1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 2  -->
 
-      <joint name="fixed2_1" type="fixed">
-        <parent>segment1_1</parent>
-        <child>segment2_1</child>
+      <joint name="fixed2_2" type="fixed">
+        <parent>segment1_2</parent>
+        <child>segment2_2</child>
         <pose>0 0 0.1125 0 -1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 3  -->
 
-      <joint name="fixed3_1" type="fixed">
-        <parent>motor2_1</parent>
-        <child>segment3_1</child>
+      <joint name="fixed3_2" type="fixed">
+        <parent>motor2_2</parent>
+        <child>segment3_2</child>
         <pose>0.12 0 0 0 -1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 4  -->
 
-      <joint name="fixed4_1" type="fixed">
-        <parent>segment3_1</parent>
-        <child>segment4_1</child>
+      <joint name="fixed4_2" type="fixed">
+        <parent>segment3_2</parent>
+        <child>segment4_2</child>
         <pose>0 0 -0.1125 0 -1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 5  -->
 
-      <joint name="fixed5_1" type="fixed">
-        <parent>motor3_1</parent>
-        <child>segment5_1</child>
+      <joint name="fixed5_2" type="fixed">
+        <parent>motor3_2</parent>
+        <child>segment5_2</child>
         <pose>-0.00675 0 0 0 -1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 6 -->
 
-      <joint name="fixed6_1" type="fixed">
-        <parent>motor4_1</parent>
-        <child>segment6_1</child>
+      <joint name="fixed6_2" type="fixed">
+        <parent>motor4_2</parent>
+        <child>segment6_2</child>
         <pose>0 0 0.0065 0 0 0</pose>
       </joint>
       
     </model>
-  </world>
-</sdf>
-
   </world>
 </sdf>
