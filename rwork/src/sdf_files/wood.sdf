@@ -68,11 +68,9 @@
                     </box>
                 </geometry>
                 <material>
-                    <pbr>
-                        <metal>
-                            <albedo_map>https://fuel.gazebosim.org/1.0/openrobotics/models/table/4/files/Table_Diffuse.jpg</albedo_map>
-                        </metal>
-                    </pbr>
+                    <ambient>0 1 0 1</ambient> <!-- Bright green -->
+                    <diffuse>0 1 0 1</diffuse> <!-- Bright green -->
+                    <specular>0.1 0.1 0.1 1</specular> <!-- Low specular to reduce shininess -->
                 </material>
             </visual>
         </link>
