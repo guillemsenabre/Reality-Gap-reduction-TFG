@@ -329,7 +329,7 @@
 
         <pose>-0.375 0 1.0525 0 0 1.57079632679</pose>
 
-        <collision name="base_collision">
+        <collision name="base_collision_1">
           <geometry>
             <cylinder>
               <radius>0.06</radius> <!-- 12 cm diameter -->
@@ -338,7 +338,7 @@
           </geometry>
         </collision>
 
-        <visual name="base_visual">
+        <visual name="base_visual_1">
           <geometry>
             <cylinder>
               <radius>0.06</radius>
@@ -369,12 +369,12 @@
 
                             <!-- Motor 0 link -->
 
-      <link name="motor0">
+      <link name="motor0_1">
 
         <pose relative_to="base_link_1">0 0 0.07875 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor0_collision">
+        <collision name="motor0_1_collision">
             <geometry>
                 <cylinder>
                     <radius>0.0375</radius>
@@ -384,7 +384,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor0_visual">
+        <visual name="motor0_1_visual">
             <geometry>
                 <cylinder>
                     <radius>0.0375</radius> <!-- 6.5 cm diameter -->
@@ -676,7 +676,7 @@
 
       <link name="segment0">
 
-        <pose relative_to="motor0">0.03 0 0 0 1.57079632679 0</pose> 
+        <pose relative_to="motor0_1">0.03 0 0 0 1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment0 collision">
@@ -984,7 +984,7 @@
 
       <joint name="joint0" type="revolute">
          <parent>base_link_1</parent>
-          <child>motor0</child>
+          <child>motor0_1</child>
           <axis>
               <dynamics>
                 <damping>0.000000</damping>
@@ -1141,7 +1141,7 @@
                             <!-- fixed joint 0  -->
 
       <joint name="fixed0" type="fixed">
-        <parent>motor0</parent>
+        <parent>motor0_1</parent>
         <child>segment0</child>
         <pose>0.03 0 0 0 1.57079632679 0</pose>
       </joint>
