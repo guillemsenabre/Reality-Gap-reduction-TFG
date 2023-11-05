@@ -65,7 +65,6 @@
 
 
     <model name="Table">
-      <static>true</static>
       <link name="table_link">
           <collision name="surface">
               <pose>0 0 1.0 0 0 0</pose>
@@ -207,7 +206,7 @@
       </link>
 
       <link name="body_support_start">
-        <pose relative_to="table_link">0 0 1.015 0 0 0</pose>
+        <pose relative_to="table_link">0 0.2 1.115 0 0 0</pose>
 
         <collision name="body_collision">
             <geometry>
