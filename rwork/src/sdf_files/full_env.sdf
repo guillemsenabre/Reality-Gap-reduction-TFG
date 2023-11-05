@@ -1934,8 +1934,8 @@
 
 
       <joint name="joint0_2" type="revolute">
-         <parent>base_link_1</parent>
-          <child>motor0_1</child>
+         <parent>base_link_2</parent>
+          <child>motor0_2</child>
           <axis>
               <dynamics>
                 <damping>0.000000</damping>
@@ -1956,8 +1956,8 @@
 
 
       <joint name="joint1_2" type="revolute">
-        <parent>segment0_1</parent>
-         <child>motor1_1</child>
+        <parent>segment0_2</parent>
+         <child>motor1_2</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -1977,8 +1977,8 @@
 
 
       <joint name="joint2_2" type="revolute">
-        <parent>segment2_1</parent>
-         <child>motor2_1</child>
+        <parent>segment2_2</parent>
+         <child>motor2_2</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -1999,8 +1999,8 @@
 
 
       <joint name="joint3_2" type="revolute">
-        <parent>segment4_1</parent>
-         <child>motor3_1</child>
+        <parent>segment4_2</parent>
+         <child>motor3_2</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -2020,8 +2020,8 @@
 
 
       <joint name="joint4_2" type="revolute">
-        <parent>segment5_1</parent>
-         <child>motor4_1</child>
+        <parent>segment5_2</parent>
+         <child>motor4_2</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -2043,8 +2043,8 @@
 
       <joint name="right_finger_2_joint" type="prismatic">
 
-         <parent>segment6_1</parent>
-         <child>right_finger_1</child>
+         <parent>segment6_2</parent>
+         <child>right_finger_2</child>
 
          <axis>
              <dynamics>
@@ -2066,8 +2066,8 @@
 
       <joint name="left_finger_2_joint" type="prismatic">
 
-         <parent>segment6_1</parent>
-         <child>left_finger_1</child>
+         <parent>segment6_2</parent>
+         <child>left_finger_2</child>
 
          <axis>
              <dynamics>
