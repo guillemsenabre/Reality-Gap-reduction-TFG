@@ -57,11 +57,11 @@
 
     <model name="wood_object">
         <link name="wood">
+            <pose>0 0.2 1.3200 0 0 0</pose>
             <collision name="surface">
-                <pose>0 0 1.3 0 0 0</pose>
                 <geometry>
                     <box>
-                        <size>0.25 0.1333 0.005</size>
+                        <size>0.25 0.1333 0.0050</size>
                     </box>
                 </geometry>
                 <surface>
@@ -74,7 +74,6 @@
                 </surface>
             </collision>
             <visual name="visual1">
-                <pose>0 0 1.3 0 0 0</pose>
                 <geometry>
                     <box>
                         <size>0.25 0.1333 0.005</size>
@@ -245,13 +244,12 @@
 
 
 
-
                             <!-- SUPPORT LINKS -->
 
                             <!-- START SUPPORT -->
 
         <link name="body_support_start">
-            <pose relative_to="table_link">0 0.2 1.115 0 0 0</pose>
+            <pose relative_to="table_link">0 0.2 1.1150 0 0 0</pose>
 
             <collision name="body_collision">
                 <geometry>
