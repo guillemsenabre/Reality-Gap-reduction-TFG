@@ -267,36 +267,36 @@
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint0</joint_name>
-        <topic>/arm1/joint0/pos_eff</topic>
+        <joint_name>joint0_1</joint_name>
+        <topic>/arm1/joint0_1/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint1</joint_name>
-        <topic>/arm1/joint1/pos_eff</topic>
+        <joint_name>joint1_1</joint_name>
+        <topic>/arm1/joint1_1/pos_eff</topic>
       </plugin>
       
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint2</joint_name>
-        <topic>/arm1/joint2/pos_eff</topic>
+        <joint_name>joint2_1</joint_name>
+        <topic>/arm1/joint2_1/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint3</joint_name>
-        <topic>/arm1/joint3/pos_eff</topic>
+        <joint_name>joint3_1</joint_name>
+        <topic>/arm1/joint3_1/pos_eff</topic>
       </plugin>
 
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint4</joint_name>
-        <topic>/arm1/joint4/pos_eff</topic>
+        <joint_name>joint4_1</joint_name>
+        <topic>/arm1/joint4_1/pos_eff</topic>
       </plugin>
 
       <plugin
@@ -982,7 +982,7 @@
                             <!-- revolute joint 0  -->
 
 
-      <joint name="joint0" type="revolute">
+      <joint name="joint0_1" type="revolute">
          <parent>base_link_1</parent>
           <child>motor0_1</child>
           <axis>
@@ -1004,7 +1004,7 @@
                             <!-- revolute joint 1  -->
 
 
-      <joint name="joint1" type="revolute">
+      <joint name="joint1_1" type="revolute">
         <parent>segment0_1</parent>
          <child>motor1_1</child>
          <axis>
@@ -1025,7 +1025,7 @@
                             <!-- revolute joint 2  -->
 
 
-      <joint name="joint2" type="revolute">
+      <joint name="joint2_1" type="revolute">
         <parent>segment2_1</parent>
          <child>motor2_1</child>
          <axis>
@@ -1047,7 +1047,7 @@
                             <!-- revolute joint 3  -->
 
 
-      <joint name="joint3" type="revolute">
+      <joint name="joint3_1" type="revolute">
         <parent>segment4_1</parent>
          <child>motor3_1</child>
          <axis>
@@ -1068,7 +1068,7 @@
                             <!-- revolute joint 4  -->
 
 
-      <joint name="joint4" type="revolute">
+      <joint name="joint4_1" type="revolute">
         <parent>segment5_1</parent>
          <child>motor4_1</child>
          <axis>
@@ -1140,7 +1140,7 @@
 
                             <!-- fixed joint 0  -->
 
-      <joint name="fixed0" type="fixed">
+      <joint name="fixed0_1" type="fixed">
         <parent>motor0_1</parent>
         <child>segment0_1</child>
         <pose>0.03 0 0 0 1.57079632679 0</pose>
@@ -1148,7 +1148,7 @@
       
                             <!-- fixed joint 1  -->
 
-      <joint name="fixed1" type="fixed">
+      <joint name="fixed1_1" type="fixed">
         <parent>motor1_1</parent>
         <child>segment1_1</child>
         <pose>-0.1275 0 0 0 -1.57079632679 0</pose>
@@ -1156,7 +1156,7 @@
 
                             <!-- fixed joint 2  -->
 
-      <joint name="fixed2" type="fixed">
+      <joint name="fixed2_1" type="fixed">
         <parent>segment1_1</parent>
         <child>segment2_1</child>
         <pose>0 0 0.1125 0 -1.57079632679 0</pose>
@@ -1164,7 +1164,7 @@
 
                             <!-- fixed joint 3  -->
 
-      <joint name="fixed3" type="fixed">
+      <joint name="fixed3_1" type="fixed">
         <parent>motor2_1</parent>
         <child>segment3_1</child>
         <pose>0.12 0 0 0 -1.57079632679 0</pose>
@@ -1172,7 +1172,7 @@
 
                             <!-- fixed joint 4  -->
 
-      <joint name="fixed4" type="fixed">
+      <joint name="fixed4_1" type="fixed">
         <parent>segment3_1</parent>
         <child>segment4_1</child>
         <pose>0 0 -0.1125 0 -1.57079632679 0</pose>
@@ -1180,7 +1180,7 @@
 
                             <!-- fixed joint 5  -->
 
-      <joint name="fixed5" type="fixed">
+      <joint name="fixed5_1" type="fixed">
         <parent>motor3_1</parent>
         <child>segment5_1</child>
         <pose>-0.00675 0 0 0 -1.57079632679 0</pose>
@@ -1188,7 +1188,7 @@
 
                             <!-- fixed joint 6 -->
 
-      <joint name="fixed6" type="fixed">
+      <joint name="fixed6_1" type="fixed">
         <parent>motor4_1</parent>
         <child>segment6_1</child>
         <pose>0 0 0.0065 0 0 0</pose>
