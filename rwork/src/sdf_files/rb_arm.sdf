@@ -201,7 +201,7 @@
 
     <model name="grasping_object">
         <link name="cuboid">
-            <pose>0 0 1.015 0 0 0</pose>
+            <pose>0 0 1.065 0 0 0</pose>
             <inertial>
                 <mass>0.5167</mass>
                 <inertia>
@@ -327,7 +327,7 @@
       <!-- Base Link -->
       <link name="base_link">
 
-        <pose>-0.375 0 1.0525 0 0 0</pose>
+        <pose>-0.375 0 1.0525 0 0 1.57079632679</pose>
 
         <collision name="base_collision">
           <geometry>
