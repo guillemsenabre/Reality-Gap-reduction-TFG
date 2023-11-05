@@ -1406,12 +1406,12 @@
 
                               <!-- Motor 2 Link-->
 
-      <link name="motor2_1">
+      <link name="motor2_2">
 
-        <pose relative_to="segment2_1">0 0 0.0390 0 0 0</pose> 
+        <pose relative_to="segment2_2">0 0 0.0390 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor2_1_collision">
+        <collision name="motor2_2_collision">
             <geometry>
                 <cylinder>
                     <radius>0.015</radius>
@@ -1421,7 +1421,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor2_1_visual">
+        <visual name="motor2_2_visual">
             <geometry>
                 <cylinder>
                     <radius>0.015</radius> <!-- 2 cm diameter -->
@@ -1449,12 +1449,12 @@
 
                               <!-- Motor 3 Link-->
 
-      <link name="motor3_1">
+      <link name="motor3_2">
 
-        <pose relative_to="segment4_1">0 0 0.034 0 0 0</pose> 
+        <pose relative_to="segment4_2">0 0 0.034 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor3_1_collision">
+        <collision name="motor3_2_collision">
             <geometry>
                 <cylinder>
                     <radius>0.0135</radius>
@@ -1464,7 +1464,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor3_1_visual">
+        <visual name="motor3_2_visual">
             <geometry>
                 <cylinder>
                     <radius>0.0135</radius> <!-- 1.8 cm diameter -->
@@ -1492,12 +1492,12 @@
 
                             <!-- Motor 4 Link-->
 
-      <link name="motor4_1">
+      <link name="motor4_2">
 
-        <pose relative_to="segment5_1">0 0 0.015 0 0 0</pose> 
+        <pose relative_to="segment5_2">0 0 0.015 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor4_1_collision">
+        <collision name="motor4_2_collision">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius>
@@ -1507,7 +1507,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor4_1_visual">
+        <visual name="motor4_2_visual">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius> <!-- 1.6 cm diameter -->
