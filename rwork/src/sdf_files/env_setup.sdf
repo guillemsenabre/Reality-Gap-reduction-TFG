@@ -272,7 +272,7 @@
     </link>
 
     <link name="platform_support_start">
-        <pose relative_to="table_link">0 0 0.1025 0 0 0</pose>
+        <pose relative_to="body_support_start">0 0 0.1025 0 0 0</pose>
 
         <collision name="platform_collision">
             <geometry>
