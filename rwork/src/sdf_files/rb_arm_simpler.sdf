@@ -516,7 +516,7 @@
 
       <link name="segment2">
 
-        <pose relative_to="segment1">0 0 0.1125 0 -1.57079632679 0</pose> 
+        <pose relative_to="segment1">0 0 0.159 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment2 collision">
@@ -806,7 +806,7 @@
       <joint name="fixed2" type="fixed">
         <parent>segment1</parent>
         <child>segment2</child>
-        <pose>0 0 0.1125 0 -1.57079632679 0</pose>
+        <pose>0 0 0.159 0 -1.57079632679 0</pose>
       </joint>
 
 
