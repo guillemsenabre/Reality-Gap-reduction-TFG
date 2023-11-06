@@ -410,7 +410,7 @@
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint0_1</joint_name>
-        <topic>/arm1/joint0_1/pos_eff</topic>
+        <topic>/arm/joint0_1/pos_eff</topic>
       </plugin>
 
       <plugin
