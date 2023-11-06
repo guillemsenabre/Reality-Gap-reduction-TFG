@@ -638,49 +638,6 @@
         </inertial>
       </link>
 
-                              <!-- Motor 3 Link-->
-
-      <link name="motor3_1">
-
-        <pose relative_to="segment4_1">0 0 0.034 0 0 0</pose> 
-
-        <!-- COLLISION -->
-        <collision name="motor3_1_collision">
-            <geometry>
-                <cylinder>
-                    <radius>0.0135</radius>
-                    <length>0.033</length>
-                </cylinder>
-            </geometry>
-        </collision>
-
-        <!-- VISUAL -->
-        <visual name="motor3_1_visual">
-            <geometry>
-                <cylinder>
-                    <radius>0.0135</radius> <!-- 1.8 cm diameter -->
-                    <length>0.033</length> <!-- 2.5 cm height -->
-                </cylinder>
-            </geometry>
-            <material>
-                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
-                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
-                <specular>1.0 1.0 1.0 1</specular>
-            </material>
-        </visual>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-              <ixx>0.00013125</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.00013125</iyy>
-              <iyz>0</iyz>
-              <izz>0.0000025</izz>
-          </inertia>
-        </inertial>
-      </link>
-
                             <!-- Motor 4 Link-->
 
       <link name="motor4_1">
@@ -1036,7 +993,7 @@
 
       <link name="segment5_1">
 
-        <pose relative_to="motor3_1">-0.00675 0 0 0 -1.57079632679 0</pose> 
+        <pose relative_to="motor2_1">0.015 0 0 0 1.57079632679 0</pose>
 
         <!-- COLLISION -->
         <collision name="segment5_1_collision">
@@ -1186,27 +1143,6 @@
       </joint>
 
 
-                            <!-- revolute joint 3  -->
-
-
-      <joint name="joint3_1" type="revolute">
-        <parent>segment4_1</parent>
-         <child>motor3_1</child>
-         <axis>
-             <dynamics>
-               <friction>0.000000</friction>  <!-- N m / s-->
-               <damping>0.000000</damping>
-             </dynamics>
-             <xyz>0 0 1</xyz>
-             <limit>
-                <lower>-1.300000</lower> 
-                <upper>1.300000</upper>  
-                <effort>1e6</effort>
-             </limit>
-         </axis>
-         <pose>0 0 0.034 0 0 0</pose>
-      </joint> 
-
                             <!-- revolute joint 4  -->
 
 
@@ -1304,14 +1240,6 @@
         <pose>0 0 0.1125 0 -1.57079632679 0</pose>
       </joint>
 
-                            <!-- fixed joint 3  -->
-
-      <joint name="fixed3_1" type="fixed">
-        <parent>motor2_1</parent>
-        <child>segment3_1</child>
-        <pose>0.12 0 0 0 -1.57079632679 0</pose>
-      </joint>
-
                             <!-- fixed joint 4  -->
 
       <joint name="fixed4_1" type="fixed">
@@ -1323,9 +1251,9 @@
                             <!-- fixed joint 5  -->
 
       <joint name="fixed5_1" type="fixed">
-        <parent>motor3_1</parent>
+        <parent>motor2_1</parent>
         <child>segment5_1</child>
-        <pose>-0.00675 0 0 0 -1.57079632679 0</pose>
+        <pose>0.015 0 0 0 1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 6 -->
@@ -1589,48 +1517,6 @@
         </inertial>
       </link>
 
-                              <!-- Motor 3 Link-->
-
-      <link name="motor3_2">
-
-        <pose relative_to="segment4_2">0 0 0.034 0 0 0</pose> 
-
-        <!-- COLLISION -->
-        <collision name="motor3_2_collision">
-            <geometry>
-                <cylinder>
-                    <radius>0.0135</radius>
-                    <length>0.033</length>
-                </cylinder>
-            </geometry>
-        </collision>
-
-        <!-- VISUAL -->
-        <visual name="motor3_2_visual">
-            <geometry>
-                <cylinder>
-                    <radius>0.0135</radius> <!-- 1.8 cm diameter -->
-                    <length>0.033</length> <!-- 2.5 cm height -->
-                </cylinder>
-            </geometry>
-            <material>
-                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
-                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
-                <specular>1.0 1.0 1.0 1</specular>
-            </material>
-        </visual>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-              <ixx>0.00013125</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.00013125</iyy>
-              <iyz>0</iyz>
-              <izz>0.0000025</izz>
-          </inertia>
-        </inertial>
-      </link>
 
                             <!-- Motor 4 Link-->
 
@@ -1987,7 +1873,7 @@
 
       <link name="segment5_2">
 
-        <pose relative_to="motor3_2">-0.00675 0 0 0 -1.57079632679 0</pose> 
+        <pose relative_to="motor2_2">0.015 0 0 0 1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment5_2_collision">
@@ -2137,26 +2023,6 @@
       </joint>
 
 
-                            <!-- revolute joint 3  -->
-
-
-      <joint name="joint3_2" type="revolute">
-        <parent>segment4_2</parent>
-         <child>motor3_2</child>
-         <axis>
-             <dynamics>
-               <friction>0.000000</friction>  <!-- N m / s-->
-               <damping>0.000000</damping>
-             </dynamics>
-             <xyz>0 0 1</xyz>
-             <limit>
-                <lower>-1.300000</lower> 
-                <upper>1.300000</upper>  
-                <effort>1e6</effort>
-             </limit>
-         </axis>
-         <pose>0 0 0.034 0 0 0</pose>
-      </joint> 
 
                             <!-- revolute joint 4  -->
 
@@ -2255,13 +2121,6 @@
         <pose>0 0 0.1125 0 -1.57079632679 0</pose>
       </joint>
 
-                            <!-- fixed joint 3  -->
-
-      <joint name="fixed3_2" type="fixed">
-        <parent>motor2_2</parent>
-        <child>segment3_2</child>
-        <pose>0.12 0 0 0 -1.57079632679 0</pose>
-      </joint>
 
                             <!-- fixed joint 4  -->
 
@@ -2274,9 +2133,9 @@
                             <!-- fixed joint 5  -->
 
       <joint name="fixed5_2" type="fixed">
-        <parent>motor3_2</parent>
+        <parent>motor2_2</parent>
         <child>segment5_2</child>
-        <pose>-0.00675 0 0 0 -1.57079632679 0</pose>
+        <pose>0.015 0 0 0 1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 6 -->
