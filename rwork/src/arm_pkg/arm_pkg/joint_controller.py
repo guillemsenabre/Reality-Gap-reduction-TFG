@@ -10,13 +10,20 @@ class JointTorqueController(Node):
         
         self.joint_publishers = []
         self.joint_names = [
-                            'joint0', 
-                            'joint1', 
-                            'joint2',
-                            'joint3',
-                            'joint4',
-                            'right_finger_joint',
-                            'left_finger_joint'
+                            'joint0_1', 
+                            'joint1_1', 
+                            'joint2_1',
+                            'joint3_1',
+                            'joint4_1',
+                            'right_finger_joint_1',
+                            'left_finger_joint_1',
+                            'joint0_2', 
+                            'joint1_2', 
+                            'joint2_2',
+                            'joint3_2',
+                            'joint4_2',
+                            'right_finger_joint_2',
+                            'left_finger_joint_2',
                             ]
         
         for joint_name in self.joint_names:
@@ -33,7 +40,10 @@ class JointTorqueController(Node):
         self.angle = (self.angle + 10) % (2 * math.pi) 
         
         # Test multipliers for each joint 
-        joint_multipliers_test = [8.5, 9, 3, 2, 2, 1, 1]
+        joint_multipliers_test = [
+                                  8.5, 9, 3, 2, 2, 1, 1,
+                                  6, 6, 6, 6, 6, 6, 6
+                                  ]
 
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float64()
