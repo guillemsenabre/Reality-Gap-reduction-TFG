@@ -561,7 +561,7 @@
 
       <link name="segment5">
 
-        <pose relative_to="motor2">-0.015 0 0 0 1.57079632679 0</pose> 
+        <pose relative_to="motor2">0.015 0 0 0 1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment5_collision">
@@ -730,7 +730,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>-0.015 0 0 0 1.57079632679 0</pose>
+         <pose>0.015 0 0 0 1.57079632679 0</pose>
       </joint> 
 
 
