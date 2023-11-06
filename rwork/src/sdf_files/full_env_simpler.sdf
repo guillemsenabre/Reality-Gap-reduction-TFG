@@ -1,0 +1,2292 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="full_env">
+
+    <!-- LIGHT -->
+
+    <light type="directional" name="sun">
+        <cast_shadows>true</cast_shadows>
+        <pose>0 0 10 0 0 0</pose>
+        <diffuse>0.8 0.8 0.8 1</diffuse>
+        <specular>0.2 0.2 0.2 1</specular>
+        <attenuation>
+            <range>1000</range>
+            <constant>0.9</constant>
+            <linear>0.01</linear>
+            <quadratic>0.001</quadratic>
+        </attenuation>
+        <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+                            <!--      MODELS      -->
+
+                        <!--      Ground Plane      -->
+
+    <!-- Ground Plane -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>10 10</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>10 10</size>
+            </plane>
+          </geometry>
+
+          <!-- COLOR!-->
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+                                <!-- OBJECT MODEL -->
+
+
+    <model name="wood_object">
+        <link name="wood">
+            <pose>0 0.2 1.3200 0 0 0</pose>
+            <collision name="surface">
+                <geometry>
+                    <box>
+                        <size>0.25 0.1333 0.0050</size>
+                    </box>
+                </geometry>
+                <surface>
+                    <friction>
+                        <ode>
+                            <mu>0.6</mu>
+                            <mu2>0.6</mu2>
+                        </ode>
+                    </friction>
+                </surface>
+            </collision>
+            <visual name="visual1">
+                <geometry>
+                    <box>
+                        <size>0.25 0.1333 0.005</size>
+                    </box>
+                </geometry>
+                <material>
+                    <diffuse>1.0 1.0 1.0</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Wood</name>
+                    </script>
+                    <!-- PBR for Ignition, material scripts for gazebo classic-->
+                    <pbr>
+                        <metal>
+                            <albedo_map>https://fuel.gazebosim.org/1.0/openrobotics/models/table/4/files/Table_Diffuse.jpg</albedo_map>
+                        </metal>
+                    </pbr>
+                </material>
+            </visual>
+        </link>
+    </model>
+
+
+                                <!-- Table and Supports Model -->
+
+
+    <model name="Table">
+        <static>true</static>
+        <link name="table_link">
+          <collision name="surface">
+              <pose>0 0 1.0 0 0 0</pose>
+              <geometry>
+                  <box>
+                      <size>1.5 0.8 0.03</size>
+                  </box>
+              </geometry>
+              <surface>
+                  <friction>
+                      <ode>
+                          <mu>0.6</mu>
+                          <mu2>0.6</mu2>
+                      </ode>
+                  </friction>
+              </surface>
+          </collision>
+          <visual name="visual1">
+              <pose>0 0 1.0 0 0 0</pose>
+              <geometry>
+                  <box>
+                      <size>1.5 0.8 0.03</size>
+                  </box>
+              </geometry>
+              <material>
+                  <diffuse>1.0 1.0 1.0</diffuse>
+                  <script>
+                      <uri>file://media/materials/scripts/gazebo.material</uri>
+                      <name>Gazebo/Wood</name>
+                  </script>
+                  <!-- PBR for Ignition, material scripts for gazebo classic-->
+                  <pbr>
+                      <metal>
+                          <albedo_map>https://fuel.gazebosim.org/1.0/openrobotics/models/table/4/files/Table_Diffuse.jpg</albedo_map>
+                      </metal>
+                  </pbr>
+              </material>
+          </visual>
+          <collision name="front_left_leg">
+              <pose>0.68 0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+          </collision>
+          <visual name="front_left_leg">
+              <pose>0.68 0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+              <material>
+                  <diffuse>0.5 0.5 0.5</diffuse>
+                  <script>
+                      <uri>file://media/materials/scripts/gazebo.material</uri>
+                      <name>Gazebo/Grey</name>
+                  </script>
+              </material>
+          </visual>
+          <collision name="front_right_leg">
+              <pose>0.68 -0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+          </collision>
+          <visual name="front_right_leg">
+              <pose>0.68 -0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+              <material>
+                  <diffuse>0.5 0.5 0.5</diffuse>
+                  <script>
+                      <uri>file://media/materials/scripts/gazebo.material</uri>
+                      <name>Gazebo/Grey</name>
+                  </script>
+              </material>
+          </visual>
+          <collision name="back_right_leg">
+              <pose>-0.68 -0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+          </collision>
+          <visual name="back_right_leg">
+              <pose>-0.68 -0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+              <material>
+                  <diffuse>0.5 0.5 0.5</diffuse>
+                  <script>
+                      <uri>file://media/materials/scripts/gazebo.material</uri>
+                      <name>Gazebo/Grey</name>
+                  </script>
+              </material>
+          </visual>
+          <collision name="back_left_leg">
+              <pose>-0.68 0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+          </collision>
+          <visual name="back_left_leg">
+              <pose>-0.68 0.38 0.5 0 0 0</pose>
+              <geometry>
+                  <cylinder>
+                      <radius>0.02</radius>
+                      <length>1.0</length>
+                  </cylinder>
+              </geometry>
+              <material>
+                  <diffuse>0.5 0.5 0.5</diffuse>
+                  <script>
+                      <uri>file://media/materials/scripts/gazebo.material</uri>
+                      <name>Gazebo/Grey</name>
+                  </script>
+              </material>
+          </visual>
+        </link>
+
+
+
+                            <!-- SUPPORT LINKS -->
+
+                            <!-- START SUPPORT -->
+
+        <link name="body_support_start">
+            <pose relative_to="table_link">0 0.2 1.1150 0 0 0</pose>
+
+            <collision name="body_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="body_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+        <link name="platform_support_start">
+            <pose relative_to="body_support_start">0 0 0.1025 0 0 0</pose>
+
+            <collision name="platform_collision">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+            </collision>
+            <visual name="platform_visual">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+
+                            <!-- GOAL SUPPORT -->
+
+        <link name="body_support_goal">
+            <pose relative_to="table_link">0 -0.2 1.115 0 0 0</pose>
+
+            <collision name="body_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="body_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.01</radius>
+                        <length>0.2</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+        <link name="platform_support_goal">
+            <pose relative_to="body_support_goal">0 0 0.1025 0 0 0</pose>
+
+            <collision name="platform_collision">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+            </collision>
+            <visual name="platform_visual">
+                <geometry>
+                    <box>
+                        <size>0.06 0.06 0.005</size>
+                    </box>
+                </geometry>
+                <material>
+                    <diffuse>0.5 0.5 0.5</diffuse>
+                    <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Grey</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+
+                                <!-- START: weld support to table  -->
+
+        <joint name="support_table_start" type="fixed">
+            <parent>table_link</parent>
+            <child>body_support_start</child>
+            <pose>0 0.2 1.115 0 0 0</pose>
+        </joint>
+
+                                <!-- START: weld platform to support body -->
+
+        <joint name="platform_body_start" type="fixed">
+            <parent>body_support_start</parent>
+            <child>platform_support_start</child>
+            <pose>0 0 0.1025 0 0 0</pose>
+        </joint>
+
+
+                                <!-- GOAL: weld support to table  -->
+
+        <joint name="support_table_goal" type="fixed">
+            <parent>table_link</parent>
+            <child>body_support_goal</child>
+            <pose>0 -0.2 1.115 0 0 0</pose>
+        </joint>
+
+                                <!-- GOAL: weld platform to support body -->
+
+        <joint name="platform_body_goal" type="fixed">
+            <parent>body_support_goal</parent>
+            <child>platform_support_goal</child>
+            <pose>0 0 0.1025 0 0 0</pose>
+        </joint>
+
+    </model>
+
+
+
+
+
+                            <!-- ARM MODEL 1 -->
+
+
+
+
+    
+    <model name="arm_1">
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint0_1</joint_name>
+        <topic>/arm/joint0_1/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint1_1</joint_name>
+        <topic>/arm/joint1_1/pos_eff</topic>
+      </plugin>
+      
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint2_1</joint_name>
+        <topic>/arm/joint2_1/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint3_1</joint_name>
+        <topic>/arm/joint3_1/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint4_1</joint_name>
+        <topic>/arm/joint4_1/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>right_finger_1_joint</joint_name>
+        <topic>/arm/right_finger_1_joint/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>left_finger_1_joint</joint_name>
+        <topic>/arm/left_finger_1_joint/pos_eff</topic>
+      </plugin>
+
+
+
+      <plugin
+        filename="libignition-gazebo-joint-state-publisher-system.so"
+        name="ignition::gazebo::systems::JointStatePublisher">
+      </plugin>
+
+                                <!-- Arm Links -->
+
+                                <!-- BASE LINK -->
+
+      <!-- Base Link -->
+      <link name="base_link_1">
+
+        <pose>-0.375 0 1.0525 0 0 1.57079632679</pose>
+
+        <collision name="base_collision_1">
+          <geometry>
+            <cylinder>
+              <radius>0.06</radius> <!-- 12 cm diameter -->
+              <length>0.075</length> <!-- 7.5 cm length -->
+            </cylinder>
+          </geometry>
+        </collision>
+
+        <visual name="base_visual_1">
+          <geometry>
+            <cylinder>
+              <radius>0.06</radius>
+              <length>0.075</length>
+            </cylinder>
+          </geometry>
+
+          <!-- COLOR!-->
+          <material>
+            <ambient>1.0 0.0 0.0 1</ambient>
+            <diffuse>1.0 0.0 0.0 1</diffuse>
+            <specular>1.0 0.0 0.0 1</specular>
+          </material>
+        </visual>
+
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.100</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.100</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- Motor 0 link -->
+
+      <link name="motor0_1">
+
+        <pose relative_to="base_link_1">0 0 0.07875 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor0_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0375</radius>
+                    <length>0.0825</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor0_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0375</radius> <!-- 6.5 cm diameter -->
+                    <length>0.0825</length> <!-- 7.15 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+            <mass>10</mass>
+            <inertia>
+                <ixx>0.0001709375</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.0001709375</iyy>
+                <iyz>0</iyz>
+                <izz>0.0003125</izz>
+              </inertia>
+        </inertial>
+      </link>
+
+                            <!-- Motor 1 link -->
+
+      <link name="motor1_1">
+
+        <pose relative_to="segment0_1">0 0 0.04125 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor1_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.030</radius>
+                    <length>0.045</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor1_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.030</radius> <!-- 4 cm diameter -->
+                    <length>0.045</length> <!-- 3 cm length -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.0002291666667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.0002291666667</iyy>
+                <iyz>0</iyz>
+                <izz>0.0001</izz>
+            </inertia>
+        </inertial>
+      </link>
+
+                              <!-- Motor 2 Link-->
+
+      <link name="motor2_1">
+
+        <pose relative_to="segment2_1">0 0 0.0390 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor2_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius>
+                    <length>0.0375</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor2_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius> <!-- 2 cm diameter -->
+                    <length>0.0375</length> <!-- 2.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                              <!-- Motor 3 Link-->
+
+      <link name="motor3_1">
+
+        <pose relative_to="segment4_1">0 0 0.034 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor3_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0135</radius>
+                    <length>0.033</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor3_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0135</radius> <!-- 1.8 cm diameter -->
+                    <length>0.033</length> <!-- 2.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- Motor 4 Link-->
+
+      <link name="motor4_1">
+
+        <pose relative_to="segment5_1">0 0 0.015 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor4_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.012</radius>
+                    <length>0.0195</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor4_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.012</radius> <!-- 1.6 cm diameter -->
+                    <length>0.0195</length> <!-- 1.3 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                    <!-- CUSTOM SIMPLE GRIPPER -->
+
+
+                      <!-- right finger Link -->
+
+      <link name="right_finger_1">
+
+        <pose relative_to="segment6_1">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+
+        <!-- COLLISION -->
+        <collision name="right_finger_1_collision">
+            <geometry>
+                <box>
+                    <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
+                </box>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="right_finger_1_visual">
+            <geometry>
+                <box>
+                    <size>0.0045 0.0045 0.0195</size>
+                </box>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+
+        <inertial>
+          <mass>0.1</mass>
+          <!-- The inertia tensor values would need to be recalculated for the box shape. The values below are placeholders. -->
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                      <!-- left finger Link -->
+
+      <link name="left_finger_1">
+
+        <pose relative_to="segment6_1">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+
+        <!-- COLLISION -->
+        <collision name="left_finger_1_collision">
+            <geometry>
+                <box>
+                  <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
+                </box>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="left_finger_1_visual">
+            <geometry>
+                <box>
+                  <size>0.0045 0.0045 0.0195</size>
+                </box>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+
+        <inertial>
+          <mass>0.1</mass>
+          <!-- The inertia tensor values would need to be recalculated for the box shape. The values below are placeholders. -->
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
+                          <!-- Segment 0 -->
+
+      <link name="segment0_1">
+
+        <pose relative_to="motor0_1">0.03 0 0 0 1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment0_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0360</radius>
+                    <length>0.0375</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment0_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0360</radius> <!-- 7.2cm diameter -->
+                    <length>0.0375</length> <!-- 3.75 cm length -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+                      
+
+                            <!-- first segment-->
+
+      <link name="segment1_1">
+
+        <pose relative_to="motor1_1">-0.1275 0 0 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment1_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius>
+                    <length>0.225</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment1_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius> <!-- 3 cm diameter -->
+                    <length>0.225</length> <!-- 22.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
+                                  <!-- second segment-->
+
+      <link name="segment2_1">
+
+        <pose relative_to="segment1_1">0 0 0.1125 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment2_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0180</radius>
+                    <length>0.0405</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment2_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0180</radius> <!-- 2.4 cm diameter -->
+                    <length>0.0405</length> <!-- 3 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- third segment-->
+
+      <link name="segment3_1">
+
+        <pose relative_to="motor2_1">0.12 0 0 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment3_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0105</radius>
+                    <length>0.225</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment3_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0105</radius> <!-- 2 cm diameter -->
+                    <length>0.225</length> <!-- 15 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- fourth segment-->
+
+      <link name="segment4_1">
+
+        <pose relative_to="segment3_1">0 0 -0.1125 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment4_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0150</radius>
+                    <length>0.0350</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment4_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0150</radius> <!-- 2.4 cm diameter -->
+                    <length>0.0350</length> <!-- 3 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
+                            <!-- fifth segment-->
+
+      <link name="segment5_1">
+
+        <pose relative_to="motor3_1">-0.00675 0 0 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment5_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.01275</radius>
+                    <length>0.015</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment5_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.01275</radius> <!-- 1.7 cm diameter -->
+                    <length>0.015</length> <!-- 0.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- sixth segment-->
+
+      <link name="segment6_1">
+
+        <pose relative_to="motor4_1">0 0 0.0065 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment6_1_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0075</radius>
+                    <length>0.003</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment6_1_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0075</radius> <!-- 1.6 cm diameter -->
+                    <length>0.003</length> <!-- 0.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                        <!--      JOINTS      -->
+
+
+                            <!-- revolute joint 0  -->
+
+
+      <joint name="joint0_1" type="revolute">
+         <parent>base_link_1</parent>
+          <child>motor0_1</child>
+          <axis>
+              <dynamics>
+                <damping>0.000000</damping>
+                <friction>0.000000</friction>
+              </dynamics>
+              <xyz>0 0 1</xyz> <!-- Z-axis rotation -->
+              <limit>
+                <lower>-3.141592</lower> <!-- -180 degrees -->
+                <upper>3.141592</upper>  <!-- 180 degrees -->
+                <effort>1e6</effort>
+              </limit>
+          </axis>
+          <pose>0 0 0.07875 0 0 0</pose>
+      </joint>
+      
+
+                            <!-- revolute joint 1  -->
+
+
+      <joint name="joint1_1" type="revolute">
+        <parent>segment0_1</parent>
+         <child>motor1_1</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.04125 0 0 0</pose>
+      </joint>
+      
+                            <!-- revolute joint 2  -->
+
+
+      <joint name="joint2_1" type="revolute">
+        <parent>segment2_1</parent>
+         <child>motor2_1</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.0390 0 0 0</pose>
+      </joint>
+
+
+                            <!-- revolute joint 3  -->
+
+
+      <joint name="joint3_1" type="revolute">
+        <parent>segment4_1</parent>
+         <child>motor3_1</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.034 0 0 0</pose>
+      </joint> 
+
+                            <!-- revolute joint 4  -->
+
+
+      <joint name="joint4_1" type="revolute">
+        <parent>segment5_1</parent>
+         <child>motor4_1</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.015 0 0 0</pose>
+      </joint> 
+
+
+                            <!-- right finger prismatic joint  -->
+
+
+      <joint name="right_finger_1_joint" type="prismatic">
+
+         <parent>segment6_1</parent>
+         <child>right_finger_1</child>
+
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>1 0 0</xyz>
+             <limit>
+                <lower>0</lower> 
+                <upper>0.00375</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0.005625 0 0.00975 0 0 3.14159265359</pose>
+      </joint> 
+
+                            <!-- left finger prismatic joint  -->
+
+
+      <joint name="left_finger_1_joint" type="prismatic">
+
+         <parent>segment6_1</parent>
+         <child>left_finger_1</child>
+
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>1 0 0</xyz>
+             <limit>
+                <lower>0</lower> 
+                <upper>0.00375</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>-0.005625 0 0.00975 0 0 0</pose>
+      </joint> 
+
+
+                        <!--      FIXED JOINTS      -->
+
+
+
+                            <!-- fixed joint 0  -->
+
+      <joint name="fixed0_1" type="fixed">
+        <parent>motor0_1</parent>
+        <child>segment0_1</child>
+        <pose>0.03 0 0 0 1.57079632679 0</pose>
+      </joint>
+      
+                            <!-- fixed joint 1  -->
+
+      <joint name="fixed1_1" type="fixed">
+        <parent>motor1_1</parent>
+        <child>segment1_1</child>
+        <pose>-0.1275 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 2  -->
+
+      <joint name="fixed2_1" type="fixed">
+        <parent>segment1_1</parent>
+        <child>segment2_1</child>
+        <pose>0 0 0.1125 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 3  -->
+
+      <joint name="fixed3_1" type="fixed">
+        <parent>motor2_1</parent>
+        <child>segment3_1</child>
+        <pose>0.12 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 4  -->
+
+      <joint name="fixed4_1" type="fixed">
+        <parent>segment3_1</parent>
+        <child>segment4_1</child>
+        <pose>0 0 -0.1125 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 5  -->
+
+      <joint name="fixed5_1" type="fixed">
+        <parent>motor3_1</parent>
+        <child>segment5_1</child>
+        <pose>-0.00675 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 6 -->
+
+      <joint name="fixed6_1" type="fixed">
+        <parent>motor4_1</parent>
+        <child>segment6_1</child>
+        <pose>0 0 0.0065 0 0 0</pose>
+      </joint>
+      
+    </model>
+
+
+
+
+
+
+
+
+
+
+                                <!-- ARM MODEL 2 -->
+
+
+
+
+
+
+    
+    <model name="arm_2">
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint0_2</joint_name>
+        <topic>/arm/joint0_2/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint1_2</joint_name>
+        <topic>/arm/joint1_2/pos_eff</topic>
+      </plugin>
+      
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint2_2</joint_name>
+        <topic>/arm/joint2_2/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint3_2</joint_name>
+        <topic>/arm/joint3_2/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint4_2</joint_name>
+        <topic>/arm/joint4_2/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>right_finger_2_joint</joint_name>
+        <topic>/arm/right_finger_2_joint/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>left_finger_2_joint</joint_name>
+        <topic>/arm/left_finger_2_joint/pos_eff</topic>
+      </plugin>
+
+
+
+      <plugin
+        filename="libignition-gazebo-joint-state-publisher-system.so"
+        name="ignition::gazebo::systems::JointStatePublisher">
+      </plugin>
+
+                                <!-- Arm Links -->
+
+                                <!-- BASE LINK -->
+
+      <!-- Base Link -->
+      <link name="base_link_2">
+
+        <pose>0.375 0 1.0525 0 0 -1.57079632679</pose>
+
+        <collision name="base_collision_2">
+          <geometry>
+            <cylinder>
+              <radius>0.06</radius> <!-- 12 cm diameter -->
+              <length>0.075</length> <!-- 7.5 cm length -->
+            </cylinder>
+          </geometry>
+        </collision>
+
+        <visual name="base_visual_2">
+          <geometry>
+            <cylinder>
+              <radius>0.06</radius>
+              <length>0.075</length>
+            </cylinder>
+          </geometry>
+
+          <!-- COLOR!-->
+          <material>
+            <ambient>1.0 0.0 0.0 1</ambient>
+            <diffuse>1.0 0.0 0.0 1</diffuse>
+            <specular>1.0 0.0 0.0 1</specular>
+          </material>
+        </visual>
+
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.100</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.100</iyy>
+            <iyz>0</iyz>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- Motor 0 link -->
+
+      <link name="motor0_2">
+
+        <pose relative_to="base_link_2">0 0 0.07875 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor0_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0375</radius>
+                    <length>0.0825</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor0_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0375</radius> <!-- 6.5 cm diameter -->
+                    <length>0.0825</length> <!-- 7.15 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+            <mass>10</mass>
+            <inertia>
+                <ixx>0.0001709375</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.0001709375</iyy>
+                <iyz>0</iyz>
+                <izz>0.0003125</izz>
+              </inertia>
+        </inertial>
+      </link>
+
+                            <!-- Motor 1 link -->
+
+      <link name="motor1_2">
+
+        <pose relative_to="segment0_2">0 0 0.04125 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor1_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.030</radius>
+                    <length>0.045</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor1_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.030</radius> <!-- 4 cm diameter -->
+                    <length>0.045</length> <!-- 3 cm length -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+            <mass>1</mass>
+            <inertia>
+                <ixx>0.0002291666667</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>0.0002291666667</iyy>
+                <iyz>0</iyz>
+                <izz>0.0001</izz>
+            </inertia>
+        </inertial>
+      </link>
+
+                              <!-- Motor 2 Link-->
+
+      <link name="motor2_2">
+
+        <pose relative_to="segment2_2">0 0 0.0390 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor2_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius>
+                    <length>0.0375</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor2_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius> <!-- 2 cm diameter -->
+                    <length>0.0375</length> <!-- 2.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                              <!-- Motor 3 Link-->
+
+      <link name="motor3_2">
+
+        <pose relative_to="segment4_2">0 0 0.034 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor3_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0135</radius>
+                    <length>0.033</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor3_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0135</radius> <!-- 1.8 cm diameter -->
+                    <length>0.033</length> <!-- 2.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- Motor 4 Link-->
+
+      <link name="motor4_2">
+
+        <pose relative_to="segment5_2">0 0 0.015 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="motor4_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.012</radius>
+                    <length>0.0195</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="motor4_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.012</radius> <!-- 1.6 cm diameter -->
+                    <length>0.0195</length> <!-- 1.3 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                    <!-- CUSTOM SIMPLE GRIPPER -->
+
+
+                      <!-- right finger Link -->
+
+      <link name="right_finger_2">
+
+        <pose relative_to="segment6_2">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+
+        <!-- COLLISION -->
+        <collision name="right_finger_2_collision">
+            <geometry>
+                <box>
+                    <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
+                </box>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="right_finger_2_visual">
+            <geometry>
+                <box>
+                    <size>0.0045 0.0045 0.0195</size>
+                </box>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+
+        <inertial>
+          <mass>0.1</mass>
+          <!-- The inertia tensor values would need to be recalculated for the box shape. The values below are placeholders. -->
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                      <!-- left finger Link -->
+
+      <link name="left_finger_2">
+
+        <pose relative_to="segment6_2">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+
+        <!-- COLLISION -->
+        <collision name="left_finger_2_collision">
+            <geometry>
+                <box>
+                  <size>0.0045 0.0045 0.0195</size> <!-- 4 times taller than wide -->
+                </box>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="left_finger_2_visual">
+            <geometry>
+                <box>
+                  <size>0.0045 0.0045 0.0195</size>
+                </box>
+            </geometry>
+            <material>
+                <ambient>0.0 1.0 0.0 1</ambient> <!-- Green -->
+                <diffuse>0.0 1.0 0.0 1</diffuse> <!-- Green -->
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+
+        <inertial>
+          <mass>0.1</mass>
+          <!-- The inertia tensor values would need to be recalculated for the box shape. The values below are placeholders. -->
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
+                          <!-- Segment 0 -->
+
+      <link name="segment0_2">
+
+        <pose relative_to="motor0_2">0.03 0 0 0 1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment0_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0360</radius>
+                    <length>0.0375</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment0_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0360</radius> <!-- 7.2cm diameter -->
+                    <length>0.0375</length> <!-- 3.75 cm length -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+                      
+
+                            <!-- first segment-->
+
+      <link name="segment1_2">
+
+        <pose relative_to="motor1_2">-0.1275 0 0 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment1_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius>
+                    <length>0.225</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment1_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.015</radius> <!-- 3 cm diameter -->
+                    <length>0.225</length> <!-- 22.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
+                                  <!-- second segment-->
+
+      <link name="segment2_2">
+
+        <pose relative_to="segment1_2">0 0 0.1125 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment2_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0180</radius>
+                    <length>0.0405</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment2_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0180</radius> <!-- 2.4 cm diameter -->
+                    <length>0.0405</length> <!-- 3 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- third segment-->
+
+      <link name="segment3_2">
+
+        <pose relative_to="motor2_2">0.12 0 0 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment3_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0105</radius>
+                    <length>0.225</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment3_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0105</radius> <!-- 2 cm diameter -->
+                    <length>0.225</length> <!-- 15 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- fourth segment-->
+
+      <link name="segment4_2">
+
+        <pose relative_to="segment3_2">0 0 -0.1125 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment4_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0150</radius>
+                    <length>0.0350</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment4_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0150</radius> <!-- 2.4 cm diameter -->
+                    <length>0.0350</length> <!-- 3 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
+                            <!-- fifth segment-->
+
+      <link name="segment5_2">
+
+        <pose relative_to="motor3_2">-0.00675 0 0 0 -1.57079632679 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment5_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.01275</radius>
+                    <length>0.015</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment5_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.01275</radius> <!-- 1.7 cm diameter -->
+                    <length>0.015</length> <!-- 0.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                            <!-- sixth segment-->
+
+      <link name="segment6_2">
+
+        <pose relative_to="motor4_2">0 0 0.0065 0 0 0</pose> 
+
+        <!-- COLLISION -->
+        <collision name="segment6_2_collision">
+            <geometry>
+                <cylinder>
+                    <radius>0.0075</radius>
+                    <length>0.003</length>
+                </cylinder>
+            </geometry>
+        </collision>
+
+        <!-- VISUAL -->
+        <visual name="segment6_2_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.0075</radius> <!-- 1.6 cm diameter -->
+                    <length>0.003</length> <!-- 0.5 cm height -->
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
+                <diffuse>0.678 0.847 0.902 1</diffuse>
+                <specular>1.0 1.0 1.0 1</specular>
+            </material>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+              <ixx>0.00013125</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.00013125</iyy>
+              <iyz>0</iyz>
+              <izz>0.0000025</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+                        <!--      JOINTS      -->
+
+
+                            <!-- revolute joint 0  -->
+
+
+      <joint name="joint0_2" type="revolute">
+         <parent>base_link_2</parent>
+          <child>motor0_2</child>
+          <axis>
+              <dynamics>
+                <damping>0.000000</damping>
+                <friction>0.000000</friction>
+              </dynamics>
+              <xyz>0 0 1</xyz> <!-- Z-axis rotation -->
+              <limit>
+                <lower>-3.141592</lower> <!-- -180 degrees -->
+                <upper>3.141592</upper>  <!-- 180 degrees -->
+                <effort>1e6</effort>
+              </limit>
+          </axis>
+          <pose>0 0 0.07875 0 0 0</pose>
+      </joint>
+      
+
+                            <!-- revolute joint 1  -->
+
+
+      <joint name="joint1_2" type="revolute">
+        <parent>segment0_2</parent>
+         <child>motor1_2</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.04125 0 0 0</pose>
+      </joint>
+      
+                            <!-- revolute joint 2  -->
+
+
+      <joint name="joint2_2" type="revolute">
+        <parent>segment2_2</parent>
+         <child>motor2_2</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.0390 0 0 0</pose>
+      </joint>
+
+
+                            <!-- revolute joint 3  -->
+
+
+      <joint name="joint3_2" type="revolute">
+        <parent>segment4_2</parent>
+         <child>motor3_2</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.034 0 0 0</pose>
+      </joint> 
+
+                            <!-- revolute joint 4  -->
+
+
+      <joint name="joint4_2" type="revolute">
+        <parent>segment5_2</parent>
+         <child>motor4_2</child>
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>0 0 1</xyz>
+             <limit>
+                <lower>-1.300000</lower> 
+                <upper>1.300000</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0 0 0.015 0 0 0</pose>
+      </joint> 
+
+
+                            <!-- right finger prismatic joint  -->
+
+
+      <joint name="right_finger_2_joint" type="prismatic">
+
+         <parent>segment6_2</parent>
+         <child>right_finger_2</child>
+
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>1 0 0</xyz>
+             <limit>
+                <lower>0</lower> 
+                <upper>0.00375</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>0.005625 0 0.00975 0 0 3.14159265359</pose>
+      </joint> 
+
+                            <!-- left finger prismatic joint  -->
+
+
+      <joint name="left_finger_2_joint" type="prismatic">
+
+         <parent>segment6_2</parent>
+         <child>left_finger_2</child>
+
+         <axis>
+             <dynamics>
+               <friction>0.000000</friction>  <!-- N m / s-->
+               <damping>0.000000</damping>
+             </dynamics>
+             <xyz>1 0 0</xyz>
+             <limit>
+                <lower>0</lower> 
+                <upper>0.00375</upper>  
+                <effort>1e6</effort>
+             </limit>
+         </axis>
+         <pose>-0.005625 0 0.00975 0 0 0</pose>
+      </joint> 
+
+
+                        <!--      FIXED JOINTS      -->
+
+
+
+                            <!-- fixed joint 0  -->
+
+      <joint name="fixed0_2" type="fixed">
+        <parent>motor0_2</parent>
+        <child>segment0_2</child>
+        <pose>0.03 0 0 0 1.57079632679 0</pose>
+      </joint>
+      
+                            <!-- fixed joint 1  -->
+
+      <joint name="fixed1_2" type="fixed">
+        <parent>motor1_2</parent>
+        <child>segment1_2</child>
+        <pose>-0.1275 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 2  -->
+
+      <joint name="fixed2_2" type="fixed">
+        <parent>segment1_2</parent>
+        <child>segment2_2</child>
+        <pose>0 0 0.1125 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 3  -->
+
+      <joint name="fixed3_2" type="fixed">
+        <parent>motor2_2</parent>
+        <child>segment3_2</child>
+        <pose>0.12 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 4  -->
+
+      <joint name="fixed4_2" type="fixed">
+        <parent>segment3_2</parent>
+        <child>segment4_2</child>
+        <pose>0 0 -0.1125 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 5  -->
+
+      <joint name="fixed5_2" type="fixed">
+        <parent>motor3_2</parent>
+        <child>segment5_2</child>
+        <pose>-0.00675 0 0 0 -1.57079632679 0</pose>
+      </joint>
+
+                            <!-- fixed joint 6 -->
+
+      <joint name="fixed6_2" type="fixed">
+        <parent>motor4_2</parent>
+        <child>segment6_2</child>
+        <pose>0 0 0.0065 0 0 0</pose>
+      </joint>
+      
+    </model>
+  </world>
+</sdf>
