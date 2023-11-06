@@ -604,7 +604,7 @@
 
       <link name="segment6">
 
-        <pose relative_to="motor4">0 0 0.0065 0 0 0</pose> 
+        <pose relative_to="motor4">0 0 0.01125 0 0 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment6_collision">
@@ -815,7 +815,7 @@
       <joint name="fixed6" type="fixed">
         <parent>motor4</parent>
         <child>segment6</child>
-        <pose>0 0 0.0065 0 0 0</pose>
+        <pose>0 0 0.01125 0 0 0</pose>
       </joint>
       
     </model>
