@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<sdf version="1.8">
+<sdf version="1.7">
   <world name="full_env">
 
     <!-- LIGHT -->
@@ -140,7 +140,7 @@
                   </pbr>
               </material>
           </visual>
-          <collision name="front_left_leg">
+          <collision name="front_left_leg_collision">
               <pose>0.68 0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
@@ -149,7 +149,7 @@
                   </cylinder>
               </geometry>
           </collision>
-          <visual name="front_left_leg">
+          <visual name="front_left_leg_visual">
               <pose>0.68 0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
@@ -165,7 +165,7 @@
                   </script>
               </material>
           </visual>
-          <collision name="front_right_leg">
+          <collision name="front_right_leg_collision">
               <pose>0.68 -0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
@@ -174,7 +174,7 @@
                   </cylinder>
               </geometry>
           </collision>
-          <visual name="front_right_leg">
+          <visual name="front_right_leg_visual">
               <pose>0.68 -0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
@@ -190,7 +190,7 @@
                   </script>
               </material>
           </visual>
-          <collision name="back_right_leg">
+          <collision name="back_right_leg_collision">
               <pose>-0.68 -0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
@@ -199,7 +199,7 @@
                   </cylinder>
               </geometry>
           </collision>
-          <visual name="back_right_leg">
+          <visual name="back_right_leg_visual">
               <pose>-0.68 -0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
@@ -215,7 +215,7 @@
                   </script>
               </material>
           </visual>
-          <collision name="back_left_leg">
+          <collision name="back_left_leg_collision">
               <pose>-0.68 0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
@@ -224,7 +224,7 @@
                   </cylinder>
               </geometry>
           </collision>
-          <visual name="back_left_leg">
+          <visual name="back_left_leg_visual">
               <pose>-0.68 0.38 0.5 0 0 0</pose>
               <geometry>
                   <cylinder>
