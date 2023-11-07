@@ -492,12 +492,12 @@
         <inertial>
           <mass>100</mass>
           <inertia>
-            <ixx>0.100</ixx>
+            <ixx>0.136875</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.100</iyy>
+            <iyy>0.136875</iyy>
             <iyz>0</iyz>
-            <izz>0.08</izz>
+            <izz>0.18</izz>
           </inertia>
         </inertial>
       </link>
@@ -819,7 +819,7 @@
             <geometry>
                 <cylinder>
                     <radius>0.015</radius>
-                    <length>0.225</length>
+                    <length>0.3</length>
                 </cylinder>
             </geometry>
         </collision>
@@ -829,7 +829,7 @@
             <geometry>
                 <cylinder>
                     <radius>0.015</radius> <!-- 3 cm diameter -->
-                    <length>0.225</length> <!-- 22.5 cm height -->
+                    <length>0.3</length> <!-- 22.5 cm height -->
                 </cylinder>
             </geometry>
             <material>
