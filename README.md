@@ -8,4 +8,7 @@ This project is divided in two main parts, simulation and implementation. The go
 
 ### Simulation
 
-Gazebo simulator is used to cope with the simulation used in the paper "Distributed RL for Cooperative Multi-Robot Object Manipulation. Specifically, Gazebo Fortress due to its compatibility with ROS 2 Humble, for robot control.
+Gazebo simulator (https://gazebosim.org/home) is used to cope with the simulation used in the paper "Distributed RL for Cooperative Multi-Robot Object Manipulation". Specifically, Gazebo Fortress due to its compatibility with ROS 2 Humble, for robot control.
+
+
+![image](https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/67cd12ea-3b7f-4cdb-a8ec-ab4472240e2e)
