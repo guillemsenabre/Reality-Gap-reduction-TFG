@@ -704,13 +704,12 @@
       </joint>
 
 
+                            <!-- revolute joint 6  -->
 
-                            <!-- revolute joint 4  -->
 
-
-      <joint name="joint4" type="revolute">
-        <parent>motor2</parent>
-         <child>segment5</child>
+      <joint name="joint6" type="revolute">
+        <parent>segment5</parent>
+         <child>motor4</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -723,7 +722,7 @@
                 <effort>1e6</effort>
              </limit>
          </axis>
-         <pose>0.015 0 0 0 1.57079632679 0</pose>
+         <pose>0 0 0.015 0 0 0</pose>
       </joint> 
 
 
@@ -802,6 +801,13 @@
         <pose>0 0 0.159 0 -1.57079632679 0</pose>
       </joint>
 
+                            <!-- fixed joint 5 -->
+
+      <joint name="fixed5" type="fixed">
+        <parent>motor2</parent>
+        <child>segment5</child>
+        <pose>0.015 0 0 0 1.57079632679 0</pose>
+      </joint>
 
                             <!-- fixed joint 6 -->
 
