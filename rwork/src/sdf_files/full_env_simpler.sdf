@@ -1593,14 +1593,14 @@
 
       <link name="segment1_2">
 
-        <pose relative_to="motor1_2">-0.1275 0 0 0 -1.57079632679 0</pose> 
+        <pose relative_to="motor1_2">-0.15 0 0 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment1_2_collision">
             <geometry>
                 <cylinder>
                     <radius>0.015</radius>
-                    <length>0.225</length>
+                    <length>0.3</length>
                 </cylinder>
             </geometry>
         </collision>
@@ -1610,7 +1610,7 @@
             <geometry>
                 <cylinder>
                     <radius>0.015</radius> <!-- 3 cm diameter -->
-                    <length>0.225</length> <!-- 22.5 cm height -->
+                    <length>0.3</length> <!-- 22.5 cm height -->
                 </cylinder>
             </geometry>
             <material>
@@ -1637,7 +1637,7 @@
 
       <link name="segment2_2">
 
-        <pose relative_to="segment1_2">0 0 0.1125 0 -1.57079632679 0</pose> 
+        <pose relative_to="segment1_2">0 0 0.159 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment2_2_collision">
@@ -1653,8 +1653,8 @@
         <visual name="segment2_2_visual">
             <geometry>
                 <cylinder>
-                    <radius>0.0180</radius> <!-- 2.4 cm diameter -->
-                    <length>0.0405</length> <!-- 3 cm height -->
+                    <radius>0.0180</radius> <!-- 3.6 cm diameter -->
+                    <length>0.0405</length> <!-- 4.05 cm height -->
                 </cylinder>
             </geometry>
             <material>
@@ -1725,7 +1725,7 @@
 
       <link name="segment6_2">
 
-        <pose relative_to="motor4_2">0 0 0.0065 0 0 0</pose> 
+        <pose relative_to="motor4_2">0 0 0.01125 0 0 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment6_2_collision">
@@ -1832,11 +1832,10 @@
       </joint>
 
 
+                            <!-- revolute joint 6  -->
 
-                            <!-- revolute joint 4  -->
 
-
-      <joint name="joint4_2" type="revolute">
+      <joint name="joint6" type="revolute">
         <parent>segment5_2</parent>
          <child>motor4_2</child>
          <axis>
@@ -1919,7 +1918,7 @@
       <joint name="fixed1_2" type="fixed">
         <parent>motor1_2</parent>
         <child>segment1_2</child>
-        <pose>-0.1275 0 0 0 -1.57079632679 0</pose>
+        <pose>-0.15 0 0 0 -1.57079632679 0</pose>
       </joint>
 
                             <!-- fixed joint 2  -->
@@ -1927,10 +1926,8 @@
       <joint name="fixed2_2" type="fixed">
         <parent>segment1_2</parent>
         <child>segment2_2</child>
-        <pose>0 0 0.1125 0 -1.57079632679 0</pose>
+        <pose>0 0 0.159 0 -1.57079632679 0</pose>
       </joint>
-
-
 
                             <!-- fixed joint 5  -->
 
@@ -1945,7 +1942,7 @@
       <joint name="fixed6_2" type="fixed">
         <parent>motor4_2</parent>
         <child>segment6_2</child>
-        <pose>0 0 0.0065 0 0 0</pose>
+        <pose>0 0 0.01125 0 0 0</pose>
       </joint>
       
     </model>
