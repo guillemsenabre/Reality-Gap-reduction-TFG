@@ -430,13 +430,6 @@
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint3_1</joint_name>
-        <topic>/arm/joint3_1/pos_eff</topic>
-      </plugin>
-
-      <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
         <joint_name>joint4_1</joint_name>
         <topic>/arm/joint4_1/pos_eff</topic>
       </plugin>
@@ -819,7 +812,7 @@
 
       <link name="segment1_1">
 
-        <pose relative_to="motor1_1">-0.1275 0 0 0 -1.57079632679 0</pose> 
+        <pose relative_to="motor1_1">-0.15 0 0 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment1_1_collision">
@@ -902,91 +895,6 @@
         </inertial>
       </link>
 
-                            <!-- third segment-->
-
-      <link name="segment3_1">
-
-        <pose relative_to="motor2_1">0.12 0 0 0 -1.57079632679 0</pose> 
-
-        <!-- COLLISION -->
-        <collision name="segment3_1_collision">
-            <geometry>
-                <cylinder>
-                    <radius>0.0105</radius>
-                    <length>0.225</length>
-                </cylinder>
-            </geometry>
-        </collision>
-
-        <!-- VISUAL -->
-        <visual name="segment3_1_visual">
-            <geometry>
-                <cylinder>
-                    <radius>0.0105</radius> <!-- 2 cm diameter -->
-                    <length>0.225</length> <!-- 15 cm height -->
-                </cylinder>
-            </geometry>
-            <material>
-                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
-                <diffuse>0.678 0.847 0.902 1</diffuse>
-                <specular>1.0 1.0 1.0 1</specular>
-            </material>
-        </visual>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-              <ixx>0.00013125</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.00013125</iyy>
-              <iyz>0</iyz>
-              <izz>0.0000025</izz>
-          </inertia>
-        </inertial>
-      </link>
-
-                            <!-- fourth segment-->
-
-      <link name="segment4_1">
-
-        <pose relative_to="segment3_1">0 0 -0.1125 0 -1.57079632679 0</pose> 
-
-        <!-- COLLISION -->
-        <collision name="segment4_1_collision">
-            <geometry>
-                <cylinder>
-                    <radius>0.0150</radius>
-                    <length>0.0350</length>
-                </cylinder>
-            </geometry>
-        </collision>
-
-        <!-- VISUAL -->
-        <visual name="segment4_1_visual">
-            <geometry>
-                <cylinder>
-                    <radius>0.0150</radius> <!-- 2.4 cm diameter -->
-                    <length>0.0350</length> <!-- 3 cm height -->
-                </cylinder>
-            </geometry>
-            <material>
-                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
-                <diffuse>0.678 0.847 0.902 1</diffuse>
-                <specular>1.0 1.0 1.0 1</specular>
-            </material>
-        </visual>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-              <ixx>0.00013125</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.00013125</iyy>
-              <iyz>0</iyz>
-              <izz>0.0000025</izz>
-          </inertia>
-        </inertial>
-      </link>
 
 
                             <!-- fifth segment-->
@@ -1240,13 +1148,6 @@
         <pose>0 0 0.1125 0 -1.57079632679 0</pose>
       </joint>
 
-                            <!-- fixed joint 4  -->
-
-      <joint name="fixed4_1" type="fixed">
-        <parent>segment3_1</parent>
-        <child>segment4_1</child>
-        <pose>0 0 -0.1125 0 -1.57079632679 0</pose>
-      </joint>
 
                             <!-- fixed joint 5  -->
 
@@ -1304,13 +1205,6 @@
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint2_2</joint_name>
         <topic>/arm/joint2_2/pos_eff</topic>
-      </plugin>
-
-      <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
-        <joint_name>joint3_2</joint_name>
-        <topic>/arm/joint3_2/pos_eff</topic>
       </plugin>
 
       <plugin
@@ -1782,91 +1676,6 @@
         </inertial>
       </link>
 
-                            <!-- third segment-->
-
-      <link name="segment3_2">
-
-        <pose relative_to="motor2_2">0.12 0 0 0 -1.57079632679 0</pose> 
-
-        <!-- COLLISION -->
-        <collision name="segment3_2_collision">
-            <geometry>
-                <cylinder>
-                    <radius>0.0105</radius>
-                    <length>0.225</length>
-                </cylinder>
-            </geometry>
-        </collision>
-
-        <!-- VISUAL -->
-        <visual name="segment3_2_visual">
-            <geometry>
-                <cylinder>
-                    <radius>0.0105</radius> <!-- 2 cm diameter -->
-                    <length>0.225</length> <!-- 15 cm height -->
-                </cylinder>
-            </geometry>
-            <material>
-                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
-                <diffuse>0.678 0.847 0.902 1</diffuse>
-                <specular>1.0 1.0 1.0 1</specular>
-            </material>
-        </visual>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-              <ixx>0.00013125</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.00013125</iyy>
-              <iyz>0</iyz>
-              <izz>0.0000025</izz>
-          </inertia>
-        </inertial>
-      </link>
-
-                            <!-- fourth segment-->
-
-      <link name="segment4_2">
-
-        <pose relative_to="segment3_2">0 0 -0.1125 0 -1.57079632679 0</pose> 
-
-        <!-- COLLISION -->
-        <collision name="segment4_2_collision">
-            <geometry>
-                <cylinder>
-                    <radius>0.0150</radius>
-                    <length>0.0350</length>
-                </cylinder>
-            </geometry>
-        </collision>
-
-        <!-- VISUAL -->
-        <visual name="segment4_2_visual">
-            <geometry>
-                <cylinder>
-                    <radius>0.0150</radius> <!-- 2.4 cm diameter -->
-                    <length>0.0350</length> <!-- 3 cm height -->
-                </cylinder>
-            </geometry>
-            <material>
-                <ambient>0.678 0.847 0.902 1</ambient> <!-- Light Blue -->
-                <diffuse>0.678 0.847 0.902 1</diffuse>
-                <specular>1.0 1.0 1.0 1</specular>
-            </material>
-        </visual>
-        <inertial>
-          <mass>0.1</mass>
-          <inertia>
-              <ixx>0.00013125</ixx>
-              <ixy>0</ixy>
-              <ixz>0</ixz>
-              <iyy>0.00013125</iyy>
-              <iyz>0</iyz>
-              <izz>0.0000025</izz>
-          </inertia>
-        </inertial>
-      </link>
 
 
                             <!-- fifth segment-->
@@ -2122,13 +1931,6 @@
       </joint>
 
 
-                            <!-- fixed joint 4  -->
-
-      <joint name="fixed4_2" type="fixed">
-        <parent>segment3_2</parent>
-        <child>segment4_2</child>
-        <pose>0 0 -0.1125 0 -1.57079632679 0</pose>
-      </joint>
 
                             <!-- fixed joint 5  -->
 
