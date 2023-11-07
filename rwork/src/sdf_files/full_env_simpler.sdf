@@ -430,6 +430,13 @@
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
+        <joint_name>joint3_1</joint_name>
+        <topic>/arm/joint3_1/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>right_finger_1_joint</joint_name>
         <topic>/arm/right_finger_1_joint/pos_eff</topic>
       </plugin>
@@ -624,14 +631,14 @@
         </inertial>
       </link>
 
-                            <!-- Motor 4 Link-->
+                            <!-- Motor 3 Link-->
 
-      <link name="motor4_1">
+      <link name="motor3_1">
 
-        <pose relative_to="segment5_1">0 0 0.015 0 0 0</pose> 
+        <pose relative_to="segment3_1">0 0 0.015 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor4_1_collision">
+        <collision name="motor3_1_collision">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius>
@@ -641,7 +648,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor4_1_visual">
+        <visual name="motor3_1_visual">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius> <!-- 1.6 cm diameter -->
@@ -674,7 +681,7 @@
 
       <link name="right_finger_1">
 
-        <pose relative_to="segment6_1">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment4_1">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
         <collision name="right_finger_1_collision">
@@ -717,7 +724,7 @@
 
       <link name="left_finger_1">
 
-        <pose relative_to="segment6_1">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment4_1">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
         <collision name="left_finger_1_collision">
@@ -892,12 +899,12 @@
 
                             <!-- fifth segment-->
 
-      <link name="segment5_1">
+      <link name="segment3_1">
 
         <pose relative_to="motor2_1">0.015 0 0 0 1.57079632679 0</pose>
 
         <!-- COLLISION -->
-        <collision name="segment5_1_collision">
+        <collision name="segment3_1_collision">
             <geometry>
                 <cylinder>
                     <radius>0.01275</radius>
@@ -907,7 +914,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment5_1_visual">
+        <visual name="segment3_1_visual">
             <geometry>
                 <cylinder>
                     <radius>0.01275</radius> <!-- 1.7 cm diameter -->
@@ -935,12 +942,12 @@
 
                             <!-- sixth segment-->
 
-      <link name="segment6_1">
+      <link name="segment4_1">
 
-        <pose relative_to="motor4_1">0 0 0.01125 0 0 0</pose> 
+        <pose relative_to="motor3_1">0 0 0.01125 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="segment6_1_collision">
+        <collision name="segment4_1_collision">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius>
@@ -950,7 +957,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment6_1_visual">
+        <visual name="segment4_1_visual">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius> <!-- 1.2 cm diameter -->
@@ -1044,12 +1051,12 @@
       </joint>
 
 
-                            <!-- revolute joint 6  -->
+                            <!-- revolute joint 3  -->
 
 
-      <joint name="joint6_1" type="revolute">
-        <parent>segment5_1</parent>
-         <child>motor4_1</child>
+      <joint name="joint3_1" type="revolute">
+        <parent>segment3_1</parent>
+         <child>motor3_1</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -1070,7 +1077,7 @@
 
       <joint name="right_finger_1_joint" type="prismatic">
 
-         <parent>segment6_1</parent>
+         <parent>segment4_1</parent>
          <child>right_finger_1</child>
 
          <axis>
@@ -1093,7 +1100,7 @@
 
       <joint name="left_finger_1_joint" type="prismatic">
 
-         <parent>segment6_1</parent>
+         <parent>segment4_1</parent>
          <child>left_finger_1</child>
 
          <axis>
@@ -1141,19 +1148,19 @@
       </joint>
 
 
-                            <!-- fixed joint 5  -->
+                            <!-- fixed joint 3  -->
 
-      <joint name="fixed5_1" type="fixed">
+      <joint name="fixed3_1" type="fixed">
         <parent>motor2_1</parent>
-        <child>segment5_1</child>
+        <child>segment3_1</child>
         <pose>0.015 0 0 0 1.57079632679 0</pose>
       </joint>
 
-                            <!-- fixed joint 6 -->
+                            <!-- fixed joint 4 -->
 
-      <joint name="fixed6_1" type="fixed">
-        <parent>motor4_1</parent>
-        <child>segment6_1</child>
+      <joint name="fixed4_1" type="fixed">
+        <parent>motor3_1</parent>
+        <child>segment4_1</child>
         <pose>0 0 0.01125 0 0 0</pose>
       </joint>
       
@@ -1197,6 +1204,13 @@
         name="ignition::gazebo::systems::JointController">
         <joint_name>joint2_2</joint_name>
         <topic>/arm/joint2_2/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
+        <joint_name>joint3_2</joint_name>
+        <topic>/arm/joint3_2/pos_eff</topic>
       </plugin>
 
       <plugin
@@ -1397,14 +1411,14 @@
       </link>
 
 
-                            <!-- Motor 4 Link-->
+                            <!-- Motor 3 Link-->
 
-      <link name="motor4_2">
+      <link name="motor3_2">
 
-        <pose relative_to="segment5_2">0 0 0.015 0 0 0</pose> 
+        <pose relative_to="segment3_2">0 0 0.015 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="motor4_2_collision">
+        <collision name="motor3_2_collision">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius>
@@ -1414,7 +1428,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="motor4_2_visual">
+        <visual name="motor3_2_visual">
             <geometry>
                 <cylinder>
                     <radius>0.012</radius> <!-- 1.6 cm diameter -->
@@ -1447,7 +1461,7 @@
 
       <link name="right_finger_2">
 
-        <pose relative_to="segment6_2">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment4_2">0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
         <collision name="right_finger_2_collision">
@@ -1490,7 +1504,7 @@
 
       <link name="left_finger_2">
 
-        <pose relative_to="segment6_2">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
+        <pose relative_to="segment4_2">-0.005625 0 0.00975 0 0 0</pose> <!-- Adjusted Z to account for half the height of the cuboid -->
 
         <!-- COLLISION -->
         <collision name="left_finger_2_collision">
@@ -1663,14 +1677,14 @@
 
 
 
-                            <!-- fifth segment-->
+                            <!-- third segment-->
 
-      <link name="segment5_2">
+      <link name="segment3_2">
 
         <pose relative_to="motor2_2">0.015 0 0 0 1.57079632679 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="segment5_2_collision">
+        <collision name="segment3_2_collision">
             <geometry>
                 <cylinder>
                     <radius>0.01275</radius>
@@ -1680,7 +1694,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment5_2_visual">
+        <visual name="segment3_2_visual">
             <geometry>
                 <cylinder>
                     <radius>0.01275</radius> <!-- 1.7 cm diameter -->
@@ -1706,14 +1720,14 @@
         </inertial>
       </link>
 
-                            <!-- sixth segment-->
+                            <!-- fourth segment-->
 
-      <link name="segment6_2">
+      <link name="segment4_2">
 
-        <pose relative_to="motor4_2">0 0 0.01125 0 0 0</pose> 
+        <pose relative_to="motor3_2">0 0 0.01125 0 0 0</pose> 
 
         <!-- COLLISION -->
-        <collision name="segment6_2_collision">
+        <collision name="segment4_2_collision">
             <geometry>
                 <cylinder>
                     <radius>0.0075</radius>
@@ -1723,7 +1737,7 @@
         </collision>
 
         <!-- VISUAL -->
-        <visual name="segment6_2_visual">
+        <visual name="segment4_2_visual">
             <geometry>
                 <cylinder>
                     <radius>0.0075</radius> <!-- 1.6 cm diameter -->
@@ -1817,12 +1831,12 @@
       </joint>
 
 
-                            <!-- revolute joint 6  -->
+                            <!-- revolute joint 3  -->
 
 
-      <joint name="joint6" type="revolute">
-        <parent>segment5_2</parent>
-         <child>motor4_2</child>
+      <joint name="joint3_2" type="revolute">
+        <parent>segment3_2</parent>
+         <child>motor3_2</child>
          <axis>
              <dynamics>
                <friction>0.000000</friction>  <!-- N m / s-->
@@ -1844,7 +1858,7 @@
 
       <joint name="right_finger_2_joint" type="prismatic">
 
-         <parent>segment6_2</parent>
+         <parent>segment4_2</parent>
          <child>right_finger_2</child>
 
          <axis>
@@ -1867,7 +1881,7 @@
 
       <joint name="left_finger_2_joint" type="prismatic">
 
-         <parent>segment6_2</parent>
+         <parent>segment4_2</parent>
          <child>left_finger_2</child>
 
          <axis>
@@ -1914,19 +1928,19 @@
         <pose>0 0 0.159 0 -1.57079632679 0</pose>
       </joint>
 
-                            <!-- fixed joint 5  -->
+                            <!-- fixed joint 3  -->
 
-      <joint name="fixed5_2" type="fixed">
+      <joint name="fixed3_2" type="fixed">
         <parent>motor2_2</parent>
-        <child>segment5_2</child>
+        <child>segment3_2</child>
         <pose>0.015 0 0 0 1.57079632679 0</pose>
       </joint>
 
-                            <!-- fixed joint 6 -->
+                            <!-- fixed joint 4 -->
 
-      <joint name="fixed6_2" type="fixed">
-        <parent>motor4_2</parent>
-        <child>segment6_2</child>
+      <joint name="fixed4_2" type="fixed">
+        <parent>motor3_2</parent>
+        <child>segment4_2</child>
         <pose>0 0 0.01125 0 0 0</pose>
       </joint>
       
