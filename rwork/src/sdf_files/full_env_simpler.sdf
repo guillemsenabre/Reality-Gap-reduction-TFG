@@ -856,7 +856,7 @@
 
       <link name="segment2_1">
 
-        <pose relative_to="segment1_1">0 0 0.1125 0 -1.57079632679 0</pose> 
+        <pose relative_to="segment1_1">0 0 0.159 0 -1.57079632679 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment2_1_collision">
@@ -872,8 +872,8 @@
         <visual name="segment2_1_visual">
             <geometry>
                 <cylinder>
-                    <radius>0.0180</radius> <!-- 2.4 cm diameter -->
-                    <length>0.0405</length> <!-- 3 cm height -->
+                    <radius>0.0180</radius> <!-- 3.6 cm diameter -->
+                    <length>0.0405</length> <!-- 4.05 cm height -->
                 </cylinder>
             </geometry>
             <material>
@@ -944,13 +944,13 @@
 
       <link name="segment6_1">
 
-        <pose relative_to="motor4_1">0 0 0.0065 0 0 0</pose> 
+        <pose relative_to="motor4_1">0 0 0.01125 0 0 0</pose> 
 
         <!-- COLLISION -->
         <collision name="segment6_1_collision">
             <geometry>
                 <cylinder>
-                    <radius>0.0075</radius>
+                    <radius>0.012</radius>
                     <length>0.003</length>
                 </cylinder>
             </geometry>
@@ -960,7 +960,7 @@
         <visual name="segment6_1_visual">
             <geometry>
                 <cylinder>
-                    <radius>0.0075</radius> <!-- 1.6 cm diameter -->
+                    <radius>0.012</radius> <!-- 1.2 cm diameter -->
                     <length>0.003</length> <!-- 0.5 cm height -->
                 </cylinder>
             </geometry>
