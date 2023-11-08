@@ -15,15 +15,15 @@ class JointTorqueController(Node):
                             'joint2_1',
                             'joint3_1',
                             'joint4_1',
-                            'right_finger_joint_1',
-                            'left_finger_joint_1',
+                            'right_finger_1_joint',
+                            'left_finger_1_joint',
                             'joint0_2', 
                             'joint1_2', 
                             'joint2_2',
                             'joint3_2',
                             'joint4_2',
-                            'right_finger_joint_2',
-                            'left_finger_joint_2',
+                            'right_finger_2_joint',
+                            'left_finger_2_joint',
                             ]
         
         for joint_name in self.joint_names:
