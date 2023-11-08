@@ -1730,7 +1730,7 @@
         <collision name="segment4_2_collision">
             <geometry>
                 <cylinder>
-                    <radius>0.0075</radius>
+                    <radius>0.012</radius>
                     <length>0.003</length>
                 </cylinder>
             </geometry>
@@ -1740,7 +1740,7 @@
         <visual name="segment4_2_visual">
             <geometry>
                 <cylinder>
-                    <radius>0.0075</radius> <!-- 1.6 cm diameter -->
+                    <radius>0.012</radius> <!-- 1.6 cm diameter -->
                     <length>0.003</length> <!-- 0.5 cm height -->
                 </cylinder>
             </geometry>
