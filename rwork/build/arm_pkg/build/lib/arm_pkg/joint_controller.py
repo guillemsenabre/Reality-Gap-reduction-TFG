@@ -27,7 +27,7 @@ class JointTorqueController(Node):
                             ]
         
         for joint_name in self.joint_names:
-            publisher = self.create_publisher(Float64, f'/arm/{joint_name}/pos_eff', 1)
+            publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
         self.timer = self.create_timer(1, self.move_joints)
