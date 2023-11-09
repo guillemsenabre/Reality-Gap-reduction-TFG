@@ -1,5 +1,6 @@
 import rclpy
 import math
+import time
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
@@ -17,9 +18,7 @@ class JointTorqueController(Node):
             publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
-        self.timer = self.create_timer(1, self.move_joints)
-
-        self.angle = 0
+        self.timer = self.create_timer(3, self.move_joints)
 
     def move_joints(self):
 
