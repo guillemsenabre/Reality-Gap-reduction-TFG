@@ -18,23 +18,20 @@ class JointTorqueController(Node):
             publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
-        self.timer = self.create_timer(3, self.move_joints)
 
-    def move_joints(self):
+        self.torque_direction = 1
 
-        # keep the angle between 0 and 2π
-        self.angle = (self.angle + 10) % (2 * math.pi) 
-        
-        # Test multipliers for each joint 
-        joint_multipliers_test = [
-                                  8.5,
-                                  ]
+        self.timer = self.create_timer(3, self.move_joint)
+
+    def move_joint(self):
 
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float64()
-            msg.data = joint_multipliers_test[idx] * math.sin(self.angle)
+            msg.data = 3.0 * self.torque_direction
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
+
+        self.torque_direction *= -1
 
 def main(args=None):
     rclpy.init(args=args)
