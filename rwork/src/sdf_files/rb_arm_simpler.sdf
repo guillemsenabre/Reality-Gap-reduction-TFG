@@ -82,13 +82,6 @@
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
-        <joint_name>joint4</joint_name>
-        <topic>/two_joint_arm/joint4/pos_eff</topic>
-      </plugin>
-
-      <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
         <joint_name>right_finger_joint</joint_name>
         <topic>/two_joint_arm/right_finger_joint/pos_eff</topic>
       </plugin>

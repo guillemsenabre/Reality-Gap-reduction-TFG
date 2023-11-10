@@ -9,6 +9,7 @@ setup.py
 ../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
 ../../build/arm_pkg/arm_pkg.egg-info/zip-safe
 arm_pkg/__init__.py
+arm_pkg/data_gripper_test.py
 arm_pkg/joint_controller.py
 arm_pkg/joint_listener.py
 arm_pkg/joint_processor.py
