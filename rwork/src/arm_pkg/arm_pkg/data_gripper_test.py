@@ -27,7 +27,7 @@ class JointTorqueController(Node):
             msg = Float64()
             msg.data = 3.0 * self.torque_direction
             publisher.publish(msg)
-            self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
+            self.get_logger().info(f'{self.joint_names[idx]} torque: "{msg.data}"')
 
         self.torque_direction *= -1
 
