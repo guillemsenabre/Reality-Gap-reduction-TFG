@@ -13,7 +13,7 @@ class JointTorqueController(Node):
                             ]
         
         for joint_name in self.joint_names:
-            publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
+            publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 3)
             self.joint_publishers.append(publisher)
 
 
@@ -25,7 +25,7 @@ class JointTorqueController(Node):
 
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float64()
-            msg.data = 3.0 * self.torque_direction
+            msg.data = 2.0 * self.torque_direction
             publisher.publish(msg)
             self.get_logger().info(f'{self.joint_names[idx]} torque: "{msg.data}"')
 
