@@ -12,3 +12,9 @@ Gazebo simulator (https://gazebosim.org/home) is used to cope with the simulatio
 
 
 ![image](https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/67cd12ea-3b7f-4cdb-a8ec-ab4472240e2e)
+
+
+
+Both in simulation and in real-life applications, two robotic arms composed by 4 joints and a gripper as end-effector will be used. The environment has both robots on a desktop table facing each other. In between them there is an object to be lifted, carried and placed in a specific area. The following screenshot shows the environment in a visual way:
+
+<img width="706" alt="image" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/db0fb80f-8833-45d1-93c4-047db9460709">
