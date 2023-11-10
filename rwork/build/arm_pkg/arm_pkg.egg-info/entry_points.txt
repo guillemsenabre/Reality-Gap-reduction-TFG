@@ -1,6 +1,6 @@
 [console_scripts]
 controller = arm_pkg.joint_controller:main
-gripper_test = arm_pkg.data_gripper_test.py
+gripper_test = arm_pkg.data_gripper_test:main
 listener = arm_pkg.joint_listener:main
 processor = arm_pkg.joint_processor:main
 storage = arm_pkg.joint_storage:main
