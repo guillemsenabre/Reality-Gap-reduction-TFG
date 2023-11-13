@@ -12,8 +12,11 @@ class robotStates(Node):
         self.subscription = self.create_subscription(
             JointState,
             '/world/two_joint_arm_world/dynamic_pose/info',
-            self.check_data,
+            self.pose_callback,
             5)
+
+    def pose_callback(self, msg):
+        self.get_logger().info(f'Received pose data: {msg}')
 
 
 def main(args=None):
