@@ -15,8 +15,23 @@ class robotState(Node):
             self.pose_callback,
             5)
 
-    def pose_callback(self, msg):
-        self.get_logger().info(f'Received pose data: {msg}')
+    def pose_callback(self, msg: PoseArray):
+        pose_data = {}
+        for idx, pose in enumerate(msg.poses):
+            pose_name = f"pose_joint_{idx+1}"
+            pose_data[pose_name] = {
+                "x": pose.position.x,
+                "y": pose.position.y,
+                "z": pose.position.z,
+                "orientation": {
+                    "x": pose.orientation.x,
+                    "y": pose.orientation.y,
+                    "z": pose.orientation.z,
+                    "w": pose.orientation.w
+                }
+            }
+        
+        self.get_logger().info(f"Received pose data: {pose_data}")
 
 
 def main(args=None):
