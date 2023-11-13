@@ -58,6 +58,8 @@
     
     <model name="two_joint_arm">
 
+
+
       <plugin
         filename="libignition-gazebo-joint-controller-system.so"
         name="ignition::gazebo::systems::JointController">
@@ -91,6 +93,11 @@
         name="ignition::gazebo::systems::JointController">
         <joint_name>left_finger_joint</joint_name>
         <topic>/two_joint_arm/left_finger_joint/pos_eff</topic>
+      </plugin>
+
+      <plugin
+        filename="libignition-gazebo-pose-publisher-system.so"
+        name="ignition::gazebo::systems::PosePublisher">
       </plugin>
 
 
