@@ -24,7 +24,7 @@ setup(
 		'processor = arm_pkg.joint_processor:main',
 		'storage = arm_pkg.joint_storage:main',
 		'controller = arm_pkg.joint_controller:main',
-		'gripper_test = arm_pkg.data_gripper_test:main'
+		'gripper_test = arm_pkg.data_gripper_test:main',
 		'states = arm_pkg.state:main'
         ],
     },
