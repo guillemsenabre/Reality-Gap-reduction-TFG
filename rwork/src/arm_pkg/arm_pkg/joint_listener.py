@@ -17,19 +17,11 @@ class JointStateListener(Node):
         # arrive faster than they're being processed),
         # )
 
-        '''
         self.subscription = self.create_subscription(
             JointState,
             '/world/two_joint_arm_world/model/two_joint_arm/joint_state',
             self.check_data,
             10)
-        '''
-
-        self.subscription = self.create_subscription(
-            JointState,
-            '/world/two_joint_arm_world/dynamic_pose/info',
-            self.check_data,
-            5)
 
     def listener_callback(self, msg):
         self.get_logger().info('Received joint states:')
