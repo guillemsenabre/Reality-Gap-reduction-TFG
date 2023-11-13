@@ -16,6 +16,7 @@ class JointStateListener(Node):
         #   queue size (how many messages can be stored in the queue if they
         # arrive faster than they're being processed),
         # )
+
         self.subscription = self.create_subscription(
             JointState,
             '/world/two_joint_arm_world/model/two_joint_arm/joint_state',
