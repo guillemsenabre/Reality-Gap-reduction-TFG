@@ -10,7 +10,7 @@ class robotState(Node):
         self.get_logger().info('Starting Node')
 
         self.subscription = self.create_subscription(
-            JointState,
+            Pose,
             '/world/two_joint_arm_world/dynamic_pose/info',
             self.pose_callback,
             5)
