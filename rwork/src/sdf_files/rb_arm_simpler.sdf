@@ -95,13 +95,14 @@
         <topic>/two_joint_arm/left_finger_joint/pos_eff</topic>
       </plugin>
 
+      <!-- LINK POSE  -->
+
       <plugin
         filename="libignition-gazebo-pose-publisher-system.so"
         name="ignition::gazebo::systems::PosePublisher">
       </plugin>
 
-
-
+      <!-- JOINT DATA IN RADIAN-->
       <plugin
         filename="libignition-gazebo-joint-state-publisher-system.so"
         name="ignition::gazebo::systems::JointStatePublisher">
