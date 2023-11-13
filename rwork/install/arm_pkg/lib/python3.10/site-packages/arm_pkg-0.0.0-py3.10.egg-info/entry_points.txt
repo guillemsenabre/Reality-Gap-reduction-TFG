@@ -1,7 +1,8 @@
 [console_scripts]
 controller = arm_pkg.joint_controller:main
-gripper_test = arm_pkg.data_gripper_test:mainstates = arm_pkg.state:main
+gripper_test = arm_pkg.data_gripper_test:main
 listener = arm_pkg.joint_listener:main
 processor = arm_pkg.joint_processor:main
+states = arm_pkg.state:main
 storage = arm_pkg.joint_storage:main
 

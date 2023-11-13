@@ -24,7 +24,8 @@
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info/dependency_links.txt
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info/requires.txt
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/controller
-/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/gripper_test = arm_pkg.data_gripper_test:mainstates
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/gripper_test
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/listener
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/processor
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/states
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/storage
