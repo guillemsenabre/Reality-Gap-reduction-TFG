@@ -3,9 +3,9 @@ from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import Pose
 
-class robotStates(Node):
+class robotState(Node):
     def __init__(self):
-        super().__init__('robot_states')
+        super().__init__('robot_state')
 
         self.get_logger().info('Starting Node')
 
@@ -21,9 +21,9 @@ class robotStates(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    robot_states = robotState()
-    rclpy.spin(robot_states)
-    robot_states.destroy_node()
+    robot_state = robotState()
+    rclpy.spin(robot_state)
+    robot_state.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
