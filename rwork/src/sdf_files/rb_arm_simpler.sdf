@@ -95,11 +95,13 @@
         <topic>/two_joint_arm/left_finger_joint/pos_eff</topic>
       </plugin>
 
-      <!-- LINK POSE  -->
+      <!-- LINK POSE  5Hz, dynamic-->
 
       <plugin
         filename="libignition-gazebo-pose-publisher-system.so"
         name="ignition::gazebo::systems::PosePublisher">
+        <publish_link_pose>true</publish_link_pose>
+        <update_frequency>5</update_frequency>
       </plugin>
 
       <!-- JOINT DATA IN RADIAN-->
