@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
-from geometry_msgs.msg import Pose
+from geometry_msgs.msg import PoseArray
 
 class robotState(Node):
     def __init__(self):
@@ -10,7 +10,7 @@ class robotState(Node):
         self.get_logger().info('Starting Node')
 
         self.subscription = self.create_subscription(
-            Pose,
+            PoseArray,
             '/world/two_joint_arm_world/dynamic_pose/info',
             self.pose_callback,
             5)
