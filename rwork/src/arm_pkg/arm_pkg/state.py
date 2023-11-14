@@ -18,7 +18,7 @@ class robotState(Node):
         self.subscription = self.create_subscription(
             JointState,
             '/world/two_joint_arm_world/model/two_joint_arm/joint_state',
-            self.check_data,
+            self.joint_angles,
             1)
 
         
@@ -53,6 +53,13 @@ class robotState(Node):
         self.get_logger().info(
             f'Pose gripper 2: {ef2_data}'
             )
+        
+                ######  JOINT ANGLES FUNCTIONS ######
+
+    def joint_angles(self, msg):
+        self.get_logger().info('Received joint angles:')
+        for name, position in zip(msg.name, msg.position):
+            self.get_logger().info(f'Joint: {name}, Angle: {position}')
 
 
 
