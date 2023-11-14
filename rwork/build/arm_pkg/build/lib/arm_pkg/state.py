@@ -12,26 +12,45 @@ class robotState(Node):
         self.subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
-            self.pose_callback,
+            #self.pose_callback,
+            self.gripper_pose,
             1)
-
-    def pose_callback(self, msg: PoseArray):
-        pose_data = {}
-        for idx, pose in enumerate(msg.poses):
-            pose_name = f"pose_joint_{idx+1}"
-            pose_data[pose_name] = {
-                "x": pose.position.x,
-                "y": pose.position.y,
-                "z": pose.position.z,
-                "orientation": {
-                    "x": pose.orientation.x,
-                    "y": pose.orientation.y,
-                    "z": pose.orientation.z,
-                    "w": pose.orientation.w
-                }
-            }
         
-        self.get_logger().info(f"Received pose data: {pose_data}")
+
+        ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
+    
+    def extract_coordinates(self, pose):
+        
+        return {
+            "x": pose.position.x,
+            "y": pose.position.y,
+            "z": pose.position.z,
+            "orientation": {
+                "x": pose.orientation.x,
+                "y": pose.orientation.y,
+                "z": pose.orientation.z,
+                "w": pose.orientation.w
+            }
+        }
+
+    def gripper_pose(self, msg: PoseArray):
+
+        ef_rb1 = msg.poses[15]
+        ef_rb2 = msg.poses[27]
+
+        ef1_data = self.extract_coordinates(ef_rb1)
+        ef2_data = self.extract_coordinates(ef_rb2)
+
+        self.get_logger().info(
+            f'Pose gripper 1: {ef1_data}'
+            )
+        self.get_logger().info(
+            f'Pose gripper 2: {ef2_data}'
+            )
+
+
+
+                 ######  INITIALIZATION FUNCTIONS ######
 
 
 def main(args=None):
