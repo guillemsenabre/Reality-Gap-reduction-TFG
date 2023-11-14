@@ -9,4 +9,4 @@ JOINT CONTROLLER: ros2 run ros_gz_bridge parameter_bridge /two_joint_arm/joint0/
 POSE LISTENER 1 ROBOT: ros2 run ros_gz_bridge parameter_bridge /world/two_joint_arm_world/dynamic_pose/info@geometry_msgs/msg/PoseArray[gz.msgs.Pose_V
 POSE LISTENER 2 ROBOT: ros2 run ros_gz_bridge parameter_bridge /world/full_env/dynamic_pose/info@geometry_msgs/msg/PoseArray[gz.msgs.Pose_V
 
-POSE AND ANGLES FULL SIMPLE: ros2 run ros_gz_bridge parameter_bridge /world/full_env/model/arm_1/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model /world/full_env/model/arm_2/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model /world/two_joint_arm_world/dynamic_pose/info@geometry_msgs/msg/PoseArray[gz.msgs.Pose_V
+POSE AND ANGLES FULL SIMPLE: ros2 run ros_gz_bridge parameter_bridge /world/full_env/model/arm_1/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model /world/full_env/model/arm_2/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model /world/full_env/dynamic_pose/info@geometry_msgs/msg/PoseArray[gz.msgs.Pose_V
