@@ -15,9 +15,15 @@ class robotState(Node):
             self.gripper_pose,
             1)
 
-        self.joints_subscription = self.create_subscription(
+        self.j1_subscription = self.create_subscription(
             JointState,
-            '/world/two_joint_arm_world/model/two_joint_arm/joint_state',
+            '/world/full_env/model/arm_1/joint_state',
+            self.joint_angles,
+            1)
+        
+        self.j1_subscription = self.create_subscription(
+            JointState,
+            '/world/full_env/model/arm_2/joint_state',
             self.joint_angles,
             1)
 
