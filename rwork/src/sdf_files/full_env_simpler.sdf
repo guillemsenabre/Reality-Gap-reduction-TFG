@@ -57,7 +57,7 @@
 
     <model name="wood_object">
         <link name="wood">
-            <pose>0 0.2 1.3200 0 0 0</pose>
+            <pose>0 0.2 1.2225 0 0 0</pose>
             <collision name="surface">
                 <geometry>
                     <box>
@@ -1243,7 +1243,7 @@
         <publish_link_pose>true</publish_link_pose>
         <update_frequency>0.5</update_frequency>
       </plugin>
-      
+
 
       <plugin
         filename="libignition-gazebo-joint-state-publisher-system.so"
