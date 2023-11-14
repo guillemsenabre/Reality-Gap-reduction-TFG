@@ -13,7 +13,7 @@ class robotState(Node):
             PoseArray,
             '/world/two_joint_arm_world/dynamic_pose/info',
             self.pose_callback,
-            5)
+            1)
 
     def pose_callback(self, msg: PoseArray):
         pose_data = {}
