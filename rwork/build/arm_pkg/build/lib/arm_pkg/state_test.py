@@ -3,24 +3,11 @@ from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseArray
 
-
-        ######  STATE CLASS  ######
-
 class robotState(Node):
     def __init__(self):
         super().__init__('robot_state')
 
         self.get_logger().info('Starting Node')
-
-        # Storage for latest data
-
-        self.latest_joint_state_1 = None
-        self.latest_joint_state_2 = None
-
-        self.latest_end_effector_pose_1 = None
-        self.latest_end_effector_pose_2 = None
-
-        # Subscriptions
 
         self.grippers_subscription = self.create_subscription(
             PoseArray,
@@ -59,34 +46,35 @@ class robotState(Node):
         }
 
     def gripper_pose(self, msg: PoseArray):
-        self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
-        self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
-        self.update_robot_state()
 
-        ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
+        ef_rb1 = msg.poses[15]
+        ef_rb2 = msg.poses[27]
+
+        ef1_data = self.extract_coordinates(ef_rb1)
+        ef2_data = self.extract_coordinates(ef_rb2)
+
+        self.get_logger().info(
+            f'Pose gripper 1: {ef1_data}'
+            )
+        self.get_logger().info(
+            f'Pose gripper 2: {ef2_data}'
+            )
+        
+                ######  JOINT ANGLES FUNCTIONS ######
 
     def joint_angles_1(self, msg):
-        self.latest_joint_state_1 = {name: position for name, position in zip(msg.name, msg.position)}
-        self.update_robot_state()
-
+        self.get_logger().info('Joints 1')
+        for name, position in zip(msg.name, msg.position):
+            self.get_logger().info(f'Joint: {name}, Angle: {position}')
+    
     def joint_angles_2(self, msg):
-        self.latest_joint_state_2 = {name: position for name, position in zip(msg.name, msg.position)}
-        self.update_robot_state()
+        self.get_logger().info('Joints 2')
+        for name, position in zip(msg.name, msg.position):
+            self.get_logger().info(f'Joint: {name}, Angle: {position}')
 
 
-        ###### SYNCHRONIZATION FUNCTION ######
 
-    def update_robot_state(self):
-        if self.latest_joint_state_1 and self.latest_end_effector_pose_1:
-            robot_state_1 = (self.latest_joint_state_1, self.latest_end_effector_pose_1)
-            self.get_logger().info(f'Robot 1 State: {robot_state_1}')
-
-        if self.latest_joint_state_2 and self.latest_end_effector_pose_2:
-            robot_state_2 = (self.latest_joint_state_2, self.latest_end_effector_pose_2)
-            self.get_logger().info(f'Robot 2 State: {robot_state_2}')    
-
-
-        ######  INITIALIZATION FUNCTIONS ######
+                 ######  INITIALIZATION FUNCTIONS ######
 
 
 def main(args=None):
