@@ -64,6 +64,7 @@
             name="ignition::gazebo::systems::PosePublisher">
             <publish_link_pose>true</publish_link_pose>
             <update_frequency>0.5</update_frequency>
+            <topic>/object/pose/info</topic>
         </plugin>
 
 
