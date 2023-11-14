@@ -12,13 +12,35 @@ class robotState(Node):
         self.subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
-            self.pose_callback,
+            #self.pose_callback,
+            self.gripper_pose,
             1)
+        
 
-    def pose_callback(self, msg: PoseArray):
+    def gripper_pose(self, msg: PoseArray):
+
+        end_effector_pose = msg.poses[-1]
+
+        pose_data = {
+            "x": end_effector_pose.position.x,
+            "y": end_effector_pose.position.y,
+            "z": end_effector_pose.position.z,
+            "orientation": {
+                "x": end_effector_pose.orientation.x,
+                "y": end_effector_pose.orientation.y,
+                "z": end_effector_pose.orientation.z,
+                "w": end_effector_pose.orientation.w
+            }
+        }
+
+
+
+
+    def all_pose_callback(self, msg: PoseArray):
         pose_data = {}
         for idx, pose in enumerate(msg.poses):
             pose_name = f"pose_joint_{idx+1}"
+            
             pose_data[pose_name] = {
                 "x": pose.position.x,
                 "y": pose.position.y,
