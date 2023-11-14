@@ -18,13 +18,13 @@ class robotState(Node):
         self.j1_subscription = self.create_subscription(
             JointState,
             '/world/full_env/model/arm_1/joint_state',
-            self.joint_angles,
+            self.joint_angles_1,
             1)
         
-        self.j1_subscription = self.create_subscription(
+        self.j2_subscription = self.create_subscription(
             JointState,
             '/world/full_env/model/arm_2/joint_state',
-            self.joint_angles,
+            self.joint_angles_2,
             1)
 
         
@@ -62,8 +62,13 @@ class robotState(Node):
         
                 ######  JOINT ANGLES FUNCTIONS ######
 
-    def joint_angles(self, msg):
-        self.get_logger().info('Received joint angles:')
+    def joint_angles_1(self, msg):
+        self.get_logger().info('Joints 1')
+        for name, position in zip(msg.name, msg.position):
+            self.get_logger().info(f'Joint: {name}, Angle: {position}')
+    
+    def joint_angles_2(self, msg):
+        self.get_logger().info('Joints 2')
         for name, position in zip(msg.name, msg.position):
             self.get_logger().info(f'Joint: {name}, Angle: {position}')
 
