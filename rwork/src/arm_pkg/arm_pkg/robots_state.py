@@ -20,9 +20,11 @@ class robotState(Node):
         self.latest_end_effector_pose_1 = None
         self.latest_end_effector_pose_2 = None
 
+        self.latest_object_pose = None
+
         # Subscriptions
 
-        self.grippers_subscription = self.create_subscription(
+        self.pose_subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
             self.gripper_pose,
@@ -64,6 +66,9 @@ class robotState(Node):
         self.update_robot_state()
 
         ######  JOINT ANGLES PROCESSING ######
+    
+    def object_pose(self, msg: PoseArray):
+        self.latest_object_pose = self.extract_coordinates(msg.poses[5])
 
     def joint_angles_1(self, msg):
         self.latest_joint_state_1 = {name: position for name, position in zip(msg.name, msg.position)}
@@ -83,7 +88,8 @@ class robotState(Node):
 
         if self.latest_joint_state_2 and self.latest_end_effector_pose_2:
             robot_state_2 = (self.latest_joint_state_2, self.latest_end_effector_pose_2)
-            self.get_logger().info(f'Robot 2 State: {robot_state_2}')    
+            self.get_logger().info(f'Robot 2 State: {robot_state_2}')
+        if self.latest_object_pose    
 
 
         ######  INITIALIZATION FUNCTIONS ######
