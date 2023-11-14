@@ -9,6 +9,16 @@ class robotState(Node):
 
         self.get_logger().info('Starting Node')
 
+        # Storage for latest data
+
+        self.latest_joint_state_1 = None
+        self.latest_joint_state_2 = None
+
+        self.latest_end_effector_pose_1 = None
+        self.latest_end_effector_pose_2 = None
+
+        # Subscriptions
+
         self.grippers_subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
