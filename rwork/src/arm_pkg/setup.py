@@ -25,6 +25,7 @@ setup(
 		'storage = arm_pkg.joint_storage:main',
 		'controller = arm_pkg.joint_controller:main',
 		'gripper_test = arm_pkg.data_gripper_test:main',
+		'state_test = arm_pkg.state_test:main',
 		'state = arm_pkg.state:main'
         ],
     },
