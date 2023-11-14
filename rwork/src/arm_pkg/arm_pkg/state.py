@@ -19,19 +19,39 @@ class robotState(Node):
 
     def gripper_pose(self, msg: PoseArray):
 
-        end_effector_pose = msg.poses[-1]
+        ef_rb1 = msg.poses[15]
+        ef_rb2 = msg.poses[27]
 
-        pose_data = {
-            "x": end_effector_pose.position.x,
-            "y": end_effector_pose.position.y,
-            "z": end_effector_pose.position.z,
+        ef1_data = {
+            "x": ef_rb1.position.x,
+            "y": ef_rb1.position.y,
+            "z": ef_rb1.position.z,
             "orientation": {
-                "x": end_effector_pose.orientation.x,
-                "y": end_effector_pose.orientation.y,
-                "z": end_effector_pose.orientation.z,
-                "w": end_effector_pose.orientation.w
+                "x": ef_rb1.orientation.x,
+                "y": ef_rb1.orientation.y,
+                "z": ef_rb1.orientation.z,
+                "w": ef_rb1.orientation.w
             }
         }
+
+        ef2_data = {
+            "x": ef_rb2.position.x,
+            "y": ef_rb2.position.y,
+            "z": ef_rb2.position.z,
+            "orientation": {
+                "x": ef_rb2.orientation.x,
+                "y": ef_rb2.orientation.y,
+                "z": ef_rb2.orientation.z,
+                "w": ef_rb2.orientation.w
+            }
+        }
+
+        self.get_logger().info(
+            f'Pose gripper 1: {ef1_data}'
+            )
+        self.get_logger().info(
+            f'Pose gripper 2: {ef2_data}'
+            )
 
 
 
