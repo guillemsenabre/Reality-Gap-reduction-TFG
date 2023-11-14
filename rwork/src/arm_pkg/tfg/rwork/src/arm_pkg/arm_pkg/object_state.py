@@ -1,6 +1,6 @@
 import rclpy
+
 from rclpy.node import Node
-from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseArray
 
 
@@ -10,7 +10,7 @@ class robotState(Node):
     def __init__(self):
         super().__init__('robot_state')
 
-        self.get_logger().info('Starting Robots State Node')
+        self.get_logger().info('Starting Node')
 
         # Storage for latest data
 
