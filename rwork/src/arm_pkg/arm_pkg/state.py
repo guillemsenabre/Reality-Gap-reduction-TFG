@@ -9,13 +9,13 @@ class robotState(Node):
 
         self.get_logger().info('Starting Node')
 
-        self.subscription = self.create_subscription(
+        self.grippers_subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
             self.gripper_pose,
             1)
 
-        self.subscription = self.create_subscription(
+        self.joints_subscription = self.create_subscription(
             JointState,
             '/world/two_joint_arm_world/model/two_joint_arm/joint_state',
             self.joint_angles,
