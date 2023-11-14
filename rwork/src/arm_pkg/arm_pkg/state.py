@@ -3,6 +3,9 @@ from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseArray
 
+
+        ######  STATE CLASS  ######
+
 class robotState(Node):
     def __init__(self):
         super().__init__('robot_state')
