@@ -11,7 +11,7 @@ class robotState(Node):
 
         self.subscription = self.create_subscription(
             PoseArray,
-            '/world/two_joint_arm_world/dynamic_pose/info',
+            '/world/full_env/dynamic_pose/info',
             self.pose_callback,
             1)
 
