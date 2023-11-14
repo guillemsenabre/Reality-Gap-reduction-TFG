@@ -12,9 +12,15 @@ class robotState(Node):
         self.subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
-            #self.pose_callback,
             self.gripper_pose,
             1)
+
+        self.subscription = self.create_subscription(
+            JointState,
+            '/world/two_joint_arm_world/model/two_joint_arm/joint_state',
+            self.check_data,
+            1)
+
         
 
         ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
