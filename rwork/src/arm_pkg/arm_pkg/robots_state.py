@@ -63,7 +63,7 @@ class robotState(Node):
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
         self.update_robot_state()
 
-        ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
+        ######  JOINT ANGLES PROCESSING ######
 
     def joint_angles_1(self, msg):
         self.latest_joint_state_1 = {name: position for name, position in zip(msg.name, msg.position)}
