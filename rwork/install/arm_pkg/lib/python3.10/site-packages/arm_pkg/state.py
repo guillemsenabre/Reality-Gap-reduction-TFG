@@ -9,12 +9,24 @@ class robotState(Node):
 
         self.get_logger().info('Starting Node')
 
-        self.subscription = self.create_subscription(
+        self.grippers_subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
-            #self.pose_callback,
             self.gripper_pose,
             1)
+
+        self.j1_subscription = self.create_subscription(
+            JointState,
+            '/world/full_env/model/arm_1/joint_state',
+            self.joint_angles_1,
+            1)
+        
+        self.j2_subscription = self.create_subscription(
+            JointState,
+            '/world/full_env/model/arm_2/joint_state',
+            self.joint_angles_2,
+            1)
+
         
 
         ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
@@ -47,6 +59,18 @@ class robotState(Node):
         self.get_logger().info(
             f'Pose gripper 2: {ef2_data}'
             )
+        
+                ######  JOINT ANGLES FUNCTIONS ######
+
+    def joint_angles_1(self, msg):
+        self.get_logger().info('Joints 1')
+        for name, position in zip(msg.name, msg.position):
+            self.get_logger().info(f'Joint: {name}, Angle: {position}')
+    
+    def joint_angles_2(self, msg):
+        self.get_logger().info('Joints 2')
+        for name, position in zip(msg.name, msg.position):
+            self.get_logger().info(f'Joint: {name}, Angle: {position}')
 
 
 
