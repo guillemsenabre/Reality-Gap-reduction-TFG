@@ -52,10 +52,24 @@
       </link>
     </model>
 
-                                <!-- OBJECT MODEL -->
+                          <!-- OBJECT MODEL -->
 
 
     <model name="wood_object">
+
+                     <!-- LINK POSE  5Hz, dynamic-->
+
+        <plugin
+            filename="libignition-gazebo-pose-publisher-system.so"
+            name="ignition::gazebo::systems::PosePublisher">
+            <publish_link_pose>true</publish_link_pose>
+            <update_frequency>0.5</update_frequency>
+        </plugin>
+
+
+                          <!-- object link -->
+
+
         <link name="wood">
             <pose>0 0.2 1.2225 0 0 0</pose>
             <collision name="surface">
