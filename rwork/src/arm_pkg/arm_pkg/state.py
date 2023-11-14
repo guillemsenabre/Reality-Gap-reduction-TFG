@@ -17,34 +17,29 @@ class robotState(Node):
             1)
         
 
+        ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
+    
+    def extract_coordinates(self, pose):
+        
+        return {
+            "x": pose.position.x,
+            "y": pose.position.y,
+            "z": pose.position.z,
+            "orientation": {
+                "x": pose.orientation.x,
+                "y": pose.orientation.y,
+                "z": pose.orientation.z,
+                "w": pose.orientation.w
+            }
+        }
+
     def gripper_pose(self, msg: PoseArray):
 
         ef_rb1 = msg.poses[15]
         ef_rb2 = msg.poses[27]
 
-        ef1_data = {
-            "x": ef_rb1.position.x,
-            "y": ef_rb1.position.y,
-            "z": ef_rb1.position.z,
-            "orientation": {
-                "x": ef_rb1.orientation.x,
-                "y": ef_rb1.orientation.y,
-                "z": ef_rb1.orientation.z,
-                "w": ef_rb1.orientation.w
-            }
-        }
-
-        ef2_data = {
-            "x": ef_rb2.position.x,
-            "y": ef_rb2.position.y,
-            "z": ef_rb2.position.z,
-            "orientation": {
-                "x": ef_rb2.orientation.x,
-                "y": ef_rb2.orientation.y,
-                "z": ef_rb2.orientation.z,
-                "w": ef_rb2.orientation.w
-            }
-        }
+        ef1_data = self.extract_coordinates(ef_rb1)
+        ef2_data = self.extract_coordinates(ef_rb2)
 
         self.get_logger().info(
             f'Pose gripper 1: {ef1_data}'
@@ -55,26 +50,7 @@ class robotState(Node):
 
 
 
-
-    def all_pose_callback(self, msg: PoseArray):
-        pose_data = {}
-        for idx, pose in enumerate(msg.poses):
-            pose_name = f"pose_joint_{idx+1}"
-            
-            pose_data[pose_name] = {
-                "x": pose.position.x,
-                "y": pose.position.y,
-                "z": pose.position.z,
-                "orientation": {
-                    "x": pose.orientation.x,
-                    "y": pose.orientation.y,
-                    "z": pose.orientation.z,
-                    "w": pose.orientation.w
-                }
-            }
-        
-        self.get_logger().info(f"Received pose data: {pose_data}")
-
+                 ######  INITIALIZATION FUNCTIONS ######
 
 def main(args=None):
     rclpy.init(args=args)
