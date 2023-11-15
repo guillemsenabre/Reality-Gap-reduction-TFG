@@ -92,7 +92,7 @@ class robotState(Node):
             robot_state_2 = (self.latest_joint_state_2, self.latest_end_effector_pose_2)
             self.get_logger().info(f'Robot 2 State: {robot_state_2}')
 
-        if self.latest_object_pose:
+        if self.latest_object_pose is not None:
             object_pose = self.latest_object_pose
             self.get_logger().info(f'Object pose: {object_pose}')   
 
