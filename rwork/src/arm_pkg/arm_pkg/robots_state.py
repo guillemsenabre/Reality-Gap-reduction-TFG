@@ -47,7 +47,6 @@ class robotState(Node):
         ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
     
     def extract_coordinates(self, pose):
-        
         return {
             "x": pose.position.x,
             "y": pose.position.y,
