@@ -5,8 +5,8 @@
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/state_test.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/data_gripper_test.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/joint_storage.py
-/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/state.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/joint_processor.py
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/robots_state.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/__init__.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/distributed.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/joint_listener.cpython-310.pyc
@@ -14,8 +14,8 @@
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/state_test.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/data_gripper_test.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/joint_storage.cpython-310.pyc
-/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/state.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/joint_processor.cpython-310.pyc
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__pycache__/robots_state.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/share/ament_index/resource_index/packages/arm_pkg
 /home/kyu8/tfg/rwork/install/arm_pkg/share/arm_pkg/package.xml
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info/entry_points.txt
@@ -28,7 +28,8 @@
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/controller
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/gripper_test
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/listener
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/object_state
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/processor
-/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/state
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/robots_state
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/state_test
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/storage

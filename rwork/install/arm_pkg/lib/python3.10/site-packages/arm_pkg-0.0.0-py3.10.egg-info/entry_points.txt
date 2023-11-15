@@ -2,8 +2,9 @@
 controller = arm_pkg.joint_controller:main
 gripper_test = arm_pkg.data_gripper_test:main
 listener = arm_pkg.joint_listener:main
+object_state = arm_pkg.object_state:main
 processor = arm_pkg.joint_processor:main
-state = arm_pkg.state:main
+robots_state = arm_pkg.robots_state:main
 state_test = arm_pkg.state_test:main
 storage = arm_pkg.joint_storage:main
 

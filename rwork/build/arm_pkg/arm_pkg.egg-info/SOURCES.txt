@@ -15,7 +15,7 @@ arm_pkg/joint_controller.py
 arm_pkg/joint_listener.py
 arm_pkg/joint_processor.py
 arm_pkg/joint_storage.py
-arm_pkg/state.py
+arm_pkg/robots_state.py
 arm_pkg/state_test.py
 resource/arm_pkg
 test/test_copyright.py
