@@ -27,7 +27,7 @@ class robotState(Node):
         self.pose_subscription = self.create_subscription(
             PoseArray,
             '/world/full_env/dynamic_pose/info',
-            self.gripper_pose,
+            self.gripper_object_pose,
             1)
 
         self.j1_subscription = self.create_subscription(
@@ -60,7 +60,7 @@ class robotState(Node):
             }
         }
 
-    def gripper_pose(self, msg: PoseArray):
+    def gripper_object_pose(self, msg: PoseArray):
         self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
         
