@@ -63,12 +63,11 @@ class robotState(Node):
     def gripper_pose(self, msg: PoseArray):
         self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
+        
+        self.latest_object_pose = self.extract_coordinates(msg.poses[5])
+
         self.update_robot_state()
 
-        ######  OBJECT POSE ######
-    
-    def object_pose(self, msg: PoseArray):
-        self.latest_object_pose = self.extract_coordinates(msg.poses[5])
 
         ######  JOINT ANGLES PROCESSING ######
 
@@ -95,7 +94,6 @@ class robotState(Node):
         if self.latest_object_pose is not None:
             object_pose = self.latest_object_pose
             self.get_logger().info(f'Object pose: {object_pose}')   
-
 
 
 
