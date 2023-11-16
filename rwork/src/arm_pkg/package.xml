@@ -14,7 +14,9 @@
   <depend>csv</depend>
   <depend>os</depend>
   <depend>math</depend>
-  <depend>time</depend>  
+  <depend>time</depend>
+  <depend>torch</depend>
+  <depend>random</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
