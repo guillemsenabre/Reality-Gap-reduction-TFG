@@ -20,15 +20,15 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-		'listener = arm_pkg.joint_listener:main',
-		'processor = arm_pkg.joint_processor:main',
-		'storage = arm_pkg.joint_storage:main',
-		'controller = arm_pkg.joint_controller:main',
-		'gripper_test = arm_pkg.data_gripper_test:main',
-		'state_test = arm_pkg.state_test:main',
-		'robots_state = arm_pkg.robots_state:main',
-        	'sac = arm_pkg.sac:main',
-		'reward_function = arm_pkg.reward_function:main'
+		'listener = arm_pkg.tests.joint_listener:main',
+		'processor = arm_pkg.tests.joint_processor:main',
+		'storage = arm_pkg.tests.joint_storage:main',
+		'controller = arm_pkg.tests.joint_controller:main',
+		'gripper_test = arm_pkg.tests.data_gripper_test:main',
+		'state_test = arm_pkg.tests.state_test:main',
+		'robots_state = arm_pkg.drl.robots_state:main',
+        'sac = arm_pkg.drl.sac:main',
+		'reward_function = arm_pkg.drl.reward_function:main'
         ],
     },
 )
