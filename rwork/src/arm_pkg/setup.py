@@ -27,8 +27,8 @@ setup(
 		'gripper_test = arm_pkg.data_gripper_test:main',
 		'state_test = arm_pkg.state_test:main',
 		'robots_state = arm_pkg.robots_state:main',
-        	'sac = arm_pkg.SAC:main',
-		'reward = arm_pkg.reward'
+        	'sac = arm_pkg.sac:main',
+		'reward_function = arm_pkg.reward_function:main'
         ],
     },
 )
