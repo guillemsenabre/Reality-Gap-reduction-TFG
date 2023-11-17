@@ -7,6 +7,11 @@ class Reward(Node):
         super().__init__('reward_function')
 
 
+    def manhattan_distance(self, gripper1_pos, gripper2_pos, object_pos):
+        return None
+    
+    def object_deviation(self):
+        return None
 
 
 
