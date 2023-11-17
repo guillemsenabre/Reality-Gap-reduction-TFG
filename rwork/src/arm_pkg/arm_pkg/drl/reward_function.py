@@ -6,6 +6,8 @@ class Reward(Node):
     def __init__(self):
         super().__init__('reward_function')
 
+        
+
 
     def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
         
