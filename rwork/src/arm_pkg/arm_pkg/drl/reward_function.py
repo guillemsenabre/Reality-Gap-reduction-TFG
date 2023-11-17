@@ -1,4 +1,28 @@
 import rclpy
 from rclpy.node import Node
 
+class Reward(Node):
 
+    def __init__(self):
+        super().__init__('reward_function')
+
+
+
+
+
+
+
+
+
+
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    reward_function = Reward()
+    rclpy.spin(reward_function)
+    reward_function.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
