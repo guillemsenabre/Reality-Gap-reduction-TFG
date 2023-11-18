@@ -32,12 +32,6 @@ class RobotState(Node):
 
         # Subscriptions
 
-        self.pose_subscription = self.create_subscription(
-            PoseArray,
-            '/world/full_env/dynamic_pose/info',
-            self.gripper_object_pose,
-            1)
-
         self.j1_subscription = self.create_subscription(
             JointState,
             '/world/full_env/model/arm_1/joint_state',
@@ -50,6 +44,11 @@ class RobotState(Node):
             self.joint_angles_2,
             1)
 
+        self.pose_subscription = self.create_subscription(
+            PoseArray,
+            '/world/full_env/dynamic_pose/info',
+            self.gripper_object_pose,
+            1)
         
 
         ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
