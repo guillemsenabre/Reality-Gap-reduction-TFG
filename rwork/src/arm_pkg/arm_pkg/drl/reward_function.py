@@ -9,8 +9,8 @@ class Reward(Node):
 
         self.state_subscription = self.create_subscription(
             Float32Array,
-            '/state/data',
-            self.states_callback,
+            'packed/state/data',
+            self.states_unpack,
             1
         )
 
