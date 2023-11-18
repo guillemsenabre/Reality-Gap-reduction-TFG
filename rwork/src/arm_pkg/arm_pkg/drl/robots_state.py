@@ -25,7 +25,7 @@ class RobotState(Node):
 
         # Publisher
 
-        self.state_publisher = self.create_publihser(
+        self.state_publisher = self.create_publisher(
             Float32Array,
             '/states',
             1)
