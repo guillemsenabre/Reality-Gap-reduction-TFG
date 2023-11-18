@@ -27,7 +27,7 @@ class RobotState(Node):
 
         self.state_publisher = self.create_publisher(
             Float32Array,
-            '/states',
+            'state/data',
             1)
 
         # Subscriptions
