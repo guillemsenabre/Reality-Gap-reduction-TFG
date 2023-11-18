@@ -78,14 +78,6 @@ class RobotState(Node):
             }
         }
 
-    def gripper_object_pose(self, msg: PoseArray):
-        self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
-        self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
-        
-        self.latest_object_pose = self.extract_coordinates(msg.poses[3])
-
-        self.states()
-
 
         ######  JOINT ANGLES PROCESSING ######
 
@@ -99,7 +91,14 @@ class RobotState(Node):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
         self.latest_joint_state_2 = {name: position for name, position in zip(relevant_joints, msg.position)}
+    
+    def gripper_object_pose(self, msg: PoseArray):
+        self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
+        self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
+        
+        self.latest_object_pose = self.extract_coordinates(msg.poses[3])
 
+        self.states()
     
     def states(self):
         # Separate data for each robot and object
