@@ -5,12 +5,12 @@ from ros_gz_interfaces.msg import Float32Array
 class Reward(Node):
     def __init__(self):
         super().__init__('reward_function')
-        self.get_logger().info('State Subscriber Node')
+        self.get_logger().info('Starting reward function node')
 
         self.state_subscription = self.create_subscription(
             Float32Array,
             '/state/data',
-            self.manhattan_distance,
+            self.object_deviation,
             1
         )
 
