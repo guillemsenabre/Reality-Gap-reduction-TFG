@@ -23,6 +23,7 @@ class RobotState(Node):
 
         self.latest_object_pose = None
 
+
         # Publisher for robot 1 data
         self.robot1_publisher = self.create_publisher(
             Float32Array,
@@ -78,6 +79,14 @@ class RobotState(Node):
             }
         }
 
+    def gripper_object_pose(self, msg: PoseArray):
+        self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
+        self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
+        
+        self.latest_object_pose = self.extract_coordinates(msg.poses[3])
+
+        self.states()
+
 
         ######  JOINT ANGLES PROCESSING ######
 
@@ -91,48 +100,23 @@ class RobotState(Node):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
         self.latest_joint_state_2 = {name: position for name, position in zip(relevant_joints, msg.position)}
-    
-    def gripper_object_pose(self, msg: PoseArray):
-        self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
-        self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
-        
-        self.latest_object_pose = self.extract_coordinates(msg.poses[3])
-
-        self.states()
 
     
     def states(self):
-        # Separate data for each robot and object
-        robot1_data = {
+
+        states_data = {
             "joint_state_1": self.latest_joint_state_1,
-            "gripper_pose_1": self.latest_end_effector_pose_1
-        }
-
-        robot2_data = {
+            "gripper_pose_1": self.latest_end_effector_pose_1,
             "joint_state_2": self.latest_joint_state_2,
-            "gripper_pose_2": self.latest_end_effector_pose_2
-        }
-
-        object_data = {
+            "gripper_pose_2": self.latest_end_effector_pose_2,
             "object_pose": self.latest_object_pose
         }
 
-        # Flatten nested dictionaries
-        flatten = lambda d: {k + '_' + k2 if k2 in d else k2: v2 for k, v in d.items() for k2, v2 in v.items()}
-        flattened_robot1_data = flatten(robot1_data)
-        flattened_robot2_data = flatten(robot2_data)
-        flattened_object_data = flatten(object_data)
+        self.get_logger().info(f'State: {states_data}')
 
-        # Log the data for debugging
-        self.get_logger().info(f'State (Robot 1): {flattened_robot1_data}')
-        self.get_logger().info(f'State (Robot 2): {flattened_robot2_data}')
-        self.get_logger().info(f'State (Object): {flattened_object_data}')
-
-        # Publish data for each robot and object
-        self.robot1_publisher.publish(Float32Array(data=[float(value) for value in flattened_robot1_data.values()]))
-        self.robot2_publisher.publish(Float32Array(data=[float(value) for value in flattened_robot2_data.values()]))
-        self.object_publisher.publish(Float32Array(data=[float(value) for value in flattened_object_data.values()]))
-
+        # Publish to the topic
+        float_array_msg = Float32Array(data=[float(value) for sublist in states_data.values() for value in sublist])
+        self.states_publisher.publish(float_array_msg)
 
 
         ######  INITIALIZATION FUNCTION ######

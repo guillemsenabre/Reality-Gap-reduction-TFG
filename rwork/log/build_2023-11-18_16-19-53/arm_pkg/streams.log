@@ -1,0 +1,40 @@
+[0.991s] Invoking command in '/home/kyu8/tfg/rwork/src/arm_pkg': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed
+[1.312s] running egg_info
+[1.313s] writing ../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+[1.314s] writing dependency_links to ../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+[1.314s] writing entry points to ../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+[1.314s] writing requirements to ../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+[1.315s] writing top-level names to ../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+[1.318s] reading manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.319s] writing manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.319s] running build
+[1.320s] running build_py
+[1.321s] copying arm_pkg/drl/robots_state.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/drl
+[1.321s] running install
+[1.322s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.322s]   warnings.warn(
+[1.322s] running install_lib
+[1.324s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/drl/robots_state.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.325s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py to distributed.cpython-310.pyc
+[1.326s]   File "/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py", line 2
+[1.326s]     import JointStateListener from joint_listener.py
+[1.326s]                               ^^^^
+[1.326s] SyntaxError: invalid syntax
+[1.326s] 
+[1.326s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/robots_state.py to robots_state.cpython-310.pyc
+[1.328s] running install_data
+[1.329s] running install_egg_info
+[1.331s] removing '/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[1.332s] Copying ../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+[1.333s] running install_scripts
+[1.365s] Installing controller script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.366s] Installing gripper_test script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.366s] Installing listener script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.366s] Installing processor script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.366s] Installing reward_function script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.367s] Installing robots_state script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.367s] Installing sac script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.367s] Installing state_test script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.367s] Installing storage script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.368s] writing list of installed files to '/home/kyu8/tfg/rwork/build/arm_pkg/install.log'
+[1.458s] Invoked command in '/home/kyu8/tfg/rwork/src/arm_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed
