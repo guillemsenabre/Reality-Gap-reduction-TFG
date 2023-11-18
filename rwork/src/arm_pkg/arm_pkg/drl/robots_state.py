@@ -102,6 +102,10 @@ class RobotState(Node):
 
         self.get_logger().info(f'State: {states_data}')
 
+        # Publish to the topic
+        float_array_msg = Float32Array(data=[float(value) for sublist in states_data.values() for value in sublist])
+        self.states_publisher.publish(float_array_msg)
+
 
         ######  INITIALIZATION FUNCTION ######
 
