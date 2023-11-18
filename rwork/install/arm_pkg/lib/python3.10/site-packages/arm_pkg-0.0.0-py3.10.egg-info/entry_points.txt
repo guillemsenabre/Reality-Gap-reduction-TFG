@@ -1,10 +1,11 @@
 [console_scripts]
-controller = arm_pkg.joint_controller:main
-gripper_test = arm_pkg.data_gripper_test:main
-listener = arm_pkg.joint_listener:main
-object_state = arm_pkg.object_state:main
-processor = arm_pkg.joint_processor:main
-robots_state = arm_pkg.robots_state:main
-state_test = arm_pkg.state_test:main
-storage = arm_pkg.joint_storage:main
+controller = arm_pkg.tests.joint_controller:main
+gripper_test = arm_pkg.tests.data_gripper_test:main
+listener = arm_pkg.tests.joint_listener:main
+processor = arm_pkg.tests.joint_processor:main
+reward_function = arm_pkg.drl.reward_function:main
+robots_state = arm_pkg.drl.robots_state:main
+sac = arm_pkg.drl.sac:main
+state_test = arm_pkg.tests.state_test:main
+storage = arm_pkg.tests.joint_storage:main
 
