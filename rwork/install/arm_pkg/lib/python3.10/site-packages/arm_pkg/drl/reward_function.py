@@ -18,7 +18,7 @@ class Reward(Node):
         self.get_logger().info('Waiting for data ...')
 
 
-    def manhattan_distance(self, msg):
+    def manhattan_distance(self, msg: Float32Array):
         
         '''
                                     Data structure
@@ -44,19 +44,21 @@ class Reward(Node):
         object_2_pos = [object_pos[0] + 0.125, object_pos[1], object_pos[2]]
 
         
-        rg1 = abs(object_1_pos[0] - object_1_pos[0]) + abs(object_1_pos[1] - object_1_pos[1]) + abs(object_1_pos[2] - object_1_pos[2])
+        rg1 = abs(gripper_1_pos[0] - object_1_pos[0]) + abs(gripper_1_pos[1] - object_1_pos[1]) + abs(gripper_1_pos[2] - object_1_pos[2])
 
-        rg2 = abs(object_2_pos[0] - object_2_pos[0]) + abs(object_2_pos[1] - object_2_pos[1]) + abs(object_2_pos[2] - object_2_pos[2])
+        rg2 = abs(gripper_2_pos[0] - object_2_pos[0]) + abs(gripper_2_pos[1] - object_2_pos[1]) + abs(gripper_2_pos[2] - object_2_pos[2])
     
         self.get_logger().info(f'reward distance 1: {rg1}')
         self.get_logger().info(f'reward distance 2: {rg2}')
 
-        return (rg1 + rg2)*-1
+        return -(rg1 + rg2)
         
 
     def reward_function(self, msg: Float32Array):
 
         distance_reward = self.manhattan_distance(msg)
+
+        self.get_logger().info(f'Distance Reward: {distance_reward}')
 
 
     
