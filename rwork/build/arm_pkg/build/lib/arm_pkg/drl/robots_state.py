@@ -23,23 +23,11 @@ class RobotState(Node):
 
         self.latest_object_pose = None
 
+        # Publisher
 
-        # Publisher for robot 1 data
-        self.robot1_publisher = self.create_publisher(
+        self.state_publisher = self.create_publisher(
             Float32Array,
-            '/robot1_states',
-            1)
-
-        # Publisher for robot 2 data
-        self.robot2_publisher = self.create_publisher(
-            Float32Array,
-            '/robot2_states',
-            1)
-
-        # Publisher for object data
-        self.object_publisher = self.create_publisher(
-            Float32Array,
-            '/object_states',
+            '/states',
             1)
 
         # Subscriptions
@@ -66,30 +54,21 @@ class RobotState(Node):
 
         ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
     
+    # Gripper coordinates functions
     def extract_coordinates(self, pose):
-        return {
-            "x": pose.position.x,
-            "y": pose.position.y,
-            "z": pose.position.z,
-            "orientation": {
-                "x": pose.orientation.x,
-                "y": pose.orientation.y,
-                "z": pose.orientation.z,
-                "w": pose.orientation.w
-            }
-        }
+        return [
+            pose.position.x, pose.position.y, pose.position.z,
+            pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w
+        ]
 
     def gripper_object_pose(self, msg: PoseArray):
         self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
-        
         self.latest_object_pose = self.extract_coordinates(msg.poses[3])
 
         self.states()
 
-
-        ######  JOINT ANGLES PROCESSING ######
-
+    # Joint angles processing functions
     def joint_angles_1(self, msg):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
@@ -100,34 +79,19 @@ class RobotState(Node):
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
         self.latest_joint_state_2 = [position for position in msg.position]
 
-
-    
+    # States function
     def states(self):
-        # Robot 1 data
-        robot1_data = {
-            "joint_state_1": self.latest_joint_state_1,
-            "gripper_pose_1": self.latest_end_effector_pose_1
-        }
+        # Flatten the data and publish to the topic
+        # * for unpacking data
+        flat_data = [
+            *self.latest_joint_state_1, *self.latest_end_effector_pose_1,
+            *self.latest_joint_state_2, *self.latest_end_effector_pose_2,
+            *self.latest_object_pose
+        ]
 
-        # Robot 2 data
-        robot2_data = {
-            "joint_state_2": self.latest_joint_state_2,
-            "gripper_pose_2": self.latest_end_effector_pose_2
-        }
-
-        # Object data
-        object_data = {
-            "object_pose": self.latest_object_pose
-        }
-
-        self.get_logger().info(f'State (Robot 1): {robot1_data}')
-        self.get_logger().info(f'State (Robot 2): {robot2_data}')
-        self.get_logger().info(f'State (Object): {object_data}')
-
-        # Publish to topics
-        self.robot1_publisher.publish(Float32Array(data=[float(value) for value in robot1_data.values()]))
-        self.robot2_publisher.publish(Float32Array(data=[float(value) for value in robot2_data.values()]))
-        self.object_publisher.publish(Float32Array(data=[float(value) for value in object_data.values()]))
+        self.get_logger().info(f'State: {flat_data}')
+        float_array_msg = Float32Array(data=flat_data)
+        self.states_publisher.publish(float_array_msg)
 
 
         ######  INITIALIZATION FUNCTION ######
