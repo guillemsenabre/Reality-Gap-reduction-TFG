@@ -93,30 +93,41 @@ class RobotState(Node):
     def joint_angles_1(self, msg):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
-        self.latest_joint_state_1 = {name: position for name, position in zip(relevant_joints, msg.position)}
-
+        self.latest_joint_state_1 = [position for position in msg.position]
 
     def joint_angles_2(self, msg):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
-        self.latest_joint_state_2 = {name: position for name, position in zip(relevant_joints, msg.position)}
+        self.latest_joint_state_2 = [position for position in msg.position]
+
 
     
     def states(self):
-
-        states_data = {
+        # Robot 1 data
+        robot1_data = {
             "joint_state_1": self.latest_joint_state_1,
-            "gripper_pose_1": self.latest_end_effector_pose_1,
+            "gripper_pose_1": self.latest_end_effector_pose_1
+        }
+
+        # Robot 2 data
+        robot2_data = {
             "joint_state_2": self.latest_joint_state_2,
-            "gripper_pose_2": self.latest_end_effector_pose_2,
+            "gripper_pose_2": self.latest_end_effector_pose_2
+        }
+
+        # Object data
+        object_data = {
             "object_pose": self.latest_object_pose
         }
 
-        self.get_logger().info(f'State: {states_data}')
+        self.get_logger().info(f'State (Robot 1): {robot1_data}')
+        self.get_logger().info(f'State (Robot 2): {robot2_data}')
+        self.get_logger().info(f'State (Object): {object_data}')
 
-        # Publish to the topic
-        float_array_msg = Float32Array(data=[float(value) for sublist in states_data.values() for value in sublist])
-        self.states_publisher.publish(float_array_msg)
+        # Publish to topics
+        self.robot1_publisher.publish(Float32Array(data=[float(value) for value in robot1_data.values()]))
+        self.robot2_publisher.publish(Float32Array(data=[float(value) for value in robot2_data.values()]))
+        self.object_publisher.publish(Float32Array(data=[float(value) for value in object_data.values()]))
 
 
         ######  INITIALIZATION FUNCTION ######
