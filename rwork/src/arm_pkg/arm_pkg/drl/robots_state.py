@@ -84,7 +84,7 @@ class RobotState(Node):
     
     def states(self):
 
-        self.states_data = {
+        states_data = {
             "joint_state_1": self.latest_joint_state_1,
             "gripper_pose_1": self.latest_end_effector_pose_1,
             "joint_state_2": self.latest_joint_state_2,
@@ -92,9 +92,7 @@ class RobotState(Node):
             "object_pose": self.latest_object_pose
         }
 
-        data = self.states_data
-
-        self.get_logger().info(f'State: {data}')
+        self.get_logger().info(f'State: {states_data}')
 
 
         ######  INITIALIZATION FUNCTION ######
