@@ -99,7 +99,7 @@ class RobotState(Node):
         self.latest_object_pose = self.extract_coordinates(msg.poses[3])
 
         self.states()
-        
+
     
     def states(self):
         # Separate data for each robot and object
@@ -118,7 +118,7 @@ class RobotState(Node):
         }
 
         # Flatten nested dictionaries
-        flatten = lambda d: {k + '_' + k2 if k2 in d2 else k2: v2 for k, v in d.items() for k2, v2 in v.items()}
+        flatten = lambda d: {k + '_' + k2 if k2 in d else k2: v2 for k, v in d.items() for k2, v2 in v.items()}
         flattened_robot1_data = flatten(robot1_data)
         flattened_robot2_data = flatten(robot2_data)
         flattened_object_data = flatten(object_data)
