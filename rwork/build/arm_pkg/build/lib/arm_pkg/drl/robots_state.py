@@ -75,14 +75,14 @@ class RobotState(Node):
     def joint_angles_1(self, msg):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
-        self.latest_joint_state_1 = [position for position in msg.position]
+        self.latest_joint_state_1 = [msg.position[msg.name.index(joint)] for joint in relevant_joints]
 
         self.get_logger().info(f'Joint State (Robot 1): {dict(zip(relevant_joints, self.latest_joint_state_1))}')
 
     def joint_angles_2(self, msg):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
-        self.latest_joint_state_2 = [position for position in msg.position]
+        self.latest_joint_state_2 = [msg.position[msg.name.index(joint)] for joint in relevant_joints]
 
         self.get_logger().info(f'Joint State (Robot 2): {dict(zip(relevant_joints, self.latest_joint_state_2))}')
 
