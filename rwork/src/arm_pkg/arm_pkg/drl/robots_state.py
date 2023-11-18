@@ -65,7 +65,7 @@ class robotState(Node):
         
         self.latest_object_pose = self.extract_coordinates(msg.poses[3])
 
-        self.update_robot_state()
+        self.states()
 
 
         ######  JOINT ANGLES PROCESSING ######
@@ -92,8 +92,9 @@ class robotState(Node):
             "object_pose": self.latest_object_pose
         }
 
+        data = self.states_data
 
-
+        self.get_logger().info(f'State: {data}')
 
 
         ######  INITIALIZATION FUNCTION ######
