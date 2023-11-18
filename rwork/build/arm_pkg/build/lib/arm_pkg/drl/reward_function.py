@@ -1,12 +1,18 @@
 import rclpy
 from rclpy.node import Node
+from ros_gz_interfaces.msg import Float32Array
 
 class Reward(Node):
-
     def __init__(self):
         super().__init__('reward_function')
+        self.get_logger().info('State Subscriber Node')
 
-        
+        self.state_subscription = self.create_subscription(
+            Float32Array,
+            '/state/data',
+            self.manhattan_distance,
+            1
+        )
 
 
     def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
@@ -17,12 +23,6 @@ class Reward(Node):
     
     def object_deviation(self):
         return None
-
-
-
-
-
-
 
 
 
