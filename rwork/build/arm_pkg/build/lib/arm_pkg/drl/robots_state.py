@@ -2,11 +2,12 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseArray
+from ros_gz_interfaces.msg import Float32Array
 
 
         ######  STATE CLASS  ######
 
-class robotState(Node):
+class RobotState(Node):
     def __init__(self):
         super().__init__('robot_state')
 
@@ -21,6 +22,13 @@ class robotState(Node):
         self.latest_end_effector_pose_2 = None
 
         self.latest_object_pose = None
+
+        # Publisher
+
+        self.state_publisher = self.create_publihser(
+            Float32Array,
+            '/states',
+            1)
 
         # Subscriptions
 
@@ -84,7 +92,7 @@ class robotState(Node):
     
     def states(self):
 
-        self.states_data = {
+        states_data = {
             "joint_state_1": self.latest_joint_state_1,
             "gripper_pose_1": self.latest_end_effector_pose_1,
             "joint_state_2": self.latest_joint_state_2,
@@ -92,9 +100,11 @@ class robotState(Node):
             "object_pose": self.latest_object_pose
         }
 
-        data = self.states_data
+        self.get_logger().info(f'State: {states_data}')
 
-        self.get_logger().info(f'State: {data}')
+        # Publish to the topic
+        float_array_msg = Float32Array(data=[float(value) for sublist in states_data.values() for value in sublist])
+        self.states_publisher.publish(float_array_msg)
 
 
         ######  INITIALIZATION FUNCTION ######
@@ -102,7 +112,7 @@ class robotState(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    robot_state = robotState()
+    robot_state = RobotState()
     rclpy.spin(robot_state)
     robot_state.destroy_node()
     rclpy.shutdown()
