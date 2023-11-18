@@ -11,16 +11,16 @@ class Reward(Node):
         self.state_subscription = self.create_subscription(
             Float32Array,
             'packed/state/data',
-            self.states_unpack,
+            self.reward_function,
             1
         )
 
         self.get_logger().info('Waiting for data ...')
 
-    def states_unpack(self, msg: Float32Array):
 
-        '''
+    def manhattan_distance(self, msg):
         
+        '''
                                     Data structure
 
         [
@@ -40,24 +40,23 @@ class Reward(Node):
         gripper_2_pos = data[15:18]
         object_pos = data[22:25]
 
-        self.manhattan_distance(gripper_1_pos, gripper_2_pos, object_pos)
-
-
-    def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
-
-
-        object_1_pos = [obj_pos[0] - 10, obj_pos[1], obj_pos[2]]
-        object_2_pos = [obj_pos[0] + 10, obj_pos[1], obj_pos[2]]
+        object_1_pos = [object_pos[0] - 0.125, object_pos[1], object_pos[2]]
+        object_2_pos = [object_pos[0] + 0.125, object_pos[1], object_pos[2]]
 
         
-        rg1 = abs(g1_pos[0] - object_1_pos[0]) + abs(g1_pos[1] - object_1_pos[1]) + abs(g1_pos[2] - object_1_pos[2])
+        rg1 = abs(object_1_pos[0] - object_1_pos[0]) + abs(object_1_pos[1] - object_1_pos[1]) + abs(object_1_pos[2] - object_1_pos[2])
 
-        rg2 = abs(g2_pos[0] - object_2_pos[0]) + abs(g2_pos[1] - object_2_pos[1]) + abs(g2_pos[2] - object_2_pos[2])
+        rg2 = abs(object_2_pos[0] - object_2_pos[0]) + abs(object_2_pos[1] - object_2_pos[1]) + abs(object_2_pos[2] - object_2_pos[2])
     
         self.get_logger().info(f'reward distance 1: {rg1}')
         self.get_logger().info(f'reward distance 2: {rg2}')
 
+        return (rg1 + rg2)*-1
+        
 
+    def reward_function(self, msg: Float32Array):
+
+        distance_reward = self.manhattan_distance(msg)
 
 
     
