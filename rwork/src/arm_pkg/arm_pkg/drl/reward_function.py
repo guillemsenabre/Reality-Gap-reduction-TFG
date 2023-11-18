@@ -10,7 +10,7 @@ class Reward(Node):
         self.state_subscription = self.create_subscription(
             Float32Array,
             '/state/data',
-            self.manhattan_distance,
+            self.object_deviation,
             1
         )
 
