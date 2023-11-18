@@ -71,8 +71,10 @@ class robotState(Node):
         ######  JOINT ANGLES PROCESSING ######
 
     def joint_angles_1(self, msg):
-        self.latest_joint_state_1 = {name: position for name, position in zip(msg.name, msg.position)}
-        self.update_robot_state()
+        # Exclude fixed joints and finger joints
+        relevant_joints = [joint for joint in msg.name if "fxed" and "finger" not in joint]
+        self.latest_joint_state_1 = {name: position for name, position in zip(relevant_joints, msg.position)}
+
 
     def joint_angles_2(self, msg):
         self.latest_joint_state_2 = {name: position for name, position in zip(msg.name, msg.position)}
@@ -92,7 +94,12 @@ class robotState(Node):
 
         if self.latest_object_pose is not None:
             object_pose = self.latest_object_pose
-            self.get_logger().info(f'Object pose: {object_pose}')   
+            self.get_logger().info(f'Object pose: {object_pose}')
+
+    
+    def states(self):
+        pass
+
 
 
 
