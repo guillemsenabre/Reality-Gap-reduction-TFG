@@ -46,8 +46,8 @@ class Reward(Node):
     def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
 
 
-        object_1_pos = [obj_pos[0] - 10, obj_pos[1], obj_pos[2]]
-        object_2_pos = [obj_pos[0] + 10, obj_pos[1], obj_pos[2]]
+        object_1_pos = [obj_pos[0] - 0.125, obj_pos[1], obj_pos[2]]
+        object_2_pos = [obj_pos[0] + 0.125, obj_pos[1], obj_pos[2]]
 
         
         rg1 = abs(g1_pos[0] - object_1_pos[0]) + abs(g1_pos[1] - object_1_pos[1]) + abs(g1_pos[2] - object_1_pos[2])
