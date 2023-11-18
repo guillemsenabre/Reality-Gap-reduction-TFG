@@ -27,7 +27,7 @@ class RobotState(Node):
 
         self.state_publisher = self.create_publisher(
             Float32Array,
-            'state/data',
+            'packed/state/data',
             1)
 
         # Subscriptions
@@ -65,7 +65,7 @@ class RobotState(Node):
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
         self.latest_object_pose = self.extract_coordinates(msg.poses[3])
 
-        self.states()
+        self.states_pack()
 
     # Joint angles processing functions
     def joint_angles_1(self, msg):
@@ -79,7 +79,7 @@ class RobotState(Node):
         self.latest_joint_state_2 = [position for position in msg.position]
 
     # States function
-    def states(self):
+    def states_pack(self):
         # Flatten the data and publish to the topic
         # * for unpacking data
         flat_data = [
