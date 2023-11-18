@@ -35,14 +35,16 @@ class Reward(Node):
 
         data = msg.data
 
-        gripper_1_pos = data[5:7]
-        gripper_2_pos = data[16:18]
-        object_pos = data[23:29]
+        # Extract gripper and object positions
+        gripper_1_pos = data[4:7]
+        gripper_2_pos = data[15:18]
+        object_pos = data[22:29]
 
         # Log gripper and object positions for debugging
         self.get_logger().info('Gripper 1 Position: {}'.format(gripper_1_pos))
         self.get_logger().info('Gripper 2 Position: {}'.format(gripper_2_pos))
         self.get_logger().info('Object Position: {}'.format(object_pos))
+
 
 
     def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
