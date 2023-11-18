@@ -23,11 +23,22 @@ class RobotState(Node):
 
         self.latest_object_pose = None
 
-        # Publisher
-
-        self.state_publisher = self.create_publisher(
+        # Publisher for robot 1 data
+        self.robot1_publisher = self.create_publisher(
             Float32Array,
-            '/states',
+            '/robot1_states',
+            1)
+
+        # Publisher for robot 2 data
+        self.robot2_publisher = self.create_publisher(
+            Float32Array,
+            '/robot2_states',
+            1)
+
+        # Publisher for object data
+        self.object_publisher = self.create_publisher(
+            Float32Array,
+            '/object_states',
             1)
 
         # Subscriptions
@@ -91,20 +102,30 @@ class RobotState(Node):
 
     
     def states(self):
-
-        states_data = {
+        # Separate data for each robot and object
+        robot1_data = {
             "joint_state_1": self.latest_joint_state_1,
-            "gripper_pose_1": self.latest_end_effector_pose_1,
+            "gripper_pose_1": self.latest_end_effector_pose_1
+        }
+
+        robot2_data = {
             "joint_state_2": self.latest_joint_state_2,
-            "gripper_pose_2": self.latest_end_effector_pose_2,
+            "gripper_pose_2": self.latest_end_effector_pose_2
+        }
+
+        object_data = {
             "object_pose": self.latest_object_pose
         }
 
-        self.get_logger().info(f'State: {states_data}')
+        # Log the data for debugging
+        self.get_logger().info(f'State (Robot 1): {robot1_data}')
+        self.get_logger().info(f'State (Robot 2): {robot2_data}')
+        self.get_logger().info(f'State (Object): {object_data}')
 
-        # Publish to the topic
-        float_array_msg = Float32Array(data=[float(value) for sublist in states_data.values() for value in sublist])
-        self.states_publisher.publish(float_array_msg)
+        # Publish data for each robot and object
+        self.robot1_publisher.publish(Float32Array(data=[float(value) for sublist in robot1_data.values() for value in sublist]))
+        self.robot2_publisher.publish(Float32Array(data=[float(value) for sublist in robot2_data.values() for value in sublist]))
+        self.object_publisher.publish(Float32Array(data=[float(value) for sublist in object_data.values() for value in sublist]))
 
 
         ######  INITIALIZATION FUNCTION ######
