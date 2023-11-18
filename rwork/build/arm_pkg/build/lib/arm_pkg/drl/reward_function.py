@@ -16,7 +16,9 @@ class Reward(Node):
 
     def states_unpack(self, msg: Float32Array):
         data = msg.data
-        print(f'Received State Data: {data}')
+        #print(f'Received State Data: {data}')
+
+        print(f'robot 1 data: {data[0:10]}')
 
 
     def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
