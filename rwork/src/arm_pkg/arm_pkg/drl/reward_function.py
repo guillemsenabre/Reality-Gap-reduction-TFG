@@ -13,6 +13,10 @@ class Reward(Node):
             1
         )
 
+    def states_callback(self, msg: Float32Array):
+        data = msg.data
+        print(f'Received State Data: {data}')
+
 
     def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
         
