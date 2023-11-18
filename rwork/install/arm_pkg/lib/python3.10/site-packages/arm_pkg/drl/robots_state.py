@@ -77,8 +77,9 @@ class robotState(Node):
 
 
     def joint_angles_2(self, msg):
-        self.latest_joint_state_2 = {name: position for name, position in zip(msg.name, msg.position)}
-        self.update_robot_state()
+        # Exclude fixed joints and finger joints
+        relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
+        self.latest_joint_state_2 = {name: position for name, position in zip(relevant_joints, msg.position)}
 
 
         ###### SYNCHRONIZATION FUNCTION ######
