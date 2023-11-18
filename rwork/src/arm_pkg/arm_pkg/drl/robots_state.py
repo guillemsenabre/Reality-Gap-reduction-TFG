@@ -81,25 +81,17 @@ class robotState(Node):
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
         self.latest_joint_state_2 = {name: position for name, position in zip(relevant_joints, msg.position)}
 
-
-        ###### SYNCHRONIZATION FUNCTION ######
-
-    def update_robot_state(self):
-        if self.latest_joint_state_1 and self.latest_end_effector_pose_1:
-            robot_state_1 = (self.latest_joint_state_1, "Gripper: ", self.latest_end_effector_pose_1)
-            self.get_logger().info(f'Robot 1 State: {robot_state_1}')
-
-        if self.latest_joint_state_2 and self.latest_end_effector_pose_2:
-            robot_state_2 = (self.latest_joint_state_2, "Gripper: ", self.latest_end_effector_pose_2)
-            self.get_logger().info(f'Robot 2 State: {robot_state_2}')
-
-        if self.latest_object_pose is not None:
-            object_pose = self.latest_object_pose
-            self.get_logger().info(f'Object pose: {object_pose}')
-
     
     def states(self):
-        pass
+
+        self.states_data = {
+            "joint_state_1": self.latest_joint_state_1,
+            "gripper_pose_1": self.latest_end_effector_pose_1,
+            "joint_state_2": self.latest_joint_state_2,
+            "gripper_pose_2": self.latest_end_effector_pose_2,
+            "object_pose": self.latest_object_pose
+        }
+
 
 
 
