@@ -7,6 +7,7 @@ class Reward(Node):
         super().__init__('reward_function')
         self.get_logger().info('Starting reward function node')
 
+
         self.state_subscription = self.create_subscription(
             Float32Array,
             'packed/state/data',
@@ -15,10 +16,24 @@ class Reward(Node):
         )
 
     def states_unpack(self, msg: Float32Array):
+
+        '''
+        
+                                    Data structure
+
+        [
+            J01, J11, J21, J31, EX1, EY1, EZ1, EI1, EJ1, EK1,EW1,   --> ROBOT 1
+            J02, J12, J22, J32, EX2, EY2, EZ2, EI2, EJ2, EK2,EW2,   --> ROBOT 2  
+            OBJX, OBJY, OBJZ, OBJI, OBJJ, OBJK, OBJW                --> OBJECT
+        ] 
+
+        '''
+                
+
         data = msg.data
         #print(f'Received State Data: {data}')
 
-        print(f'robot 1 data: {data[0:10]}')
+        print(f'robot 1 data: {data[1:11]}')
 
 
     def manhattan_distance(self, g1_pos, g2_pos, obj_pos):
