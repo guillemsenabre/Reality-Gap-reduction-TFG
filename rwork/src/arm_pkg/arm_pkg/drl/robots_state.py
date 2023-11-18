@@ -6,7 +6,7 @@ from geometry_msgs.msg import PoseArray
 
         ######  STATE CLASS  ######
 
-class robotState(Node):
+class RobotState(Node):
     def __init__(self):
         super().__init__('robot_state')
 
@@ -102,7 +102,7 @@ class robotState(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    robot_state = robotState()
+    robot_state = RobotState()
     rclpy.spin(robot_state)
     robot_state.destroy_node()
     rclpy.shutdown()
