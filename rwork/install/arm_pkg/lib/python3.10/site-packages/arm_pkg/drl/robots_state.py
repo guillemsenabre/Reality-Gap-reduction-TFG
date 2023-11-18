@@ -99,6 +99,7 @@ class RobotState(Node):
         self.latest_object_pose = self.extract_coordinates(msg.poses[3])
 
         self.states()
+        
     
     def states(self):
         # Separate data for each robot and object
@@ -116,15 +117,22 @@ class RobotState(Node):
             "object_pose": self.latest_object_pose
         }
 
+        # Flatten nested dictionaries
+        flatten = lambda d: {k + '_' + k2 if k2 in d2 else k2: v2 for k, v in d.items() for k2, v2 in v.items()}
+        flattened_robot1_data = flatten(robot1_data)
+        flattened_robot2_data = flatten(robot2_data)
+        flattened_object_data = flatten(object_data)
+
         # Log the data for debugging
-        self.get_logger().info(f'State (Robot 1): {robot1_data}')
-        self.get_logger().info(f'State (Robot 2): {robot2_data}')
-        self.get_logger().info(f'State (Object): {object_data}')
+        self.get_logger().info(f'State (Robot 1): {flattened_robot1_data}')
+        self.get_logger().info(f'State (Robot 2): {flattened_robot2_data}')
+        self.get_logger().info(f'State (Object): {flattened_object_data}')
 
         # Publish data for each robot and object
-        self.robot1_publisher.publish(Float32Array(data=[float(value) for sublist in robot1_data.values() for value in sublist]))
-        self.robot2_publisher.publish(Float32Array(data=[float(value) for sublist in robot2_data.values() for value in sublist]))
-        self.object_publisher.publish(Float32Array(data=[float(value) for sublist in object_data.values() for value in sublist]))
+        self.robot1_publisher.publish(Float32Array(data=[float(value) for value in flattened_robot1_data.values()]))
+        self.robot2_publisher.publish(Float32Array(data=[float(value) for value in flattened_robot2_data.values()]))
+        self.object_publisher.publish(Float32Array(data=[float(value) for value in flattened_object_data.values()]))
+
 
 
         ######  INITIALIZATION FUNCTION ######
