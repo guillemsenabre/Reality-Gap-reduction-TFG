@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import PoseArray
+from ros_gz_interfaces.msg import Float32Array
 
 
         ######  STATE CLASS  ######
@@ -21,6 +22,13 @@ class RobotState(Node):
         self.latest_end_effector_pose_2 = None
 
         self.latest_object_pose = None
+
+        # Publisher
+
+        self.state_publisher = self.create_publihser(
+            Float32Array,
+            '/states',
+            1)
 
         # Subscriptions
 
