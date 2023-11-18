@@ -49,7 +49,8 @@ class Reward(Node):
 
         rg2 = abs(g2_pos[0] - obj_pos[0]) + abs(g2_pos[1] - obj_pos[1]) + abs(g2_pos[2] - obj_pos[2])
     
-        return rg1, rg2
+        self.get_logger().info(f'reward distance 1: {rg1}')
+        self.get_logger().info(f'reward distance 2: {rg2}')
 
 
 
