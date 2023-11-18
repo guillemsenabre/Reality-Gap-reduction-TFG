@@ -65,6 +65,10 @@ class RobotState(Node):
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
         self.latest_object_pose = self.extract_coordinates(msg.poses[3])
 
+        self.get_logger().info(f'Gripper 1: {self.latest_end_effector_pose_1}')
+        self.get_logger().info(f'Gripper 2: {self.latest_end_effector_pose_2}')
+        self.get_logger().info(f'Object: {self.latest_object_pose}')
+
         self.states_pack()
 
     # Joint angles processing functions
