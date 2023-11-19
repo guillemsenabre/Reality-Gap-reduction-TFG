@@ -108,9 +108,6 @@ def main(args=None):
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
 
-            # Move to the next state
-            state = next_state
-
             if done:
                 break
 

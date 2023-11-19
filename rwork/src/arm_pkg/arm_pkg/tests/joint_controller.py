@@ -2,7 +2,7 @@ import rclpy
 import math
 
 from rclpy.node import Node
-from std_msgs.msg import Float64
+from std_msgs.msg import Float64, Empty
 
 class JointTorqueController(Node):
     def __init__(self):
@@ -31,6 +31,7 @@ class JointTorqueController(Node):
         self.timer = self.create_timer(1, self.move_joints)
 
         self.angle = 0
+        self.reset_after = 0
 
     def move_joints(self):
 
@@ -39,8 +40,8 @@ class JointTorqueController(Node):
         
         # Test multipliers for each joint 
         joint_multipliers_test = [
-                                  8.5, 9, 3, 2, 2, 1, 1,
-                                  6, 6, 6, 6, 6, 6, 6
+                                  8.5, 9, 3, 2, 1, 1,
+                                  6, 6, 6, 6, 6, 6
                                   ]
 
         for idx, publisher in enumerate(self.joint_publishers):
@@ -48,6 +49,16 @@ class JointTorqueController(Node):
             msg.data = joint_multipliers_test[idx] * math.sin(self.angle)
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
+        
+    
+        reset_after = 0
+        if reset_after == 1000
+        ros_data.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
+
+    def reset(self):
+        self.reset_after += 1
+
+        if self.reset_after == 1000
 
 def main(args=None):
     rclpy.init(args=args)
