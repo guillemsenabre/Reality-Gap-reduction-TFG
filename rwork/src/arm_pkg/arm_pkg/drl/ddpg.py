@@ -47,11 +47,9 @@ class Critic(nn.Module):
 
 
 ################## DDPG AGENT ######################
-
-
-class DDPGAgent(Node):
-    def __init__(self, state_dim, action_dim):
-        super().__init__('ddpg_agent')
+class RosData(Node):
+    def __init__(self, state_dim, action_dim):    
+        super().__init__('ros_data')
 
         # Subsribing to topics data
 
@@ -69,18 +67,6 @@ class DDPGAgent(Node):
             1
         )
 
-
-        self.actor = Actor(state_dim, action_dim)
-        self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
-        self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
-
-        self.critic = Critic(state_dim, action_dim)
-        self.critic_target = Critic(state_dim, action_dim)
-        self.critic_target.load_state_dict(self.critic.state_dict())
-
-        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
-        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
-
     def process_state_data(self, msg: Float32Array):
 
         data = msg.data
@@ -94,6 +80,20 @@ class DDPGAgent(Node):
 
     def process_reward_data(self, msg: Float32):
         self.reward_value = msg.data
+
+class DDPGAgent:
+    def __init__(self, state_dim, action_dim):
+
+        self.actor = Actor(state_dim, action_dim)
+        self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
+        self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
+
+        self.critic = Critic(state_dim, action_dim)
+        self.critic_target = Critic(state_dim, action_dim)
+        self.critic_target.load_state_dict(self.critic.state_dict())
+
+        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
+        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
     
     
     def select_action(self, state):
@@ -175,9 +175,9 @@ for episode in range(num_episodes):
 
 def main(args=None):
     rclpy.init(args=args)
-    ddpg_agent = DDPGAgent()
-    rclpy.spin(ddpg_agent)
-    ddpg_agent.destroy_node()
+    ros_data = RosData()
+    rclpy.spin(ros_data)
+    ros_data.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
