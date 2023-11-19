@@ -3,6 +3,8 @@ from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 
+from ddpg import DDPGAgent
+
 
 
 ################## ROS DATA HANDLING ######################
