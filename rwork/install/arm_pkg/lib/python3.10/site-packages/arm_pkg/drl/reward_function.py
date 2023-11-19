@@ -12,7 +12,7 @@ class Reward(Node):
 
         self.reward_publisher = self.create_publisher(
             Float32,
-            'packed//data',
+            'reward/data',
             1)
         
         # Subscriber
@@ -75,7 +75,7 @@ class Reward(Node):
 
 
 
-    
+
         self.reward_publisher(Float32(data=distance_reward))
 
 
