@@ -10,7 +10,7 @@ class Reward(Node):
 
         # Publisher
 
-        self.state_publisher = self.create_publisher(
+        self.reward_publisher = self.create_publisher(
             Float32,
             'packed//data',
             1)
@@ -68,6 +68,15 @@ class Reward(Node):
         distance_reward = self.manhattan_distance(msg)
 
         self.get_logger().info(f'Distance Reward: {distance_reward}')
+
+
+
+
+
+
+
+    
+        self.reward_publisher(Float32(data=distance_reward))
 
 
     
