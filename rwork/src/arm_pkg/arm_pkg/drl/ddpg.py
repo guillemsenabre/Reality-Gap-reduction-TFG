@@ -47,39 +47,6 @@ class Critic(nn.Module):
 
 
 ################## DDPG AGENT ######################
-class RosData(Node):
-    def __init__(self, state_dim, action_dim):    
-        super().__init__('ros_data')
-
-        # Subsribing to topics data
-
-        self.state_subscription = self.create_subscription(
-            Float32Array,
-            'packed/state/data',
-            self.process_state_data,
-            1
-        )
-
-        self.reward_subscription = self.create_subscription(
-            Float32,
-            'reward/data',
-            self.process_reward_data,
-            1
-        )
-
-    def process_state_data(self, msg: Float32Array):
-
-        data = msg.data
-
-        # Extract gripper and object positions
-        gripper_1_pos = data[4:7]
-        gripper_2_pos = data[15:18]
-        object_pos = data[22:25]
-
-        self.state = gripper_1_pos + gripper_2_pos + object_pos
-
-    def process_reward_data(self, msg: Float32):
-        self.reward_value = msg.data
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
@@ -137,47 +104,81 @@ class DDPGAgent:
 
 
 
+################## ROS DATA HANDLING ######################
 
+class RosData(Node):
+    def __init__(self):    
+        super().__init__('ros_data')
 
+        # Subsribing to topics data
 
-# Initialize the DDPG agent
-state_dim = 18  # Modify based on your state space
-action_dim = 6  # Modify based on your action space
-agent = DDPGAgent(state_dim, action_dim)
+        self.state_subscription = self.create_subscription(
+            Float32Array,
+            'packed/state/data',
+            self.process_state_data,
+            1
+        )
 
-# Training loop
-for episode in range(num_episodes):
-    # Reset environment and get initial state
-    state = env.reset()
+        self.reward_subscription = self.create_subscription(
+            Float32,
+            'reward/data',
+            self.process_reward_data,
+            1
+        )
 
-    for step in range(max_steps):
-        # Select action from the agent's policy
-        action = agent.select_action(state)
+    def process_state_data(self, msg: Float32Array):
 
-        # Execute action and observe next state and reward
-        next_state, reward, done, _ = env.step(action)
+        data = msg.data
 
-        # Update agent
-        agent.update(state, action, reward, next_state, done)
+        # Extract gripper and object positions
+        gripper_1_pos = data[4:7]
+        gripper_2_pos = data[15:18]
+        object_pos = data[22:25]
 
-        # Move to the next state
-        state = next_state
+        self.state = gripper_1_pos + gripper_2_pos + object_pos
 
-        if done:
-            break
-
-
-
-
-
-
+    def process_reward_data(self, msg: Float32):
+        self.reward_value = msg.data
 
 
 def main(args=None):
     rclpy.init(args=args)
     ros_data = RosData()
+
+        # Initialize the DDPG agent
+    state_dim = 18  # Modify based on your state space
+    action_dim = 6  # Modify based on your action space
+    agent = DDPGAgent(state_dim, action_dim)
+
+    # Training loop
+
+    num_episodes = 100
+    max_steps = 1000
+    for episode in range(num_episodes):
+        # Reset environment and get initial state
+        state = env.reset()
+
+        for step in range(max_steps):
+            # Select action from the agent's policy
+            action = agent.select_action(state)
+
+            # Execute action and observe next state and reward
+            next_state, reward, done, _ = env.step(action)
+
+            # Update agent
+            agent.update(state, action, reward, next_state, done)
+
+            # Move to the next state
+            state = next_state
+
+            if done:
+                break
+
+
     rclpy.spin(ros_data)
+
     ros_data.destroy_node()
+
     rclpy.shutdown()
 
 if __name__ == '__main__':
