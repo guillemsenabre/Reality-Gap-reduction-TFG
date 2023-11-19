@@ -9,8 +9,7 @@ from torch.autograd import Variable
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Actor, self).__init__()
-        # Define the architecture based on your state space
-        # Include separate branches for joint angles, end-effector, and object states
+
         self.fc1 = nn.Linear(state_dim, 256)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, action_dim)
@@ -18,22 +17,21 @@ class Actor(nn.Module):
     def forward(self, state):
         x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
-        action = torch.tanh(self.fc3(x))
+        action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
         return action
 
 class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Critic, self).__init__()
-        # Define the architecture based on your state and action space
         self.fc1 = nn.Linear(state_dim + action_dim, 256)
         self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 1)
+        self.fc3 = nn.Linear(128, 1) 
 
     def forward(self, state, action):
         x = torch.cat([state, action], 1)
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
-        value = self.fc3(x)
+        value = self.fc3(x) # Estimated Q-Value for a given state-action pair
         return value
 
 
@@ -41,14 +39,14 @@ class Critic(nn.Module):
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
         self.actor = Actor(state_dim, action_dim)
-        self.actor_target = Actor(state_dim, action_dim)
-        self.actor_target.load_state_dict(self.actor.state_dict())
+        self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
+        self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
 
         self.critic = Critic(state_dim, action_dim)
         self.critic_target = Critic(state_dim, action_dim)
         self.critic_target.load_state_dict(self.critic.state_dict())
 
-        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3)
+        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
 
     def select_action(self, state):
@@ -88,6 +86,12 @@ class DDPGAgent:
     def soft_update(self, local_model, target_model, tau):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_((1.0 - tau) * target_param.data + tau * local_param.data)
+
+
+
+
+
+
 
 # Initialize the DDPG agent
 state_dim = 18  # Modify based on your state space
