@@ -9,9 +9,9 @@ from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 
-####################################################
+
 ################ ACTOR NETWORKS ####################
-####################################################
+
 
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
@@ -27,9 +27,9 @@ class Actor(nn.Module):
         action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
         return action
 
-####################################################
+
 ################ CRITIC NETWORKS ###################
-####################################################
+
 
 class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
@@ -45,12 +45,14 @@ class Critic(nn.Module):
         value = self.fc3(x) # Estimated Q-Value for a given state-action pair
         return value
 
-####################################################
+
 ################## DDPG AGENT ######################
-####################################################
+
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
+
+        # Subsribing to topics data
 
         self.state_subscription = self.create_subscription(
             Float32Array,
@@ -112,7 +114,7 @@ class DDPGAgent:
         self.soft_update(self.actor, self.actor_target, 0.01)
         self.soft_update(self.critic, self.critic_target, 0.01)
 
-    def soft_update(self, local_model, target_model, tau):
+    def soft_update(self, local_model, target_model, )tau:
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_((1.0 - tau) * target_param.data + tau * local_param.data)
 

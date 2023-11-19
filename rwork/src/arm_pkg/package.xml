@@ -11,12 +11,15 @@
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>
+  <depend>ros_gz_interfaces</depend>
   <depend>csv</depend>
   <depend>os</depend>
   <depend>math</depend>
   <depend>time</depend>
   <depend>torch</depend>
   <depend>random</depend>
+  <depend>numpy</depend>
+  <depend>numpy</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
