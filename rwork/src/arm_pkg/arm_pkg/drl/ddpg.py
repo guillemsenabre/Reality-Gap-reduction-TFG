@@ -82,8 +82,7 @@ class DDPGAgent(Node):
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
 
     def process_state_data(self, msg: Float32Array):
-        
-        state = []
+
         data = msg.data
 
         # Extract gripper and object positions
@@ -91,7 +90,7 @@ class DDPGAgent(Node):
         gripper_2_pos = data[15:18]
         object_pos = data[22:25]
 
-        self.state_lists = state.append(gripper_1_pos, gripper_2_pos, object_pos)
+        self.state = gripper_1_pos + gripper_2_pos + object_pos
 
     def process_reward_data(self, msg: Float32):
         self.reward_value = msg.data
