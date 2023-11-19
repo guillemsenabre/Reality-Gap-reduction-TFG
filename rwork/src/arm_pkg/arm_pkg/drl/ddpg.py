@@ -3,8 +3,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.autograd import Variable
 
+import rclpy
+from rclpy.node import Node
+from ros_gz_interfaces.msg import Float32Array
+from std_msgs.msg import Float32
 
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
@@ -38,6 +41,22 @@ class Critic(nn.Module):
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
+
+        self.state_subscription = self.create_subscription(
+            Float32Array,
+            'packed/state/data',
+            self.????,
+            1
+        )
+
+        self.reward_subscription = self.create_subscription(
+            Float32,
+            'reward/data',
+            self.????,
+            1
+        )
+
+
         self.actor = Actor(state_dim, action_dim)
         self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
         self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
@@ -118,3 +137,20 @@ for episode in range(num_episodes):
 
         if done:
             break
+
+
+
+
+
+
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    init_function = Reward()
+    rclpy.spin(init_function)
+    init_function.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
