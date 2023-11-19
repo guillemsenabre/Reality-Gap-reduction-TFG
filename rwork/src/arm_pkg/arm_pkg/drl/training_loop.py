@@ -7,8 +7,6 @@ from ddpg import DDPGAgent
 
 
 
-################## ROS DATA HANDLING ######################
-
 class RosData(Node):
     def __init__(self):    
         super().__init__('ros_data')
@@ -28,6 +26,24 @@ class RosData(Node):
             self.process_reward_data,
             1
         )
+
+        # Publishers for the joints
+
+        self.joint_publishers = []
+        self.joint_names = [
+                            'joint0_1', 
+                            'joint1_1', 
+                            'joint2_1',
+                            'joint3_1',
+                            'joint0_2', 
+                            'joint1_2', 
+                            'joint2_2',
+                            'joint3_2',
+                            ]
+        
+        for joint_name in self.joint_names:
+            publisher = self.create_publisher(Float32, f'/arm/{joint_name}/wrench', 1)
+            self.joint_publishers.append(publisher)
 
         # Initialize the DDPG agent
         state_dim = 12  
@@ -67,8 +83,8 @@ def main(args=None):
     max_steps = 1000
     for episode in range(num_episodes):
         # Reset environment and get initial state
-        state = env.reset()
-        state = 
+        state = env.reset() # FIND A WAY TO RESET GAZEBO  !!!!!!!!!!!!!!!!!
+        state = RosData.process_state_data
 
         for step in range(max_steps):
             # Select action from the agent's policy
