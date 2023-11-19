@@ -69,6 +69,16 @@ class RosData(Node):
 
     
     def move_joints(self, action):
+        
+        for idx, publisher in enumerate(self.joint_publishers):
+            msg = Float32()
+            msg.data = float(action[idx])
+
+            publisher.publish(msg)
+
+            
+            
+
 
 
 
