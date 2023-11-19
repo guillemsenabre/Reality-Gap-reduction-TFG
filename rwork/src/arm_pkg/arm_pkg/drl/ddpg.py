@@ -49,7 +49,7 @@ class Critic(nn.Module):
 ################## DDPG AGENT ######################
 
 
-class DDPGAgent:
+class DDPGAgent(Node):
     def __init__(self, state_dim, action_dim):
 
         # Subsribing to topics data
