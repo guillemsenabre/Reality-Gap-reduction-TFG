@@ -51,6 +51,7 @@ class Critic(nn.Module):
 
 class DDPGAgent(Node):
     def __init__(self, state_dim, action_dim):
+        super().__init__('ddpg_agent')
 
         # Subsribing to topics data
 
@@ -80,6 +81,13 @@ class DDPGAgent(Node):
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
 
+    def process_state_data(self, msg: Float32Array):
+        pass
+
+    def process_reward_data(self, msg: Float32):
+        pass
+    
+    
     def select_action(self, state):
         state = torch.FloatTensor(state)
         action = self.actor(state)
@@ -159,9 +167,9 @@ for episode in range(num_episodes):
 
 def main(args=None):
     rclpy.init(args=args)
-    init_function = Reward()
-    rclpy.spin(init_function)
-    init_function.destroy_node()
+    ddpg_agent = DDPGAgent()
+    rclpy.spin(ddpg_agent)
+    ddpg_agent.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
