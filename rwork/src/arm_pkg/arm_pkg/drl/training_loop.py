@@ -105,7 +105,7 @@ def main(args=None):
             next_state, reward, done, _ = env.step(action)
 
             # Update agent
-            DDPGAgent.update(state, action, reward, next_state, done)
+            ros_data.agent.update(state, action, reward, next_state, done)
 
             # Move to the next state
             state = next_state
