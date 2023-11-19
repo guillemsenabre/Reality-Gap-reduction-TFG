@@ -76,7 +76,7 @@ class Reward(Node):
 
 
 
-        self.reward_publisher(Float32(data=distance_reward))
+        self.reward_publisher.publish(Float32(data=distance_reward))
 
 
     
