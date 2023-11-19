@@ -82,10 +82,19 @@ class DDPGAgent(Node):
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
 
     def process_state_data(self, msg: Float32Array):
-        pass
+        
+        state = []
+        data = msg.data
+
+        # Extract gripper and object positions
+        gripper_1_pos = data[4:7]
+        gripper_2_pos = data[15:18]
+        object_pos = data[22:25]
+
+        self.state_lists = state.append(gripper_1_pos, gripper_2_pos, object_pos)
 
     def process_reward_data(self, msg: Float32):
-        pass
+        self.reward_value = msg.data
     
     
     def select_action(self, state):
@@ -122,7 +131,7 @@ class DDPGAgent(Node):
         self.soft_update(self.actor, self.actor_target, 0.01)
         self.soft_update(self.critic, self.critic_target, 0.01)
 
-    def soft_update(self, local_model, target_model, )tau:
+    def soft_update(self, local_model, target_model, tau):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_((1.0 - tau) * target_param.data + tau * local_param.data)
 
