@@ -9,6 +9,10 @@ from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 
+####################################################
+################ ACTOR NETWORKS ####################
+####################################################
+
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Actor, self).__init__()
@@ -22,6 +26,10 @@ class Actor(nn.Module):
         x = F.relu(self.fc2(x))
         action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
         return action
+
+####################################################
+################ CRITIC NETWORKS ###################
+####################################################
 
 class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
@@ -37,7 +45,9 @@ class Critic(nn.Module):
         value = self.fc3(x) # Estimated Q-Value for a given state-action pair
         return value
 
-
+####################################################
+################## DDPG AGENT ######################
+####################################################
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
@@ -45,14 +55,14 @@ class DDPGAgent:
         self.state_subscription = self.create_subscription(
             Float32Array,
             'packed/state/data',
-            self.????,
+            self.process_state_data,
             1
         )
 
         self.reward_subscription = self.create_subscription(
             Float32,
             'reward/data',
-            self.????,
+            self.process_reward_data,
             1
         )
 
