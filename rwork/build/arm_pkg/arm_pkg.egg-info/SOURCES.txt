@@ -10,6 +10,7 @@ setup.py
 ../../build/arm_pkg/arm_pkg.egg-info/zip-safe
 arm_pkg/__init__.py
 arm_pkg/drl/__init__.py
+arm_pkg/drl/ddpg.py
 arm_pkg/drl/reward_function.py
 arm_pkg/drl/robots_state.py
 arm_pkg/drl/sac.py

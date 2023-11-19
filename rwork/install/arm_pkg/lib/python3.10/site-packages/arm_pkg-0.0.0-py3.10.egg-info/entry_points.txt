@@ -1,5 +1,6 @@
 [console_scripts]
 controller = arm_pkg.tests.joint_controller:main
+ddpg = arm_pkg.drl.ddpg:main
 gripper_test = arm_pkg.tests.data_gripper_test:main
 listener = arm_pkg.tests.joint_listener:main
 processor = arm_pkg.tests.joint_processor:main
