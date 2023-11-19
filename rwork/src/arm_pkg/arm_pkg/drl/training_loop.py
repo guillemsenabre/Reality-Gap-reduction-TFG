@@ -48,7 +48,7 @@ class RosData(Node):
         # Initialize the DDPG agent
         state_dim = 12  
         action_dim = 8
-        agent = DDPGAgent(state_dim, action_dim)
+        self.agent = DDPGAgent(state_dim, action_dim)
 
     def process_state_data(self, msg: Float32Array):
 
@@ -69,23 +69,18 @@ class RosData(Node):
 
     
     def move_joints(self, action):
-        
+
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float32()
             msg.data = float(action[idx])
 
             publisher.publish(msg)
 
-            
-            
-
-
 
 
 def main(args=None):
     rclpy.init(args=args)
     ros_data = RosData()
-
 
     # Training loop
 
@@ -94,16 +89,19 @@ def main(args=None):
     for episode in range(num_episodes):
         # Reset environment and get initial state
         state = env.reset() # FIND A WAY TO RESET GAZEBO  !!!!!!!!!!!!!!!!!
-        state = RosData.process_state_data
+        state = ros_data.process_state_data
 
         for step in range(max_steps):
             # Select action from the agent's policy
-            action = DDPGAgent.select_action(state)
+            action = ros_data.agent.select_action(state)
 
-            ## EXECUTE ACTION HERE ##
+            # Execute actions
+            ros_data.move_joints(action)
 
-            RosData.move_joints(action)
             # observe next state and reward
+            next_state = ros_data.process_state_data
+            reward = ros_data.process_reward_data
+
             next_state, reward, done, _ = env.step(action)
 
             # Update agent
