@@ -61,7 +61,9 @@ class DDPGAgent:
     def select_action(self, state):
         state = torch.FloatTensor(state)
         action = self.actor(state)
-        return action.detach().numpy()
+
+        # remove gradients from tensor and convert it to numpy array
+        return action.detach().numpy() 
 
     def update(self, state, action, reward, next_state, done):
         state = torch.FloatTensor(state)

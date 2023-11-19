@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
+from std_srvs.srv import Empty
 
 from ddpg import DDPGAgent
 
@@ -88,7 +89,7 @@ def main(args=None):
     max_steps = 1000
     for episode in range(num_episodes):
         # Reset environment and get initial state
-        state = env.reset() # FIND A WAY TO RESET GAZEBO  !!!!!!!!!!!!!!!!!
+        ros_data.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
         state = ros_data.process_state_data
 
         for step in range(max_steps):
