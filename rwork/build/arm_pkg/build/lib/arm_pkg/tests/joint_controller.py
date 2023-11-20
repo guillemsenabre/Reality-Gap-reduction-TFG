@@ -2,7 +2,7 @@ import rclpy
 import math
 
 from rclpy.node import Node
-from std_msgs.msg import Float64
+from std_msgs.msg import Float64, Empty
 
 class JointTorqueController(Node):
     def __init__(self):
@@ -14,14 +14,12 @@ class JointTorqueController(Node):
                             'joint1_1', 
                             'joint2_1',
                             'joint3_1',
-                            'joint4_1',
                             'right_finger_1_joint',
                             'left_finger_1_joint',
                             'joint0_2', 
                             'joint1_2', 
                             'joint2_2',
                             'joint3_2',
-                            'joint4_2',
                             'right_finger_2_joint',
                             'left_finger_2_joint',
                             ]
@@ -30,7 +28,8 @@ class JointTorqueController(Node):
             publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
-        self.timer = self.create_timer(1, self.move_joints)
+        self.move_timer = self.create_timer(1, self.move_joints)
+        self.reset_timer = self.create_timer(10000, self.reset)
 
         self.angle = 0
 
@@ -41,8 +40,8 @@ class JointTorqueController(Node):
         
         # Test multipliers for each joint 
         joint_multipliers_test = [
-                                  8.5, 9, 3, 2, 2, 1, 1,
-                                  6, 6, 6, 6, 6, 6, 6
+                                  8.5, 9, 3, 2, 1, 1,
+                                  6, 6, 6, 6, 6, 6
                                   ]
 
         for idx, publisher in enumerate(self.joint_publishers):
@@ -50,6 +49,10 @@ class JointTorqueController(Node):
             msg.data = joint_multipliers_test[idx] * math.sin(self.angle)
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
+
+
+    def reset(self):
+        self.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
 
 def main(args=None):
     rclpy.init(args=args)

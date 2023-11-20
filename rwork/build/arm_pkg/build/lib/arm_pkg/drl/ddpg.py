@@ -3,7 +3,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.autograd import Variable
+
+
+################ ACTOR NETWORKS ####################
 
 
 class Actor(nn.Module):
@@ -20,6 +22,10 @@ class Actor(nn.Module):
         action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
         return action
 
+
+################ CRITIC NETWORKS ###################
+
+
 class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Critic, self).__init__()
@@ -35,9 +41,11 @@ class Critic(nn.Module):
         return value
 
 
+################## DDPG AGENT ######################
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
+
         self.actor = Actor(state_dim, action_dim)
         self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
         self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
@@ -48,11 +56,14 @@ class DDPGAgent:
 
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
-
+    
+    
     def select_action(self, state):
         state = torch.FloatTensor(state)
         action = self.actor(state)
-        return action.detach().numpy()
+
+        # remove gradients from tensor and convert it to numpy array
+        return action.detach().numpy() 
 
     def update(self, state, action, reward, next_state, done):
         state = torch.FloatTensor(state)
@@ -86,35 +97,3 @@ class DDPGAgent:
     def soft_update(self, local_model, target_model, tau):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_((1.0 - tau) * target_param.data + tau * local_param.data)
-
-
-
-
-
-
-
-# Initialize the DDPG agent
-state_dim = 18  # Modify based on your state space
-action_dim = 6  # Modify based on your action space
-agent = DDPGAgent(state_dim, action_dim)
-
-# Training loop
-for episode in range(num_episodes):
-    # Reset environment and get initial state
-    state = env.reset()
-
-    for step in range(max_steps):
-        # Select action from the agent's policy
-        action = agent.select_action(state)
-
-        # Execute action and observe next state and reward
-        next_state, reward, done, _ = env.step(action)
-
-        # Update agent
-        agent.update(state, action, reward, next_state, done)
-
-        # Move to the next state
-        state = next_state
-
-        if done:
-            break

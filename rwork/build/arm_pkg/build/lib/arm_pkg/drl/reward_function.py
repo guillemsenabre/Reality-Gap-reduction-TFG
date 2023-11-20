@@ -69,12 +69,7 @@ class Reward(Node):
 
         self.get_logger().info(f'Distance Reward: {distance_reward}')
 
-
-
-
-
-
-
+        
 
         self.reward_publisher.publish(Float32(data=distance_reward))
 

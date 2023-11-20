@@ -11,7 +11,7 @@ class RobotState(Node):
     def __init__(self):
         super().__init__('robot_state')
 
-        self.get_logger().info('Starting Robots State Node')
+        self.get_logger().info('Starting DDPG POLICY Node')
 
         # Storage for latest data
 
