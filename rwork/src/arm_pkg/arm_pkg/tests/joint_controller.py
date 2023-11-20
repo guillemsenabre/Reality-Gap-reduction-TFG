@@ -28,10 +28,10 @@ class JointTorqueController(Node):
             publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
-        self.timer = self.create_timer(1, self.move_joints)
+        self.move_timer = self.create_timer(1, self.move_joints)
+        self.reset_timer = self.create_timer(2000, self.reset)
 
         self.angle = 0
-        self.reset_after = 0
 
     def move_joints(self):
 
@@ -49,16 +49,10 @@ class JointTorqueController(Node):
             msg.data = joint_multipliers_test[idx] * math.sin(self.angle)
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
-        
-    
-        reset_after = 0
-        if reset_after == 1000
-        ros_data.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
+
 
     def reset(self):
-        self.reset_after += 1
-
-        if self.reset_after == 1000
+        self.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
 
 def main(args=None):
     rclpy.init(args=args)
