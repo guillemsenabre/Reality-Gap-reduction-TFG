@@ -29,7 +29,7 @@ class JointTorqueController(Node):
             self.joint_publishers.append(publisher)
 
         self.move_timer = self.create_timer(1, self.move_joints)
-        self.reset_timer = self.create_timer(2000, self.reset)
+        self.reset_timer = self.create_timer(10000, self.reset)
 
         self.angle = 0
 
