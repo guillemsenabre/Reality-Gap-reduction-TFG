@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<sdf version="1.10">
+<sdf version="1.8">
   <world name="full_env">
 
     <!-- LIGHT -->
@@ -422,8 +422,8 @@
     <model name="arm_1">
 
       <plugin
-        filename="gz-sim-joint-controller-system"
-        name="gz::sim::systems::JointController">
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>joint0_1</joint_name>
         <topic>/arm/joint0_1/wrench</topic>
       </plugin>

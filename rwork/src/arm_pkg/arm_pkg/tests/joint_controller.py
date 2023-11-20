@@ -52,7 +52,8 @@ class JointTorqueController(Node):
 
 
     def reset(self):
-        self.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
+        pass
+        #self.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
 
 def main(args=None):
     rclpy.init(args=args)
