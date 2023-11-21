@@ -60,7 +60,7 @@
                      <!-- LINK POSE  5Hz, dynamic-->
 
         <plugin
-            filename="gz-sim-pose-publisher-system.so"
+            filename="gz-sim-pose-publisher-system"
             name="gz::sim::systems::PosePublisher">
             <publish_link_pose>true</publish_link_pose>
             <update_frequency>0.5</update_frequency>
@@ -466,14 +466,14 @@
             <!-- LINK POSE  5Hz, dynamic-->
 
       <plugin
-        filename="gz-sim-pose-publisher-system.so"
+        filename="gz-sim-pose-publisher-system"
         name="gz::sim::systems::PosePublisher">
         <publish_link_pose>true</publish_link_pose>
         <update_frequency>0.5</update_frequency>
       </plugin>
 
       <plugin
-        filename="gz-sim-joint-state-publisher-system.so"
+        filename="gz-sim-joint-state-publisher-system"
         name="gz::sim::systems::JointStatePublisher">
       </plugin>
 
@@ -1253,7 +1253,7 @@
         <!-- LINK POSE  5Hz, dynamic-->
 
       <plugin
-        filename="gz-sim-pose-publisher-system.so"
+        filename="gz-sim-pose-publisher-system"
         name="gz::sim::systems::PosePublisher">
         <publish_link_pose>true</publish_link_pose>
         <update_frequency>0.5</update_frequency>
@@ -1261,7 +1261,7 @@
 
 
       <plugin
-        filename="gz-sim-joint-state-publisher-system.so"
+        filename="gz-sim-joint-state-publisher-system"
         name="gz::sim::systems::JointStatePublisher">
       </plugin>
 
