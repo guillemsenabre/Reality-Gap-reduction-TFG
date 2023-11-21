@@ -82,7 +82,8 @@ class JointTorqueController(Node):
             10
         )
 
-        self.reset_publisher.publish(joint_state_msg)    
+        self.arm1_reset_publisher.publish(joint_state_msg)  
+        self.arm2_reset_publisher.publish(joint_state_msg)   
         
 
 def main(args=None):
