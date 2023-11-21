@@ -1,8 +1,6 @@
 from email import iterators
 import rclpy
 import math
-import subprocess
-import os
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
