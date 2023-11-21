@@ -2,6 +2,7 @@ from email import iterators
 import rclpy
 import math
 import subprocess
+import os
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
@@ -37,7 +38,7 @@ class JointTorqueController(Node):
 
         self.angle = 0
         
-        self.iterations_per_epoch = 100
+        self.iterations_per_epoch = 30
         self.current_iteration = 0
 
     def move_joints(self):
@@ -81,8 +82,11 @@ class JointTorqueController(Node):
 
     def start_gazebo_process(self):
         # Start Gazebo with the desired SDF file
+        home_directory = os.path.expanduser("~")
+        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+
         try:
-            subprocess.run(['ign', 'gazebo', '~/tfg/rowrk/src/sdf_files/full_env_simpler.sdf'], check=True)
+            subprocess.run(['ign', 'gazebo', sdf_file_path], check=True)
         except subprocess.CalledProcessError:
             self.get_logger().error("Failed to start Gazebo process.")
         
