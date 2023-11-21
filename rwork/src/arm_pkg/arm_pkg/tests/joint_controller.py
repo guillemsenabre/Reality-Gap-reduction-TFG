@@ -33,6 +33,8 @@ class JointTorqueController(Node):
         self.move_timer = self.create_timer(1, self.move_joints)
         self.reset_timer = self.create_timer(10000, self.reset)
 
+        
+
         self.angle = 0
         
         self.iterations_per_epoch = 100
@@ -80,7 +82,7 @@ class JointTorqueController(Node):
     def start_gazebo_process(self):
         # Start Gazebo with the desired SDF file
         try:
-            subprocess.run(['ign', 'gazebo', 'full_env_simpler.sdf'], check=True)
+            subprocess.run(['ign', 'gazebo', '~/tfg/rowrk/src/sdf_files/full_env_simpler.sdf'], check=True)
         except subprocess.CalledProcessError:
             self.get_logger().error("Failed to start Gazebo process.")
         
