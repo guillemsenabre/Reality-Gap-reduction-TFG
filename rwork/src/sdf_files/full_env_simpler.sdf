@@ -473,8 +473,10 @@
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-state-controller-system.so"
-        name="ignition::gazebo::systems::JointStateController">
+        filename="libignition-gazebo-joint-position-controller-system.so"
+        name="ignition::gazebo::systems::JointPositionController">
+        <joint_name>joint0_1</joint_name>
+        <topic>/arm1/joint0_1/pos</topic>
       </plugin>
 
       <plugin
