@@ -477,6 +477,11 @@
         name="ignition::gazebo::systems::JointStatePublisher">
       </plugin>
 
+      <plugin
+        filename="libignition-gazebo-joint-state-publisher-system.so"
+        name="ignition::gazebo::systems::JointStatePublisher">
+      </plugin>
+
                                 <!-- Arm Links -->
 
                                 <!-- BASE LINK -->
