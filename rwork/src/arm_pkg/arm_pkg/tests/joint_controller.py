@@ -86,7 +86,7 @@ class JointTorqueController(Node):
         sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
 
         try:
-            subprocess.run(['ign', 'gazebo', sdf_file_path], check=True)
+            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except subprocess.CalledProcessError:
             self.get_logger().error("Failed to start Gazebo process.")
         
