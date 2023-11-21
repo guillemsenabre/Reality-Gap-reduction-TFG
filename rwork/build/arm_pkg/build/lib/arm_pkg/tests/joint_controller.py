@@ -1,8 +1,10 @@
+from email import iterators
 import rclpy
 import math
+import subprocess
 
 from rclpy.node import Node
-from std_msgs.msg import Float64, Empty
+from std_msgs.msg import Float64
 
 class JointTorqueController(Node):
     def __init__(self):
@@ -32,6 +34,9 @@ class JointTorqueController(Node):
         self.reset_timer = self.create_timer(10000, self.reset)
 
         self.angle = 0
+        
+        self.iterations_per_epoch = 100
+        self.current_iteration = 0
 
     def move_joints(self):
 
@@ -50,10 +55,31 @@ class JointTorqueController(Node):
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
 
+        self.current_iteration += 1
+
+        if self.current_iteration >= self.iterations_per_epoch:
+            self.current_iteration = 0
+            self.reset()
 
     def reset(self):
-        pass
-        #self.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
+        self.get_logger().info("Resetting simulation...")
+        self.kill_gazebo_process()
+        self.start_gazebo_process()
+
+    def kill_gazebo_process(self):
+        # Find and kill the Gazebo process
+        try:
+            subprocess.run(['pkill', '-f', 'gazebo'], check=True)
+        except subprocess.CalledProcessError:
+            self.get_logger().warning("Failed to kill Gazebo process.")
+
+    def start_gazebo_process(self):
+        # Start Gazebo with the desired SDF file
+        try:
+            subprocess.run(['ign', 'gazebo', 'full_env_simpler.sdf'], check=True)
+        except subprocess.CalledProcessError:
+            self.get_logger().error("Failed to start Gazebo process.")
+        
 
 def main(args=None):
     rclpy.init(args=args)

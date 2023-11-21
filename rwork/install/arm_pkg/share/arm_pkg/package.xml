@@ -19,6 +19,7 @@
   <depend>torch</depend>
   <depend>random</depend>
   <depend>numpy</depend>
+  <depend>subprocess</depend>
  
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
