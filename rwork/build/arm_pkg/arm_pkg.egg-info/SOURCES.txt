@@ -21,6 +21,7 @@ arm_pkg/tests/joint_controller.py
 arm_pkg/tests/joint_listener.py
 arm_pkg/tests/joint_processor.py
 arm_pkg/tests/joint_storage.py
+arm_pkg/tests/launchgazebotest.py
 arm_pkg/tests/state_test.py
 resource/arm_pkg
 test/test_copyright.py
