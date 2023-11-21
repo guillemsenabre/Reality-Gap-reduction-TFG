@@ -70,9 +70,15 @@ class JointTorqueController(Node):
         joint_state_msg.name = self.joint_names
         joint_state_msg.position = [0.0] * len(self.joint_names)
 
-        self.reset_publisher = self.create_publisher(
+        self.arm1_reset_publisher = self.create_publisher(
             JointState,
-            '/joint_states',
+            '/world/full_env/model/arm_1/joint_state',
+            10
+        )
+
+        self.arm2_reset_publisher = self.create_publisher(
+            JointState,
+            '/world/full_env/model/arm_2/joint_state',
             10
         )
 
