@@ -57,9 +57,13 @@ class JointTorqueController(Node):
 
         self.current_iteration += 1
 
+        self.get_logger().info(f'Iteration nº: {self.current_iteration}')
+
         if self.current_iteration >= self.iterations_per_epoch:
             self.current_iteration = 0
             self.reset()
+
+
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
