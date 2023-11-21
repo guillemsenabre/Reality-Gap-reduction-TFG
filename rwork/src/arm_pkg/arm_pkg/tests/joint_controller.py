@@ -11,12 +11,6 @@ from sensor_msgs.msg import JointState
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
-
-        self.reset_publisher = self.create_publisher(
-            JointState,
-            '/joint_states',
-            10
-        )
         
         self.joint_publishers = []
         self.joint_names = [
@@ -77,6 +71,12 @@ class JointTorqueController(Node):
         joint_state_msg = JointState()
         joint_state_msg.name = self.joint_names
         joint_state_msg.position = [0.0] * len(self.joint_names)
+
+        self.reset_publisher = self.create_publisher(
+            JointState,
+            '/joint_states',
+            10
+        )
 
         self.reset_publisher.publish(joint_state_msg)    
         
