@@ -6,10 +6,17 @@ import os
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
+from sensor_msgs.msg import JointState
 
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
+
+        self.reset_publisher = self.create_publisher(
+            JointState,
+            '/joint_states',
+            10
+        )
         
         self.joint_publishers = []
         self.joint_names = [
@@ -32,21 +39,16 @@ class JointTorqueController(Node):
             self.joint_publishers.append(publisher)
 
         self.move_timer = self.create_timer(1, self.move_joints)
-        self.reset_timer = self.create_timer(10000, self.reset)
-
-        
 
         self.angle = 0
         
-        self.iterations_per_epoch = 30
+        self.iterations_per_epoch = 20
         self.current_iteration = 0
 
     def move_joints(self):
 
-        # keep the angle between 0 and 2π
         self.angle = (self.angle + 10) % (2 * math.pi) 
         
-        # Test multipliers for each joint 
         joint_multipliers_test = [
                                   8.5, 9, 3, 2, 1, 1,
                                   6, 6, 6, 6, 6, 6
@@ -70,25 +72,13 @@ class JointTorqueController(Node):
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
-        self.kill_gazebo_process()
-        self.start_gazebo_process()
 
-    def kill_gazebo_process(self):
-        # Find and kill the Gazebo process
-        try:
-            subprocess.run(['pkill', '-f', 'gazebo'], check=True)
-        except subprocess.CalledProcessError:
-            self.get_logger().warning("Failed to kill Gazebo process.")
+        # Create a JointState message to set joint positions
+        joint_state_msg = JointState()
+        joint_state_msg.name = self.joint_names
+        joint_state_msg.position = [0.0] * len(self.joint_names)
 
-    def start_gazebo_process(self):
-        # Start Gazebo with the desired SDF file
-        home_directory = os.path.expanduser("~")
-        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
-
-        try:
-            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        except subprocess.CalledProcessError:
-            self.get_logger().error("Failed to start Gazebo process.")
+        self.reset_publisher.publish(joint_state_msg)    
         
 
 def main(args=None):
