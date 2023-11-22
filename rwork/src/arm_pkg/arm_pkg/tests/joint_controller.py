@@ -1,4 +1,3 @@
-from email import iterators
 import rclpy
 import math
 import subprocess
@@ -11,6 +10,8 @@ from ros_gz_interfaces.srv import ControlWorld
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
+
+        self.run_gazebo()
 
         self.control_world_client = self.create_client(ControlWorld, '/world/full_env/control')
         
@@ -77,7 +78,6 @@ class JointTorqueController(Node):
         self.run_gazebo()
         self.unpause()
 
-
     def kill_gazebo_process(self):
         # Find and kill the Gazebo process
         try:
@@ -86,7 +86,7 @@ class JointTorqueController(Node):
             self.get_logger().warning("Failed to kill Gazebo process.")
 
     def run_gazebo(self):
-        # Start Gazebo with the desired SDF file in the background
+        self.get_logger().info("starting gazebo simulator...")
         home_directory = os.path.expanduser("~")
         sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
 
