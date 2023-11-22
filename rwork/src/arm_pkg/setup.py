@@ -24,7 +24,7 @@ setup(
 		'processor = arm_pkg.tests.joint_processor:main',
 		'storage = arm_pkg.tests.joint_storage:main',
 		'controller = arm_pkg.tests.joint_controller:main',
-		'reset_controller = arm_pkg.tests.joint_position_reset:main'
+		'reset_controller = arm_pkg.tests.joint_position_reset:main',
 		'gripper_test = arm_pkg.tests.data_gripper_test:main',
 		'state_test = arm_pkg.tests.state_test:main',
 		'robots_state = arm_pkg.drl.robots_state:main',
