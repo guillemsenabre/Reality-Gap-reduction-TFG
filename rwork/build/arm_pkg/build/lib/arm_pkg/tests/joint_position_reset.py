@@ -84,7 +84,7 @@ class JointTorqueController(Node):
         self.get_logger().info('Joints reset to initial positions')
 
 
-    def get_current_positions(self, msg: Float32Array):
+    def get_current_position(self, msg: Float32Array):
 
         '''
                                     Data structure

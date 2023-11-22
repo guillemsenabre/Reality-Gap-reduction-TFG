@@ -41,9 +41,10 @@
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info/requires.txt
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/controller
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/ddpg
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/gripper_test
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/listener
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/processor
-/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/reset_controller = arm_pkg.tests.joint_position_reset:maingripper_test
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/reset_controller
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/reward_function
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/robots_state
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg/sac
