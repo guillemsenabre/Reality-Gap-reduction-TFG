@@ -17,6 +17,7 @@ class JointTorqueController(Node):
         
         self.joint_publishers = []
         self.pos_publishers = []
+        self.current_joint_position = []
 
         self.joint_names = [
                             'joint0_1', 
