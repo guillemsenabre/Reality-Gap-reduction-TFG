@@ -109,6 +109,8 @@ class JointTorqueController(Node):
         joints2_pos = data[10:14]
         self.current_joint_position = joints1_pos + joints2_pos
 
+        self.get_logger().info(f'CURRENT JOINT POSITION: {self.current_joint_position}')
+
 
 def main(args=None):
     rclpy.init(args=args)
