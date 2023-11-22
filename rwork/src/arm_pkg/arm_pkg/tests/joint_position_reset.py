@@ -11,7 +11,7 @@ class JointTorqueController(Node):
 
         self.current_angles_subscription = self.create_subscription(
             Float32Array,
-            '/world/full_env/model/arm_1/joint_state',
+            'packed/state/data',
             self.joint_angles_1,
             1)
 
