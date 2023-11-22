@@ -1,43 +1,44 @@
-from email import iterators
 import rclpy
 import math
-import subprocess
-import os
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
+from ros_gz_interfaces.msg import Float32Array
 
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
+
+        self.current_angles_subscription = self.create_subscription(
+            Float32Array,
+            'packed/state/data',
+            self.get_current_positions,
+            1)
         
         self.joint_publishers = []
+        self.pos_publishers = []
+
         self.joint_names = [
                             'joint0_1', 
                             'joint1_1', 
                             'joint2_1',
                             'joint3_1',
-                            'right_finger_1_joint',
-                            'left_finger_1_joint',
                             'joint0_2', 
                             'joint1_2', 
                             'joint2_2',
                             'joint3_2',
-                            'right_finger_2_joint',
-                            'left_finger_2_joint',
                             ]
         
         for joint_name in self.joint_names:
-            publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
-            self.joint_publishers.append(publisher)
+            torque_publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
+            pos_publisher = self.create_publisher(Float64, f'/{joint_name}/reset', 1)
+            self.joint_publishers.append(torque_publisher)
+            self.pos_publishers.append(pos_publisher)
 
         self.move_timer = self.create_timer(1, self.move_joints)
-        self.reset_timer = self.create_timer(10000, self.reset)
-
         
 
         self.angle = 0
-        
         self.iterations_per_epoch = 30
         self.current_iteration = 0
 
@@ -48,8 +49,8 @@ class JointTorqueController(Node):
         
         # Test multipliers for each joint 
         joint_multipliers_test = [
-                                  8.5, 9, 3, 2, 1, 1,
-                                  6, 6, 6, 6, 6, 6
+                                  8.5, 9, 3, 2,
+                                  6, 6, 6, 6
                                   ]
 
         for idx, publisher in enumerate(self.joint_publishers):
@@ -69,20 +70,42 @@ class JointTorqueController(Node):
 
 
     def reset(self):
-        self.get_logger().info("Resetting simulation...")
-        self.kill_gazebo_process()
-        self.start_gazebo_process()
+        # Calculate the reset positions by subtracting the current positions from themselves
+        reset_positions = [-self.get_current_position[idx] for idx in range(len(self.pos_publishers))]
 
-    def kill_gazebo_process(self):
-        # Find and kill the Gazebo process
-        try:
-            subprocess.run(['pkill', '-f', 'gazebo'], check=True)
-        except subprocess.CalledProcessError:
-            self.get_logger().warning("Failed to kill Gazebo process.")
+        # Publish the reset positions to reset the joint positions
+        for idx, publisher in enumerate(self.pos_publishers):
+            msg = Float64()
+            msg.data = reset_positions[idx]
+            publisher.publish(msg)
+            self.get_logger().info(f'Resetting Joint {idx} to {msg.data}')
 
-    def start_gazebo_process(self):
-        pass
-        
+        self.get_logger().info('Joints reset to initial positions')
+
+
+    def get_current_positions(self, msg: Float32Array):
+
+        '''
+                                    Data structure
+
+        [
+            'f',
+            J01, J11, J21, J31, EX1, EY1, EZ1, EI1, EJ1, EK1,EW1,   --> ROBOT 1
+            J02, J12, J22, J32, EX2, EY2, EZ2, EI2, EJ2, EK2,EW2,   --> ROBOT 2  
+            OBJX, OBJY, OBJZ, OBJI, OBJJ, OBJK, OBJW                --> OBJECT
+        ] 
+
+        '''
+
+        data = msg.data
+
+        # Extract gripper and object positions
+        joints1_pos = data[0:4]
+        joints2_pos = data[10:14]
+        current_joint_position = joints1_pos + joints2_pos
+
+        return current_joint_position
+
 
 def main(args=None):
     rclpy.init(args=args)

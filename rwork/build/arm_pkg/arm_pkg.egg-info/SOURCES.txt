@@ -19,6 +19,7 @@ arm_pkg/tests/__init__.py
 arm_pkg/tests/data_gripper_test.py
 arm_pkg/tests/joint_controller.py
 arm_pkg/tests/joint_listener.py
+arm_pkg/tests/joint_position_reset.py
 arm_pkg/tests/joint_processor.py
 arm_pkg/tests/joint_storage.py
 arm_pkg/tests/launchgazebotest.py

@@ -5,6 +5,7 @@
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/state_test.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/data_gripper_test.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_storage.py
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_position_reset.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_processor.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/launchgazebotest.py
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sac.py
@@ -20,6 +21,7 @@
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__pycache__/state_test.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__pycache__/data_gripper_test.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__pycache__/joint_storage.cpython-310.pyc
+/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__pycache__/joint_position_reset.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__pycache__/joint_processor.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__pycache__/launchgazebotest.cpython-310.pyc
 /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/sac.cpython-310.pyc
