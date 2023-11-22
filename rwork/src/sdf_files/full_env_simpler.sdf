@@ -422,43 +422,43 @@
     <model name="arm_1">
 
       <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
+        filename="libignition-gazebo-joint-position-controller-system.so"
+        name="ignition::gazebo::systems::JointPositionController">
         <joint_name>joint0_1</joint_name>
-        <topic>/arm/joint0_1/wrench</topic>
+        <topic>/joint0_1/reset</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
+        filename="libignition-gazebo-joint-position-controller-system.so"
+        name="ignition::gazebo::systems::JointPositionController">
         <joint_name>joint1_1</joint_name>
         <topic>/joint_1/reset</topic>
       </plugin>
       
       <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
+        filename="libignition-gazebo-joint-position-controller-system.so"
+        name="ignition::gazebo::systems::JointPositionController">
         <joint_name>joint2_1</joint_name>
-        <topic>/arm/joint2_1/wrench</topic>
+        <topic>/joint2_1/reset</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
+        filename="libignition-gazebo-joint-position-controller-system.so"
+        name="ignition::gazebo::systems::JointPositionController">
         <joint_name>joint3_1</joint_name>
         <topic>/joint_1/reset</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
+        filename="libignition-gazebo-joint-position-controller-system.so"
+        name="ignition::gazebo::systems::JointPositionController">
         <joint_name>right_finger_1_joint</joint_name>
         <topic>/arm/right_finger_1_joint/wrench</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-controller-system.so"
-        name="ignition::gazebo::systems::JointController">
+        filename="libignition-gazebo-joint-position-controller-system.so"
+        name="ignition::gazebo::systems::JointPositionController">
         <joint_name>left_finger_1_joint</joint_name>
         <topic>/arm/left_finger_1_joint/wrench</topic>
       </plugin>
@@ -470,43 +470,43 @@
 
 
       <plugin
-        filename="libignition-gazebo-joint-position-controller-system.so"
-        name="ignition::gazebo::systems::JointPositionController">
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>joint0_1</joint_name>
         <topic>arm/joint0_1/wrench</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-position-controller-system.so"
-        name="ignition::gazebo::systems::JointPositionController">
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>joint1_1</joint_name>
         <topic>arm/joint1_1/wrench</topic>
       </plugin>
       
       <plugin
-        filename="libignition-gazebo-joint-position-controller-system.so"
-        name="ignition::gazebo::systems::JointPositionController">
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>joint2_1</joint_name>
         <topic>/arm/joint2_1/wrench</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-position-controller-system.so"
-        name="ignition::gazebo::systems::JointPositionController">
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>joint3_1</joint_name>
         <topic>/arm/joint3_1/wrench</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-position-controller-system.so"
-        name="ignition::gazebo::systems::JointPositionController">
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>right_finger_1_joint</joint_name>
         <topic>/arm/right_finger_1_joint/wrench</topic>
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-position-controller-system.so"
-        name="ignition::gazebo::systems::JointPositionController">
+        filename="libignition-gazebo-joint-controller-system.so"
+        name="ignition::gazebo::systems::JointController">
         <joint_name>left_finger_1_joint</joint_name>
         <topic>/arm/left_finger_1_joint/wrench</topic>
       </plugin>
