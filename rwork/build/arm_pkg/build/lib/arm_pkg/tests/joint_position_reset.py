@@ -72,7 +72,7 @@ class JointTorqueController(Node):
     def reset(self):
         self.get_logger().info('Resetting joints...')
         # Calculate the reset positions by subtracting the current positions from themselves
-        reset_positions = [-self.get_current_position()[idx] for idx in range(len(self.pos_publishers))]
+        reset_positions = [-self.current_joint_position[idx] for idx in range(len(self.pos_publishers))]
 
         # Publish the reset positions to reset the joint positions
         for idx, publisher in enumerate(self.pos_publishers):
@@ -103,9 +103,7 @@ class JointTorqueController(Node):
         # Extract gripper and object positions
         joints1_pos = data[0:4]
         joints2_pos = data[10:14]
-        current_joint_position = joints1_pos + joints2_pos
-
-        return current_joint_position
+        self.current_joint_position = joints1_pos + joints2_pos
 
 
 def main(args=None):
