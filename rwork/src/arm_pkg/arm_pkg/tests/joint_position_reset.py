@@ -1,17 +1,20 @@
-from email import iterators
 import rclpy
 import math
-import subprocess
-import os
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
+from ros_gz_interfaces.msg import Float32Array
 
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
-        
-        self.joint_publishers = []
+
+        self.current_angles_subscription = self.create_subscription(
+            Float32Array,
+            '/world/full_env/model/arm_1/joint_state',
+            self.joint_angles_1,
+            1)
+
         self.joint_names = [
                             'joint0_1', 
                             'joint1_1', 
@@ -32,8 +35,6 @@ class JointTorqueController(Node):
             self.joint_publishers.append(publisher)
 
         self.move_timer = self.create_timer(1, self.move_joints)
-        self.reset_timer = self.create_timer(10000, self.reset)
-
         
 
         self.angle = 0
@@ -69,20 +70,18 @@ class JointTorqueController(Node):
 
 
     def reset(self):
-        self.get_logger().info("Resetting simulation...")
-        self.kill_gazebo_process()
-        self.start_gazebo_process()
+        # Calculate the reset positions by subtracting the current positions from themselves
+        reset_positions = [-self.get_current_joint_position(idx) for idx in range(len(self.joint_publishers))]
 
-    def kill_gazebo_process(self):
-        # Find and kill the Gazebo process
-        try:
-            subprocess.run(['pkill', '-f', 'gazebo'], check=True)
-        except subprocess.CalledProcessError:
-            self.get_logger().warning("Failed to kill Gazebo process.")
+        # Publish the reset positions to reset the joint positions
+        for idx, publisher in enumerate(self.joint_publishers):
+            msg = Float64()
+            msg.data = reset_positions[idx]
+            publisher.publish(msg)
+            self.get_logger().info(f'Resetting Joint {idx} to {msg.data}')
 
-    def start_gazebo_process(self):
-        pass
-        
+        self.get_logger().info('Joints reset to initial positions')
+
 
 def main(args=None):
     rclpy.init(args=args)
