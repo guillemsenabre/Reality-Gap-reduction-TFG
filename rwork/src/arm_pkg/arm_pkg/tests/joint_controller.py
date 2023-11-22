@@ -97,7 +97,7 @@ class JointTorqueController(Node):
 
     def unpause(self):
         # Use subprocess to execute the ros2 service call command
-        command = "ros2 service call /world/full_env_simpler/control ros_gz_interfaces/srv/ControlWorld '{world_control: {pause: false}}'"
+        command = 'ros2 service call /world/full_env_simpler/control ros_gz_interfaces/srv/ControlWorld "{world_control: {pause: false}}"'
         try:
             subprocess.run(command, shell=True, check=True)
             self.get_logger().info("Simulation unpaused successfully.")

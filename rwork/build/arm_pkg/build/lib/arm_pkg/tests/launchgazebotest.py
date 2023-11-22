@@ -15,5 +15,11 @@ except subprocess.CalledProcessError as e:
     print(e.stderr.decode())
     raise  # Re-raise the exception to terminate the script
 
-# If no error occurred, print the output (if needed)
-print(result.stdout.decode())
+# Use subprocess to execute the ros2 service call command
+command = "ros2 service call /world/full_env/control ros_gz_interfaces/srv/ControlWorld '{world_control: {pause: false}}'"
+
+try:
+    subprocess.run(command, shell=True, check=True)
+    print("Simulation unpaused successfully.")
+except subprocess.CalledProcessError as e:
+    print(f"Failed to unpause simulation. Error: {e}")
