@@ -12,7 +12,7 @@ class JointTorqueController(Node):
         self.current_angles_subscription = self.create_subscription(
             Float32Array,
             'packed/state/data',
-            self.get_current_positions,
+            self.get_current_position,
             1)
         
         self.joint_publishers = []
