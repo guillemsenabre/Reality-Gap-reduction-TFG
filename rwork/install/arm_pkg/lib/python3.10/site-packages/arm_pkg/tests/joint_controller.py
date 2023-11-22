@@ -81,8 +81,19 @@ class JointTorqueController(Node):
             self.get_logger().warning("Failed to kill Gazebo process.")
 
     def start_gazebo_process(self):
-        pass
+
+        home_directory = os.path.expanduser("~")
+
+        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
         
+        # Run Gazebo subprocess
+        try:
+            result = subprocess.run(['ign', 'gazebo', sdf_file_path], check=True, stderr=subprocess.PIPE)
+        
+        except subprocess.CalledProcessError as e:
+            self.get_logger().warning("Error running Gazebo")
+            self.get_logger().warning(e.stderr.decode())
+            raise  # Re-raise the exception to terminate the script
 
 def main(args=None):
     rclpy.init(args=args)
