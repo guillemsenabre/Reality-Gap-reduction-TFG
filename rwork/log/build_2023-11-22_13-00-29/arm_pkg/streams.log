@@ -1,0 +1,42 @@
+[0.867s] Invoking command in '/home/kyu8/tfg/rwork/src/arm_pkg': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed
+[1.161s] running egg_info
+[1.163s] writing ../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+[1.163s] writing dependency_links to ../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+[1.163s] writing entry points to ../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+[1.164s] writing requirements to ../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+[1.164s] writing top-level names to ../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+[1.167s] reading manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.168s] writing manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.169s] running build
+[1.169s] running build_py
+[1.169s] copying arm_pkg/tests/joint_position_reset.py -> /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/tests
+[1.171s] running install
+[1.171s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.171s]   warnings.warn(
+[1.171s] running install_lib
+[1.172s] copying /home/kyu8/tfg/rwork/build/arm_pkg/build/lib/arm_pkg/tests/joint_position_reset.py -> /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.174s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py to distributed.cpython-310.pyc
+[1.174s]   File "/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py", line 2
+[1.174s]     import JointStateListener from joint_listener.py
+[1.174s]                               ^^^^
+[1.174s] SyntaxError: invalid syntax
+[1.174s] 
+[1.174s] byte-compiling /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_position_reset.py to joint_position_reset.cpython-310.pyc
+[1.175s] running install_data
+[1.176s] running install_egg_info
+[1.178s] removing '/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[1.179s] Copying ../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+[1.180s] running install_scripts
+[1.211s] Installing controller script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.212s] Installing ddpg script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.212s] Installing listener script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.212s] Installing processor script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.212s] Installing reset_controller = arm_pkg.tests.joint_position_reset:maingripper_test script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.213s] Installing reward_function script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.213s] Installing robots_state script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.213s] Installing sac script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.213s] Installing state_test script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.213s] Installing storage script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.213s] Installing training script to /home/kyu8/tfg/rwork/install/arm_pkg/lib/arm_pkg
+[1.214s] writing list of installed files to '/home/kyu8/tfg/rwork/build/arm_pkg/install.log'
+[1.251s] Invoked command in '/home/kyu8/tfg/rwork/src/arm_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/rwork/build/arm_pkg/prefix_override:/home/kyu8/tfg/rwork/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/rwork/build/arm_pkg/build install --record /home/kyu8/tfg/rwork/build/arm_pkg/install.log --single-version-externally-managed

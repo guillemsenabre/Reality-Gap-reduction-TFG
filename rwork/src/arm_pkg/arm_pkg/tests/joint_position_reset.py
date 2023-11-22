@@ -39,7 +39,7 @@ class JointTorqueController(Node):
         
 
         self.angle = 0
-        self.iterations_per_epoch = 30
+        self.iterations_per_epoch = 20
         self.current_iteration = 0
 
     def move_joints(self):
@@ -70,6 +70,7 @@ class JointTorqueController(Node):
 
 
     def reset(self):
+        self.get_logger().info('Resetting joints...')
         # Calculate the reset positions by subtracting the current positions from themselves
         reset_positions = [-self.get_current_position[idx] for idx in range(len(self.pos_publishers))]
 
