@@ -32,6 +32,8 @@ class RobotState(Node):
 
         # Subscriptions
 
+        self.get_logger().info('Waiting for data...')
+
         self.j1_subscription = self.create_subscription(
             JointState,
             '/world/full_env/model/arm_1/joint_state',

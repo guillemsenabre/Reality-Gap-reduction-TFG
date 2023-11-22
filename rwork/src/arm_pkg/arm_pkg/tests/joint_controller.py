@@ -1,14 +1,18 @@
 from email import iterators
 import rclpy
 import math
+import subprocess
+import os
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
-from sensor_msgs.msg import JointState
+from ros_gz_interfaces.srv import ControlWorld
 
 class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
+
+        self.control_world_client = self.create_client(ControlWorld, '/world/full_env/control')
         
         self.joint_publishers = []
         self.joint_names = [
@@ -31,16 +35,21 @@ class JointTorqueController(Node):
             self.joint_publishers.append(publisher)
 
         self.move_timer = self.create_timer(1, self.move_joints)
+        self.reset_timer = self.create_timer(10000, self.reset)
+
+        
 
         self.angle = 0
         
-        self.iterations_per_epoch = 20
+        self.iterations_per_epoch = 30
         self.current_iteration = 0
 
     def move_joints(self):
 
+        # keep the angle between 0 and 2π
         self.angle = (self.angle + 10) % (2 * math.pi) 
         
+        # Test multipliers for each joint 
         joint_multipliers_test = [
                                   8.5, 9, 3, 2, 1, 1,
                                   6, 6, 6, 6, 6, 6
@@ -64,27 +73,37 @@ class JointTorqueController(Node):
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
+        self.kill_gazebo_process()
+        self.run_gazebo()
+        self.unpause()
 
-        # Create a JointState message to set joint positions
-        joint_state_msg = JointState()
-        joint_state_msg.name = self.joint_names
-        joint_state_msg.position = [0.0] * len(self.joint_names)
 
-        self.arm1_reset_publisher = self.create_publisher(
-            JointState,
-            '/world/full_env/model/arm_1/joint_state',
-            10
-        )
+    def kill_gazebo_process(self):
+        # Find and kill the Gazebo process
+        try:
+            subprocess.run(['pkill', '-f', 'gazebo'], check=True)
+        except subprocess.CalledProcessError:
+            self.get_logger().warning("Failed to kill Gazebo process.")
 
-        self.arm2_reset_publisher = self.create_publisher(
-            JointState,
-            '/world/full_env/model/arm_2/joint_state',
-            10
-        )
+    def run_gazebo(self):
+        # Start Gazebo with the desired SDF file in the background
+        home_directory = os.path.expanduser("~")
+        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
 
-        self.arm1_reset_publisher.publish(joint_state_msg)  
-        self.arm2_reset_publisher.publish(joint_state_msg)   
-        
+        try:
+            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except subprocess.CalledProcessError:
+            self.get_logger().error("Failed to start Gazebo process.")
+
+    def unpause(self):
+        # Use subprocess to execute the ros2 service call command
+        command = "ros2 service call /world/full_env/control ros_gz_interfaces/srv/ControlWorld '{world_control: {pause: false}}'"
+        try:
+            subprocess.run(command, shell=True, check=True)
+            self.get_logger().info("Simulation unpaused successfully.")
+        except subprocess.CalledProcessError as e:
+            self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
+
 
 def main(args=None):
     rclpy.init(args=args)

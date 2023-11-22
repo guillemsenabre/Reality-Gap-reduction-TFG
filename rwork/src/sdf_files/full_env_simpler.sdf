@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.8">
-  <world name="full_env">
+  <world name="full_env_simpler">
 
     <!-- LIGHT -->
 
@@ -463,6 +463,8 @@
         <topic>/arm/left_finger_1_joint/wrench</topic>
       </plugin>
 
+      
+
             <!-- LINK POSE  5Hz, dynamic-->
 
       <plugin
@@ -477,11 +479,6 @@
         name="ignition::gazebo::systems::JointPositionController">
         <joint_name>joint0_1</joint_name>
         <topic>/arm1/joint0_1/pos</topic>
-      </plugin>
-
-      <plugin
-        filename="libignition-gazebo-joint-state-publisher-system.so"
-        name="ignition::gazebo::systems::JointStatePublisher">
       </plugin>
 
                                 <!-- Arm Links -->

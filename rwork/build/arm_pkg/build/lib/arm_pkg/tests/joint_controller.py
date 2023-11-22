@@ -1,10 +1,11 @@
 from email import iterators
 import rclpy
 import math
+import subprocess
+import os
 
 from rclpy.node import Node
 from std_msgs.msg import Float64
-from sensor_msgs.msg import JointState
 
 class JointTorqueController(Node):
     def __init__(self):
@@ -31,16 +32,21 @@ class JointTorqueController(Node):
             self.joint_publishers.append(publisher)
 
         self.move_timer = self.create_timer(1, self.move_joints)
+        self.reset_timer = self.create_timer(10000, self.reset)
+
+        
 
         self.angle = 0
         
-        self.iterations_per_epoch = 20
+        self.iterations_per_epoch = 30
         self.current_iteration = 0
 
     def move_joints(self):
 
+        # keep the angle between 0 and 2π
         self.angle = (self.angle + 10) % (2 * math.pi) 
         
+        # Test multipliers for each joint 
         joint_multipliers_test = [
                                   8.5, 9, 3, 2, 1, 1,
                                   6, 6, 6, 6, 6, 6
@@ -64,27 +70,25 @@ class JointTorqueController(Node):
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
+        self.kill_gazebo_process()
+        self.start_gazebo_process()
 
-        # Create a JointState message to set joint positions
-        joint_state_msg = JointState()
-        joint_state_msg.name = self.joint_names
-        joint_state_msg.position = [0.0] * len(self.joint_names)
+    def kill_gazebo_process(self):
+        # Find and kill the Gazebo process
+        try:
+            subprocess.run(['pkill', '-f', 'gazebo'], check=True)
+        except subprocess.CalledProcessError:
+            self.get_logger().warning("Failed to kill Gazebo process.")
 
-        self.arm1_reset_publisher = self.create_publisher(
-            JointState,
-            '/world/full_env/model/arm_1/joint_state',
-            10
-        )
+    def start_gazebo_process(self):
+        # Start Gazebo with the desired SDF file in the background
+        home_directory = os.path.expanduser("~")
+        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
 
-        self.arm2_reset_publisher = self.create_publisher(
-            JointState,
-            '/world/full_env/model/arm_2/joint_state',
-            10
-        )
-
-        self.arm1_reset_publisher.publish(joint_state_msg)  
-        self.arm2_reset_publisher.publish(joint_state_msg)   
-        
+        try:
+            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except subprocess.CalledProcessError:
+            self.get_logger().error("Failed to start Gazebo process.")
 
 def main(args=None):
     rclpy.init(args=args)
