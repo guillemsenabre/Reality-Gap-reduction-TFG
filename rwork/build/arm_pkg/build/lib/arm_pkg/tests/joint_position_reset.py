@@ -71,8 +71,11 @@ class JointTorqueController(Node):
 
     def reset(self):
         self.get_logger().info('Resetting joints...')
+
+        cjp = self.current_joint_position
+
         # Calculate the reset positions by subtracting the current positions from themselves
-        reset_positions = [-self.current_joint_position[idx] for idx in range(len(self.pos_publishers))]
+        reset_positions = [-cjp[idx] for idx in range(len(self.pos_publishers))]
 
         # Publish the reset positions to reset the joint positions
         for idx, publisher in enumerate(self.pos_publishers):
