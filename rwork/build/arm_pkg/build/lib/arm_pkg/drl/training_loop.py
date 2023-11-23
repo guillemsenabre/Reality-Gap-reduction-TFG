@@ -4,8 +4,17 @@ from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 from std_srvs.srv import Empty
 
-import reset
-import ddpg
+import sys
+from os.path import abspath, dirname, join
+
+# Add the path to the directory containing your module to sys.path
+module_path = abspath(join(dirname(__file__), '/tfg/rwork/src/arm_pkg/arm_pkg/drl/'))
+sys.path.insert(0, module_path)
+
+# Now you can import your module
+from ddpg import DDPGAgent
+from reset import Reset
+
 
 
 
