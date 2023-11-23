@@ -258,8 +258,8 @@ def main(args=None):
 
         print(f'Running poch: {episode}')
         # Reset environment and get initial state
-        reset.reset
-        state = ros_data.process_state_data
+        reset.reset()
+        state = ros_data.process_state_data()
 
         for step in range(max_steps):
             # Select action from the agent's policy
@@ -269,8 +269,8 @@ def main(args=None):
             ros_data.move_joints(action)
 
             # observe next state and reward
-            next_state = ros_data.process_state_data
-            reward = ros_data.process_reward_data
+            next_state = ros_data.process_state_data()
+            reward = ros_data.process_reward_data()
 
             next_state, reward, done, _ = env.step(action)
 
