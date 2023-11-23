@@ -11,7 +11,7 @@ class JointTorqueController(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')
 
-        self.run_gazebo()
+        self.reset()
 
         self.control_world_client = self.create_client(ControlWorld, '/world/full_env/control')
         
