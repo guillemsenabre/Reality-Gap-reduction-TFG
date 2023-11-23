@@ -10,8 +10,8 @@ ddpg_path = join(home_directory, 'tfg', 'rwork', 'arm_pkg', 'arm_pkg', 'drl', 'd
 reset_path = join(home_directory, 'tfg', 'rwork', 'arm_pkg', 'arm_pkg', 'drl', 'reset.py')
 
 # Import modules dynamically
-ddpg_module = importlib.import_module('ddpg', package=ddpg_path)
-reset_module = importlib.import_module('reset', package=reset_path)
+ddpg_module = importlib.import_module('ddpg.py', package=ddpg_path)
+reset_module = importlib.import_module('reset.py', package=reset_path)
 
 # Use the imported classes
 DDPGAgent = ddpg_module.DDPGAgent
