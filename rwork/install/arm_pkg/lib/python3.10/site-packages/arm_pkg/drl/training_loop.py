@@ -171,9 +171,10 @@ class Reset(Node):
 class RosData(Node):
     def __init__(self):    
         super().__init__('ros_data')
+        
+        self.state = np.array([])
 
         # Subsribing to topics data
-        self.state = []
 
         self.state_subscription = self.create_subscription(
             Float32Array,
