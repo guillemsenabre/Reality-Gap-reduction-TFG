@@ -252,6 +252,7 @@ def main(args=None):
     
     ros_data = RosData()
     reset = Reset()
+    
 
     # Training loop
 

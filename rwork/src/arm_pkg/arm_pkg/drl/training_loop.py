@@ -253,6 +253,7 @@ def main(args=None):
     ros_data = RosData()
     reset = Reset()
 
+
     # Training loop
 
     num_episodes = 100
@@ -263,6 +264,8 @@ def main(args=None):
         # Reset environment and get initial state
         reset.reset()
 
+        #FIXME - I have no idea what is going on
+        
         # Waiting for the first state message to be received
         while not ros_data.state.any():
             print("Waiting for state data ...")
@@ -272,6 +275,7 @@ def main(args=None):
         state = ros_data.state
         print(f'STATE: {state}')
         state = ros_data.process_state_data(msg=Float32Array)
+
 
         for step in range(max_steps):
             # Select action from the agent's policy
