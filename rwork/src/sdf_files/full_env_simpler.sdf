@@ -9,7 +9,7 @@
         <pose>0 0 10 0 0 0</pose>
         <diffuse>0.8 0.8 0.8 1</diffuse>
         <specular>0.2 0.2 0.2 1</specular>
-        <attenuation>
+        <attenuation>s
             <range>1000</range>
             <constant>0.9</constant>
             <linear>0.01</linear>
@@ -475,10 +475,8 @@
       </plugin>
 
       <plugin
-        filename="libignition-gazebo-joint-position-controller-system.so"
-        name="ignition::gazebo::systems::JointPositionController">
-        <joint_name>joint0_1</joint_name>
-        <topic>/arm1/joint0_1/pos</topic>
+        filename="libignition-gazebo-joint-state-publisher-system.so"
+        name="ignition::gazebo::systems::JointStatePublisher">
       </plugin>
 
                                 <!-- Arm Links -->
