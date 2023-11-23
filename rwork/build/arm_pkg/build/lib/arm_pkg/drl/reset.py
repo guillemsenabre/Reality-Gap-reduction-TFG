@@ -6,6 +6,9 @@ from rclpy.node import Node
 from std_msgs.msg import Float64
 from ros_gz_interfaces.srv import ControlWorld
 
+# THIS NODE NEEDS TO BE WORKING TOGETHER WITH A SERVICE BRIDGE. 
+# CAN BE FOUND IN --> bridge_commands
+
 class Reset(Node):
     def __init__(self):
         super().__init__('joint_torque_controller')

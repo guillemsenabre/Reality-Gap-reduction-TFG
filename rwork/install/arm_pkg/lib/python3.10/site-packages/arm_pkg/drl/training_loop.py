@@ -5,12 +5,18 @@ from std_msgs.msg import Float32
 from std_srvs.srv import Empty
 
 from ddpg import DDPGAgent
+from reset import Reset
 
 
 
 class RosData(Node):
     def __init__(self):    
         super().__init__('ros_data')
+
+        # Reset class instance & run gazebo 
+
+        reset = Reset()
+        reset.reset
 
         # Subsribing to topics data
 
