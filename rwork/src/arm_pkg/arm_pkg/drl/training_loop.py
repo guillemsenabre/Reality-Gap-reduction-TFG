@@ -270,6 +270,7 @@ def main(args=None):
 
         print("State data is here!!")
         state = ros_data.state
+        print(f'STATE: {state}')
         state = ros_data.process_state_data(msg=Float32Array)
 
         for step in range(max_steps):
