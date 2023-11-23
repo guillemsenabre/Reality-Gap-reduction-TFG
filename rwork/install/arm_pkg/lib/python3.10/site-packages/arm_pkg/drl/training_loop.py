@@ -1,3 +1,4 @@
+from ast import arg
 import rclpy
 import subprocess
 import os
@@ -129,8 +130,8 @@ class RosData(Node):
 
 
 
-def main(self):
-    rclpy.init()
+def main(args=None):
+    rclpy.init(args=args)
     ros_data = RosData()
     reset = Reset()
 
@@ -140,7 +141,7 @@ def main(self):
     max_steps = 1000
     for episode in range(num_episodes):
 
-        self.get_logger().info(f'Running poch: {episode}')
+        print(f'Running poch: {episode}')
         # Reset environment and get initial state
         reset.reset
         state = ros_data.process_state_data
