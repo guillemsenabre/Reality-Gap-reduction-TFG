@@ -1,24 +1,56 @@
 import rclpy
+import subprocess
+import os
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
-from os.path import expanduser, join
-import importlib
-
-home_directory = expanduser("~")
-ddpg_path = join(home_directory, 'tfg', 'rwork', 'arm_pkg', 'arm_pkg', 'drl', 'ddpg.py')
-reset_path = join(home_directory, 'tfg', 'rwork', 'arm_pkg', 'arm_pkg', 'drl', 'reset.py')
-
-# Import modules dynamically
-ddpg_module = importlib.import_module('ddpg.py', package=ddpg_path)
-reset_module = importlib.import_module('reset.py', package=reset_path)
-
-# Use the imported classes
-DDPGAgent = ddpg_module.DDPGAgent
-Reset = reset_module.Reset
 
 
+##########################################################
+###################### RESET CLASS #######################
+##########################################################
 
+class Reset(Node):
+    def __init__(self):
+        super().__init__('joint_torque_controller')
+
+    def reset(self):
+        self.get_logger().info("Resetting simulation...")
+        self.kill_gazebo_process()
+        self.run_gazebo()
+        self.unpause()
+
+    def kill_gazebo_process(self):
+        # Find and kill the Gazebo process
+        try:
+            subprocess.run(['pkill', '-f', 'gazebo'], check=True)
+        except subprocess.CalledProcessError:
+            self.get_logger().warning("Failed to kill Gazebo process.")
+
+    def run_gazebo(self):
+        self.get_logger().info("starting gazebo simulator...")
+        home_directory = os.path.expanduser("~")
+        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+
+        try:
+            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except subprocess.CalledProcessError:
+            self.get_logger().error("Failed to start Gazebo process.")
+
+    def unpause(self):
+        # Use subprocess to execute the ros2 service call command
+        command = 'ros2 service call /world/full_env_simpler/control ros_gz_interfaces/srv/ControlWorld "{world_control: {pause: false}}"'
+        try:
+            subprocess.run(command, shell=True, check=True)
+            self.get_logger().info("Simulation unpaused successfully.")
+        except subprocess.CalledProcessError as e:
+            self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
+
+
+
+##########################################################
+################## ROS DATA PROCESSING ###################
+##########################################################
 
 
 class RosData(Node):
@@ -97,17 +129,20 @@ class RosData(Node):
 
 
 
-def main(args=None):
-    rclpy.init(args=args)
+def main(self):
+    rclpy.init()
     ros_data = RosData()
+    reset = Reset()
 
     # Training loop
 
     num_episodes = 100
     max_steps = 1000
     for episode in range(num_episodes):
+
+        self.get_logger().info(f'Running poch: {episode}')
         # Reset environment and get initial state
-        ros_data.create_client(Empty, '/gazebo/reset_simulation').call(Empty.Request())
+        reset.reset
         state = ros_data.process_state_data
 
         for step in range(max_steps):

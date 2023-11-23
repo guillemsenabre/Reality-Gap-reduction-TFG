@@ -3,8 +3,6 @@ import subprocess
 import os
 
 from rclpy.node import Node
-from std_msgs.msg import Float64
-from ros_gz_interfaces.srv import ControlWorld
 
 # THIS NODE NEEDS TO BE WORKING TOGETHER WITH A SERVICE BRIDGE. 
 # CAN BE FOUND IN --> bridge_commands
