@@ -7,6 +7,10 @@ from std_srvs.srv import Empty
 from ddpg import DDPGAgent
 from reset import Reset
 
+import os
+import sys
+print("PYTHONPATH:", os.environ.get('PYTHONPATH'))
+print("sys.path:", sys.path)
 
 
 class RosData(Node):
