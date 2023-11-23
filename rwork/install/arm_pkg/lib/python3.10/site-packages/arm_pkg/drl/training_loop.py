@@ -261,6 +261,12 @@ def main(args=None):
         print(f'Running poch: {episode}')
         # Reset environment and get initial state
         reset.reset()
+
+        # Waiting for the first state message to be received
+        while not ros_data.state:
+            rclpy.spin_once(ros_data)
+
+        state = ros_data.state
         state = ros_data.process_state_data(msg=Float32Array)
 
         for step in range(max_steps):
