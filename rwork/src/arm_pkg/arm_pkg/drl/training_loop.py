@@ -262,7 +262,7 @@ def main(args=None):
         reset.reset()
 
         # Waiting for the first state message to be received
-        while not ros_data.state:
+        while not ros_data.state.any():
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
