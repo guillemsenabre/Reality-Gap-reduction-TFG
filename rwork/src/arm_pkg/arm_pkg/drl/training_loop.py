@@ -225,6 +225,8 @@ class RosData(Node):
 
         self.state = gripper_1_pos + gripper_2_pos + object_1_pos + object_2_pos
 
+        return self.state
+
     def process_reward_data(self, msg: Float32):
         self.reward_value = msg.data
 
@@ -259,7 +261,7 @@ def main(args=None):
         print(f'Running poch: {episode}')
         # Reset environment and get initial state
         reset.reset()
-        state = ros_data.process_state_data()
+        state = ros_data.process_state_data(msg=Float32Array)
 
         for step in range(max_steps):
             # Select action from the agent's policy
