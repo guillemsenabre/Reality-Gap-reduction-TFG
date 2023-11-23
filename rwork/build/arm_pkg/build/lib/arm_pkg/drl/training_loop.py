@@ -217,14 +217,14 @@ class RosData(Node):
         data = msg.data
 
         # Extract gripper and object positions
-        gripper_1_pos = data[4:7]
-        gripper_2_pos = data[15:18]
-        object_pos = data[22:25]
+        gripper_1_pos = np.array(data[4:7])
+        gripper_2_pos = np.array(data[15:18])
+        object_pos = np.array(data[22:25])
 
-        object_1_pos = [object_pos[0] - 0.125, object_pos[1], object_pos[2]]
-        object_2_pos = [object_pos[0] + 0.125, object_pos[1], object_pos[2]]
+        object_1_pos = np.array([object_pos[0] - 0.125, object_pos[1], object_pos[2]])
+        object_2_pos = np.array([object_pos[0] + 0.125, object_pos[1], object_pos[2]])
 
-        self.state = gripper_1_pos + gripper_2_pos + object_1_pos + object_2_pos
+        self.state = np.concatenate([gripper_1_pos, gripper_2_pos, object_1_pos, object_2_pos])
 
     def process_reward_data(self, msg: Float32):
         self.reward_value = msg.data
@@ -263,8 +263,10 @@ def main(args=None):
 
         # Waiting for the first state message to be received
         while not ros_data.state:
+            print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
+        print("State data is here!!")
         state = ros_data.state
         state = ros_data.process_state_data(msg=Float32Array)
 
