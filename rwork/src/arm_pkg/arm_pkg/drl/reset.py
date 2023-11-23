@@ -45,9 +45,9 @@ class Reset(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    joint_torque_controller = Reset()
-    rclpy.spin(joint_torque_controller)
-    joint_torque_controller.destroy_node()
+    reset = Reset()
+    rclpy.spin(reset)
+    reset.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
