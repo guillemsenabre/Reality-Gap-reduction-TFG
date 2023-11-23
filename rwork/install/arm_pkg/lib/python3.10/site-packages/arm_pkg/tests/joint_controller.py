@@ -13,7 +13,7 @@ class JointTorqueController(Node):
 
         self.reset()
 
-        self.control_world_client = self.create_client(ControlWorld, '/world/full_env/control')
+        #self.control_world_client = self.create_client(ControlWorld, '/world/full_env/control')
         
         self.joint_publishers = []
         self.joint_names = [
