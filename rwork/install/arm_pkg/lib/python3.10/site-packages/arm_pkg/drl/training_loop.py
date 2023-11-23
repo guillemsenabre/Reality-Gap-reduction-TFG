@@ -2,18 +2,20 @@ import rclpy
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
-from std_srvs.srv import Empty
+from os.path import expanduser, join
+import importlib
 
-import sys
-from os.path import abspath, dirname, join
+home_directory = expanduser("~")
+ddpg_path = join(home_directory, 'tfg', 'rwork', 'arm_pkg', 'arm_pkg', 'drl', 'ddpg.py')
+reset_path = join(home_directory, 'tfg', 'rwork', 'arm_pkg', 'arm_pkg', 'drl', 'reset.py')
 
-# Add the path to the directory containing your module to sys.path
-module_path = abspath(join(dirname(__file__), '/tfg/rwork/src/arm_pkg/arm_pkg/drl/'))
-sys.path.insert(0, module_path)
+# Import modules dynamically
+ddpg_module = importlib.import_module('ddpg', package=ddpg_path)
+reset_module = importlib.import_module('reset', package=reset_path)
 
-# Now you can import your module
-from ddpg import DDPGAgent
-from reset import Reset
+# Use the imported classes
+DDPGAgent = ddpg_module.DDPGAgent
+Reset = reset_module.Reset
 
 
 
