@@ -217,6 +217,7 @@ class RosData(Node):
 
         data = msg.data
 
+        self.get_logger().info(f'DATA: {data}')
         # Extract gripper and object positions
         gripper_1_pos = np.array(data[4:7])
         gripper_2_pos = np.array(data[15:18])
