@@ -4,13 +4,10 @@ from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 from std_srvs.srv import Empty
 
-from ddpg import DDPGAgent
 from reset import Reset
+from ddpg import DDPGAgent
 
-import os
-import sys
-print("PYTHONPATH:", os.environ.get('PYTHONPATH'))
-print("sys.path:", sys.path)
+
 
 
 class RosData(Node):
