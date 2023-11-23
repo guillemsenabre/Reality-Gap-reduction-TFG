@@ -1,6 +1,6 @@
 # Enhancing MARL for Reality Gap reduction
 
-Welcome to my Final Bachelor Project!
+Welcome to my Final Bachelor Thesis!
 
 ### Scope and Goals
 
