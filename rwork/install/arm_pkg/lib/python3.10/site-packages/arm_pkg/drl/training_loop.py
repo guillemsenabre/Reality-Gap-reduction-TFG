@@ -4,8 +4,8 @@ from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 from std_srvs.srv import Empty
 
-from reset import Reset
-from ddpg import DDPGAgent
+import reset
+import ddpg
 
 
 
