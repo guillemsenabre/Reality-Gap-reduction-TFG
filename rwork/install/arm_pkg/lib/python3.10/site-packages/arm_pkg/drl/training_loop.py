@@ -173,6 +173,7 @@ class RosData(Node):
         super().__init__('ros_data')
 
         # Subsribing to topics data
+        self.state = []
 
         self.state_subscription = self.create_subscription(
             Float32Array,
@@ -224,8 +225,6 @@ class RosData(Node):
         object_2_pos = [object_pos[0] + 0.125, object_pos[1], object_pos[2]]
 
         self.state = gripper_1_pos + gripper_2_pos + object_1_pos + object_2_pos
-
-        return self.state
 
     def process_reward_data(self, msg: Float32):
         self.reward_value = msg.data
