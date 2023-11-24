@@ -293,7 +293,7 @@ def main(args=None):
 
             print(f'REWARD: {reward}')
 
-            #FIXME - Correct done bool
+            done = (state[11] or state[8]) < 1.20
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
