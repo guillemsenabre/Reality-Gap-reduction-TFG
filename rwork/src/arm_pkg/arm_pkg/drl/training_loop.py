@@ -293,9 +293,7 @@ def main(args=None):
 
             print(f'REWARD: {reward}')
 
-            #FIXME - Remove env and figure what done is
-
-            next_state, reward, done, _ = env.step(action)
+            #FIXME - Correct done bool
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
