@@ -15,10 +15,9 @@ import torch.optim as optim
 
 
 
+
+
 #SECTION - POLICY DRL ALGORITHM
-
-
-
 #SECTION - ACTOR NETWORK
 
 
@@ -76,13 +75,16 @@ class DDPGAgent:
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
     
-    
+    #SECTION - Select action
+
     def select_action(self, state):
         state = torch.FloatTensor(state)
         action = self.actor(state)
 
         # remove gradients from tensor and convert it to numpy array
         return action.detach().numpy() 
+    
+    #SECTION - Update 
 
     def update(self, state, action, reward, next_state, done):
         state = torch.FloatTensor(state)
@@ -285,6 +287,8 @@ def main(args=None):
             # observe next state and reward
             next_state = ros_data.process_state_data()
             reward = ros_data.process_reward_data()
+
+            #FIXME - Remove env and figure what done is
 
             next_state, reward, done, _ = env.step(action)
 
