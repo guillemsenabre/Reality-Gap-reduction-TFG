@@ -282,8 +282,8 @@ def main(args=None):
             ros_data.move_joints(action)
 
             # observe next state and reward
-            next_state = ros_data.process_state_data()
-            reward = ros_data.process_reward_data()
+            next_state = ros_data.state
+            reward = ros_data.reward_value
 
             #FIXME - Remove env and figure what done is
 

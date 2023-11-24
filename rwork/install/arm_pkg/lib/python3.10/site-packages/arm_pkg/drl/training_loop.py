@@ -264,8 +264,6 @@ def main(args=None):
         print(f'Running poch: {episode}')
         # Reset environment and get initial state
         reset.reset()
-
-        #FIXME - I have no idea what is going on
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
@@ -284,8 +282,8 @@ def main(args=None):
             ros_data.move_joints(action)
 
             # observe next state and reward
-            next_state = ros_data.process_state_data()
-            reward = ros_data.process_reward_data()
+            next_state = ros_data.state
+            reward = ros_data.reward_value
 
             #FIXME - Remove env and figure what done is
 
