@@ -1,4 +1,3 @@
-from ast import arg
 import rclpy
 import subprocess
 import os
@@ -16,13 +15,10 @@ import torch.optim as optim
 
 
 
-##########################################################
-###################### DDPG AGENT ########################
-##########################################################
 
 
-
-################ ACTOR NETWORKS ####################
+#SECTION - POLICY DRL ALGORITHM
+#SECTION - ACTOR NETWORK
 
 
 class Actor(nn.Module):
@@ -39,8 +35,9 @@ class Actor(nn.Module):
         action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
         return action
 
+#!SECTION
 
-################ CRITIC NETWORKS ###################
+#SECTION - CRITIC NETWORK
 
 
 class Critic(nn.Module):
@@ -57,8 +54,12 @@ class Critic(nn.Module):
         value = self.fc3(x) # Estimated Q-Value for a given state-action pair
         return value
 
+#!SECTION
 
-################## DDPG AGENT ######################
+
+
+#SECTION - DDPG AGENT
+
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
@@ -74,13 +75,16 @@ class DDPGAgent:
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
     
-    
+    #SECTION - Select action
+
     def select_action(self, state):
         state = torch.FloatTensor(state)
         action = self.actor(state)
 
         # remove gradients from tensor and convert it to numpy array
         return action.detach().numpy() 
+    
+    #SECTION - Update 
 
     def update(self, state, action, reward, next_state, done):
         state = torch.FloatTensor(state)
@@ -115,12 +119,11 @@ class DDPGAgent:
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_((1.0 - tau) * target_param.data + tau * local_param.data)
 
+#!SECTION
+#!SECTION
 
 
-
-##########################################################
-###################### RESET CLASS #######################
-##########################################################
+#SECTION - RESET CLASS
 
 
 
@@ -161,11 +164,10 @@ class Reset(Node):
         except subprocess.CalledProcessError as e:
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
 
+#!SECTION
 
 
-##########################################################
-################## ROS DATA PROCESSING ###################
-##########################################################
+#SECTION - RECEIVE AND PROCESS DATA
 
 
 class RosData(Node):
@@ -219,9 +221,9 @@ class RosData(Node):
 
         self.get_logger().info(f'DATA: {data}')
         # Extract gripper and object positions
-        gripper_1_pos = np.array(data[4:7])
-        gripper_2_pos = np.array(data[15:18])
-        object_pos = np.array(data[22:25])
+        gripper_1_pos = np.array(data[1][4:7])
+        gripper_2_pos = np.array(data[1][15:18])
+        object_pos = np.array(data[1][22:25])
 
         object_1_pos = np.array([object_pos[0] - 0.125, object_pos[1], object_pos[2]])
         object_2_pos = np.array([object_pos[0] + 0.125, object_pos[1], object_pos[2]])
@@ -240,10 +242,11 @@ class RosData(Node):
 
             publisher.publish(msg)
 
+#!SECTION
 
-##########################################################
-##################### TRAINING LOOP ######################
-##########################################################
+
+
+#SECTION - TRAINING LOOP
 
 
 
@@ -252,9 +255,6 @@ def main(args=None):
     
     ros_data = RosData()
     reset = Reset()
-    
-
-    # Training loop
 
     num_episodes = 100
     max_steps = 1000
@@ -264,6 +264,8 @@ def main(args=None):
         # Reset environment and get initial state
         reset.reset()
 
+        #FIXME - I have no idea what is going on
+        
         # Waiting for the first state message to be received
         while not ros_data.state.any():
             print("Waiting for state data ...")
@@ -273,6 +275,7 @@ def main(args=None):
         state = ros_data.state
         print(f'STATE: {state}')
         state = ros_data.process_state_data(msg=Float32Array)
+
 
         for step in range(max_steps):
             # Select action from the agent's policy
@@ -284,6 +287,8 @@ def main(args=None):
             # observe next state and reward
             next_state = ros_data.process_state_data()
             reward = ros_data.process_reward_data()
+
+            #FIXME - Remove env and figure what done is
 
             next_state, reward, done, _ = env.step(action)
 
@@ -299,6 +304,8 @@ def main(args=None):
     ros_data.destroy_node()
 
     rclpy.shutdown()
+
+#!SECTION
 
 if __name__ == '__main__':
     main()
