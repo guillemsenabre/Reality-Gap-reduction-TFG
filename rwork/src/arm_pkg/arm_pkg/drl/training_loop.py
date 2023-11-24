@@ -1,4 +1,3 @@
-from ast import arg
 import rclpy
 import subprocess
 import os
@@ -16,13 +15,11 @@ import torch.optim as optim
 
 
 
-##########################################################
-###################### DDPG AGENT ########################
-##########################################################
+#SECTION - POLICY DRL ALGORITHM
 
 
 
-################ ACTOR NETWORKS ####################
+#SECTION - ACTOR NETWORK
 
 
 class Actor(nn.Module):
@@ -39,8 +36,9 @@ class Actor(nn.Module):
         action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
         return action
 
+#!SECTION
 
-################ CRITIC NETWORKS ###################
+#SECTION - CRITIC NETWORK
 
 
 class Critic(nn.Module):
@@ -57,8 +55,12 @@ class Critic(nn.Module):
         value = self.fc3(x) # Estimated Q-Value for a given state-action pair
         return value
 
+#!SECTION
 
-################## DDPG AGENT ######################
+
+
+#SECTION - DDPG AGENT
+
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
@@ -115,12 +117,11 @@ class DDPGAgent:
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_((1.0 - tau) * target_param.data + tau * local_param.data)
 
+#!SECTION
+#!SECTION
 
 
-
-##########################################################
-###################### RESET CLASS #######################
-##########################################################
+#SECTION - RESET CLASS
 
 
 
@@ -161,11 +162,10 @@ class Reset(Node):
         except subprocess.CalledProcessError as e:
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
 
+#!SECTION
 
 
-##########################################################
-################## ROS DATA PROCESSING ###################
-##########################################################
+#SECTION - RECEIVE AND PROCESS DATA
 
 
 class RosData(Node):
@@ -240,10 +240,11 @@ class RosData(Node):
 
             publisher.publish(msg)
 
+#!SECTION
 
-##########################################################
-##################### TRAINING LOOP ######################
-##########################################################
+
+
+#SECTION - TRAINING LOOP
 
 
 
@@ -252,9 +253,6 @@ def main(args=None):
     
     ros_data = RosData()
     reset = Reset()
-
-
-    # Training loop
 
     num_episodes = 100
     max_steps = 1000
@@ -302,6 +300,8 @@ def main(args=None):
     ros_data.destroy_node()
 
     rclpy.shutdown()
+
+#!SECTION
 
 if __name__ == '__main__':
     main()
