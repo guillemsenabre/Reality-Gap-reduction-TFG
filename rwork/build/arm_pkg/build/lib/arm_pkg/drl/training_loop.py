@@ -279,7 +279,7 @@ def main(args=None):
             # Select action from the agent's policy
             action = ros_data.agent.select_action(state)
 
-            print(action)
+            print(f'ACTION: {action}')
 
             # Execute actions
             ros_data.move_joints(action)
