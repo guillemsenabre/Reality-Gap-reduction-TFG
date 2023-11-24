@@ -175,6 +175,7 @@ class RosData(Node):
         super().__init__('ros_data')
         
         self.state = np.array([])
+        self.reward_value = 0.0
 
         # Subsribing to topics data
 
@@ -277,6 +278,8 @@ def main(args=None):
         for step in range(max_steps):
             # Select action from the agent's policy
             action = ros_data.agent.select_action(state)
+
+            print(action)
 
             # Execute actions
             ros_data.move_joints(action)
