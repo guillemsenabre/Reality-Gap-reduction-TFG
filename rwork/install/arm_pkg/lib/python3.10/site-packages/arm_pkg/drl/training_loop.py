@@ -271,9 +271,9 @@ def main(args=None):
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
-        print("State data is here!!")
         state = ros_data.state
 
+        print(f'STATE: {state}')
 
         for step in range(max_steps):
             # Select action from the agent's policy
@@ -286,7 +286,12 @@ def main(args=None):
 
             # observe next state and reward
             next_state = ros_data.state
+
+            print(f'NEXT STATE: {next_state}')
+
             reward = ros_data.reward_value
+
+            print(f'REWARD: {reward}')
 
             #FIXME - Remove env and figure what done is
 
