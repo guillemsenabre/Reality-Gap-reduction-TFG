@@ -218,12 +218,23 @@ class RosData(Node):
     def process_state_data(self, msg: Float32Array):
 
         data = msg.data
+        data0 = msg.data[0]
+        data1 = msg.data[1]
+        message = msg
 
         self.get_logger().info(f'DATA: {data}')
+        self.get_logger().info(f'D0: {data0}')
+        self.get_logger().info(f'D1: {data1}')
+        self.get_logger().info(f'Message: {message}')
+        
         # Extract gripper and object positions
-        gripper_1_pos = np.array(data[1][4:7])
-        gripper_2_pos = np.array(data[1][15:18])
-        object_pos = np.array(data[1][22:25])
+        
+        gripper_1_pos = np.array(data[4:7])
+
+        self.get_logger().info(f'G1: {gripper_1_pos}')
+
+        gripper_2_pos = np.array(data[15:18])
+        object_pos = np.array(data[22:25])
 
         object_1_pos = np.array([object_pos[0] - 0.125, object_pos[1], object_pos[2]])
         object_2_pos = np.array([object_pos[0] + 0.125, object_pos[1], object_pos[2]])
