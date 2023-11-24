@@ -264,8 +264,6 @@ def main(args=None):
         print(f'Running poch: {episode}')
         # Reset environment and get initial state
         reset.reset()
-
-        #FIXME - I have no idea what is going on
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
