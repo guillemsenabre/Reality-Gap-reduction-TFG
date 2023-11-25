@@ -4,7 +4,7 @@ import os
 import time
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
-from std_msgs.msg import Float32
+from std_msgs.msg import Float64, Float32
 
 
 import numpy as np
@@ -213,7 +213,7 @@ class RosData(Node):
                             ]
         
         for joint_name in self.joint_names:
-            publisher = self.create_publisher(Float32, f'/arm/{joint_name}/wrench', 1)
+            publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
         # Initialize the DDPG agent
@@ -237,14 +237,14 @@ class RosData(Node):
 
         self.state = np.concatenate([gripper_1_pos, gripper_2_pos, object_1_pos, object_2_pos])
 
-    def process_reward_data(self, msg: Float32):
+    def process_reward_data(self, msg: Float64):
         self.reward_value = msg.data
 
     
     def move_joints(self, action):
 
         for idx, publisher in enumerate(self.joint_publishers):
-            msg = Float32()
+            msg = Float64()
             msg.data = float(action[idx])
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
