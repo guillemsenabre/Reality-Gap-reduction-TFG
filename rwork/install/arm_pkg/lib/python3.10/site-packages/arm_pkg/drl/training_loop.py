@@ -48,7 +48,7 @@ class Critic(nn.Module):
         self.fc3 = nn.Linear(128, 1) 
 
     def forward(self, state, action):
-        x = torch.cat([state, action], 1)
+        x = torch.cat([state, action])
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         value = self.fc3(x) # Estimated Q-Value for a given state-action pair
@@ -265,7 +265,7 @@ def main(args=None):
 
         print(f'Running poch: {episode}')
         # Reset environment and get initial state
-        reset.reset()
+        reset.run_gazebo()
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
@@ -300,7 +300,7 @@ def main(args=None):
             ros_data.agent.update(state, action, reward, next_state, done)
 
             if done:
-                break
+                reset.reset
 
 
     rclpy.spin(ros_data)
