@@ -173,18 +173,22 @@ class Reset(Node):
 class RosData(Node):
     def __init__(self):    
         super().__init__('ros_data')
+
+        self.get_logger().info("Receiving data...")
         
         self.state = np.array([])
         self.reward_value = 0.0
 
         # Subscribing to topics data
-
+        self.get_logger().info("STATE DATA ...")
         self.state_subscription = self.create_subscription(
             Float32Array,
             'packed/state/data',
             self.process_state_data,
             1
         )
+
+        self.get_logger().info("REWARD DATA ...")
 
         self.reward_subscription = self.create_subscription(
             Float32,
