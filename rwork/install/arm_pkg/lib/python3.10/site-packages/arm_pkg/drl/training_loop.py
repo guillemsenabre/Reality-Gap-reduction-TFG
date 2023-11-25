@@ -227,6 +227,7 @@ class RosData(Node):
 
     def process_state_data(self, msg: Float32Array):
 
+        self.get_logger().info("Processing state ... ")
         data = msg.data
         
         # Extract gripper and object positions
