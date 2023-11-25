@@ -177,7 +177,7 @@ class RosData(Node):
         self.state = np.array([])
         self.reward_value = 0.0
 
-        # Subsribing to topics data
+        # Subscribing to topics data
 
         self.state_subscription = self.create_subscription(
             Float32Array,
@@ -234,6 +234,7 @@ class RosData(Node):
 
     def process_reward_data(self, msg: Float32):
         self.reward_value = msg.data
+        self.get_logger().info(f'REWARD YEAH: {reward_value}')
 
     
     def move_joints(self, action):
