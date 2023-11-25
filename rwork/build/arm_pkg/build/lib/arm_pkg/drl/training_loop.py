@@ -185,7 +185,7 @@ class RosData(Node):
             Float32Array,
             'packed/state/data',
             self.process_state_data,
-            1
+            10
         )
 
         self.get_logger().info("REWARD DATA ...")
@@ -194,10 +194,12 @@ class RosData(Node):
             Float32,
             'reward/data',
             self.process_reward_data,
-            1
+            10
         )
 
         # Publishers for the joints
+
+        self.get_logger().info("JOINT PUBLISHERS ...")
 
         self.joint_publishers = []
         self.joint_names = [
@@ -214,6 +216,8 @@ class RosData(Node):
         for joint_name in self.joint_names:
             publisher = self.create_publisher(Float32, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
+
+        self.get_logger().info("DDPG AGENT INIT ...")
 
         # Initialize the DDPG agent
         state_dim = 12  
