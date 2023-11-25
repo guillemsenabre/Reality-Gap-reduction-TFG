@@ -242,8 +242,8 @@ class RosData(Node):
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float32()
             msg.data = float(action[idx])
-
             publisher.publish(msg)
+            self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
 
 #!SECTION
 
