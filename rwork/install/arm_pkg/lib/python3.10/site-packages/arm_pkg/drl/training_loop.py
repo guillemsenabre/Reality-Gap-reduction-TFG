@@ -303,7 +303,7 @@ def main(args=None):
 
             print(f'REWARD: {reward}')
 
-            done = (state[11] or state[8]) < 1.20
+            done = (state[11] or state[8]) < 1.20000
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
