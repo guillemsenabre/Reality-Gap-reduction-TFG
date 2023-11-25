@@ -266,6 +266,7 @@ def main(args=None):
         print(f'Running poch: {episode}')
         # Reset environment and get initial state
         reset.run_gazebo()
+        reset.unpause()
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
