@@ -97,7 +97,9 @@ class DDPGAgent:
         value = self.critic(state, action)
         next_action = self.actor_target(next_state)
         next_value = self.critic_target(next_state, next_action.detach())
+        print(f'NEXT VAUE: {next_value}')
         target_value = reward + 0.99 * next_value * (1 - done)
+        print(f'TARGET VAUE: {target_value}')
         critic_loss = F.mse_loss(value, target_value)
 
         # Actor loss
@@ -248,7 +250,7 @@ class RosData(Node):
             msg.data = float(action[idx])
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
-            
+
         time.sleep(0.1)
 
 #!SECTION

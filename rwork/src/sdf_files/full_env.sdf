@@ -93,6 +93,17 @@
                     </pbr>
                 </material>
             </visual>
+            <inertial>
+                <mass>1.0</mass>
+                <inertia>
+                    <ixx>0.00000147616</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.00000671574</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.00000521083</izz>
+                </inertia>
+            </inertial>
         </link>
     </model>
 
