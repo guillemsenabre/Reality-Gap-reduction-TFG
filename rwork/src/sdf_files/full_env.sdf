@@ -57,7 +57,7 @@
 
     <model name="wood_object">
         <link name="wood">
-            <pose>0 0.2 1.3200 0 0 0</pose>
+            <pose relative_to="">0 0.2 1.3200 0 0 0</pose>
             <collision name="surface">
                 <geometry>
                     <box>
