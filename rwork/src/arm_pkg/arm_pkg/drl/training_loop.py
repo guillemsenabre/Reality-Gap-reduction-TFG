@@ -248,6 +248,7 @@ class RosData(Node):
             msg.data = float(action[idx])
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
+            
         time.sleep(0.1)
 
 #!SECTION
