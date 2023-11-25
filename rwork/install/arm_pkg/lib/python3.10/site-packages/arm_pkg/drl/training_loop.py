@@ -234,7 +234,7 @@ class RosData(Node):
 
     def process_reward_data(self, msg: Float32):
         self.reward_value = msg.data
-        self.get_logger().info(f'REWARD YEAH: {reward_value}')
+        self.get_logger().info(f'REWARD YEAH: {self.reward_value}')
 
     
     def move_joints(self, action):
@@ -243,7 +243,7 @@ class RosData(Node):
             msg = Float32()
             msg.data = float(action[idx])
             publisher.publish(msg)
-            self.get_logger().info(f'Joint {idx} torque: "{msg.data}"')
+            self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
 #!SECTION
 
