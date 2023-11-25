@@ -175,7 +175,6 @@ class RosData(Node):
     def __init__(self):    
         super().__init__('ros_data')
 
-        self.get_logger().info("Receiving data...")
         
         self.state = np.array([])
         self.reward_value = 0.0
@@ -200,7 +199,6 @@ class RosData(Node):
 
         # Publishers for the joints
 
-        self.get_logger().info("JOINT PUBLISHERS ...")
 
         self.joint_publishers = []
         self.joint_names = [
@@ -218,8 +216,6 @@ class RosData(Node):
             publisher = self.create_publisher(Float32, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
-        self.get_logger().info("DDPG AGENT INIT ...")
-
         # Initialize the DDPG agent
         state_dim = 12  
         action_dim = 8
@@ -227,7 +223,6 @@ class RosData(Node):
 
     def process_state_data(self, msg: Float32Array):
 
-        self.get_logger().info("Processing state ... ")
         data = msg.data
         
         # Extract gripper and object positions
@@ -243,9 +238,7 @@ class RosData(Node):
         self.state = np.concatenate([gripper_1_pos, gripper_2_pos, object_1_pos, object_2_pos])
 
     def process_reward_data(self, msg: Float32):
-        print('processing reward value...')
         self.reward_value = msg.data
-        self.get_logger().info(f'REWARD YEAH: {self.reward_value}')
 
     
     def move_joints(self, action):
@@ -255,7 +248,6 @@ class RosData(Node):
             msg.data = float(action[idx])
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
-        self.get_logger().info('SLEEPING')
         time.sleep(0.1)
 
 #!SECTION
@@ -277,7 +269,7 @@ def main(args=None):
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
-        # Reset environment and get initial state
+
         reset.run_gazebo()
         reset.unpause()
         
