@@ -1,6 +1,7 @@
 import rclpy
 import subprocess
 import os
+import time
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
@@ -253,6 +254,8 @@ class RosData(Node):
             msg.data = float(action[idx])
             publisher.publish(msg)
             self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
+        
+        time.sleep(0.1)
 
 #!SECTION
 
@@ -312,8 +315,8 @@ def main(args=None):
             if done:
                 reset.reset
 
+            rclpy.spin_once(ros_data)
 
-    rclpy.spin(ros_data)
 
     ros_data.destroy_node()
 
