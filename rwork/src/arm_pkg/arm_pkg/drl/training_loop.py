@@ -233,6 +233,7 @@ class RosData(Node):
         self.state = np.concatenate([gripper_1_pos, gripper_2_pos, object_1_pos, object_2_pos])
 
     def process_reward_data(self, msg: Float32):
+        print('processing reward value...')
         self.reward_value = msg.data
         self.get_logger().info(f'REWARD YEAH: {self.reward_value}')
 
