@@ -301,6 +301,8 @@ def main(args=None):
 
             reward = ros_data.reward_value
 
+            #FIXME - It's taking data from canonical link I think!
+            
             print(f'REWARD: {reward}')
             print(f'OBJECT: {state[8]} and {state[11]}')
 
