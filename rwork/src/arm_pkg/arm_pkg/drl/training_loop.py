@@ -302,14 +302,17 @@ def main(args=None):
             reward = ros_data.reward_value
 
             print(f'REWARD: {reward}')
+            print(f'OBJECT: {state[8]} and {state[11]}')
 
-            done = (state[11] or state[8]) < 1.20000
+            done = (state[11] or state[8]) < 1.2
+
+            if done:
+                print("Object dropped!!")
+                reset.reset
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
 
-            if done:
-                reset.reset
 
             rclpy.spin_once(ros_data)
 
