@@ -233,6 +233,7 @@ class RosData(Node):
 
         gripper_2_pos = np.array(data[15:18])
         object_pos = np.array(data[22:25])
+        self.get_logger().info(f'Object POS: {object_pos}')
 
         object_1_pos = np.array([object_pos[0] - 0.125, object_pos[1], object_pos[2]])
         object_2_pos = np.array([object_pos[0] + 0.125, object_pos[1], object_pos[2]])
@@ -249,7 +250,7 @@ class RosData(Node):
             msg = Float64()
             msg.data = float(action[idx])
             publisher.publish(msg)
-            self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
+            #self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
         time.sleep(0.1)
 
@@ -302,7 +303,7 @@ def main(args=None):
             reward = ros_data.reward_value
 
             #FIXME - It's taking data from canonical link I think!
-            
+
             print(f'REWARD: {reward}')
             print(f'OBJECT: {state[8]} and {state[11]}')
 
