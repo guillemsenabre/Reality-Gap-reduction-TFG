@@ -94,9 +94,11 @@ class RobotState(Node):
         # Flatten the data and publish to the topic
         # * for unpacking data
         flat_data = [
+            round(x,2) for x in [
             *self.latest_joint_state_1, *self.latest_end_effector_pose_1,
             *self.latest_joint_state_2, *self.latest_end_effector_pose_2,
             *self.latest_object_pose
+            ]
         ]
 
         self.get_logger().info(f'State: {flat_data}')
