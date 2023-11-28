@@ -63,7 +63,7 @@ class RobotState(Node):
         ]
 
     def gripper_object_pose(self, msg: PoseArray):
-        self.get_logger().info(f"Getting pose data: {msg}")
+        self.get_logger().info(f"Getting pose data: {msg.poses}")
         self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
         self.latest_object_pose = self.extract_coordinates(msg.poses[4])
