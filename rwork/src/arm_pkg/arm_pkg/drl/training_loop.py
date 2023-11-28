@@ -299,11 +299,15 @@ def main(args=None):
             # observe next state and reward
             next_state = ros_data.state
 
+            print(f'STATE: {state}')
+
             print(f'NEXT STATE: {next_state}')
 
             reward = ros_data.reward_value
 
             #FIXME - It's taking data from canonical link I think!
+            #FIXME - [8] and [9] are not the object pos?
+            #FIXME - 
 
             print(f'REWARD: {reward}')
             print(f'OBJECT: {state[8]} and {state[11]}')
