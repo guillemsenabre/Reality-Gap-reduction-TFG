@@ -316,7 +316,7 @@ def main(args=None):
 
             if done:
                 print("Object dropped!!")
-                reset.reset
+                reset.reset()
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
