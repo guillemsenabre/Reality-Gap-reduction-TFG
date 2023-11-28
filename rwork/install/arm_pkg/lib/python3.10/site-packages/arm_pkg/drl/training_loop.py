@@ -234,6 +234,8 @@ class RosData(Node):
         gripper_2_pos = np.array(data[15:18])
         object_pos = np.array(data[22:25])
 
+        self.get_logger().info(f"OBJECT POS: {object_pos}")
+
         object_1_pos = np.array([object_pos[0] - 0.125, object_pos[1], object_pos[2]])
         object_2_pos = np.array([object_pos[0] + 0.125, object_pos[1], object_pos[2]])
 
