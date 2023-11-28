@@ -91,10 +91,11 @@ class RobotState(Node):
 
     # States function
     def states_pack(self):
-        # Flatten the data and publish to the topic
-        # * for unpacking data
 
-        '''
+        # 1. Duble nest (not ideal) to round floats
+        # 2. Flatten the data and publish to the topic
+        # 3. * for unpacking data
+
         flat_data = [round(pose, 4) for pose in [ group for group in [
             *self.latest_joint_state_1, *self.latest_end_effector_pose_1,
             *self.latest_joint_state_2, *self.latest_end_effector_pose_2,
@@ -102,16 +103,6 @@ class RobotState(Node):
                 ]
             ]
         ]
-        '''
-
-        
-
-        flat_data = []
-        flat_data.extend([round(pose, 4) for pose in self.latest_joint_state_1])
-        flat_data.extend([round(pose, 4) for pose in self.latest_end_effector_pose_1])
-        flat_data.extend([round(pose, 4) for pose in self.latest_joint_state_2])
-        flat_data.extend([round(pose, 4) for pose in self.latest_end_effector_pose_2])
-        flat_data.extend([round(pose, 4) for pose in self.latest_object_pose])
 
     
 
