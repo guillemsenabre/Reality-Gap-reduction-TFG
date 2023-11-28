@@ -98,6 +98,8 @@ class DDPGAgent:
         next_action = self.actor_target(next_state)
         next_value = self.critic_target(next_state, next_action.detach())
         print(f'NEXT VAUE: {next_value}')
+
+        #FIXME - It's pointing towards more negative values (minimizing)
         target_value = reward + 0.99 * next_value * (1 - done)
         print(f'TARGET VAUE: {target_value}')
         critic_loss = F.mse_loss(value, target_value)
@@ -303,16 +305,14 @@ def main(args=None):
 
             reward = ros_data.reward_value
 
-            #FIXME - It's taking data from canonical link I think!
-            #FIXME - [8] and [9] are not the object pos?
-            #FIXME - 
-
             print(f'REWARD: {reward}')
             print(f'OBJECT: {state[8]} and {state[11]}')
 
             done = (state[11] or state[8]) < 1.2
 
-            print(done)
+            #print(done)
+
+            #FIXME - Multiple resets when True
 
             if done:
                 print("Object dropped!!")
