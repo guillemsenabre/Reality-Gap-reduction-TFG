@@ -63,14 +63,15 @@ class RobotState(Node):
         ]
 
     def gripper_object_pose(self, msg: PoseArray):
-        self.get_logger().info(f"Getting pose data: {msg.poses}")
+
+        #self.get_logger().info(f"Getting pose data: {msg.poses}")
         self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
         self.latest_object_pose = self.extract_coordinates(msg.poses[4])
 
-        self.get_logger().info(f'Gripper 1: {self.latest_end_effector_pose_1}')
-        self.get_logger().info(f'Gripper 2: {self.latest_end_effector_pose_2}')
-        self.get_logger().info(f'Object: {self.latest_object_pose}')
+        #self.get_logger().info(f'Gripper 1: {self.latest_end_effector_pose_1}')
+        #self.get_logger().info(f'Gripper 2: {self.latest_end_effector_pose_2}')
+        #self.get_logger().info(f'Object: {self.latest_object_pose}')
 
         self.states_pack()
 
@@ -106,7 +107,7 @@ class RobotState(Node):
 
     
 
-        self.get_logger().info(f'State: {flat_data}')
+        #self.get_logger().info(f'State: {flat_data}')
         float_array_msg = Float32Array(data=flat_data)
         self.state_publisher.publish(float_array_msg)
 

@@ -233,7 +233,6 @@ class RosData(Node):
 
         gripper_2_pos = np.array(data[15:18])
         object_pos = np.array(data[22:25])
-        self.get_logger().info(f'Object POS: {object_pos}')
 
         object_1_pos = np.array([object_pos[0] - 0.125, object_pos[1], object_pos[2]])
         object_2_pos = np.array([object_pos[0] + 0.125, object_pos[1], object_pos[2]])
@@ -308,6 +307,8 @@ def main(args=None):
             print(f'OBJECT: {state[8]} and {state[11]}')
 
             done = (state[11] or state[8]) < 1.2
+
+            print(done)
 
             if done:
                 print("Object dropped!!")
