@@ -93,6 +93,8 @@ class RobotState(Node):
     def states_pack(self):
         # Flatten the data and publish to the topic
         # * for unpacking data
+
+        '''
         flat_data = [round(pose, 4) for pose in [ group for group in [
             *self.latest_joint_state_1, *self.latest_end_effector_pose_1,
             *self.latest_joint_state_2, *self.latest_end_effector_pose_2,
@@ -100,8 +102,9 @@ class RobotState(Node):
                 ]
             ]
         ]
-
         '''
+
+        
 
         flat_data = []
         flat_data.extend([round(pose, 4) for pose in self.latest_joint_state_1])
@@ -110,8 +113,8 @@ class RobotState(Node):
         flat_data.extend([round(pose, 4) for pose in self.latest_end_effector_pose_2])
         flat_data.extend([round(pose, 4) for pose in self.latest_object_pose])
 
-        '''
-        
+    
+
         self.get_logger().info(f'State: {flat_data}')
         float_array_msg = Float32Array(data=flat_data)
         self.state_publisher.publish(float_array_msg)
