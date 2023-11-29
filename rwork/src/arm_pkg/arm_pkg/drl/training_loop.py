@@ -22,6 +22,7 @@ import matplotlib
 #SECTION - POLICY DRL ALGORITHM
 #SECTION - ACTOR NETWORK
 
+    #FIXME - How to save the model? When?
 
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
@@ -102,6 +103,10 @@ class DDPGAgent:
 
         target_value = reward + 0.99 * next_value * (1 - done)
         print(f'TARGET VAUE: {target_value}')
+
+        #FIXME - Add plotting
+
+        #Critic loss
         critic_loss = F.mse_loss(value, target_value)
 
         # Actor loss
@@ -255,6 +260,7 @@ class RosData(Node):
             publisher.publish(msg)
             #self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
+        #FIXME - Check the sleep time. Is it needed?
         time.sleep(0.1)
 
 #!SECTION
