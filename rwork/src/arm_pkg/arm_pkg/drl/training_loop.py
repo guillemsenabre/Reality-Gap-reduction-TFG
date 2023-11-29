@@ -13,6 +13,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
+import matplotlib
 
 
 
@@ -99,7 +100,6 @@ class DDPGAgent:
         next_value = self.critic_target(next_state, next_action.detach())
         print(f'NEXT VAUE: {next_value}')
 
-        #FIXME - It's pointing towards more negative values (minimizing)
         target_value = reward + 0.99 * next_value * (1 - done)
         print(f'TARGET VAUE: {target_value}')
         critic_loss = F.mse_loss(value, target_value)
@@ -271,6 +271,7 @@ def main(args=None):
     ros_data = RosData()
     reset = Reset()
 
+    #FIXME - How long is an episode and why?
     num_episodes = 100
     max_steps = 1000
     for episode in range(num_episodes):
