@@ -13,6 +13,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
+import matplotlib
 
 
 
@@ -21,6 +22,7 @@ import torch.optim as optim
 #SECTION - POLICY DRL ALGORITHM
 #SECTION - ACTOR NETWORK
 
+    #FIXME - How to save the model? When?
 
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
@@ -98,8 +100,13 @@ class DDPGAgent:
         next_action = self.actor_target(next_state)
         next_value = self.critic_target(next_state, next_action.detach())
         print(f'NEXT VAUE: {next_value}')
+
         target_value = reward + 0.99 * next_value * (1 - done)
         print(f'TARGET VAUE: {target_value}')
+
+        #FIXME - Add plotting
+
+        #Critic loss
         critic_loss = F.mse_loss(value, target_value)
 
         # Actor loss
@@ -253,6 +260,7 @@ class RosData(Node):
             publisher.publish(msg)
             #self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
+        #FIXME - Check the sleep time. Is it needed?
         time.sleep(0.1)
 
 #!SECTION
@@ -269,6 +277,7 @@ def main(args=None):
     ros_data = RosData()
     reset = Reset()
 
+    #FIXME - How long is an episode and why?
     num_episodes = 100
     max_steps = 1000
     for episode in range(num_episodes):
@@ -303,16 +312,14 @@ def main(args=None):
 
             reward = ros_data.reward_value
 
-            #FIXME - It's taking data from canonical link I think!
-            #FIXME - [8] and [9] are not the object pos?
-            #FIXME - 
-
             print(f'REWARD: {reward}')
             print(f'OBJECT: {state[8]} and {state[11]}')
 
             done = (state[11] or state[8]) < 1.2
 
-            print(done)
+            #print(done)
+
+            #FIXME - Multiple resets when True
 
             if done:
                 print("Object dropped!!")
