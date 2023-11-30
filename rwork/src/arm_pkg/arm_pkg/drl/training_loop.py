@@ -261,7 +261,7 @@ class RosData(Node):
             #self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
         #FIXME - Check the sleep time. Is it needed?
-        time.sleep(0.1)
+        time.sleep(0.001)
 
 #!SECTION
 
