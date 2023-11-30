@@ -65,8 +65,9 @@ class Reward(Node):
     def object_deviation(self, msg: Float32Array):
         data = msg.data
         object_deviation = data[25:29]  # OBJI, OBJJ, OBJK, OBJW
-        deviation_penalty = -0.1 * (abs(object_deviation[0]) + abs(object_deviation[1]) + abs(object_deviation[2]))
-        
+        print(f'Object deviation: {object_deviation}')
+        deviation_penalty = -0.5 * (abs(object_deviation[0]) + abs(object_deviation[1]) + abs(object_deviation[2]))
+        print(f'deviation penalty: {deviation_penalty}')
         return deviation_penalty
     
     def grabbing_object(self, msg: Float32Array):
@@ -78,7 +79,7 @@ class Reward(Node):
         deviation_reward = self.object_deviation(msg)
 
         reward = distance_reward + deviation_reward
-        
+
         self.get_logger().info(f'R: {reward}')
         self.reward_publisher.publish(Float32(data=reward))
 
