@@ -3,6 +3,21 @@ from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 
+
+
+'''
+                            Data structure
+
+[
+    'f',
+    J01, J11, J21, J31, EX1, EY1, EZ1, EI1, EJ1, EK1,EW1,   --> ROBOT 1
+    J02, J12, J22, J32, EX2, EY2, EZ2, EI2, EJ2, EK2,EW2,   --> ROBOT 2  
+    OBJX, OBJY, OBJZ, OBJI, OBJJ, OBJK, OBJW                --> OBJECT
+] 
+
+'''
+
+
 class Reward(Node):
     def __init__(self):
         super().__init__('reward_function')
@@ -27,21 +42,10 @@ class Reward(Node):
         self.get_logger().info('Waiting for data ...')
 
 
+
+
     def manhattan_distance(self, msg: Float32Array):
-        
-        '''
-                                    Data structure
-
-        [
-            'f',
-            J01, J11, J21, J31, EX1, EY1, EZ1, EI1, EJ1, EK1,EW1,   --> ROBOT 1
-            J02, J12, J22, J32, EX2, EY2, EZ2, EI2, EJ2, EK2,EW2,   --> ROBOT 2  
-            OBJX, OBJY, OBJZ, OBJI, OBJJ, OBJK, OBJW                --> OBJECT
-        ] 
-
-        '''
                 
-
         data = msg.data
 
         # Extract gripper and object positions
@@ -52,31 +56,28 @@ class Reward(Node):
         object_1_pos = [object_pos[0] - 0.125, object_pos[1], object_pos[2]]
         object_2_pos = [object_pos[0] + 0.125, object_pos[1], object_pos[2]]
 
-        
         rg1 = abs(gripper_1_pos[0] - object_1_pos[0]) + abs(gripper_1_pos[1] - object_1_pos[1]) + abs(gripper_1_pos[2] - object_1_pos[2])
-
         rg2 = abs(gripper_2_pos[0] - object_2_pos[0]) + abs(gripper_2_pos[1] - object_2_pos[1]) + abs(gripper_2_pos[2] - object_2_pos[2])
     
-        #self.get_logger().info(f'reward distance 1: {rg1}')
-        #self.get_logger().info(f'reward distance 2: {rg2}')
-
-        return -(rg1 + rg2)
+        distance_reward = -(rg1 + rg2)
         
+        return distance_reward
 
+    
+    def object_deviation(self, msg: Float32Array):
+        data = msg.data
+        object_deviation = data[25:29]  # OBJI, OBJJ, OBJK, OBJW
+        deviation_penalty = -0.1 * (abs(object_deviation[0]) + abs(object_deviation[1]) + abs(object_deviation[2]))
+        
+        return deviation_penalty
+    
     def reward_function(self, msg: Float32Array):
 
         distance_reward = self.manhattan_distance(msg)
 
         self.get_logger().info(f'Distance Reward: {distance_reward}')
 
-        
-
         self.reward_publisher.publish(Float32(data=distance_reward))
-
-
-    
-    def object_deviation(self):
-        pass
 
 
 
