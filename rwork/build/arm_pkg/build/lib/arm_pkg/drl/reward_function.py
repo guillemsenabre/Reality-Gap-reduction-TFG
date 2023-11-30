@@ -42,8 +42,6 @@ class Reward(Node):
         self.get_logger().info('Waiting for data ...')
 
 
-
-
     def manhattan_distance(self, msg: Float32Array):
                 
         data = msg.data
@@ -71,14 +69,17 @@ class Reward(Node):
         
         return deviation_penalty
     
+    def grabbing_object(self, msg: Float32Array):
+        pass
+    
     def reward_function(self, msg: Float32Array):
 
         distance_reward = self.manhattan_distance(msg)
+        deviation_reward = self.object_deviation(msg)
 
-        self.get_logger().info(f'Distance Reward: {distance_reward}')
+        reward = distance_reward + deviation_reward
 
-        self.reward_publisher.publish(Float32(data=distance_reward))
-
+        self.reward_publisher.publish(Float32(data=reward))
 
 
 
