@@ -145,6 +145,7 @@ class Reset(Node):
     def reset(self):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
+        time.sleep(1)
         self.run_gazebo()
         self.unpause()
 
@@ -322,11 +323,12 @@ def main(args=None):
             #print(done)
 
             #FIXME - Multiple resets when True
+            #NOTE - First restart is working ok +-, but then it gets crazier.
 
             if done:
                 print("Object dropped!!")
                 reset.reset()
-                time.sleep(5)
+                time.sleep(2)
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
