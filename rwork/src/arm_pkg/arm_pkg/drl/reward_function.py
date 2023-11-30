@@ -76,6 +76,9 @@ class Reward(Node):
     
     def grabbing_object(self, msg: Float32Array):
         pass
+
+    def limit_base_joint(self, msg: Float32Array):
+        pass
     
     def reward_function(self, msg: Float32Array):
 
