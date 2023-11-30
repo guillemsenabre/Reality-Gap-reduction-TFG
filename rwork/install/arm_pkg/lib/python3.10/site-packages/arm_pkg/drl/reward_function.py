@@ -70,6 +70,9 @@ class Reward(Node):
         print(f'deviation penalty: {deviation_penalty}')
         return deviation_penalty
     
+    def end_effector_deviation(self, msg: Float32Array):
+        pass
+    
     def grabbing_object(self, msg: Float32Array):
         pass
     
