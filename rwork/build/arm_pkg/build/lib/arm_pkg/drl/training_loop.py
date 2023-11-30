@@ -145,7 +145,7 @@ class Reset(Node):
     def reset(self):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
-        time.sleep(1)
+        time.sleep(3)
         self.run_gazebo()
         self.unpause()
 
@@ -279,6 +279,9 @@ def main(args=None):
     reset = Reset()
 
     #FIXME - How long is an episode and why?
+    #NOTE - An episode will last until two conditions are met:
+    #   1. Reward value didn't change much in the last 'x' steps.
+    #   2. The object is dropped or very unstable.
     num_episodes = 100
     max_steps = 1000
     for episode in range(num_episodes):
