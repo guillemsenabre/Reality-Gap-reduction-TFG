@@ -70,6 +70,9 @@ class Reward(Node):
         print(f'deviation penalty: {deviation_penalty}')
         return deviation_penalty
     
+    def end_effector_deviation(self, msg: Float32Array):
+        pass
+    
     def grabbing_object(self, msg: Float32Array):
         pass
     
@@ -81,7 +84,7 @@ class Reward(Node):
         reward = distance_reward + deviation_reward
 
         self.get_logger().info(f'R: {reward}')
-        self.reward_publisher.publish(Float32(data=reward))
+        #self.reward_publisher.publish(Float32(data=reward))
 
 
 
