@@ -279,6 +279,9 @@ def main(args=None):
     reset = Reset()
 
     #FIXME - How long is an episode and why?
+    #NOTE - An episode will last until two conditions are met:
+    #   1. Reward value didn't change much in the last 'x' steps.
+    #   2. The object is dropped or very unstable.
     num_episodes = 100
     max_steps = 1000
     for episode in range(num_episodes):
