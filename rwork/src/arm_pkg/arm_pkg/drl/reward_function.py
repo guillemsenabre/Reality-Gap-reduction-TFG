@@ -78,7 +78,8 @@ class Reward(Node):
         deviation_reward = self.object_deviation(msg)
 
         reward = distance_reward + deviation_reward
-
+        
+        self.get_logger().info(f'R: {reward}')
         self.reward_publisher.publish(Float32(data=reward))
 
 
