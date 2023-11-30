@@ -315,6 +315,8 @@ def main(args=None):
             print(f'REWARD: {reward}')
             print(f'OBJECT: {state[8]} and {state[11]}')
 
+            #FIXME - IMPROVE TERMINAL CONDITIONS
+
             done = (state[11] or state[8]) < 1.2
 
             #print(done)
@@ -324,6 +326,7 @@ def main(args=None):
             if done:
                 print("Object dropped!!")
                 reset.reset()
+                time.sleep(1)
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, done)
