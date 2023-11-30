@@ -74,10 +74,14 @@ class Reward(Node):
     def reward_function(self, msg: Float32Array):
 
         distance_reward = self.manhattan_distance(msg)
+        deviation_reward = self.object_deviation(msg)
 
-        self.get_logger().info(f'Distance Reward: {distance_reward}')
 
-        self.reward_publisher.publish(Float32(data=distance_reward))
+        reward = distance_reward + deviation_reward
+        
+        self.get_logger().info(f'Distance Reward: {reward}')
+
+        self.reward_publisher.publish(Float32(data=reward))
 
 
 
