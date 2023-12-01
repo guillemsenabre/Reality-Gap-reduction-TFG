@@ -89,7 +89,7 @@ class DDPGAgent:
     
     #SECTION - Update 
 
-    def update(self, state, action, reward, next_state, done):
+    def update(self, state, action, reward, next_state, terminal_condition):
         state = torch.FloatTensor(state)
         action = torch.FloatTensor(action)
         reward = torch.FloatTensor([reward])
@@ -101,7 +101,7 @@ class DDPGAgent:
         next_value = self.critic_target(next_state, next_action.detach())
         print(f'NEXT VAUE: {next_value}')
 
-        target_value = reward + 0.99 * next_value * (1 - done)
+        target_value = reward + 0.99 * next_value * (1 - terminal_condition)
         print(f'TARGET VAUE: {target_value}')
 
         #FIXME - Add plotting
@@ -295,7 +295,7 @@ def main(args=None):
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
-        while ros_data.terminal_condition:
+        while ros_data.terminal_condition():
             state = ros_data.state
             action = ros_data.agent.select_action(state)
             ros_data.move_joints(action)
@@ -303,7 +303,7 @@ def main(args=None):
             reward = ros_data.reward_value
 
             # Update agent
-            ros_data.agent.update(state, action, reward, next_state, ros_data.terminal_condition)
+            ros_data.agent.update(state, action, reward, next_state, ros_data.terminal_condition())
 
             rclpy.spin_once(ros_data)
 
