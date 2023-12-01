@@ -258,6 +258,8 @@ class RosData(Node):
             self.maximum_accumulative_reward = 0
         else:
             not_change = False
+        
+        print(not_change)
 
         return not not_change
             
