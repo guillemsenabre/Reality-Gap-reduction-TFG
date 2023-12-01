@@ -254,7 +254,7 @@ class RosData(Node):
         values = self.reward_value
         list.append(values)
         if self.maximum_accumulative_reward == len(list):
-            not_change = list[0] == list[self.maximum_accumulative_reward - 1] or (self.state[11] or self.state[8]) < 1.2
+            not_change = list[0] == list[self.maximum_accumulative_reward - 1] or ((self.state[11] or self.state[8]) < 1.2)
             self.maximum_accumulative_reward = 0
         else:
             not_change = False
