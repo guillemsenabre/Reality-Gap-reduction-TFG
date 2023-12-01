@@ -258,7 +258,7 @@ class RosData(Node):
         else:
             not_change = False
 
-        return not_change
+        return not not_change
             
     def move_joints(self, action):
         for idx, publisher in enumerate(self.joint_publishers):
@@ -295,7 +295,7 @@ def main(args=None):
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
-        while not ros_data.terminal_condition:
+        while ros_data.terminal_condition:
             state = ros_data.state
             action = ros_data.agent.select_action(state)
             ros_data.move_joints(action)
