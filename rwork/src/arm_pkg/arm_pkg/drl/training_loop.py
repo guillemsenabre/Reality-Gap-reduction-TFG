@@ -145,7 +145,7 @@ class Reset(Node):
     def reset(self):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
-        time.sleep(3)
+        time.sleep(5)
         self.run_gazebo()
         self.unpause()
 
@@ -184,6 +184,8 @@ class Reset(Node):
 class RosData(Node):
     def __init__(self):    
         super().__init__('ros_data')
+
+        self.get_logger().info(f'Starting training...')
 
         
         self.state = np.array([])
@@ -252,10 +254,8 @@ class RosData(Node):
     def terminal_condition(self):
         self.reward_list.append(self.reward_value)
         if self.maximum_accumulative_reward == len(self.reward_list):
-
-            #FIXME - CORRECT REWARD LIST INSTANCE
-            not_change = list[0] == list[-1]
-            self.maximum_accumulative_reward = 0
+            not_change = self.reward_list[0] == self.reward_list[-1]
+            self.reward_list = []
         elif (self.state[11] or self.state[8]) < 1.2:
             not_change = True
         else:
@@ -287,7 +287,6 @@ def main(args=None):
     ros_data = RosData()
     reset = Reset()
     num_episodes = 100
-    max_steps = 1000
 
     for episode in range(num_episodes):
 
