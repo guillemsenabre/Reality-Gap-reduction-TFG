@@ -187,7 +187,15 @@ class RosData(Node):
 
         
         self.state = np.array([])
+        self.reward_list = []
         self.reward_value = 0.0
+        
+        self.maximum_accumulative_reward = 30
+
+        state_dim = 12  
+        action_dim = 8
+        self.agent = DDPGAgent(state_dim, action_dim)
+
 
         # Subscribing to topics data
         self.state_subscription = self.create_subscription(
@@ -203,15 +211,6 @@ class RosData(Node):
             self.process_reward_data,
             10
         )
-
-        self.reward_subscription = self.create_subscription(
-            Float32,
-            'reward/data',
-            self.process_reward_data,
-            10
-        )
-
-        # Publishers for the joints
 
 
         self.joint_publishers = []
@@ -229,11 +228,6 @@ class RosData(Node):
         for joint_name in self.joint_names:
             publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
-
-        # Initialize the DDPG agent
-        state_dim = 12  
-        action_dim = 8
-        self.agent = DDPGAgent(state_dim, action_dim)
 
     def process_state_data(self, msg: Float32Array):
 
@@ -257,9 +251,16 @@ class RosData(Node):
         self.reward_value = msg.data
 
     def terminal_condition(self, msg: Float64):
+        list = self.reward_list
+        list.extend(self.reward_value)
+        if self.maximum_accumulative_reward == len(list):
+            not_change = list[0] == list[self.maximum_accumulative_reward - 1]
+            self.maximum_accumulative_reward = 0
+        else:
+            not_change = False
 
-
-    
+        return not_change
+            
     def move_joints(self, action):
 
         for idx, publisher in enumerate(self.joint_publishers):
