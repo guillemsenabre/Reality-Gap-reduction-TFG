@@ -279,16 +279,11 @@ class RosData(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    
     ros_data = RosData()
     reset = Reset()
-
-    #FIXME - How long is an episode and why?
-    #NOTE - An episode will last until two conditions are met:
-    #   1. Reward value didn't change much in the last 'x' steps.
-    #   2. The object is dropped or very unstable.
     num_episodes = 100
     max_steps = 1000
+
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
@@ -307,9 +302,6 @@ def main(args=None):
             next_state = ros_data.state
             reward = ros_data.reward_value
 
-            #if ros_data.terminal_condition:
-            #    break
-
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, ros_data.terminal_condition)
 
@@ -317,7 +309,6 @@ def main(args=None):
 
 
     ros_data.destroy_node()
-
     rclpy.shutdown()
 
 #!SECTION

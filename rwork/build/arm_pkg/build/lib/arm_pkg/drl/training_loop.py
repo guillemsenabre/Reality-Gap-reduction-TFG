@@ -187,10 +187,17 @@ class RosData(Node):
 
         
         self.state = np.array([])
+        self.reward_list = []
         self.reward_value = 0.0
+        
+        self.maximum_accumulative_reward = 30
+
+        state_dim = 12  
+        action_dim = 8
+        self.agent = DDPGAgent(state_dim, action_dim)
+
 
         # Subscribing to topics data
-        self.get_logger().info("STATE DATA ...")
         self.state_subscription = self.create_subscription(
             Float32Array,
             'packed/state/data',
@@ -198,16 +205,12 @@ class RosData(Node):
             10
         )
 
-        self.get_logger().info("REWARD DATA ...")
-
         self.reward_subscription = self.create_subscription(
             Float32,
             'reward/data',
             self.process_reward_data,
             10
         )
-
-        # Publishers for the joints
 
 
         self.joint_publishers = []
@@ -226,13 +229,7 @@ class RosData(Node):
             publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
             self.joint_publishers.append(publisher)
 
-        # Initialize the DDPG agent
-        state_dim = 12  
-        action_dim = 8
-        self.agent = DDPGAgent(state_dim, action_dim)
-
     def process_state_data(self, msg: Float32Array):
-
         data = msg.data
         
         # Extract gripper and object positions
@@ -252,16 +249,24 @@ class RosData(Node):
     def process_reward_data(self, msg: Float64):
         self.reward_value = msg.data
 
-    
-    def move_joints(self, action):
+    def terminal_condition(self):
+        list = self.reward_list
+        list.extend(self.reward_value)
+        if self.maximum_accumulative_reward == len(list):
+            not_change = list[0] == list[self.maximum_accumulative_reward - 1] or (self.state[11] or self.state[8]) < 1.2
+            self.maximum_accumulative_reward = 0
+        else:
+            not_change = False
 
+        return not_change
+            
+    def move_joints(self, action):
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float64()
             msg.data = float(action[idx])
             publisher.publish(msg)
             #self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
-        #FIXME - Check the sleep time. Is it needed?
         time.sleep(0.01)
 
 #!SECTION
@@ -274,74 +279,36 @@ class RosData(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    
     ros_data = RosData()
     reset = Reset()
-
-    #FIXME - How long is an episode and why?
-    #NOTE - An episode will last until two conditions are met:
-    #   1. Reward value didn't change much in the last 'x' steps.
-    #   2. The object is dropped or very unstable.
     num_episodes = 100
     max_steps = 1000
+
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
 
-        reset.run_gazebo()
-        reset.unpause()
+        reset.reset()
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
-        for step in range(max_steps):
-
+        while not ros_data.terminal_condition:
             state = ros_data.state
-
-            print(f'STATE: {state}')
-            # Select action from the agent's policy
             action = ros_data.agent.select_action(state)
-
-            print(f'ACTION: {action}')
-
-            # Execute actions
             ros_data.move_joints(action)
-
-            # observe next state and reward
             next_state = ros_data.state
-
-            print(f'NEXT STATE: {next_state}')
-
             reward = ros_data.reward_value
 
-            print(f'REWARD: {reward}')
-            print(f'OBJECT: {state[8]} and {state[11]}')
-
-            #FIXME - IMPROVE TERMINAL CONDITIONS
-
-            done = (state[11] or state[8]) < 1.2
-
-            #print(done)
-
-            #FIXME - Multiple resets when True
-            #NOTE - First restart is working ok +-, but then it gets crazier.
-
-            if done:
-                print("Object dropped!!")
-                reset.reset()
-                time.sleep(2)
-
             # Update agent
-            ros_data.agent.update(state, action, reward, next_state, done)
-
+            ros_data.agent.update(state, action, reward, next_state, ros_data.terminal_condition)
 
             rclpy.spin_once(ros_data)
 
 
     ros_data.destroy_node()
-
     rclpy.shutdown()
 
 #!SECTION
