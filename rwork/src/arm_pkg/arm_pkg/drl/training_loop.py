@@ -2,6 +2,7 @@ import rclpy
 import subprocess
 import os
 import time
+import psutil
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float64, Float32
@@ -146,7 +147,6 @@ class Reset(Node):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
         self.run_gazebo()
-        time.sleep(1)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -157,14 +157,23 @@ class Reset(Node):
             self.get_logger().warning("Failed to kill Gazebo process.")
 
     def run_gazebo(self):
-        self.get_logger().info("starting gazebo simulator...")
-        home_directory = os.path.expanduser("~")
-        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+        self.get_logger().info("Check gazebo is dead...")
 
-        try:
-            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        except subprocess.CalledProcessError:
-            self.get_logger().error("Failed to start Gazebo process.")
+        if self.is_gazebo_running():
+            self.get_logger().info("starting gazebo simulator...")
+            home_directory = os.path.expanduser("~")
+            sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+
+            try:
+                subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except subprocess.CalledProcessError:
+                self.get_logger().error("Failed to start Gazebo process.")
+        
+        else:
+            self.get_logger().error("Gazebo is still running...")
+            time.sleep(1)
+            self.get_logger().error("Trying again...")
+            self.reset()
 
     def unpause(self):
         # Use subprocess to execute the ros2 service call command
@@ -174,6 +183,13 @@ class Reset(Node):
             self.get_logger().info("Simulation unpaused successfully.")
         except subprocess.CalledProcessError as e:
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
+
+    def is_gazebo_running(self):
+        for process in psutil.process_iter(['pid', 'name']):
+            if 'gazebo' in process.info['name'] or 'ruby' in process.info['name']:
+                return True
+        return False
+
 
 #!SECTION
 
