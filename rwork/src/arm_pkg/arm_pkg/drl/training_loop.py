@@ -230,7 +230,6 @@ class RosData(Node):
             self.joint_publishers.append(publisher)
 
     def process_state_data(self, msg: Float32Array):
-
         data = msg.data
         
         # Extract gripper and object positions
@@ -250,11 +249,11 @@ class RosData(Node):
     def process_reward_data(self, msg: Float64):
         self.reward_value = msg.data
 
-    def terminal_condition(self, msg: Float64):
+    def terminal_condition(self):
         list = self.reward_list
         list.extend(self.reward_value)
         if self.maximum_accumulative_reward == len(list):
-            not_change = list[0] == list[self.maximum_accumulative_reward - 1]
+            not_change = list[0] == list[self.maximum_accumulative_reward - 1] or (self.state[11] or self.state[8]) < 1.2
             self.maximum_accumulative_reward = 0
         else:
             not_change = False
@@ -262,14 +261,12 @@ class RosData(Node):
         return not_change
             
     def move_joints(self, action):
-
         for idx, publisher in enumerate(self.joint_publishers):
             msg = Float64()
             msg.data = float(action[idx])
             publisher.publish(msg)
             #self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
-        #FIXME - Check the sleep time. Is it needed?
         time.sleep(0.01)
 
 #!SECTION
@@ -327,11 +324,6 @@ def main(args=None):
             print(f'REWARD: {reward}')
             print(f'OBJECT: {state[8]} and {state[11]}')
 
-            #FIXME - IMPROVE TERMINAL CONDITIONS
-
-            done = (state[11] or state[8]) < 1.2
-
-            #print(done)
 
             #FIXME - Multiple resets when True
             #NOTE - First restart is working ok +-, but then it gets crazier.
