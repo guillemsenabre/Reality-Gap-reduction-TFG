@@ -186,10 +186,9 @@ class Reset(Node):
 
     def is_gazebo_running(self):
         for process in psutil.process_iter(['pid', 'name']):
-            if 'gazebo' in process.info['name'] or 'ruby' in process.info['name']:
+            if 'gazebo' in process.info['name']:
                 return True
         return False
-
 
 #!SECTION
 
