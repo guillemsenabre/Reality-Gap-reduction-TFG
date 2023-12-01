@@ -293,49 +293,25 @@ def main(args=None):
 
         print(f'Running poch: {episode}')
 
-        reset.run_gazebo()
-        reset.unpause()
+        reset.reset()
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
-        for step in range(max_steps):
-
+        while not ros_data.terminal_condition:
             state = ros_data.state
-
-            print(f'STATE: {state}')
-            # Select action from the agent's policy
             action = ros_data.agent.select_action(state)
-
-            print(f'ACTION: {action}')
-
-            # Execute actions
             ros_data.move_joints(action)
-
-            # observe next state and reward
             next_state = ros_data.state
-
-            print(f'NEXT STATE: {next_state}')
-
             reward = ros_data.reward_value
 
-            print(f'REWARD: {reward}')
-            print(f'OBJECT: {state[8]} and {state[11]}')
-
-
-            #FIXME - Multiple resets when True
-            #NOTE - First restart is working ok +-, but then it gets crazier.
-
-            if done:
-                print("Object dropped!!")
-                reset.reset()
-                time.sleep(2)
+            #if ros_data.terminal_condition:
+            #    break
 
             # Update agent
-            ros_data.agent.update(state, action, reward, next_state, done)
-
+            ros_data.agent.update(state, action, reward, next_state, ros_data.terminal_condition)
 
             rclpy.spin_once(ros_data)
 
