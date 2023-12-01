@@ -190,7 +190,6 @@ class RosData(Node):
         self.reward_value = 0.0
 
         # Subscribing to topics data
-        self.get_logger().info("STATE DATA ...")
         self.state_subscription = self.create_subscription(
             Float32Array,
             'packed/state/data',
@@ -198,7 +197,12 @@ class RosData(Node):
             10
         )
 
-        self.get_logger().info("REWARD DATA ...")
+        self.reward_subscription = self.create_subscription(
+            Float32,
+            'reward/data',
+            self.process_reward_data,
+            10
+        )
 
         self.reward_subscription = self.create_subscription(
             Float32,
@@ -251,6 +255,9 @@ class RosData(Node):
 
     def process_reward_data(self, msg: Float64):
         self.reward_value = msg.data
+
+    def terminal_condition(self, msg: Float64):
+
 
     
     def move_joints(self, action):
