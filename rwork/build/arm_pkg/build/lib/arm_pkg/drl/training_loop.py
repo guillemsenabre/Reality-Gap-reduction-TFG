@@ -147,6 +147,7 @@ class Reset(Node):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
         self.run_gazebo()
+        time.sleep(10)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -158,7 +159,7 @@ class Reset(Node):
 
     def run_gazebo(self):
         self.get_logger().info("Check if gazebo is dead...")
-        print(self.is_gazebo_running())
+        print(not self.is_gazebo_running())
 
         if not self.is_gazebo_running():
             self.get_logger().info("starting gazebo simulator...")
@@ -167,7 +168,6 @@ class Reset(Node):
 
             try:
                 subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                time.sleep(2)
             except subprocess.CalledProcessError:
                 self.get_logger().error("Failed to start Gazebo process.")
         
@@ -186,7 +186,6 @@ class Reset(Node):
         except subprocess.CalledProcessError as e:
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
 
-    #FIXME - FOR SOME REASON IT STILL DETECTS GAZEBO
     def is_gazebo_running(self):
         for process in psutil.process_iter(['pid', 'name']):
             if 'gazebo' in process.info['name']:
@@ -209,6 +208,7 @@ class RosData(Node):
         self.state = np.array([])
         self.reward_list = []
         self.reward_value = 0.0
+        self.margin_value = 0.01
         
         self.maximum_accumulative_reward = 30
 
@@ -272,7 +272,8 @@ class RosData(Node):
     def terminal_condition(self):
         self.reward_list.append(self.reward_value)
         if self.maximum_accumulative_reward == len(self.reward_list):
-            not_change = self.reward_list[0] == self.reward_list[-1]
+            margin = self.margin_value * self.reward_list[0]
+            not_change = abs(self.reward_list[0] - self.reward_list[-1]) <= margin
             self.reward_list = []
         elif (self.state[11] or self.state[8]) < 1.2:
             not_change = True

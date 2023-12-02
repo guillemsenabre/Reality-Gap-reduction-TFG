@@ -147,7 +147,7 @@ class Reset(Node):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
         self.run_gazebo()
-        time.sleep(5)
+        time.sleep(10)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -159,7 +159,7 @@ class Reset(Node):
 
     def run_gazebo(self):
         self.get_logger().info("Check if gazebo is dead...")
-        print(self.is_gazebo_running())
+        print(not self.is_gazebo_running())
 
         if not self.is_gazebo_running():
             self.get_logger().info("starting gazebo simulator...")
@@ -186,7 +186,6 @@ class Reset(Node):
         except subprocess.CalledProcessError as e:
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
 
-    #FIXME - FOR SOME REASON IT STILL DETECTS GAZEBO
     def is_gazebo_running(self):
         for process in psutil.process_iter(['pid', 'name']):
             if 'gazebo' in process.info['name']:
