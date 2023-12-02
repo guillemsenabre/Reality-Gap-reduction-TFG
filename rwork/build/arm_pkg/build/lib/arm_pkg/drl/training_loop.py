@@ -157,9 +157,10 @@ class Reset(Node):
             self.get_logger().warning("Failed to kill Gazebo process.")
 
     def run_gazebo(self):
-        self.get_logger().info("Check gazebo is dead...")
+        self.get_logger().info("Check if gazebo is dead...")
+        print(self.is_gazebo_running())
 
-        if self.is_gazebo_running():
+        if not self.is_gazebo_running():
             self.get_logger().info("starting gazebo simulator...")
             home_directory = os.path.expanduser("~")
             sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
