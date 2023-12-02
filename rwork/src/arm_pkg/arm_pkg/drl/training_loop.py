@@ -271,6 +271,8 @@ class RosData(Node):
 
     def terminal_condition(self):
         self.reward_list.append(self.reward_value)
+        print(self.maximum_accumulative_reward)
+        print(len(self.reward_list))
         if self.maximum_accumulative_reward == len(self.reward_list):
             margin = self.margin_value * self.reward_list[0]
             not_change = abs(self.reward_list[0] - self.reward_list[-1]) <= margin
@@ -279,8 +281,6 @@ class RosData(Node):
             not_change = True
         else:
             not_change = False
-        
-        print(not_change)
 
         return not not_change
             
