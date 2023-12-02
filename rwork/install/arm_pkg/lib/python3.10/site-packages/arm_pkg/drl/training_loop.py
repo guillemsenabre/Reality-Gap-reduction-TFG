@@ -280,6 +280,7 @@ class RosData(Node):
             difference = abs(self.reward_list[0] - self.reward_list[-1]) 
             print(difference)
             not_change = difference <= margin
+            print(not_change)
             self.reward_list = []
         elif (self.state[11] or self.state[8]) < 1.2:
             not_change = True
