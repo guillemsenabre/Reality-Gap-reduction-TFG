@@ -166,6 +166,7 @@ class Reset(Node):
 
             try:
                 subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                time.sleep(2)
             except subprocess.CalledProcessError:
                 self.get_logger().error("Failed to start Gazebo process.")
         
@@ -184,7 +185,8 @@ class Reset(Node):
         except subprocess.CalledProcessError as e:
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
 
-    def is_gazebo_running(self):
+    #FIXME - FOR SOME REASON IT STILL DETECTS GAZEBO
+    def is_gazebo_running():
         for process in psutil.process_iter(['pid', 'name']):
             if 'gazebo' in process.info['name']:
                 return True
