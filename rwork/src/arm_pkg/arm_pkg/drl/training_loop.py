@@ -275,7 +275,7 @@ class RosData(Node):
         print(len(self.reward_list))
         if self.maximum_accumulative_reward == len(self.reward_list):
             print("Accumulative checking...")
-            margin = self.margin_value * self.reward_list[0]
+            margin = abs(self.margin_value * self.reward_list[0])
             print(margin)
             difference = abs(self.reward_list[0] - self.reward_list[-1]) 
             print(difference)
