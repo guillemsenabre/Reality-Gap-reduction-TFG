@@ -100,10 +100,10 @@ class DDPGAgent:
         value = self.critic(state, action)
         next_action = self.actor_target(next_state)
         next_value = self.critic_target(next_state, next_action.detach())
-        print(f'NEXT VAUE: {next_value}')
+        #print(f'NEXT VAUE: {next_value}')
 
         target_value = reward + 0.99 * next_value * (1 - terminal_condition)
-        print(f'TARGET VAUE: {target_value}')
+        #print(f'TARGET VAUE: {target_value}')
 
         #FIXME - Add plotting
 
@@ -274,6 +274,7 @@ class RosData(Node):
         print(self.maximum_accumulative_reward)
         print(len(self.reward_list))
         if self.maximum_accumulative_reward == len(self.reward_list):
+            print("Accumulative checking...")
             margin = self.margin_value * self.reward_list[0]
             not_change = abs(self.reward_list[0] - self.reward_list[-1]) <= margin
             self.reward_list = []
