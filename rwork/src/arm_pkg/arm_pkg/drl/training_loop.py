@@ -209,6 +209,7 @@ class RosData(Node):
         self.state = np.array([])
         self.reward_list = []
         self.reward_value = 0.0
+        self.margin_value = 0.01
         
         self.maximum_accumulative_reward = 30
 
@@ -272,7 +273,8 @@ class RosData(Node):
     def terminal_condition(self):
         self.reward_list.append(self.reward_value)
         if self.maximum_accumulative_reward == len(self.reward_list):
-            not_change = self.reward_list[0] == self.reward_list[-1]
+            margin = self.margin_value * self.reward_list[0]
+            not_change = abs(self.reward_list[0] - self.reward_list[-1]) <= margin
             self.reward_list = []
         elif (self.state[11] or self.state[8]) < 1.2:
             not_change = True
