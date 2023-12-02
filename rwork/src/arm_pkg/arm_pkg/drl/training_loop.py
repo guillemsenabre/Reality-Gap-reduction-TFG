@@ -147,6 +147,7 @@ class Reset(Node):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
         self.run_gazebo()
+        time.sleep(5)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -167,7 +168,6 @@ class Reset(Node):
 
             try:
                 subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                time.sleep(2)
             except subprocess.CalledProcessError:
                 self.get_logger().error("Failed to start Gazebo process.")
         
