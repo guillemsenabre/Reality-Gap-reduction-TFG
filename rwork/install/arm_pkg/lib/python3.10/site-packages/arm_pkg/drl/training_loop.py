@@ -186,7 +186,7 @@ class Reset(Node):
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
 
     #FIXME - FOR SOME REASON IT STILL DETECTS GAZEBO
-    def is_gazebo_running():
+    def is_gazebo_running(self):
         for process in psutil.process_iter(['pid', 'name']):
             if 'gazebo' in process.info['name']:
                 return True
