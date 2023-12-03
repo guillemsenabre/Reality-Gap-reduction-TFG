@@ -102,7 +102,7 @@ class DDPGAgent:
         next_value = self.critic_target(next_state, next_action.detach())
         #print(f'NEXT VAUE: {next_value}')
 
-        target_value = reward + 0.99 * next_value * (1 - RosData.terminal_condition())
+        target_value = reward + 0.99 * next_value * (1 - RosData.terminal_condition(self))
         #print(f'TARGET VAUE: {target_value}')
 
         #FIXME - Add plotting
