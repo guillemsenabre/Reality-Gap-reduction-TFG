@@ -68,6 +68,8 @@ class Critic(nn.Module):
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
 
+        self.ros_data = RosData()
+
         self.actor = Actor(state_dim, action_dim)
         self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
         self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
@@ -102,7 +104,7 @@ class DDPGAgent:
         next_value = self.critic_target(next_state, next_action.detach())
         #print(f'NEXT VAUE: {next_value}')
 
-        target_value = reward + 0.99 * next_value * (1 - terminal_condition)
+        target_value = reward + 0.99 * next_value * (1 - self.ros_data.terminal_condition())
         #print(f'TARGET VAUE: {target_value}')
 
         #FIXME - Add plotting
