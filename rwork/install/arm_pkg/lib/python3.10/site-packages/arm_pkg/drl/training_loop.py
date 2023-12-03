@@ -141,13 +141,13 @@ class DDPGAgent:
 
 class Reset(Node):
     def __init__(self):
-        super().__init__('joint_torque_controller')
+        super().__init__('reset')
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
         self.run_gazebo()
-        time.sleep(10)
+        time.sleep(7)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -210,7 +210,7 @@ class RosData(Node):
         self.reward_value = 0.0
         self.margin_value = 0.01
         
-        self.maximum_accumulative_reward = 30
+        self.maximum_accumulative_reward = 100
 
         state_dim = 12  
         action_dim = 8
