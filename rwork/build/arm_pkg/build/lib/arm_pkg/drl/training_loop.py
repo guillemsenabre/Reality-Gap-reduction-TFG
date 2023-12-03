@@ -312,11 +312,11 @@ def main(args=None):
     reset = Reset()
     num_episodes = 100
 
+    reset.reset()
+
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
-
-        reset.reset()
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
