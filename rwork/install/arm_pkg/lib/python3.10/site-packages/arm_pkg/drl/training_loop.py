@@ -279,16 +279,15 @@ class RosData(Node):
             print(margin)
             difference = abs(self.reward_list[0] - self.reward_list[-1]) 
             print(difference)
-            not_change = difference <= margin
-            print(not_change)
-            self.reward_list = []
+            if difference <= margin:
+                self.reward_list = []
+                return True
+            
         elif (self.state[11] or self.state[8]) < 1.2:
-            not_change = True
+            return True
+        
         else:
-            not_change = False
-
-        print(not_change)
-        return not not_change
+            return False
             
     def move_joints(self, action):
         for idx, publisher in enumerate(self.joint_publishers):
@@ -324,7 +323,7 @@ def main(args=None):
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
 
-        while ros_data.terminal_condition():
+        while not ros_data.terminal_condition():
             state = ros_data.state
             action = ros_data.agent.select_action(state)
             ros_data.move_joints(action)
