@@ -287,6 +287,7 @@ class RosData(Node):
         else:
             not_change = False
 
+        print(not_change)
         return not not_change
             
     def move_joints(self, action):
