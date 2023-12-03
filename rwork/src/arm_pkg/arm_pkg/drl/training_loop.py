@@ -146,6 +146,7 @@ class Reset(Node):
     def reset(self):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
+        time.sleep(3)
         self.run_gazebo()
         time.sleep(7)
         self.unpause()
