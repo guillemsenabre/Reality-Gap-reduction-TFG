@@ -102,7 +102,7 @@ class DDPGAgent:
         next_value = self.critic_target(next_state, next_action.detach())
         #print(f'NEXT VAUE: {next_value}')
 
-        target_value = reward + 0.99 * next_value * (1 - RosData.terminal_condition(self))
+        target_value = reward + 0.99 * next_value * (1 - terminal_condition)
         #print(f'TARGET VAUE: {target_value}')
 
         #FIXME - Add plotting
@@ -271,23 +271,31 @@ class RosData(Node):
 
     def terminal_condition(self):
         self.reward_list.append(self.reward_value)
+        
         print(self.maximum_accumulative_reward)
         print(len(self.reward_list))
+
         if self.maximum_accumulative_reward == len(self.reward_list):
             print("Accumulative checking...")
+
             margin = abs(self.margin_value * self.reward_list[0])
             print(margin)
+
             difference = abs(self.reward_list[0] - self.reward_list[-1]) 
             print(difference)
+
             if difference <= margin:
-                self.reward_list = []
                 return True
+            
+            self.reward_list = []
             
         elif (self.state[11] or self.state[8]) < 1.2:
             return True
         
         else:
             return False
+        
+        return False
             
     def move_joints(self, action):
         for idx, publisher in enumerate(self.joint_publishers):
