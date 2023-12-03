@@ -335,6 +335,8 @@ def main(args=None):
 
             rclpy.spin_once(ros_data)
 
+        reset.reset()
+
 
     ros_data.destroy_node()
     rclpy.shutdown()
