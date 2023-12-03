@@ -284,10 +284,11 @@ class RosData(Node):
             difference = abs(self.reward_list[0] - self.reward_list[-1]) 
             print(difference)
 
+            self.reward_list = []
+
             if difference <= margin:
                 return True
             
-            self.reward_list = []
             
         elif (self.state[11] or self.state[8]) < 1.2:
             return True
