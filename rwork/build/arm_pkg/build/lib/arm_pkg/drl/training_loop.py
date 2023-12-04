@@ -279,9 +279,13 @@ class RosData(Node):
             self.reward_list = []
 
             if difference <= margin:
+                print(f'Reached local minimum!')
+                print(f'Difference: {round(difference, 4)}')
+                print(f'Margin: {round(margin, 4)}')
                 return True
                         
         elif (self.state[11] or self.state[8]) < 1.2:
+            print(f'Oops, object dropped')
             return True
         
         else:
