@@ -377,7 +377,7 @@ def plot_results(episode_rewards, actor_losses, critic_losses):
     plt.subplot(2, 1, 1)
     plt.plot([sum(episode) for episode in episode_rewards], label='Episode Total Reward')
     plt.title('Episode Rewards')
-    plt.xlabel('Episode')
+    plt.xlabel('Step')
     plt.ylabel('Total Reward')
     plt.legend()
 
@@ -391,7 +391,7 @@ def plot_results(episode_rewards, actor_losses, critic_losses):
     plt.legend()
 
     plt.tight_layout()
-    plt.show()
+    plt.pause(0.01)
 
 #!SECTION
 
