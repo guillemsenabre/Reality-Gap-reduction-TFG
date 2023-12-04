@@ -331,19 +331,24 @@ def main(args=None):
         print(f'STATE AFTER: {state}')
         #FIXME - IT COULD STILL BE TRUE!!!!
 
-        while not ros_data.terminal_condition():
+        while True:
             state = ros_data.state
             action = ros_data.agent.select_action(state)
             ros_data.move_joints(action)
             next_state = ros_data.state
             reward = ros_data.reward_value
 
+            terminal_condition = ros_data.terminal_condition()
+
             # Update agent
-            ros_data.agent.update(state, action, reward, next_state, ros_data.terminal_condition())
+            ros_data.agent.update(state, action, reward, next_state, terminal_condition)
 
             rclpy.spin_once(ros_data)
 
-        print(f'TERMINAL AFTER?: {ros_data.terminal_condition()}')
+            if terminal_condition:
+                print(f'Terminal condition reached!')
+                break
+
         reset.reset()
 
 

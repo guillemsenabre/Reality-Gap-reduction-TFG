@@ -104,9 +104,7 @@ class RobotState(Node):
                 ]
             ]
         ]
-
     
-
         self.get_logger().info(f'State: {flat_data}')
         float_array_msg = Float32Array(data=flat_data)
 
