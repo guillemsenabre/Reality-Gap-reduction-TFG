@@ -383,8 +383,8 @@ def plot_results(episode_rewards, actor_losses, critic_losses):
 
     # Plot actor and critic losses
     plt.subplot(2, 1, 2)
-    plt.plot([loss for episode_losses in actor_losses for loss in episode_losses], label='Actor Loss', alpha=0.7)
-    plt.plot([loss for episode_losses in critic_losses for loss in episode_losses], label='Critic Loss', alpha=0.7)
+    plt.plot(actor_losses, label='Actor Loss', alpha=0.7)
+    plt.plot(critic_losses, label='Critic Loss', alpha=0.7)
     plt.title('Actor and Critic Losses')
     plt.xlabel('Step')
     plt.ylabel('Loss')
