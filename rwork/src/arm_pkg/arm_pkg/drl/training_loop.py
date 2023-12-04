@@ -322,7 +322,7 @@ def main(args=None):
         while not ros_data.state.any():
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
-
+        print(f'STATE BEFORE: {ros_data.state}')
         #FIXME - IT COULD STILL BE TRUE!!!!
 
         while not ros_data.terminal_condition():
