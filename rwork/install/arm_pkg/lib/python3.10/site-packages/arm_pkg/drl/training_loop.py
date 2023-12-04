@@ -393,6 +393,8 @@ def plot_results(episode_rewards, actor_losses, critic_losses):
     plt.tight_layout()
     plt.pause(0.01)
 
+plt.show
+
 #!SECTION
 
 if __name__ == '__main__':
