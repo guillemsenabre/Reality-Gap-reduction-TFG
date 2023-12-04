@@ -317,7 +317,7 @@ def main(args=None):
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
-        print(f'TERMINAL?: {ros_data.terminal_condition()}')
+        print(f'TERMINAL BEFORE?: {ros_data.terminal_condition()}')
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
@@ -338,6 +338,7 @@ def main(args=None):
 
             rclpy.spin_once(ros_data)
 
+        print(f'TERMINAL AFTER?: {ros_data.terminal_condition()}')
         reset.reset()
 
 
