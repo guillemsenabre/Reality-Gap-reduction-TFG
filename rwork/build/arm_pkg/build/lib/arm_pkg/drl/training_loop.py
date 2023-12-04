@@ -317,7 +317,6 @@ def main(args=None):
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
-        print(f'TERMINAL BEFORE?: {ros_data.terminal_condition()}')
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
