@@ -316,11 +316,13 @@ def main(args=None):
     reset = Reset()
     num_episodes = 100
 
-    reset.reset()
+    #reset.reset()
 
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
+
+        reset.reset()
         
         # Waiting for the first state message to be received
         while not ros_data.state.any():
@@ -349,7 +351,7 @@ def main(args=None):
                 print(f'Terminal condition reached!')
                 break
 
-        reset.reset()
+        #reset.reset()
 
 
     ros_data.destroy_node()
