@@ -316,8 +316,6 @@ def main(args=None):
     reset = Reset()
     num_episodes = 100
 
-    #reset.reset()
-
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
@@ -328,10 +326,8 @@ def main(args=None):
         while not ros_data.state.any():
             print("Waiting for state data ...")
             rclpy.spin_once(ros_data)
-        print(f'STATE BEFORE: {ros_data.state}')
-        state = ros_data.state
-        print(f'STATE AFTER: {state}')
-        #FIXME - IT COULD STILL BE TRUE!!!!
+
+        print("Training!")
 
         while True:
             state = ros_data.state
@@ -350,8 +346,6 @@ def main(args=None):
             if terminal_condition:
                 print(f'Terminal condition reached!')
                 break
-
-        #reset.reset()
 
 
     ros_data.destroy_node()
