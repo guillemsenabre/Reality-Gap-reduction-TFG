@@ -14,7 +14,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-import matplotlib
+import matplotlib.pyplot as plt
 
 
 
@@ -68,6 +68,9 @@ class Critic(nn.Module):
 class DDPGAgent:
     def __init__(self, state_dim, action_dim):
 
+        self.actor_losses = []
+        self.critic_losses = []
+
         self.actor = Actor(state_dim, action_dim)
         self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
         self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
@@ -112,6 +115,10 @@ class DDPGAgent:
 
         # Actor loss
         actor_loss = -self.critic(state, self.actor(state)).mean()
+
+        # Append losses to the history
+        self.actor_losses.append(actor_loss.item())
+        self.critic_losses.append(critic_loss.item())
 
         # Update networks
         self.actor_optimizer.zero_grad()
@@ -316,6 +323,8 @@ def main(args=None):
     reset = Reset()
     num_episodes = 100
 
+    episode_rewards = []
+
     for episode in range(num_episodes):
 
         print(f'Running poch: {episode}')
@@ -329,6 +338,8 @@ def main(args=None):
 
         print("Training!")
 
+        episode_reward_list = []
+
         while True:
             state = ros_data.state
             action = ros_data.agent.select_action(state)
@@ -341,15 +352,46 @@ def main(args=None):
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, terminal_condition)
 
+            # Collect data for the current episode
+            episode_reward_list.append(reward)
+
             rclpy.spin_once(ros_data)
 
             if terminal_condition:
                 print(f'Terminal condition reached!')
                 break
 
+        # Store episode data for plotting
+        episode_rewards.append(episode_reward_list)
+
+        # Plot at the end of each episode
+        plot_results(episode_rewards, ros_data.agent.actor_losses, ros_data.agent.critic_losses)
+
 
     ros_data.destroy_node()
     rclpy.shutdown()
+
+def plot_results(episode_rewards, actor_losses, critic_losses):
+    # Plot episode rewards
+    plt.figure(figsize=(12, 6))
+    plt.subplot(2, 1, 1)
+    plt.plot([sum(episode) for episode in episode_rewards], label='Episode Total Reward')
+    plt.title('Episode Rewards')
+    plt.xlabel('Episode')
+    plt.ylabel('Total Reward')
+    plt.legend()
+
+    # Plot actor and critic losses
+    plt.subplot(2, 1, 2)
+    plt.plot([loss for episode_losses in actor_losses for loss in episode_losses], label='Actor Loss', alpha=0.7)
+    plt.plot([loss for episode_losses in critic_losses for loss in episode_losses], label='Critic Loss', alpha=0.7)
+    plt.title('Actor and Critic Losses')
+    plt.xlabel('Step')
+    plt.ylabel('Loss')
+    plt.legend()
+
+    plt.tight_layout()
+    plt.show()
 
 #!SECTION
 
