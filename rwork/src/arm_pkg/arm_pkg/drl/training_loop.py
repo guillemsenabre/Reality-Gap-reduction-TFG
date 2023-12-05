@@ -94,6 +94,8 @@ class DDPGAgent:
     
     #SECTION - Update 
 
+    #FIXME - Integrate buffer data
+
     def update(self, state, action, reward, next_state, terminal_condition, batch_size = 64):
         state = torch.FloatTensor(state)
         action = torch.FloatTensor(action)
