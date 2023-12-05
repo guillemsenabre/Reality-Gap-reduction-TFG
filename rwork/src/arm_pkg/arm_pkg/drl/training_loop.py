@@ -140,7 +140,9 @@ class DDPGAgent:
 #!SECTION
 #!SECTION
 
-class ReplyBuffer:
+#SECTION - Replay buffer class
+
+class ReplayBuffer:
     def __init__(self, buffer_size):
         self.buffer_size = buffer_size
         self.buffer = []
@@ -153,9 +155,11 @@ class ReplyBuffer:
     def sample(self, batch_size):
         return random.sample(self.buffer, batch_size) if len(self.buffer) >= batch_size else self.buffer
 
+#!SECTION
+
+
+
 #SECTION - RESET CLASS
-
-
 
 
 class Reset(Node):
