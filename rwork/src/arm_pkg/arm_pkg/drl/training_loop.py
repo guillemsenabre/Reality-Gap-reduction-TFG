@@ -55,7 +55,7 @@ class Critic(nn.Module):
         self.fc3 = nn.Linear(128, 1) 
 
     def forward(self, state, action):
-        x = torch.cat([state, action])
+        x = torch.cat([state, action], dim=1)
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         value = self.fc3(x) # Estimated Q-Value for a given state-action pair
