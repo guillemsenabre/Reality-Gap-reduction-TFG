@@ -69,7 +69,7 @@ class Critic(nn.Module):
 
 
 class DDPGAgent:
-    def __init__(self, state_dim, action_dim):
+    def __init__(self, state_dim, action_dim, buffer_size = 10000):
 
         self.actor_losses = []
         self.critic_losses = []
@@ -84,6 +84,8 @@ class DDPGAgent:
 
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
+
+        self.replay_bufer = ReplayBuffer(buffer_size)
     
     #SECTION - Select action
 
@@ -96,29 +98,32 @@ class DDPGAgent:
     
     #SECTION - Update 
 
-    #FIXME - Integrate buffer data
-
     def update(self, state, action, reward, next_state, terminal_condition, batch_size = 64):
-        state = torch.FloatTensor(state)
-        action = torch.FloatTensor(action)
-        reward = torch.FloatTensor([reward])
-        next_state = torch.FloatTensor(next_state)
+        # Add the real-time experience to the replay buffer    
+        self.replay_bufer.add((state, action, reward, next_state, terminal_condition))
+        
+        # Sample a batch from the replay buffer
+        buffer_batch = self.replay_bufer.sample(batch_size)
 
-        # Critic loss
-        value = self.critic(state, action)
-        next_action = self.actor_target(next_state)
-        next_value = self.critic_target(next_state, next_action.detach())
-        #print(f'NEXT VAUE: {next_value}')
+        # Unpacking buffer_batch into separate lists for each variable
+        buffer_states, buffer_actions, buffer_rewards, buffer_next_states, buffer_terminal_condition = zip(*buffer_batch)
 
-        target_value = reward + 0.99 * next_value * (1 - terminal_condition)
-        #print(f'TARGET VAUE: {target_value}')
+        # Convert lists to PyTorch tensors
+        buffer_states = torch.FloatTensor(buffer_states)
+        buffer_actions = torch.FloatTensor(buffer_actions)
+        buffer_rewards = torch.FloatTensor(buffer_rewards).view(-1, 1)
+        buffer_next_states = torch.FloatTensor(buffer_next_states)
+        buffer_terminal_condition = torch.FloatTensor(buffer_terminal_condition).view(-1, 1)
 
+        # Critic loss for buffer data
+        buffer_values = self.critic(buffer_states, buffer_actions)
+        buffer_next_actions = self.actor_target(buffer_next_states)
+        buffer_next_values = self.critic_target(buffer_next_states, buffer_next_actions.detach())
+        buffer_target_values = buffer_rewards + 0.99 * buffer_next_values * (1 - buffer_terminal_condition)
+        critic_loss = F.mse_loss(buffer_values, buffer_target_values)
 
-        #Critic loss
-        critic_loss = F.mse_loss(value, target_value)
-
-        # Actor loss
-        actor_loss = -self.critic(state, self.actor(state)).mean()
+        # Actor loss for buffer data
+        actor_loss = -self.critic(buffer_states, self.actor(buffer_states)).mean()
 
         # Append losses to the history
         self.actor_losses.append(actor_loss.item())
