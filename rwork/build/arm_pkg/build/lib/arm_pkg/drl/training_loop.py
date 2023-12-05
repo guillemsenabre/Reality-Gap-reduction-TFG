@@ -2,6 +2,7 @@ import rclpy
 import subprocess
 import os
 import time
+import random
 import psutil
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
@@ -17,7 +18,9 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 
 
-
+#TODO - Incorporate buffer data
+#TODO - Tune hyperparameters (lr)
+#TODO - Save model 
 
 
 #SECTION - POLICY DRL ALGORITHM
@@ -93,7 +96,9 @@ class DDPGAgent:
     
     #SECTION - Update 
 
-    def update(self, state, action, reward, next_state, terminal_condition):
+    #FIXME - Integrate buffer data
+
+    def update(self, state, action, reward, next_state, terminal_condition, batch_size = 64):
         state = torch.FloatTensor(state)
         action = torch.FloatTensor(action)
         reward = torch.FloatTensor([reward])
@@ -108,7 +113,6 @@ class DDPGAgent:
         target_value = reward + 0.99 * next_value * (1 - terminal_condition)
         #print(f'TARGET VAUE: {target_value}')
 
-        #FIXME - Add plotting
 
         #Critic loss
         critic_loss = F.mse_loss(value, target_value)
@@ -140,10 +144,26 @@ class DDPGAgent:
 #!SECTION
 #!SECTION
 
+#SECTION - Replay buffer class
+
+class ReplayBuffer:
+    def __init__(self, buffer_size):
+        self.buffer_size = buffer_size
+        self.buffer = []
+
+    def add(self, experience):
+        if len(self.buffer) >= self.buffer_size:
+            self.buffer.pop(0)
+        self.buffer.append(experience)
+    
+    def sample(self, batch_size):
+        return random.sample(self.buffer, batch_size) if len(self.buffer) >= batch_size else self.buffer
+
+#!SECTION
+
+
 
 #SECTION - RESET CLASS
-
-
 
 
 class Reset(Node):
@@ -371,6 +391,10 @@ def main(args=None):
     ros_data.destroy_node()
     rclpy.shutdown()
 
+#!SECTION
+
+#SECTION - Plotting
+
 def plot_results(episode_rewards, actor_losses, critic_losses):
     # Flatten the list of lists into a single list
     flattened_rewards = [reward for episode in episode_rewards for reward in episode]
@@ -396,6 +420,7 @@ def plot_results(episode_rewards, actor_losses, critic_losses):
     plt.show()
 
 #!SECTION
+#!SECTION
 
 if __name__ == '__main__':
-    main()
+    main() 

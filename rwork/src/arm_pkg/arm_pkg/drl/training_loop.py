@@ -18,7 +18,9 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 
 
-
+#TODO - Incorporate buffer data
+#TODO - Tune hyperparameters (lr)
+#TODO - Save model 
 
 
 #SECTION - POLICY DRL ALGORITHM
