@@ -108,12 +108,19 @@ class DDPGAgent:
         # Unpacking buffer_batch into separate lists for each variable
         buffer_states, buffer_actions, buffer_rewards, buffer_next_states, buffer_terminal_condition = zip(*buffer_batch)
 
+        # Convert lists to NumPy arrays for efficency
+        buffer_states = np.array(buffer_states)
+        buffer_actions = np.array(buffer_actions)
+        buffer_rewards = np.array(buffer_rewards).reshape(-1, 1)
+        buffer_next_states = np.array(buffer_next_states)
+        buffer_terminal_condition = np.array(buffer_terminal_condition).reshape(-1, 1)
+
         # Convert lists to PyTorch tensors
         buffer_states = torch.FloatTensor(buffer_states)
         buffer_actions = torch.FloatTensor(buffer_actions)
-        buffer_rewards = torch.FloatTensor(buffer_rewards).view(-1, 1)
+        buffer_rewards = torch.FloatTensor(buffer_rewards)
         buffer_next_states = torch.FloatTensor(buffer_next_states)
-        buffer_terminal_condition = torch.FloatTensor(buffer_terminal_condition).view(-1, 1)
+        buffer_terminal_condition = torch.FloatTensor(buffer_terminal_condition)
 
         # Critic loss for buffer data
         buffer_values = self.critic(buffer_states, buffer_actions)
