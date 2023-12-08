@@ -18,7 +18,6 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 
 
-#TODO - Incorporate buffer data
 #TODO - Tune hyperparameters (lr)
 #TODO - Save model 
 
@@ -250,7 +249,7 @@ class RosData(Node):
         self.reward_value = 0.0
         self.margin_value = 0.01
         
-        self.maximum_accumulative_reward = 100
+        self.maximum_accumulative_reward = 1000
 
         state_dim = 12  
         action_dim = 8
