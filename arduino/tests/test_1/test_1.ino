@@ -1,9 +1,24 @@
-void setup() {
-  // put your setup code here, to run once:
+#include <Arduino.h>
 
+#define LED 2
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  for (int i = 0; i < 3; i++) {
+    digitalWrite(LED, HIGH);
+    delay(1000);
+    digitalWrite(LED, LOW);
+    delay(1000);
+  }
 
+  // Store the message in a variable
+  String message = "Hello, World!";
+
+  // Print the message to the Serial Monitor
+  Serial.println(message);
+  delay(1000); // Delay for 1 second between repetitions
 }
