@@ -1,5 +1,7 @@
 IMU:
 
 - Adafruit MPU6050
+- MPU6050_light
+- Wire
 - Adafruit Unified Sensor
 - Adafruit Bus IO Library
