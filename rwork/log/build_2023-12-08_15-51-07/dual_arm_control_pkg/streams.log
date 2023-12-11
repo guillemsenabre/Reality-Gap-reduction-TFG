@@ -1,0 +1,51 @@
+[0.740s] Invoking command in '/home/kyu8/tfg/rwork/build/dual_arm_control_pkg': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/kyu8/tfg/rwork/src/dual_arm_control_pkg -DCMAKE_INSTALL_PREFIX=/home/kyu8/tfg/rwork/install/dual_arm_control_pkg
+[1.070s] -- The C compiler identification is GNU 11.4.0
+[1.245s] -- The CXX compiler identification is GNU 11.4.0
+[1.272s] -- Detecting C compiler ABI info
+[1.425s] -- Detecting C compiler ABI info - done
+[1.447s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.450s] -- Detecting C compile features
+[1.451s] -- Detecting C compile features - done
+[1.459s] -- Detecting CXX compiler ABI info
+[1.632s] -- Detecting CXX compiler ABI info - done
+[1.650s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.651s] -- Detecting CXX compile features
+[1.653s] -- Detecting CXX compile features - done
+[1.685s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.095s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[2.432s] -- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.601s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.602s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/kyu8/tfg/rwork/src/dual_arm_control_pkg/include>
+[2.602s] -- Configured cppcheck exclude dirs and/or files: 
+[2.604s] -- Added test 'lint_cmake' to check CMake code style
+[2.608s] -- Added test 'uncrustify' to check C / C++ code style
+[2.608s] -- Configured uncrustify additional arguments: 
+[2.609s] -- Added test 'xmllint' to check XML markup files
+[2.616s] -- Configuring done
+[2.626s] -- Generating done
+[2.629s] -- Build files have been written to: /home/kyu8/tfg/rwork/build/dual_arm_control_pkg
+[2.638s] Invoked command in '/home/kyu8/tfg/rwork/build/dual_arm_control_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/kyu8/tfg/rwork/src/dual_arm_control_pkg -DCMAKE_INSTALL_PREFIX=/home/kyu8/tfg/rwork/install/dual_arm_control_pkg
+[2.642s] Invoking command in '/home/kyu8/tfg/rwork/build/dual_arm_control_pkg': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/kyu8/tfg/rwork/build/dual_arm_control_pkg -- -j5 -l5
+[2.735s] [ 50%] [32mBuilding CXX object CMakeFiles/test_arduino.dir/src/test_arduino.cpp.o[0m
+[2.793s] [100%] [32m[1mLinking CXX executable test_arduino[0m
+[2.892s] [100%] Built target test_arduino
+[2.917s] Invoked command in '/home/kyu8/tfg/rwork/build/dual_arm_control_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/kyu8/tfg/rwork/build/dual_arm_control_pkg -- -j5 -l5
+[2.996s] Invoking command in '/home/kyu8/tfg/rwork/build/dual_arm_control_pkg': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/kyu8/tfg/rwork/build/dual_arm_control_pkg
+[3.012s] -- Install configuration: ""
+[3.013s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/lib/dual_arm_control_pkg/test_arduino
+[3.013s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/ament_index/resource_index/package_run_dependencies/dual_arm_control_pkg
+[3.013s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/ament_index/resource_index/parent_prefix_path/dual_arm_control_pkg
+[3.014s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/environment/ament_prefix_path.sh
+[3.014s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/environment/ament_prefix_path.dsv
+[3.015s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/environment/path.sh
+[3.015s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/environment/path.dsv
+[3.015s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/local_setup.bash
+[3.015s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/local_setup.sh
+[3.016s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/local_setup.zsh
+[3.016s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/local_setup.dsv
+[3.016s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/package.dsv
+[3.017s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/ament_index/resource_index/packages/dual_arm_control_pkg
+[3.017s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/cmake/dual_arm_control_pkgConfig.cmake
+[3.017s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/cmake/dual_arm_control_pkgConfig-version.cmake
+[3.018s] -- Installing: /home/kyu8/tfg/rwork/install/dual_arm_control_pkg/share/dual_arm_control_pkg/package.xml
+[3.026s] Invoked command in '/home/kyu8/tfg/rwork/build/dual_arm_control_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/kyu8/tfg/rwork/build/dual_arm_control_pkg

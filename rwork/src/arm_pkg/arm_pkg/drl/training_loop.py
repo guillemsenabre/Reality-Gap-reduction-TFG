@@ -18,8 +18,8 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 
 
-#TODO - Incorporate buffer data
 #TODO - Tune hyperparameters (lr)
+#TODO - Understanding losses behaviour
 #TODO - Save model 
 
 

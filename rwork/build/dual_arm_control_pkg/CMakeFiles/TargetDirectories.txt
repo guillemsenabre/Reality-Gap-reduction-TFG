@@ -1,0 +1,10 @@
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/uninstall.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/dual_arm_control_pkg_uninstall.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/test_arduino.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/test.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/edit_cache.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/rebuild_cache.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/list_install_components.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/install.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/install/local.dir
+/home/kyu8/tfg/rwork/build/dual_arm_control_pkg/CMakeFiles/install/strip.dir
