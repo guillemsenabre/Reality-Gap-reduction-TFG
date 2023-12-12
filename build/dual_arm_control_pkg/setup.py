@@ -1,1 +1,0 @@
-/home/kyu8/tfg/Simulation/src/dual_arm_control_pkg/setup.py
