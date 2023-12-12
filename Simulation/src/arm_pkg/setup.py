@@ -13,7 +13,6 @@ setup(
     ],
     install_requires=[
         'setuptools'
-        'rbuffer'
         ],
     zip_safe=True,
     maintainer='kyu8',
