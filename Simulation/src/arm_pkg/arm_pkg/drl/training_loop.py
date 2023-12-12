@@ -8,6 +8,8 @@ from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float64, Float32
 
+from rbuffer import ReplayBuffer
+
 
 import numpy as np
 import torch
@@ -154,23 +156,6 @@ class DDPGAgent:
             target_param.data.copy_((1.0 - tau) * target_param.data + tau * local_param.data)
 
 #!SECTION
-#!SECTION
-
-#SECTION - Replay buffer class
-
-class ReplayBuffer:
-    def __init__(self, buffer_size):
-        self.buffer_size = buffer_size
-        self.buffer = []
-
-    def add(self, experience):
-        if len(self.buffer) >= self.buffer_size:
-            self.buffer.pop(0)
-        self.buffer.append(experience)
-    
-    def sample(self, batch_size):
-        return random.sample(self.buffer, batch_size) if len(self.buffer) >= batch_size else self.buffer
-
 #!SECTION
 
 
