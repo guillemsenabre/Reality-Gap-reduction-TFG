@@ -1,3 +1,5 @@
+import random
+
 #SECTION - Replay buffer class
 
 class ReplayBuffer:
