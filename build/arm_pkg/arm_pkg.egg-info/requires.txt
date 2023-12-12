@@ -1,1 +1,1 @@
-setuptoolsrbuffer
+setuptools
