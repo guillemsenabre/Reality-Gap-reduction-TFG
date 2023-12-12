@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'esp32_receiver_test = dual_arm_control_pkg.receive_esp32_data_test:main'
         ],
     },
 )
