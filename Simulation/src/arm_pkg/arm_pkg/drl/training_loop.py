@@ -7,14 +7,13 @@ from std_msgs.msg import Float64, Float32
 
 from .ddpg import DDPGAgent
 from .reset import Reset
+from .plots import plot_results
 
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-
-import matplotlib.pyplot as plt
 
 
 #TODO - Tune hyperparameters (lr)
@@ -130,33 +129,6 @@ class RosData(Node):
 
 #!SECTION
 
-#SECTION - Plotting
-
-def plot_results(episode_rewards, actor_losses, critic_losses):
-    # Flatten the list of lists into a single list
-    flattened_rewards = [reward for episode in episode_rewards for reward in episode]
-
-    # Plot episode rewards
-    plt.figure(figsize=(12, 6))
-
-    plt.plot(flattened_rewards, label='Episode Total Reward')
-    plt.title('Episode Rewards')
-    plt.xlabel('Step')
-    plt.ylabel('Total Reward')
-    plt.legend()
-
-    # Plot actor and critic losses
-    plt.plot(actor_losses, label='Actor Loss', alpha=0.7)
-    plt.plot(critic_losses, label='Critic Loss', alpha=0.7)
-    plt.title('Actor and Critic Losses')
-    plt.xlabel('Step')
-    plt.ylabel('Loss')
-    plt.legend()
-
-    plt.tight_layout()
-    plt.show()
-
-#!SECTION
 
 #SECTION - TRAINING LOOP -
 
