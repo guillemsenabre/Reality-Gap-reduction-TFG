@@ -31,7 +31,7 @@ class Reset(Node):
         if not self.is_gazebo_running():
             self.get_logger().info("starting gazebo simulator...")
             home_directory = os.path.expanduser("~")
-            sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+            sdf_file_path = os.path.join(home_directory, 'tfg', 'Simulation', 'src', 'sdf_files', 'full_env_simpler.sdf')
 
             try:
                 subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
