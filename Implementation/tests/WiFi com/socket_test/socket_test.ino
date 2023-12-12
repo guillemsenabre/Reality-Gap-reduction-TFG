@@ -1,7 +1,7 @@
 #include <WiFi.h>
 
-const char *ssid = "your-ssid";      // Your Wi-Fi SSID
-const char *password = "your-password";  // Your Wi-Fi password
+const char *ssid = "PENDEJO TU";      // Your Wi-Fi SSID
+const char *password = "uuuuuuuu";  // Your Wi-Fi password
 
 const int trigPin = 32;
 const int echoPin = 33;
