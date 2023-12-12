@@ -1,0 +1,12 @@
+package.xml
+setup.cfg
+setup.py
+dual_arm_control_pkg/__init__.py
+dual_arm_control_pkg.egg-info/PKG-INFO
+dual_arm_control_pkg.egg-info/SOURCES.txt
+dual_arm_control_pkg.egg-info/dependency_links.txt
+dual_arm_control_pkg.egg-info/entry_points.txt
+dual_arm_control_pkg.egg-info/requires.txt
+dual_arm_control_pkg.egg-info/top_level.txt
+dual_arm_control_pkg.egg-info/zip-safe
+resource/dual_arm_control_pkg
