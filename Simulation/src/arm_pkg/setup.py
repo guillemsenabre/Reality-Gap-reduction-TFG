@@ -1,6 +1,7 @@
 from setuptools import find_packages, setup
 
 package_name = 'arm_pkg'
+submodules = 'arm_pkg/submodules'
 
 setup(
     name=package_name,
