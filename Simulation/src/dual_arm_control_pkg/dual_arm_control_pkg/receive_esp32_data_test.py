@@ -3,7 +3,7 @@ import rclpy
 
 
 # Open the serial connection (adjust port and baudrate based on your ESP32 configuration)
-ser = serial.Serial('COMx', 115200)
+ser = serial.Serial('COM0', 115200)
 
 try:
     while True:
