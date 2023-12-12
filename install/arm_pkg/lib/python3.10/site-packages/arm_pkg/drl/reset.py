@@ -1,20 +1,20 @@
-import rclpy
 import subprocess
 import os
+import time
+import psutil
 
 from rclpy.node import Node
 
-# THIS NODE NEEDS TO BE WORKING TOGETHER WITH A SERVICE BRIDGE. 
-# CAN BE FOUND IN --> bridge_commands
-
 class Reset(Node):
     def __init__(self):
-        super().__init__('joint_torque_controller')
+        super().__init__('reset')
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
         self.kill_gazebo_process()
+        time.sleep(3)
         self.run_gazebo()
+        time.sleep(7)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -25,14 +25,24 @@ class Reset(Node):
             self.get_logger().warning("Failed to kill Gazebo process.")
 
     def run_gazebo(self):
-        self.get_logger().info("starting gazebo simulator...")
-        home_directory = os.path.expanduser("~")
-        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+        self.get_logger().info("Check if gazebo is dead...")
+        print(not self.is_gazebo_running())
 
-        try:
-            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        except subprocess.CalledProcessError:
-            self.get_logger().error("Failed to start Gazebo process.")
+        if not self.is_gazebo_running():
+            self.get_logger().info("starting gazebo simulator...")
+            home_directory = os.path.expanduser("~")
+            sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+
+            try:
+                subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except subprocess.CalledProcessError:
+                self.get_logger().error("Failed to start Gazebo process.")
+        
+        else:
+            self.get_logger().error("Gazebo is still running...")
+            time.sleep(1)
+            self.get_logger().error("Trying again...")
+            self.reset()
 
     def unpause(self):
         # Use subprocess to execute the ros2 service call command
@@ -43,13 +53,8 @@ class Reset(Node):
         except subprocess.CalledProcessError as e:
             self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
 
-
-def main(args=None):
-    rclpy.init(args=args)
-    reset = Reset()
-    rclpy.spin(reset)
-    reset.destroy_node()
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
+    def is_gazebo_running(self):
+        for process in psutil.process_iter(['pid', 'name']):
+            if 'gazebo' in process.info['name']:
+                return True
+        return False

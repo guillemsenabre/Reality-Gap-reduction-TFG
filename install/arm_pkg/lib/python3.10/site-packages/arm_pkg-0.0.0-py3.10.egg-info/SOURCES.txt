@@ -11,11 +11,11 @@ setup.py
 arm_pkg/__init__.py
 arm_pkg/drl/__init__.py
 arm_pkg/drl/ddpg.py
+arm_pkg/drl/plots.py
 arm_pkg/drl/rbuffer.py
 arm_pkg/drl/reset.py
 arm_pkg/drl/reward_function.py
 arm_pkg/drl/robots_state.py
-arm_pkg/drl/sac.py
 arm_pkg/drl/training_loop.py
 arm_pkg/tests/__init__.py
 arm_pkg/tests/data_gripper_test.py
@@ -25,5 +25,6 @@ arm_pkg/tests/joint_position_reset.py
 arm_pkg/tests/joint_processor.py
 arm_pkg/tests/joint_storage.py
 arm_pkg/tests/launchgazebotest.py
+arm_pkg/tests/sac.py
 arm_pkg/tests/state_test.py
 resource/arm_pkg
