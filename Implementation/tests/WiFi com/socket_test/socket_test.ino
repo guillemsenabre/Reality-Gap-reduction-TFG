@@ -7,6 +7,7 @@ const int trigPin = 32;
 const int echoPin = 33;
 
 #define SOUND_SPEED 0.034
+
 WiFiServer server(80);
 
 float distanceCm;
@@ -14,7 +15,7 @@ long duration;
 
 void setup() {
   Serial.begin(115200);
-  pinMode(trigPin, OUTPUT)
+  pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
   delay(10);
