@@ -1,6 +1,6 @@
 import socket
 
-host = 'your-esp32-ip'  # Replace with the ESP32's IP address
+host = '192.168.188.95'  # Replace with the ESP32's IP address
 port = 80
 
 while True:
