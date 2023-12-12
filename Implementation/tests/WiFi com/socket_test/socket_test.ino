@@ -46,8 +46,6 @@ void loop() {
     // Send the distance data to the client
     client.print("Distance (cm): ");
     client.print(distanceCm);
-    client.print(",Distance (inch): ");
-    client.println(distanceCm * 0.393701);
 
     client.stop();
     Serial.println("Client disconnected");
