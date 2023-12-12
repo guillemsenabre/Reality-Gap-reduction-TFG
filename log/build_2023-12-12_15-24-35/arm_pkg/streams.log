@@ -1,0 +1,102 @@
+[1.528s] Invoking command in '/home/kyu8/tfg/Simulation/src/arm_pkg': PYTHONPATH=/home/kyu8/tfg/build/arm_pkg/prefix_override:/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/arm_pkg build --build-base /home/kyu8/tfg/build/arm_pkg/build install --record /home/kyu8/tfg/build/arm_pkg/install.log --single-version-externally-managed
+[1.817s] running egg_info
+[1.818s] creating ../../../build/arm_pkg/arm_pkg.egg-info
+[1.819s] writing ../../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+[1.819s] writing dependency_links to ../../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+[1.819s] writing entry points to ../../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+[1.819s] writing requirements to ../../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+[1.819s] writing top-level names to ../../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+[1.819s] writing manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.822s] reading manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.823s] writing manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.823s] running build
+[1.824s] running build_py
+[1.824s] creating /home/kyu8/tfg/build/arm_pkg/build
+[1.824s] creating /home/kyu8/tfg/build/arm_pkg/build/lib
+[1.824s] creating /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg
+[1.824s] copying arm_pkg/__init__.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg
+[1.825s] creating /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/__init__.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/joint_listener.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/joint_controller.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/state_test.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/data_gripper_test.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/joint_storage.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/joint_position_reset.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/joint_processor.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.825s] copying arm_pkg/tests/launchgazebotest.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests
+[1.827s] creating /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.827s] copying arm_pkg/drl/sac.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.827s] copying arm_pkg/drl/__init__.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.827s] copying arm_pkg/drl/ddpg.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.827s] copying arm_pkg/drl/reset.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.827s] copying arm_pkg/drl/training_loop.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.827s] copying arm_pkg/drl/robots_state.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.828s] copying arm_pkg/drl/rbuffer.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.828s] copying arm_pkg/drl/reward_function.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[1.829s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.829s]   warnings.warn(
+[1.829s] running install
+[1.829s] running install_lib
+[1.831s] creating /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.831s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/__init__.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg
+[1.831s] creating /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.831s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/__init__.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.832s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_listener.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.832s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_controller.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.832s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/state_test.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.832s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/data_gripper_test.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.832s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_storage.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.832s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_position_reset.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.833s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_processor.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.833s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/launchgazebotest.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests
+[1.833s] creating /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.833s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/sac.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.833s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/__init__.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.834s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/ddpg.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.834s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/reset.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.834s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/training_loop.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.834s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/robots_state.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.834s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/rbuffer.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.835s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/reward_function.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[1.835s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__init__.py to __init__.cpython-310.pyc
+[1.835s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__init__.py to __init__.cpython-310.pyc
+[1.835s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_listener.py to joint_listener.cpython-310.pyc
+[1.835s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_controller.py to joint_controller.cpython-310.pyc
+[1.836s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/state_test.py to state_test.cpython-310.pyc
+[1.836s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/data_gripper_test.py to data_gripper_test.cpython-310.pyc
+[1.837s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_storage.py to joint_storage.cpython-310.pyc
+[1.838s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_position_reset.py to joint_position_reset.cpython-310.pyc
+[1.838s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_processor.py to joint_processor.cpython-310.pyc
+[1.838s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/launchgazebotest.py to launchgazebotest.cpython-310.pyc
+[1.839s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sac.py to sac.cpython-310.pyc
+[1.840s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__init__.py to __init__.cpython-310.pyc
+[1.840s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/ddpg.py to ddpg.cpython-310.pyc
+[1.841s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reset.py to reset.cpython-310.pyc
+[1.841s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/training_loop.py to training_loop.cpython-310.pyc
+[1.844s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/robots_state.py to robots_state.cpython-310.pyc
+[1.844s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/rbuffer.py to rbuffer.cpython-310.pyc
+[1.845s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reward_function.py to reward_function.cpython-310.pyc
+[1.846s] running install_data
+[1.846s] creating /home/kyu8/tfg/install/arm_pkg/share/ament_index
+[1.847s] creating /home/kyu8/tfg/install/arm_pkg/share/ament_index/resource_index
+[1.847s] creating /home/kyu8/tfg/install/arm_pkg/share/ament_index/resource_index/packages
+[1.847s] copying resource/arm_pkg -> /home/kyu8/tfg/install/arm_pkg/share/ament_index/resource_index/packages
+[1.847s] copying package.xml -> /home/kyu8/tfg/install/arm_pkg/share/arm_pkg
+[1.847s] running install_egg_info
+[1.848s] Copying ../../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+[1.849s] running install_scripts
+[1.875s] Installing controller script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing ddpg script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing gripper_test script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing listener script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing processor script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing reset_controller script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing reward_function script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing robots_state script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing sac script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing state_test script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing storage script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.876s] Installing training script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[1.877s] writing list of installed files to '/home/kyu8/tfg/build/arm_pkg/install.log'
+[1.980s] Invoked command in '/home/kyu8/tfg/Simulation/src/arm_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/build/arm_pkg/prefix_override:/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/arm_pkg build --build-base /home/kyu8/tfg/build/arm_pkg/build install --record /home/kyu8/tfg/build/arm_pkg/install.log --single-version-externally-managed
