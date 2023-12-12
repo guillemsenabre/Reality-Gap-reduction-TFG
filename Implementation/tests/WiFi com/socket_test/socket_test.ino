@@ -14,6 +14,9 @@ long duration;
 
 void setup() {
   Serial.begin(115200);
+  pinMode(trigPin, OUTPUT)
+  pinMode(echoPin, INPUT);
+
   delay(10);
 
   // Connect to Wi-Fi
@@ -51,7 +54,20 @@ void loop() {
 }
 
 float getDistance() {
-  // Implement your distance calculation logic here
-  // For example, using ultrasonic sensor or any other distance measurement method
-  return 42.0;  // Replace with your actual distance calculation
+  // Clears the trigPin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  
+  // Calculate the distance
+  distanceCm = duration * SOUND_SPEED/2;
+  
+  return distanceCm
+
 }
