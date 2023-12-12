@@ -69,6 +69,6 @@ float getDistance() {
   // Calculate the distance
   distanceCm = duration * SOUND_SPEED/2;
   
-  return distanceCm
+  return distanceCm;
 
 }
