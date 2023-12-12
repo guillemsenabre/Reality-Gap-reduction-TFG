@@ -1,0 +1,42 @@
+[1.449s] Invoking command in '/home/kyu8/tfg/Simulation/src/dual_arm_control_pkg': PYTHONPATH=/home/kyu8/tfg/build/dual_arm_control_pkg/prefix_override:/home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/dual_arm_control_pkg build --build-base /home/kyu8/tfg/build/dual_arm_control_pkg/build install --record /home/kyu8/tfg/build/dual_arm_control_pkg/install.log --single-version-externally-managed
+[1.738s] running egg_info
+[1.739s] creating ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info
+[1.739s] writing ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/PKG-INFO
+[1.740s] writing dependency_links to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/dependency_links.txt
+[1.740s] writing entry points to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/entry_points.txt
+[1.740s] writing requirements to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/requires.txt
+[1.740s] writing top-level names to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/top_level.txt
+[1.740s] writing manifest file '../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/SOURCES.txt'
+[1.743s] reading manifest file '../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/SOURCES.txt'
+[1.744s] writing manifest file '../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/SOURCES.txt'
+[1.744s] running build
+[1.744s] running build_py
+[1.744s] creating /home/kyu8/tfg/build/dual_arm_control_pkg/build
+[1.745s] creating /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib
+[1.745s] creating /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg
+[1.745s] copying dual_arm_control_pkg/esp32_socket_test.py -> /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg
+[1.745s] copying dual_arm_control_pkg/__init__.py -> /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg
+[1.745s] copying dual_arm_control_pkg/receive_esp32_data_test.py -> /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg
+[1.746s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.746s]   warnings.warn(
+[1.746s] running install
+[1.747s] running install_lib
+[1.748s] creating /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg
+[1.748s] copying /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg/esp32_socket_test.py -> /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg
+[1.748s] copying /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg/__init__.py -> /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg
+[1.748s] copying /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg/receive_esp32_data_test.py -> /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg
+[1.749s] byte-compiling /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg/esp32_socket_test.py to esp32_socket_test.cpython-310.pyc
+[1.750s] byte-compiling /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg/__init__.py to __init__.cpython-310.pyc
+[1.750s] byte-compiling /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg/receive_esp32_data_test.py to receive_esp32_data_test.cpython-310.pyc
+[1.751s] running install_data
+[1.752s] creating /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index
+[1.752s] creating /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index/resource_index
+[1.752s] creating /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index/resource_index/packages
+[1.752s] copying resource/dual_arm_control_pkg -> /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index/resource_index/packages
+[1.752s] copying package.xml -> /home/kyu8/tfg/install/dual_arm_control_pkg/share/dual_arm_control_pkg
+[1.753s] running install_egg_info
+[1.754s] Copying ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info to /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg-0.0.0-py3.10.egg-info
+[1.755s] running install_scripts
+[1.782s] Installing esp32_receiver_test script to /home/kyu8/tfg/install/dual_arm_control_pkg/lib/dual_arm_control_pkg
+[1.782s] writing list of installed files to '/home/kyu8/tfg/build/dual_arm_control_pkg/install.log'
+[1.828s] Invoked command in '/home/kyu8/tfg/Simulation/src/dual_arm_control_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/build/dual_arm_control_pkg/prefix_override:/home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/dual_arm_control_pkg build --build-base /home/kyu8/tfg/build/dual_arm_control_pkg/build install --record /home/kyu8/tfg/build/dual_arm_control_pkg/install.log --single-version-externally-managed
