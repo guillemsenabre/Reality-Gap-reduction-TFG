@@ -15,15 +15,11 @@ class Configuration:
         self.action_dim = 8
 
         self.joint_names = [
-                            'joint0_1', 
-                            'joint1_1', 
-                            'joint2_1',
-                            'joint3_1',
-                            'joint0_2', 
-                            'joint1_2', 
-                            'joint2_2',
-                            'joint3_2',
-                            ]
+            'joint0_1', 'joint1_1', 'joint2_1', 'joint3_1',
+            'joint0_2', 'joint1_2', 'joint2_2', 'joint3_2',
+        ]
+
+        self.after_moving_joints_time = 0.01
 
         #SECTION TRAINING VARIABLES #
 

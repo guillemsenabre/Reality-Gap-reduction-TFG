@@ -16,12 +16,12 @@ class RosData(Node):
 
         self.get_logger().info(f'Starting training...')
 
-        config = Configuration()
+        self.config = Configuration()
         
         self.state = np.array([])
-        state_dim = config.state_dim  
-        action_dim = config.action_dim
-        self.reward_value = config.reward_init_value
+        state_dim = self.config.state_dim  
+        action_dim = self.config.action_dim
+        self.reward_value = self.config.reward_init_value
 
         self.agent = DDPGAgent(state_dim, action_dim)
 
@@ -43,7 +43,7 @@ class RosData(Node):
 
 
         self.joint_publishers = []
-        self.joint_names = config.joint_names
+        self.joint_names = self.config.joint_names
         
         for joint_name in self.joint_names:
             publisher = self.create_publisher(Float64, f'/arm/{joint_name}/wrench', 1)
@@ -77,7 +77,7 @@ class RosData(Node):
             publisher.publish(msg)
             #self.get_logger().info(f'Joint {idx} action: {action[idx]}, torque: {msg.data}')
 
-        time.sleep(0.01)
+        time.sleep(self.config.after_moving_joints_time)
 
 
 
