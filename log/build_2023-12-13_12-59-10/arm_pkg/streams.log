@@ -1,0 +1,37 @@
+[1.945s] Invoking command in '/home/kyu8/tfg/Simulation/src/arm_pkg': PYTHONPATH=/home/kyu8/tfg/build/arm_pkg/prefix_override:/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/arm_pkg build --build-base /home/kyu8/tfg/build/arm_pkg/build install --record /home/kyu8/tfg/build/arm_pkg/install.log --single-version-externally-managed
+[2.398s] running egg_info
+[2.404s] writing ../../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+[2.405s] writing dependency_links to ../../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+[2.408s] writing entry points to ../../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+[2.409s] writing requirements to ../../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+[2.411s] writing top-level names to ../../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+[2.437s] reading manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[2.439s] writing manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[2.442s] running build
+[2.442s] running build_py
+[2.445s] copying arm_pkg/drl/reset.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl
+[2.446s] running install
+[2.446s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.447s]   warnings.warn(
+[2.449s] running install_lib
+[2.454s] copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/reset.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl
+[2.455s] byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reset.py to reset.cpython-310.pyc
+[2.458s] running install_data
+[2.460s] running install_egg_info
+[2.467s] removing '/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[2.468s] Copying ../../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+[2.480s] running install_scripts
+[2.506s] Installing controller script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.510s] Installing ddpg script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.510s] Installing gripper_test script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.513s] Installing listener script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.513s] Installing processor script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.515s] Installing reset_controller script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.516s] Installing reward_function script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.520s] Installing robots_state script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.520s] Installing sac script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.520s] Installing state_test script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.520s] Installing storage script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.523s] Installing training script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg
+[2.525s] writing list of installed files to '/home/kyu8/tfg/build/arm_pkg/install.log'
+[2.656s] Invoked command in '/home/kyu8/tfg/Simulation/src/arm_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/build/arm_pkg/prefix_override:/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/arm_pkg build --build-base /home/kyu8/tfg/build/arm_pkg/build install --record /home/kyu8/tfg/build/arm_pkg/install.log --single-version-externally-managed

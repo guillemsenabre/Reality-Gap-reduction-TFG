@@ -4,17 +4,19 @@ import time
 import psutil
 
 from .configuration import Configuration
+from .rosdata import RosData
 
 class Reset():
     def __init__(self):
         print("Reset init...")
-        config = Configuration()
+        self.config = Configuration()
+        self.ros_data = RosData()
 
         self.reward_list = []
-        self.reward_value = config.reward_init_value
-        self.margin_value = config.margin_value
+        self.reward_value = self.config.reward_init_value
+        self.margin_value = self.config.margin_value
         
-        self.maximum_accumulative_reward = config.maximum_accumulative_reward
+        self.maximum_accumulative_reward = self.config.maximum_accumulative_reward
 
     def reset(self):
         print("Resetting simulation...")
@@ -80,7 +82,7 @@ class Reset():
                 print(f'Margin: {round(margin, 4)}')
                 return True
                         
-        elif (self.state[11] or self.state[8]) < 1.2:
+        elif (self.ros_data.state[11] or self.ros_data.state[8]) < 1.2:
             print(f'Oops, object dropped')
             return True
         
