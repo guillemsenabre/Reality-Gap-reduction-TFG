@@ -4,7 +4,7 @@ class Configuration:
         #SECTION DDPG AGENT VARIABLES #
 
         self.actor_lr = 1e-3
-        self.critic_lr = 1e-4
+        self.critic_lr = 0.5e-4
 
         #SECTION ROS DATA VARIABLES #
 

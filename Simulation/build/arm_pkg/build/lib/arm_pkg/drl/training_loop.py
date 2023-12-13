@@ -69,6 +69,7 @@ def main(args=None):
                     model_path = os.path.expanduser('~/tfg/models/ddpg_model.pth')
                     torch.save(ros_data.agent, model_path)
                     print(f'Model saved due to average reward less than {config.avg_reward_threshold_to_save_model}: {avg_reward}')
+                    break
 
 
         # Store episode data for plotting
