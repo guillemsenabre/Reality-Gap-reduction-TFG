@@ -20,7 +20,7 @@ class RosData(Node):
         
         self.state = np.array([])
         self.reward_list = []
-        self.reward_value = 0.0
+        self.reward_value = config.reward_init_value
         self.margin_value = config.margin_value
         
         self.maximum_accumulative_reward = config.maximum_accumulative_reward
@@ -74,28 +74,6 @@ class RosData(Node):
     def process_reward_data(self, msg: Float64):
         self.reward_value = msg.data
 
-    def terminal_condition(self):
-        self.reward_list.append(self.reward_value)
-
-        if self.maximum_accumulative_reward == len(self.reward_list):
-            margin = abs(self.margin_value * self.reward_list[0])
-            difference = abs(self.reward_list[0] - self.reward_list[-1]) 
-            self.reward_list = []
-
-            if difference <= margin:
-                print(f'Reached local minimum!')
-                print(f'Difference: {round(difference, 4)}')
-                print(f'Margin: {round(margin, 4)}')
-                return True
-                        
-        elif (self.state[11] or self.state[8]) < 1.2:
-            print(f'Oops, object dropped')
-            return True
-        
-        else:
-            return False
-        
-        return False
             
     def move_joints(self, action):
         for idx, publisher in enumerate(self.joint_publishers):

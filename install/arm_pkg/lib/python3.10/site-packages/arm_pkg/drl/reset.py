@@ -3,11 +3,9 @@ import os
 import time
 import psutil
 
-from rclpy.node import Node
-
-class Reset(Node):
+class Reset():
     def __init__(self):
-        super().__init__('reset')
+        super().__init__('reset')        
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
@@ -57,4 +55,27 @@ class Reset(Node):
         for process in psutil.process_iter(['pid', 'name']):
             if 'gazebo' in process.info['name']:
                 return True
+        return False
+    
+    def terminal_condition(self):
+        self.reward_list.append(self.reward_value)
+
+        if self.maximum_accumulative_reward == len(self.reward_list):
+            margin = abs(self.margin_value * self.reward_list[0])
+            difference = abs(self.reward_list[0] - self.reward_list[-1]) 
+            self.reward_list = []
+
+            if difference <= margin:
+                print(f'Reached local minimum!')
+                print(f'Difference: {round(difference, 4)}')
+                print(f'Margin: {round(margin, 4)}')
+                return True
+                        
+        elif (self.state[11] or self.state[8]) < 1.2:
+            print(f'Oops, object dropped')
+            return True
+        
+        else:
+            return False
+        
         return False
