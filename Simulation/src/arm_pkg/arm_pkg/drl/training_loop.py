@@ -50,7 +50,7 @@ def main(args=None):
             next_state = ros_data.state
             reward = ros_data.reward_value
 
-            terminal_condition = ros_data.terminal_condition()
+            terminal_condition = reset.terminal_condition()
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, terminal_condition)
