@@ -23,7 +23,7 @@ def main(args=None):
     rclpy.init(args=args)
     config = Configuration()
     ros_data = RosData()
-    reset = Reset(ros_data)
+    reset = Reset(RosData)
     num_episodes = config.num_episodes
 
     episode_rewards = []
