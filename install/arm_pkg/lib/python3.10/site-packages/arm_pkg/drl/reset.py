@@ -4,13 +4,12 @@ import time
 import psutil
 
 from .configuration import Configuration
-from .rosdata import RosData
 
 class Reset():
-    def __init__(self):
+    def __init__(self, ros_data_class):
         print("Reset init...")
         self.config = Configuration()
-        self.ros_data = RosData()
+        self.ros_data = ros_data_class()
 
         self.reward_list = []
         self.reward_value = self.config.reward_init_value
