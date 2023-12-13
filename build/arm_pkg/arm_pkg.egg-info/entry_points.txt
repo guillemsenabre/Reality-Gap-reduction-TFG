@@ -1,0 +1,14 @@
+[console_scripts]
+controller = arm_pkg.tests.joint_controller:main
+ddpg = arm_pkg.drl.ddpg:main
+gripper_test = arm_pkg.tests.data_gripper_test:main
+listener = arm_pkg.tests.joint_listener:main
+processor = arm_pkg.tests.joint_processor:main
+reset_controller = arm_pkg.tests.joint_position_reset:main
+reward_function = arm_pkg.drl.reward_function:main
+robots_state = arm_pkg.drl.robots_state:main
+sac = arm_pkg.drl.sac:main
+state_test = arm_pkg.tests.state_test:main
+storage = arm_pkg.tests.joint_storage:main
+training = arm_pkg.drl.training_loop:main
+

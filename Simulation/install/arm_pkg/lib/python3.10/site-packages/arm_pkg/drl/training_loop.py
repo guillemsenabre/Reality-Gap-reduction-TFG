@@ -16,8 +16,6 @@ import torch
 
 #SECTION - TRAINING LOOP -
 
-
-
 def main(args=None):
     rclpy.init(args=args)
     config = Configuration()
