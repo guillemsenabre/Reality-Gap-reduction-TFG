@@ -31,4 +31,8 @@ class Configuration:
         self.reward_count_to_save_model = 50
         self.reward_threshold_to_save_model = 1
 
-        
+        #SECTION RESET VARIABLES #
+
+        self.desviation_threshold = 1.2
+        self.after_kill_time = 3
+        self.after_run_time = 7

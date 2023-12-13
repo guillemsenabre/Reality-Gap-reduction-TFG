@@ -19,9 +19,9 @@ class Reset():
     def reset(self):
         print("Resetting simulation...")
         self.kill_gazebo_process()
-        time.sleep(3)
+        time.sleep(self.config.after_kill_time)
         self.run_gazebo()
-        time.sleep(7)
+        time.sleep(self.config.after_run_time)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -80,7 +80,7 @@ class Reset():
                 print(f'Margin: {round(margin, 4)}')
                 return True
                         
-        elif (state[11] or state[8]) < 1.2:
+        elif (state[11] or state[8]) < self.config.desviation_threshold:
             print(f'Oops, object dropped')
             return True
         
