@@ -1,12 +1,9 @@
 class Configuration:
     def __init__(self):
 
-        # ROS DATA VARIABLES #
+        #SECTION ROS DATA VARIABLES #
         
-        # DDPG AGENT VARIABLES #
-
-        # TRAINING VARIABLES #
-        self.num_episodes = 100
+        #SECTION DDPG AGENT VARIABLES #
 
         self.margin_value = 0.01
         self.maximum_accumulative_reward = 100
@@ -24,4 +21,11 @@ class Configuration:
                             'joint2_2',
                             'joint3_2',
                             ]
+
+        #SECTION TRAINING VARIABLES #
+
+        self.num_episodes = 100
+
+        self.reward_count_to_save_model = 50
+
         
