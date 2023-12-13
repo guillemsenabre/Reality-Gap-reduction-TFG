@@ -29,7 +29,7 @@ class Configuration:
 
         self.num_episodes = 100
         self.reward_count_to_save_model = 50
-        self.reward_threshold_to_save_model = 1
+        self.avg_reward_threshold_to_save_model = -1
 
         #SECTION RESET VARIABLES #
 
