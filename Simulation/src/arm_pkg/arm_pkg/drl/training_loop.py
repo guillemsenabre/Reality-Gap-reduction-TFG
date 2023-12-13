@@ -64,11 +64,11 @@ def main(args=None):
                 print(f'Terminal condition reached!')
                 break
             
-            elif len(episode_reward_list) == 50:
+            elif len(episode_reward_list) == config.reward_count_to_save_model:
                 avg_reward = np.mean(episode_reward_list)
-                if avg_reward <= 0.6:
+                if avg_reward <= config.reward_threshold_to_save_model:
                     torch.save(ros_data.agent, 'ddpg_model.pth')
-                    print(f'Model saved due to average reward less than 0.6: {avg_reward}')
+                    print(f'Model saved due to average reward less than {config.reward_threshold_to_save_model}: {avg_reward}')
 
 
         # Store episode data for plotting
