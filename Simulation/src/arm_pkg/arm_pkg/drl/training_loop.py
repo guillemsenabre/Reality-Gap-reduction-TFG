@@ -7,6 +7,7 @@ from std_msgs.msg import Float64, Float32
 
 from .ddpg import DDPGAgent
 from .reset import Reset
+from .configuration import Configuration
 from .plots import plot_results
 
 import numpy as np
@@ -30,16 +31,18 @@ class RosData(Node):
 
         self.get_logger().info(f'Starting training...')
 
+        config = Configuration()
         
         self.state = np.array([])
         self.reward_list = []
         self.reward_value = 0.0
-        self.margin_value = 0.01
+        self.margin_value = config.margin_value
         
-        self.maximum_accumulative_reward = 100
+        self.maximum_accumulative_reward = config.maximum_accumulative_reward
 
-        state_dim = 12  
-        action_dim = 8
+        state_dim = config.state_dim  
+        action_dim = config.action_dim
+        
         self.agent = DDPGAgent(state_dim, action_dim)
 
 
@@ -177,6 +180,13 @@ def main(args=None):
             if terminal_condition:
                 print(f'Terminal condition reached!')
                 break
+            
+            elif len(episode_reward_list) == 50:
+                avg_reward = np.mean(episode_reward_list)
+                if avg_reward <= 0.6:
+                    torch.save(ros_data.agent, 'ddpg_model.pth')
+                    print(f'Model saved due to average reward less than 0.6: {avg_reward}')
+
 
         # Store episode data for plotting
         episode_rewards.append(episode_reward_list)
