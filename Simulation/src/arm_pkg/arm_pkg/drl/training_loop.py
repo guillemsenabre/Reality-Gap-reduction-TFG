@@ -23,7 +23,7 @@ def main(args=None):
     rclpy.init(args=args)
     config = Configuration()
     ros_data = RosData()
-    reset = Reset(RosData)
+    reset = Reset()
     num_episodes = config.num_episodes
 
     episode_rewards = []
@@ -50,7 +50,7 @@ def main(args=None):
             next_state = ros_data.state
             reward = ros_data.reward_value
 
-            terminal_condition = reset.terminal_condition()
+            terminal_condition = reset.terminal_condition(state)
 
             # Update agent
             ros_data.agent.update(state, action, reward, next_state, terminal_condition)

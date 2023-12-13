@@ -6,10 +6,9 @@ import psutil
 from .configuration import Configuration
 
 class Reset():
-    def __init__(self, ros_data_class):
+    def __init__(self):
         print("Reset init...")
         self.config = Configuration()
-        self.ros_data = ros_data_class()
 
         self.reward_list = []
         self.reward_value = self.config.reward_init_value
@@ -67,7 +66,7 @@ class Reset():
                 return True
         return False
     
-    def terminal_condition(self):
+    def terminal_condition(self, state):
         self.reward_list.append(self.reward_value)
 
         if self.maximum_accumulative_reward == len(self.reward_list):
@@ -81,7 +80,7 @@ class Reset():
                 print(f'Margin: {round(margin, 4)}')
                 return True
                         
-        elif (self.ros_data.state[11] or self.ros_data.state[8]) < 1.2:
+        elif (state[11] or state[8]) < 1.2:
             print(f'Oops, object dropped')
             return True
         
