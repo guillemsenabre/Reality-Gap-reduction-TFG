@@ -12,8 +12,6 @@ import torch
 
 #TODO - Tune hyperparameters (lr)
 #TODO - Understanding losses behaviour
-#TODO - Save model 
-
 
 
 #SECTION - TRAINING LOOP -
