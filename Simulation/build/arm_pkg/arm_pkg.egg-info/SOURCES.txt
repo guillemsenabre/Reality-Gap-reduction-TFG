@@ -29,4 +29,5 @@ arm_pkg/tests/joint_storage.py
 arm_pkg/tests/launchgazebotest.py
 arm_pkg/tests/sac.py
 arm_pkg/tests/state_test.py
+launch/launch.py
 resource/arm_pkg

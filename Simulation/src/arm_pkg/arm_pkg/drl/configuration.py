@@ -3,7 +3,7 @@ class Configuration:
 
         #SECTION DDPG AGENT VARIABLES #
 
-        self.actor_lr = 1e-4
+        self.actor_lr = 0.5e-4
         self.critic_lr = 1e-4
 
         #SECTION ROS DATA VARIABLES #
@@ -27,7 +27,7 @@ class Configuration:
 
         self.num_episodes = 100
         self.reward_count_to_save_model = 50
-        self.avg_reward_threshold_to_save_model = -1
+        self.avg_reward_threshold_to_save_model = 1
 
         #SECTION RESET VARIABLES #
 
