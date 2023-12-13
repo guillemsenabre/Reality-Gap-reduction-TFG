@@ -12,8 +12,10 @@
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__init__.py
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/ddpg.py
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reset.py
+/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/rosdata.py
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/plots.py
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/training_loop.py
+/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/configuration.py
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/robots_state.py
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/rbuffer.py
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reward_function.py
@@ -31,8 +33,10 @@
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/__init__.cpython-310.pyc
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/ddpg.cpython-310.pyc
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/reset.cpython-310.pyc
+/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/rosdata.cpython-310.pyc
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/plots.cpython-310.pyc
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/training_loop.cpython-310.pyc
+/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/configuration.cpython-310.pyc
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/robots_state.cpython-310.pyc
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/rbuffer.cpython-310.pyc
 /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/reward_function.cpython-310.pyc
