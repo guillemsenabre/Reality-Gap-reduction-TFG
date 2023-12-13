@@ -64,14 +64,9 @@ class RobotState(Node):
 
     def gripper_object_pose(self, msg: PoseArray):
 
-        #self.get_logger().info(f"Getting pose data: {msg.poses}")
         self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
         self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
         self.latest_object_pose = self.extract_coordinates(msg.poses[4])
-
-        #self.get_logger().info(f'Gripper 1: {self.latest_end_effector_pose_1}')
-        #self.get_logger().info(f'Gripper 2: {self.latest_end_effector_pose_2}')
-        #self.get_logger().info(f'Object: {self.latest_object_pose}')
 
         self.states_pack()
 
@@ -81,14 +76,10 @@ class RobotState(Node):
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
         self.latest_joint_state_1 = [msg.position[msg.name.index(joint)] for joint in relevant_joints]
 
-        #self.get_logger().info(f'Joint State (Robot 1): {dict(zip(relevant_joints, self.latest_joint_state_1))}')
-
     def joint_angles_2(self, msg):
         # Exclude fixed joints and finger joints
         relevant_joints = [joint for joint in msg.name if "joint" in joint and "finger" not in joint]
         self.latest_joint_state_2 = [msg.position[msg.name.index(joint)] for joint in relevant_joints]
-
-        #self.get_logger().info(f'Joint State (Robot 2): {dict(zip(relevant_joints, self.latest_joint_state_2))}')
 
     # States function
     def states_pack(self):

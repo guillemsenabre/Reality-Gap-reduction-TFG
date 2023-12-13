@@ -1,20 +1,27 @@
-import rclpy
 import subprocess
 import os
+import time
+import psutil
 
-from rclpy.node import Node
+from .configuration import Configuration
 
-# THIS NODE NEEDS TO BE WORKING TOGETHER WITH A SERVICE BRIDGE. 
-# CAN BE FOUND IN --> bridge_commands
-
-class Reset(Node):
+class Reset():
     def __init__(self):
-        super().__init__('joint_torque_controller')
+        print("Reset init...")
+        self.config = Configuration()
+
+        self.reward_list = []
+        self.reward_value = self.config.reward_init_value
+        self.margin_value = self.config.margin_value
+        
+        self.maximum_accumulative_reward = self.config.maximum_accumulative_reward
 
     def reset(self):
-        self.get_logger().info("Resetting simulation...")
+        print("Resetting simulation...")
         self.kill_gazebo_process()
+        time.sleep(self.config.after_kill_time)
         self.run_gazebo()
+        time.sleep(self.config.after_run_time)
         self.unpause()
 
     def kill_gazebo_process(self):
@@ -22,34 +29,62 @@ class Reset(Node):
         try:
             subprocess.run(['pkill', '-f', 'gazebo'], check=True)
         except subprocess.CalledProcessError:
-            self.get_logger().warning("Failed to kill Gazebo process.")
+            print("Failed to kill Gazebo process.")
 
     def run_gazebo(self):
-        self.get_logger().info("starting gazebo simulator...")
-        home_directory = os.path.expanduser("~")
-        sdf_file_path = os.path.join(home_directory, 'tfg', 'rwork', 'src', 'sdf_files', 'full_env_simpler.sdf')
+        print("Check if gazebo is dead...")
+        print(not self.is_gazebo_running())
 
-        try:
-            subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        except subprocess.CalledProcessError:
-            self.get_logger().error("Failed to start Gazebo process.")
+        if not self.is_gazebo_running():
+            print("starting gazebo simulator...")
+            home_directory = os.path.expanduser("~")
+            sdf_file_path = os.path.join(home_directory, 'tfg', 'Simulation', 'src', 'sdf_files', 'full_env_simpler.sdf')
+
+            try:
+                subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except subprocess.CalledProcessError:
+                print("Failed to start Gazebo process.")
+        
+        else:
+            print("Gazebo is still running...")
+            time.sleep(1)
+            print("Trying again...")
+            self.reset()
 
     def unpause(self):
         # Use subprocess to execute the ros2 service call command
         command = 'ros2 service call /world/full_env_simpler/control ros_gz_interfaces/srv/ControlWorld "{world_control: {pause: false}}"'
         try:
             subprocess.run(command, shell=True, check=True)
-            self.get_logger().info("Simulation unpaused successfully.")
+            print("Simulation unpaused successfully.")
         except subprocess.CalledProcessError as e:
-            self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
+            print(f"Failed to unpause simulation. Error: {e}")
 
+    def is_gazebo_running(self):
+        for process in psutil.process_iter(['pid', 'name']):
+            if 'gazebo' in process.info['name']:
+                return True
+        return False
+    
+    def terminal_condition(self, state):
+        self.reward_list.append(self.reward_value)
 
-def main(args=None):
-    rclpy.init(args=args)
-    reset = Reset()
-    rclpy.spin(reset)
-    reset.destroy_node()
-    rclpy.shutdown()
+        if self.maximum_accumulative_reward == len(self.reward_list):
+            margin = abs(self.margin_value * self.reward_list[0])
+            difference = abs(self.reward_list[0] - self.reward_list[-1]) 
+            self.reward_list = []
 
-if __name__ == '__main__':
-    main()
+            if difference <= margin:
+                print(f'Reached local minimum!')
+                print(f'Difference: {round(difference, 4)}')
+                print(f'Margin: {round(margin, 4)}')
+                return True
+                        
+        elif (state[11] or state[8]) < self.config.desviation_threshold:
+            print(f'Oops, object dropped')
+            return True
+        
+        else:
+            return False
+        
+        return False

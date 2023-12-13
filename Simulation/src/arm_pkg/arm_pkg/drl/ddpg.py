@@ -5,13 +5,12 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 from .rbuffer import ReplayBuffer
+from .configuration import Configuration
 
 #SECTION - POLICY DRL ALGORITHM -
 
 
 #SECTION - ACTOR NETWORK
-
-    #FIXME - How to save the model? When?
 
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
@@ -56,6 +55,9 @@ class Critic(nn.Module):
 class DDPGAgent:
     def __init__(self, state_dim, action_dim, buffer_size = 10000):
 
+        self.replay_bufer = ReplayBuffer(buffer_size)
+        self.config = Configuration()
+
         self.actor_losses = []
         self.critic_losses = []
 
@@ -67,10 +69,8 @@ class DDPGAgent:
         self.critic_target = Critic(state_dim, action_dim)
         self.critic_target.load_state_dict(self.critic.state_dict())
 
-        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=1e-3) # Adam optimizer To update the weights during training
-        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=1e-3)
-
-        self.replay_bufer = ReplayBuffer(buffer_size)
+        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=self.config.actor_lr) # Adam optimizer To update the weights during training
+        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=self.config.critic_lr)
     
     #SECTION - Select action
 
