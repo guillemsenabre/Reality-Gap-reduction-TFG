@@ -11,8 +11,6 @@ from .rbuffer import ReplayBuffer
 
 #SECTION - ACTOR NETWORK
 
-    #FIXME - How to save the model? When?
-
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Actor, self).__init__()
