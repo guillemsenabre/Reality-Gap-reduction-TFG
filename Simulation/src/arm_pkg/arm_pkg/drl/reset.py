@@ -3,9 +3,18 @@ import os
 import time
 import psutil
 
+from .configuration import Configuration
+
 class Reset():
     def __init__(self):
         print("Reset init...")
+        config = Configuration()
+
+        self.reward_list = []
+        self.reward_value = config.reward_init_value
+        self.margin_value = config.margin_value
+        
+        self.maximum_accumulative_reward = config.maximum_accumulative_reward
 
     def reset(self):
         print("Resetting simulation...")
