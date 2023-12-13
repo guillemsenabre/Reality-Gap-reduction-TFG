@@ -5,7 +5,7 @@ import psutil
 
 class Reset():
     def __init__(self):
-        super().__init__('reset')        
+        self.get_logger().info("Reset init...")
 
     def reset(self):
         self.get_logger().info("Resetting simulation...")
