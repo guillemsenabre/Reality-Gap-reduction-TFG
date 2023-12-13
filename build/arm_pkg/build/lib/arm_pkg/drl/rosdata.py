@@ -19,12 +19,6 @@ class RosData(Node):
         config = Configuration()
         
         self.state = np.array([])
-        self.reward_list = []
-        self.reward_value = config.reward_init_value
-        self.margin_value = config.margin_value
-        
-        self.maximum_accumulative_reward = config.maximum_accumulative_reward
-
         state_dim = config.state_dim  
         action_dim = config.action_dim
 
