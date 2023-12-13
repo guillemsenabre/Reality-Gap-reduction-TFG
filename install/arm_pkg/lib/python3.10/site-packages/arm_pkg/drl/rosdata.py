@@ -21,6 +21,7 @@ class RosData(Node):
         self.state = np.array([])
         state_dim = config.state_dim  
         action_dim = config.action_dim
+        self.reward_value = config.reward_init_value
 
         self.agent = DDPGAgent(state_dim, action_dim)
 
