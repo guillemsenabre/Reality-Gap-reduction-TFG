@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 
-
 def plot_results(episode_rewards, actor_losses, critic_losses):
     # Flatten the list of lists into a single list
     flattened_rewards = [reward for episode in episode_rewards for reward in episode]
