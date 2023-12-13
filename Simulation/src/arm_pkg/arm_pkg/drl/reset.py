@@ -5,10 +5,10 @@ import psutil
 
 class Reset():
     def __init__(self):
-        self.get_logger().info("Reset init...")
+        print("Reset init...")
 
     def reset(self):
-        self.get_logger().info("Resetting simulation...")
+        print("Resetting simulation...")
         self.kill_gazebo_process()
         time.sleep(3)
         self.run_gazebo()
@@ -20,26 +20,26 @@ class Reset():
         try:
             subprocess.run(['pkill', '-f', 'gazebo'], check=True)
         except subprocess.CalledProcessError:
-            self.get_logger().warning("Failed to kill Gazebo process.")
+            print("Failed to kill Gazebo process.")
 
     def run_gazebo(self):
-        self.get_logger().info("Check if gazebo is dead...")
+        print("Check if gazebo is dead...")
         print(not self.is_gazebo_running())
 
         if not self.is_gazebo_running():
-            self.get_logger().info("starting gazebo simulator...")
+            print("starting gazebo simulator...")
             home_directory = os.path.expanduser("~")
             sdf_file_path = os.path.join(home_directory, 'tfg', 'Simulation', 'src', 'sdf_files', 'full_env_simpler.sdf')
 
             try:
                 subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             except subprocess.CalledProcessError:
-                self.get_logger().error("Failed to start Gazebo process.")
+                print("Failed to start Gazebo process.")
         
         else:
-            self.get_logger().error("Gazebo is still running...")
+            print("Gazebo is still running...")
             time.sleep(1)
-            self.get_logger().error("Trying again...")
+            print("Trying again...")
             self.reset()
 
     def unpause(self):
@@ -47,9 +47,9 @@ class Reset():
         command = 'ros2 service call /world/full_env_simpler/control ros_gz_interfaces/srv/ControlWorld "{world_control: {pause: false}}"'
         try:
             subprocess.run(command, shell=True, check=True)
-            self.get_logger().info("Simulation unpaused successfully.")
+            print("Simulation unpaused successfully.")
         except subprocess.CalledProcessError as e:
-            self.get_logger().error(f"Failed to unpause simulation. Error: {e}")
+            print(f"Failed to unpause simulation. Error: {e}")
 
     def is_gazebo_running(self):
         for process in psutil.process_iter(['pid', 'name']):
