@@ -5,6 +5,7 @@ class Configuration:
 
         self.actor_lr = 0.5e-4
         self.critic_lr = 1e-4
+        self.discount_factor = 0.95
 
         #SECTION ROS DATA VARIABLES #
 

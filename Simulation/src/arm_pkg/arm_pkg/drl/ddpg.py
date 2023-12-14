@@ -111,7 +111,7 @@ class DDPGAgent:
         buffer_values = self.critic(buffer_states, buffer_actions)
         buffer_next_actions = self.actor_target(buffer_next_states)
         buffer_next_values = self.critic_target(buffer_next_states, buffer_next_actions.detach())
-        buffer_target_values = buffer_rewards + 0.99 * buffer_next_values * (1 - buffer_terminal_condition)
+        buffer_target_values = buffer_rewards + self.config.discount_factor * buffer_next_values * (1 - buffer_terminal_condition)
         critic_loss = F.mse_loss(buffer_values, buffer_target_values)
 
         # Actor loss for buffer data
