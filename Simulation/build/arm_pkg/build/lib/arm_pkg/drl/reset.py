@@ -39,6 +39,7 @@ class Reset():
 
         if not self.is_gazebo_running():
             print("starting gazebo simulator...")
+            print(f"Using {self.sdf_file}")
             home_directory = os.path.expanduser("~")
             sdf_file_path = os.path.join(home_directory, 'tfg', 'Simulation', 'src', 'sdf_files', self.sdf_file)
 
