@@ -145,7 +145,7 @@
                     <iyz>0.0</iyz>
                     <izz>0.008749</izz>
                 </inertia>
-                <pose>0 0 0 0 0 0</pose>
+                <pose relative_to="wood_ref">0 0 0.00005 0 0 0</pose>
             </inertia>
             
         </link>
