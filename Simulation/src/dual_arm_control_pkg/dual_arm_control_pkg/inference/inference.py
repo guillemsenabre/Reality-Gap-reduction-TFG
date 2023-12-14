@@ -1,10 +1,10 @@
 import torch
 import torch.nn as nn
 
-from ..ddpg import DDPGAgent
+from arm_pkg.arm_pkg.drl.ddpg import DDPGAgent
 
 model_path = "./models/"
-saved_model_filename = "your_ddpg_model.pth"
+saved_model_filename = "your_ddpg_model.pth"  
 
 
 ddpg_model = DDPGAgent()
@@ -16,4 +16,3 @@ for param in ddpg_model.layer1.parameters():
 
 for param in ddpg_model.layer2.parameters():
     param.requires_grad = False
-
