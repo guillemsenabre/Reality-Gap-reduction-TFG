@@ -78,6 +78,9 @@ class Reward(Node):
         print(f'deviation penalty: {deviation_penalty}')
         return deviation_penalty
     
+    def touching_object(self, msg: Float32Array):
+        pass
+    
     #NOTE - Should award roll ~ pi/2 rad, pitch ~ yaw ~ 0.0 rad
     def end_effector_deviation(self, msg: Float32Array):
         pass

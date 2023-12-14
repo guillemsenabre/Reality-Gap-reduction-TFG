@@ -13,6 +13,8 @@ class Reset():
         self.reward_list = []
         self.reward_value = self.config.reward_init_value
         self.margin_value = self.config.margin_value
+
+        self.sdf_file = self.config.sdf_file
         
         self.maximum_accumulative_reward = self.config.maximum_accumulative_reward
 
@@ -38,7 +40,7 @@ class Reset():
         if not self.is_gazebo_running():
             print("starting gazebo simulator...")
             home_directory = os.path.expanduser("~")
-            sdf_file_path = os.path.join(home_directory, 'tfg', 'Simulation', 'src', 'sdf_files', 'full_env_simpler.sdf')
+            sdf_file_path = os.path.join(home_directory, 'tfg', 'Simulation', 'src', 'sdf_files', self.sdf_file)
 
             try:
                 subprocess.Popen(['ign', 'gazebo', sdf_file_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
