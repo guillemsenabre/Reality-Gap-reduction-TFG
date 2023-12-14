@@ -4,6 +4,8 @@ from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 
+from .configuration import Configuration
+
 
 
 
@@ -23,6 +25,9 @@ from std_msgs.msg import Float32
 class Reward(Node):
     def __init__(self):
         super().__init__('reward_function')
+
+        self.config = Configuration()
+
         self.get_logger().info('Starting reward function node ...')
 
         # Publisher
@@ -69,7 +74,7 @@ class Reward(Node):
         data = msg.data
         object_deviation = data[25:29]  # OBJI, OBJJ, OBJK, OBJW
         print(f'Object deviation: {object_deviation}')
-        deviation_penalty = -0.5 * (abs(object_deviation[0]) + abs(object_deviation[1]) + abs(object_deviation[2]))
+        deviation_penalty = -self.config.deviation_multiplier * (abs(object_deviation[0]) + abs(object_deviation[1]) + abs(object_deviation[2]))
         print(f'deviation penalty: {deviation_penalty}')
         return deviation_penalty
     

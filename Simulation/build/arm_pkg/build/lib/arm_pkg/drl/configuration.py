@@ -16,7 +16,7 @@ class Configuration:
         self.reward_init_value = 0.0
 
         self.margin_value = 0.01
-        self.maximum_accumulative_reward = 100
+        self.maximum_accumulative_reward = 300
 
         self.state_dim = 12
         self.action_dim = 8
@@ -30,12 +30,16 @@ class Configuration:
 
         #SECTION TRAINING VARIABLES #
 
-        self.num_episodes = 100
+        self.num_episodes = 10
         self.reward_count_to_save_model = 50
-        self.avg_reward_threshold_to_save_model = 1
+        self.avg_reward_threshold_to_save_model = 0.5
 
         #SECTION RESET VARIABLES #
 
-        self.desviation_threshold = 1.2
+        self.deviation_threshold = 1.2
         self.after_kill_time = 3
         self.after_run_time = 7
+
+        #SECTION REWARD VARIABLES #
+
+        self.deviation_multiplier = 2
