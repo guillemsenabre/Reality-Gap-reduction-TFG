@@ -1,7 +1,11 @@
 import rclpy
+import numpy as np
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
+
+from .configuration import Configuration
+
 
 
 
@@ -21,6 +25,9 @@ from std_msgs.msg import Float32
 class Reward(Node):
     def __init__(self):
         super().__init__('reward_function')
+
+        self.config = Configuration()
+
         self.get_logger().info('Starting reward function node ...')
 
         # Publisher
@@ -56,8 +63,9 @@ class Reward(Node):
 
         rg1 = abs(gripper_1_pos[0] - object_1_pos[0]) + abs(gripper_1_pos[1] - object_1_pos[1]) + abs(gripper_1_pos[2] - object_1_pos[2])
         rg2 = abs(gripper_2_pos[0] - object_2_pos[0]) + abs(gripper_2_pos[1] - object_2_pos[1]) + abs(gripper_2_pos[2] - object_2_pos[2])
-    
-        distance_reward = -(rg1 + rg2)
+
+        distance_reward = -np.exp(rg1) - np.exp(rg2)
+
         
         return distance_reward
 
@@ -66,9 +74,12 @@ class Reward(Node):
         data = msg.data
         object_deviation = data[25:29]  # OBJI, OBJJ, OBJK, OBJW
         print(f'Object deviation: {object_deviation}')
-        deviation_penalty = -0.5 * (abs(object_deviation[0]) + abs(object_deviation[1]) + abs(object_deviation[2]))
+        deviation_penalty = -self.config.deviation_multiplier * (abs(object_deviation[0]) + abs(object_deviation[1]) + abs(object_deviation[2]))
         print(f'deviation penalty: {deviation_penalty}')
         return deviation_penalty
+    
+    def touching_object(self, msg: Float32Array):
+        pass
     
     #NOTE - Should award roll ~ pi/2 rad, pitch ~ yaw ~ 0.0 rad
     def end_effector_deviation(self, msg: Float32Array):

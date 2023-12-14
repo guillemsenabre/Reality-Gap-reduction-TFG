@@ -80,7 +80,7 @@ class Reset():
                 print(f'Margin: {round(margin, 4)}')
                 return True
                         
-        elif (state[11] or state[8]) < self.config.desviation_threshold:
+        elif (state[11] or state[8]) < self.config.deviation_threshold:
             print(f'Oops, object dropped')
             return True
         
