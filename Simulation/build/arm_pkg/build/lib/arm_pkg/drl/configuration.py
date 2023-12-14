@@ -9,7 +9,8 @@ class Configuration:
         self.soft_update_rate = 0.01
         self.actor_dropout_p = 0.5
         self.critic_dropout_p = 0.5
-        
+        self.batch_size = 64
+
         #SECTION ROS DATA VARIABLES #
 
         self.reward_init_value = 0.0

@@ -89,11 +89,12 @@ class DDPGAgent:
     
     #SECTION - Update 
 
-    def update(self, state, action, reward, next_state, terminal_condition, batch_size = 64):
+    def update(self, state, action, reward, next_state, terminal_condition):
         # Add the real-time experience to the replay buffer    
         self.replay_bufer.add((state, action, reward, next_state, terminal_condition))
-        
+
         # Sample a batch from the replay buffer
+        batch_size = self.config.batch_size
         buffer_batch = self.replay_bufer.sample(batch_size)
 
         # Unpacking buffer_batch into separate lists for each variable
@@ -113,12 +114,15 @@ class DDPGAgent:
         buffer_next_states = torch.FloatTensor(buffer_next_states)
         buffer_terminal_condition = torch.FloatTensor(buffer_terminal_condition)
 
-        # Critic loss for buffer data
+        # Buffer data
         buffer_values = self.critic(buffer_states, buffer_actions)
         buffer_next_actions = self.actor_target(buffer_next_states)
         buffer_next_values = self.critic_target(buffer_next_states, buffer_next_actions.detach())
+
         # BELLMAN EQUATION
         buffer_target_values = buffer_rewards + self.config.discount_factor * buffer_next_values * (1 - buffer_terminal_condition)
+        
+        # Critic loss for buffer data
         critic_loss = F.mse_loss(buffer_values, buffer_target_values)
 
         # Actor loss for buffer data
