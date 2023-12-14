@@ -36,6 +36,7 @@ class Configuration:
 
         #SECTION RESET VARIABLES #
 
+        self.sdf_file = 'full_env_simpler.sdf'
         self.deviation_threshold = 1.2
         self.after_kill_time = 3
         self.after_run_time = 7
