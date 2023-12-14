@@ -16,13 +16,16 @@ class Actor(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Actor, self).__init__()
 
+        config = Configuration()
+
+        self.dropout = nn.Dropout(p=config.actor_dropout_p)
         self.fc1 = nn.Linear(state_dim, 256)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, action_dim)
 
     def forward(self, state):
-        x = F.relu(self.fc1(state))
-        x = F.relu(self.fc2(x))
+        x = F.relu(self.dropout(self.fc1(state)))
+        x = F.relu(self.dropout(self.fc2(x)))
         action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
         return action
 
@@ -34,14 +37,17 @@ class Actor(nn.Module):
 class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Critic, self).__init__()
+
+        config = Configuration()
+        self.dropout = nn.Dropout(p=config.critic_dropout_p)
         self.fc1 = nn.Linear(state_dim + action_dim, 256)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 1) 
 
     def forward(self, state, action):
         x = torch.cat([state, action], dim=1)
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
+        x = F.relu(self.dropout(self.fc1(x)))
+        x = F.relu(self.dropout(self.fc2(x)))
         value = self.fc3(x) # Estimated Q-Value for a given state-action pair
         return value
 
@@ -111,7 +117,8 @@ class DDPGAgent:
         buffer_values = self.critic(buffer_states, buffer_actions)
         buffer_next_actions = self.actor_target(buffer_next_states)
         buffer_next_values = self.critic_target(buffer_next_states, buffer_next_actions.detach())
-        buffer_target_values = buffer_rewards + 0.99 * buffer_next_values * (1 - buffer_terminal_condition)
+        # BELLMAN EQUATION
+        buffer_target_values = buffer_rewards + self.config.discount_factor * buffer_next_values * (1 - buffer_terminal_condition)
         critic_loss = F.mse_loss(buffer_values, buffer_target_values)
 
         # Actor loss for buffer data
@@ -131,8 +138,8 @@ class DDPGAgent:
         self.critic_optimizer.step()
 
         # Update target networks with soft updates
-        self.soft_update(self.actor, self.actor_target, 0.01)
-        self.soft_update(self.critic, self.critic_target, 0.01)
+        self.soft_update(self.actor, self.actor_target, self.config.soft_update_rate)
+        self.soft_update(self.critic, self.critic_target, self.config.soft_update_rate)
 
     def soft_update(self, local_model, target_model, tau):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
