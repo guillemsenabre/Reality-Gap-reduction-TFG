@@ -1,0 +1,177 @@
+[0.000000] (-) TimerEvent: {}
+[0.000748] (arm_pkg) JobQueued: {'identifier': 'arm_pkg', 'dependencies': OrderedDict()}
+[0.000798] (dual_arm_control_pkg) JobQueued: {'identifier': 'dual_arm_control_pkg', 'dependencies': OrderedDict()}
+[0.000818] (arm_pkg) JobStarted: {'identifier': 'arm_pkg'}
+[0.100617] (-) TimerEvent: {}
+[0.113055] (dual_arm_control_pkg) JobStarted: {'identifier': 'dual_arm_control_pkg'}
+[0.201058] (-) TimerEvent: {}
+[0.303681] (-) TimerEvent: {}
+[0.411964] (-) TimerEvent: {}
+[0.527039] (-) TimerEvent: {}
+[0.628102] (-) TimerEvent: {}
+[0.729121] (-) TimerEvent: {}
+[0.850001] (-) TimerEvent: {}
+[0.960313] (-) TimerEvent: {}
+[1.065626] (-) TimerEvent: {}
+[1.180243] (-) TimerEvent: {}
+[1.324514] (-) TimerEvent: {}
+[1.437926] (-) TimerEvent: {}
+[1.536805] (arm_pkg) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../../build/arm_pkg', 'build', '--build-base', '/home/kyu8/tfg/build/arm_pkg/build', 'install', '--record', '/home/kyu8/tfg/build/arm_pkg/install.log', '--single-version-externally-managed'], 'cwd': '/home/kyu8/tfg/Simulation/src/arm_pkg', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'kyu8', 'LC_TIME': 'lzh_TW', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/kyu8', 'OLDPWD': '/home/kyu8', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'lzh_TW', 'MANAGERPID': '870', 'SYSTEMD_EXEC_PID': '1335', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '4294', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/kyu8/tfg/Simulation/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'kyu8', 'JOURNAL_STREAM': '8:22120', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'kyu8', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/kyu8/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/8kyuG:@/tmp/.ICE-unix/1008,unix/8kyuG:/tmp/.ICE-unix/1008', 'INVOCATION_ID': '0eb45edd899c44e38880526463f6c273', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'lzh_TW', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'LC_TELEPHONE': 'lzh_TW', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.4COIF2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/kyu8/tfg/Simulation/install/robotic_arm_pkg:/home/kyu8/tfg/Simulation/install/dual_arm_control_pkg:/home/kyu8/tfg/Simulation/install/arm_pkg:/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'lzh_TW', 'TERMINATOR_UUID': 'urn:uuid:c8cba22e-f67f-489d-8747-c460b6bdb600', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'lzh_TW', 'LC_IDENTIFICATION': 'lzh_TW', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/kyu8/tfg/build/arm_pkg', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/kyu8/tfg/build/arm_pkg/prefix_override:/home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages:/home/kyu8/tfg/Simulation/install/robotic_arm_pkg/lib/python3.10/site-packages:/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'lzh_TW', 'LC_PAPER': 'lzh_TW', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/kyu8/tfg/Simulation/install/dual_arm_control_pkg'}, 'shell': False}
+[1.539457] (-) TimerEvent: {}
+[1.544553] (dual_arm_control_pkg) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../../build/dual_arm_control_pkg', 'build', '--build-base', '/home/kyu8/tfg/build/dual_arm_control_pkg/build', 'install', '--record', '/home/kyu8/tfg/build/dual_arm_control_pkg/install.log', '--single-version-externally-managed'], 'cwd': '/home/kyu8/tfg/Simulation/src/dual_arm_control_pkg', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'kyu8', 'LC_TIME': 'lzh_TW', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/kyu8', 'OLDPWD': '/home/kyu8', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'lzh_TW', 'MANAGERPID': '870', 'SYSTEMD_EXEC_PID': '1335', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '4294', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/kyu8/tfg/Simulation/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'kyu8', 'JOURNAL_STREAM': '8:22120', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'kyu8', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/kyu8/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/8kyuG:@/tmp/.ICE-unix/1008,unix/8kyuG:/tmp/.ICE-unix/1008', 'INVOCATION_ID': '0eb45edd899c44e38880526463f6c273', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'lzh_TW', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'LC_TELEPHONE': 'lzh_TW', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.4COIF2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/kyu8/tfg/Simulation/install/robotic_arm_pkg:/home/kyu8/tfg/Simulation/install/dual_arm_control_pkg:/home/kyu8/tfg/Simulation/install/arm_pkg:/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'lzh_TW', 'TERMINATOR_UUID': 'urn:uuid:c8cba22e-f67f-489d-8747-c460b6bdb600', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'lzh_TW', 'LC_IDENTIFICATION': 'lzh_TW', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/kyu8/tfg/build/dual_arm_control_pkg', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/kyu8/tfg/build/dual_arm_control_pkg/prefix_override:/home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages:/home/kyu8/tfg/Simulation/install/robotic_arm_pkg/lib/python3.10/site-packages:/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'lzh_TW', 'LC_PAPER': 'lzh_TW', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/kyu8/tfg/Simulation/install/dual_arm_control_pkg'}, 'shell': False}
+[1.658536] (-) TimerEvent: {}
+[1.772324] (-) TimerEvent: {}
+[1.838833] (arm_pkg) StdoutLine: {'line': b'running egg_info\n'}
+[1.839647] (arm_pkg) StdoutLine: {'line': b'creating ../../../build/arm_pkg/arm_pkg.egg-info\n'}
+[1.840303] (arm_pkg) StdoutLine: {'line': b'writing ../../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO\n'}
+[1.841952] (arm_pkg) StdoutLine: {'line': b'writing dependency_links to ../../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt\n'}
+[1.842129] (arm_pkg) StdoutLine: {'line': b'writing entry points to ../../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt\n'}
+[1.842208] (arm_pkg) StdoutLine: {'line': b'writing requirements to ../../../build/arm_pkg/arm_pkg.egg-info/requires.txt\n'}
+[1.842278] (arm_pkg) StdoutLine: {'line': b'writing top-level names to ../../../build/arm_pkg/arm_pkg.egg-info/top_level.txt\n'}
+[1.842346] (arm_pkg) StdoutLine: {'line': b"writing manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'\n"}
+[1.843844] (arm_pkg) StdoutLine: {'line': b"reading manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'\n"}
+[1.844783] (arm_pkg) StdoutLine: {'line': b"writing manifest file '../../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'\n"}
+[1.845002] (arm_pkg) StdoutLine: {'line': b'running build\n'}
+[1.845168] (arm_pkg) StdoutLine: {'line': b'running build_py\n'}
+[1.845513] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/arm_pkg/build\n'}
+[1.845789] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/arm_pkg/build/lib\n'}
+[1.846025] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg\n'}
+[1.846249] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/__init__.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg\n'}
+[1.846395] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.846541] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/sac.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.846821] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/__init__.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.847088] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/joint_listener.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.847229] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/joint_controller.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.847309] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/state_test.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.847570] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/data_gripper_test.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.847731] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/joint_storage.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.847886] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/joint_position_reset.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.848090] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/joint_processor.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.848239] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/tests/launchgazebotest.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests\n'}
+[1.848510] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.848675] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/__init__.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.848748] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/ddpg.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.848824] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/reset.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.848893] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/rosdata.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.848961] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/plots.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.849029] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/training_loop.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.849097] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/configuration.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.849164] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/robots_state.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.849298] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/rbuffer.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.849450] (arm_pkg) StdoutLine: {'line': b'copying arm_pkg/drl/reward_function.py -> /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl\n'}
+[1.849656] (arm_pkg) StdoutLine: {'line': b'running install\n'}
+[1.849874] (arm_pkg) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.850045] (arm_pkg) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.850119] (arm_pkg) StdoutLine: {'line': b'running install_lib\n'}
+[1.850752] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg\n'}
+[1.851130] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/__init__.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg\n'}
+[1.851423] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.851577] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/sac.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.851706] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/__init__.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.851812] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_listener.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.854327] (dual_arm_control_pkg) StdoutLine: {'line': b'running egg_info\n'}
+[1.854753] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_controller.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.854983] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/state_test.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.855175] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/data_gripper_test.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.855574] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_storage.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.855635] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_position_reset.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.855686] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/joint_processor.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.855734] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/tests/launchgazebotest.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests\n'}
+[1.855782] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.855831] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/__init__.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.855879] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/ddpg.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.855927] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/reset.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856134] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/rosdata.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856212] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/plots.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856281] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/training_loop.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856350] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/configuration.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856419] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/robots_state.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856488] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/rbuffer.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856561] (arm_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/arm_pkg/build/lib/arm_pkg/drl/reward_function.py -> /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl\n'}
+[1.856630] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/__init__.py to __init__.cpython-310.pyc\n'}
+[1.856716] (dual_arm_control_pkg) StdoutLine: {'line': b'creating ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info\n'}
+[1.856791] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/sac.py to sac.cpython-310.pyc\n'}
+[1.856861] (dual_arm_control_pkg) StdoutLine: {'line': b'writing ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/PKG-INFO\n'}
+[1.857560] (dual_arm_control_pkg) StdoutLine: {'line': b'writing dependency_links to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/dependency_links.txt\n'}
+[1.857780] (dual_arm_control_pkg) StdoutLine: {'line': b'writing entry points to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/entry_points.txt\n'}
+[1.857928] (dual_arm_control_pkg) StdoutLine: {'line': b'writing requirements to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/requires.txt\n'}
+[1.858007] (dual_arm_control_pkg) StdoutLine: {'line': b'writing top-level names to ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/top_level.txt\n'}
+[1.858156] (dual_arm_control_pkg) StdoutLine: {'line': b"writing manifest file '../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/SOURCES.txt'\n"}
+[1.858296] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/__init__.py to __init__.cpython-310.pyc\n'}
+[1.858377] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_listener.py to joint_listener.cpython-310.pyc\n'}
+[1.858429] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_controller.py to joint_controller.cpython-310.pyc\n'}
+[1.858671] (dual_arm_control_pkg) StdoutLine: {'line': b"reading manifest file '../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/SOURCES.txt'\n"}
+[1.858853] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/state_test.py to state_test.cpython-310.pyc\n'}
+[1.859327] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/data_gripper_test.py to data_gripper_test.cpython-310.pyc\n'}
+[1.860147] (dual_arm_control_pkg) StdoutLine: {'line': b"writing manifest file '../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/SOURCES.txt'\n"}
+[1.860975] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_storage.py to joint_storage.cpython-310.pyc\n'}
+[1.861766] (dual_arm_control_pkg) StdoutLine: {'line': b'running build\n'}
+[1.862067] (dual_arm_control_pkg) StdoutLine: {'line': b'running build_py\n'}
+[1.862130] (dual_arm_control_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/dual_arm_control_pkg/build\n'}
+[1.862386] (dual_arm_control_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib\n'}
+[1.862509] (dual_arm_control_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg\n'}
+[1.862654] (dual_arm_control_pkg) StdoutLine: {'line': b'copying dual_arm_control_pkg/__init__.py -> /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg\n'}
+[1.862736] (dual_arm_control_pkg) StdoutLine: {'line': b'copying dual_arm_control_pkg/real_states.py -> /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg\n'}
+[1.862806] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_position_reset.py to joint_position_reset.cpython-310.pyc\n'}
+[1.862951] (dual_arm_control_pkg) StdoutLine: {'line': b'running install\n'}
+[1.863024] (dual_arm_control_pkg) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.863131] (dual_arm_control_pkg) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.863203] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/joint_processor.py to joint_processor.cpython-310.pyc\n'}
+[1.863276] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/tests/launchgazebotest.py to launchgazebotest.cpython-310.pyc\n'}
+[1.863345] (dual_arm_control_pkg) StdoutLine: {'line': b'running install_lib\n'}
+[1.863413] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__init__.py to __init__.cpython-310.pyc\n'}
+[1.863483] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/ddpg.py to ddpg.cpython-310.pyc\n'}
+[1.863776] (dual_arm_control_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg\n'}
+[1.864075] (dual_arm_control_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg/__init__.py -> /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg\n'}
+[1.864154] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reset.py to reset.cpython-310.pyc\n'}
+[1.866212] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/rosdata.py to rosdata.cpython-310.pyc\n'}
+[1.866583] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/plots.py to plots.cpython-310.pyc\n'}
+[1.866897] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/training_loop.py to training_loop.cpython-310.pyc\n'}
+[1.867394] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/configuration.py to configuration.cpython-310.pyc\n'}
+[1.867764] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/robots_state.py to robots_state.cpython-310.pyc\n'}
+[1.868122] (dual_arm_control_pkg) StdoutLine: {'line': b'copying /home/kyu8/tfg/build/dual_arm_control_pkg/build/lib/dual_arm_control_pkg/real_states.py -> /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg\n'}
+[1.868468] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/rbuffer.py to rbuffer.cpython-310.pyc\n'}
+[1.868863] (arm_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reward_function.py to reward_function.cpython-310.pyc\n'}
+[1.869037] (dual_arm_control_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg/__init__.py to __init__.cpython-310.pyc\n'}
+[1.869212] (dual_arm_control_pkg) StdoutLine: {'line': b'byte-compiling /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg/real_states.py to real_states.cpython-310.pyc\n'}
+[1.869423] (arm_pkg) StdoutLine: {'line': b'running install_data\n'}
+[1.869631] (dual_arm_control_pkg) StdoutLine: {'line': b'running install_data\n'}
+[1.870153] (arm_pkg) StdoutLine: {'line': b'copying launch/launch.py -> /home/kyu8/tfg/install/arm_pkg/share/arm_pkg\n'}
+[1.870574] (dual_arm_control_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index\n'}
+[1.870771] (dual_arm_control_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index/resource_index\n'}
+[1.870893] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/arm_pkg/share/ament_index\n'}
+[1.871079] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/arm_pkg/share/ament_index/resource_index\n'}
+[1.871193] (arm_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/arm_pkg/share/ament_index/resource_index/packages\n'}
+[1.871441] (arm_pkg) StdoutLine: {'line': b'copying resource/arm_pkg -> /home/kyu8/tfg/install/arm_pkg/share/ament_index/resource_index/packages\n'}
+[1.871541] (dual_arm_control_pkg) StdoutLine: {'line': b'creating /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index/resource_index/packages\n'}
+[1.871597] (dual_arm_control_pkg) StdoutLine: {'line': b'copying resource/dual_arm_control_pkg -> /home/kyu8/tfg/install/dual_arm_control_pkg/share/ament_index/resource_index/packages\n'}
+[1.871647] (dual_arm_control_pkg) StdoutLine: {'line': b'copying package.xml -> /home/kyu8/tfg/install/dual_arm_control_pkg/share/dual_arm_control_pkg\n'}
+[1.871695] (dual_arm_control_pkg) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.871743] (arm_pkg) StdoutLine: {'line': b'copying package.xml -> /home/kyu8/tfg/install/arm_pkg/share/arm_pkg\n'}
+[1.871792] (arm_pkg) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.872509] (arm_pkg) StdoutLine: {'line': b'Copying ../../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info\n'}
+[1.872634] (-) TimerEvent: {}
+[1.872979] (dual_arm_control_pkg) StdoutLine: {'line': b'Copying ../../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info to /home/kyu8/tfg/install/dual_arm_control_pkg/lib/python3.10/site-packages/dual_arm_control_pkg-0.0.0-py3.10.egg-info\n'}
+[1.873528] (arm_pkg) StdoutLine: {'line': b'running install_scripts\n'}
+[1.874052] (dual_arm_control_pkg) StdoutLine: {'line': b'running install_scripts\n'}
+[1.901410] (arm_pkg) StdoutLine: {'line': b'Installing controller script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.901818] (arm_pkg) StdoutLine: {'line': b'Installing ddpg script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.901879] (dual_arm_control_pkg) StdoutLine: {'line': b'Installing esp32_receiver_test script to /home/kyu8/tfg/install/dual_arm_control_pkg/lib/dual_arm_control_pkg\n'}
+[1.901940] (dual_arm_control_pkg) StdoutLine: {'line': b"writing list of installed files to '/home/kyu8/tfg/build/dual_arm_control_pkg/install.log'\n"}
+[1.902013] (arm_pkg) StdoutLine: {'line': b'Installing gripper_test script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902063] (arm_pkg) StdoutLine: {'line': b'Installing listener script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902117] (arm_pkg) StdoutLine: {'line': b'Installing processor script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902166] (arm_pkg) StdoutLine: {'line': b'Installing reset_controller script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902214] (arm_pkg) StdoutLine: {'line': b'Installing reward_function script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902261] (arm_pkg) StdoutLine: {'line': b'Installing robots_state script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902308] (arm_pkg) StdoutLine: {'line': b'Installing sac script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902356] (arm_pkg) StdoutLine: {'line': b'Installing state_test script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902404] (arm_pkg) StdoutLine: {'line': b'Installing storage script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902451] (arm_pkg) StdoutLine: {'line': b'Installing training script to /home/kyu8/tfg/install/arm_pkg/lib/arm_pkg\n'}
+[1.902498] (arm_pkg) StdoutLine: {'line': b"writing list of installed files to '/home/kyu8/tfg/build/arm_pkg/install.log'\n"}
+[1.944498] (arm_pkg) CommandEnded: {'returncode': 0}
+[2.000480] (-) TimerEvent: {}
+[2.007883] (arm_pkg) JobEnded: {'identifier': 'arm_pkg', 'rc': 0}
+[2.009408] (dual_arm_control_pkg) CommandEnded: {'returncode': 0}
+[2.082411] (dual_arm_control_pkg) JobEnded: {'identifier': 'dual_arm_control_pkg', 'rc': 0}
+[2.083653] (-) EventReactorShutdown: {}
