@@ -3,9 +3,9 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    user_input = input("Configure for learning or inference? (Type 'learning' or 'inference'): ")
+    user_input = input("Configure for learning or inference? (Type 'training' or 'inference'): ")
 
-    if user_input.lower() == 'learning':
+    if user_input.lower() == 'training':
         return LaunchDescription([
             Node(
                 package='arm_pkg',
