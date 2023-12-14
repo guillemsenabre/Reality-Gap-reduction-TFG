@@ -135,6 +135,19 @@
                     </pbr>
                 </material>
             </visual>
+            <inertia>
+                <mass>1.308</mass>
+                <inertia>
+                    <ixx>0.001982</ixx>
+                    <ixy>0.0</ixy>
+                    <ixz>0.0</ixz>
+                    <iyy>0.006815</iyy>
+                    <iyz>0.0</iyz>
+                    <izz>0.008749</izz>
+                </inertia>
+                <pose>0 0 0 0 0 0</pose>
+            </inertia>
+            
         </link>
     </model>
 
