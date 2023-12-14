@@ -1,7 +1,9 @@
 import rclpy
+import numpy as np
 from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
+
 
 
 
@@ -56,8 +58,9 @@ class Reward(Node):
 
         rg1 = abs(gripper_1_pos[0] - object_1_pos[0]) + abs(gripper_1_pos[1] - object_1_pos[1]) + abs(gripper_1_pos[2] - object_1_pos[2])
         rg2 = abs(gripper_2_pos[0] - object_2_pos[0]) + abs(gripper_2_pos[1] - object_2_pos[1]) + abs(gripper_2_pos[2] - object_2_pos[2])
-    
-        distance_reward = -(rg1 + rg2)
+
+        distance_reward = -np.exp(rg1) - np.exp(rg2)
+
         
         return distance_reward
 
