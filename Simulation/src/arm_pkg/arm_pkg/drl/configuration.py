@@ -7,7 +7,9 @@ class Configuration:
         self.critic_lr = 1e-4
         self.discount_factor = 0.95
         self.soft_update_rate = 0.01
-
+        self.actor_dropout_p = 0.5
+        self.critic_dropout_p = 0.5
+        
         #SECTION ROS DATA VARIABLES #
 
         self.reward_init_value = 0.0
