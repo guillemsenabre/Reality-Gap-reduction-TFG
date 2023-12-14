@@ -1,0 +1,39 @@
+running egg_info
+writing ../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+writing dependency_links to ../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+writing entry points to ../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+writing requirements to ../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+writing top-level names to ../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+reading manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+writing manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+  File "/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py", line 2
+    import JointStateListener from joint_listener.py
+                              ^^^^
+SyntaxError: invalid syntax
+
+byte-compiling /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py to distributed.cpython-310.pyc
+running install_data
+copying launch/launch.py -> /home/kyu8/tfg/Simulation/install/arm_pkg/share/arm_pkg
+running install_egg_info
+removing '/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+running install_scripts
+Installing controller script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing ddpg script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing gripper_test script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing listener script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing processor script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing reset_controller script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing reward_function script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing robots_state script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing sac script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing state_test script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing storage script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+Installing training script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+writing list of installed files to '/home/kyu8/tfg/Simulation/build/arm_pkg/install.log'

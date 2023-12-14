@@ -1,0 +1,40 @@
+[0.882s] Invoking command in '/home/chi8kyu/tfg/Simulation/src/arm_pkg': PYTHONPATH=/home/chi8kyu/tfg/Simulation/build/arm_pkg/prefix_override:/home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/chi8kyu/tfg/Simulation/build/arm_pkg/build install --record /home/chi8kyu/tfg/Simulation/build/arm_pkg/install.log --single-version-externally-managed
+[1.088s] running egg_info
+[1.089s] writing ../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+[1.089s] writing dependency_links to ../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+[1.089s] writing entry points to ../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+[1.089s] writing requirements to ../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+[1.089s] writing top-level names to ../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+[1.091s] reading manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.092s] writing manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[1.092s] running build
+[1.092s] running build_py
+[1.093s] running install
+[1.093s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.093s]   warnings.warn(
+[1.093s] running install_lib
+[1.095s] byte-compiling /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py to distributed.cpython-310.pyc
+[1.095s]   File "/home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py", line 2
+[1.095s]     import JointStateListener from joint_listener.py
+[1.095s]                               ^^^^
+[1.095s] SyntaxError: invalid syntax
+[1.095s] 
+[1.095s] running install_data
+[1.096s] running install_egg_info
+[1.097s] removing '/home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[1.097s] Copying ../../build/arm_pkg/arm_pkg.egg-info to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+[1.098s] running install_scripts
+[1.115s] Installing controller script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing ddpg script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing gripper_test script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing listener script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing processor script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing reset_controller script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing reward_function script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing robots_state script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing sac script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing state_test script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing storage script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.116s] Installing training script to /home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[1.118s] writing list of installed files to '/home/chi8kyu/tfg/Simulation/build/arm_pkg/install.log'
+[1.193s] Invoked command in '/home/chi8kyu/tfg/Simulation/src/arm_pkg' returned '0': PYTHONPATH=/home/chi8kyu/tfg/Simulation/build/arm_pkg/prefix_override:/home/chi8kyu/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/chi8kyu/tfg/Simulation/build/arm_pkg/build install --record /home/chi8kyu/tfg/Simulation/build/arm_pkg/install.log --single-version-externally-managed
