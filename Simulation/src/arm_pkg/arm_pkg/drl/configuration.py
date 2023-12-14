@@ -16,7 +16,7 @@ class Configuration:
         self.reward_init_value = 0.0
 
         self.margin_value = 0.01
-        self.maximum_accumulative_reward = 100
+        self.maximum_accumulative_reward = 300
 
         self.state_dim = 12
         self.action_dim = 8
