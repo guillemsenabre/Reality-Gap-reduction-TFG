@@ -39,3 +39,7 @@ class Configuration:
         self.desviation_threshold = 1.2
         self.after_kill_time = 3
         self.after_run_time = 7
+
+        #SECTION REWARD VARIABLES #
+
+        self.deviation_multiplier = 2
