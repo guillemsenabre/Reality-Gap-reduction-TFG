@@ -131,8 +131,8 @@ class DDPGAgent:
         self.critic_optimizer.step()
 
         # Update target networks with soft updates
-        self.soft_update(self.actor, self.actor_target, 0.01)
-        self.soft_update(self.critic, self.critic_target, 0.01)
+        self.soft_update(self.actor, self.actor_target, self.config.soft_update_rate)
+        self.soft_update(self.critic, self.critic_target, self.config.soft_update_rate)
 
     def soft_update(self, local_model, target_model, tau):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
