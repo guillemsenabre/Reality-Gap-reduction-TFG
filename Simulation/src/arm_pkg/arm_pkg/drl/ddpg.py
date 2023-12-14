@@ -89,11 +89,12 @@ class DDPGAgent:
     
     #SECTION - Update 
 
-    def update(self, state, action, reward, next_state, terminal_condition, batch_size = 64):
+    def update(self, state, action, reward, next_state, terminal_condition):
         # Add the real-time experience to the replay buffer    
         self.replay_bufer.add((state, action, reward, next_state, terminal_condition))
-        
+
         # Sample a batch from the replay buffer
+        batch_size = self.config.batch_size
         buffer_batch = self.replay_bufer.sample(batch_size)
 
         # Unpacking buffer_batch into separate lists for each variable
