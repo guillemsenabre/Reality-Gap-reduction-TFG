@@ -30,13 +30,13 @@ class Configuration:
 
         #SECTION TRAINING VARIABLES #
 
-        self.num_episodes = 100
+        self.num_episodes = 10
         self.reward_count_to_save_model = 50
-        self.avg_reward_threshold_to_save_model = 1
+        self.avg_reward_threshold_to_save_model = 0.5
 
         #SECTION RESET VARIABLES #
 
-        self.desviation_threshold = 1.2
+        self.deviation_threshold = 1.2
         self.after_kill_time = 3
         self.after_run_time = 7
 
