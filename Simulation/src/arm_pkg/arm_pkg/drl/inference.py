@@ -23,10 +23,11 @@ class Inference(Node):
         train_or_pretrained = input("Hey do you want to 'train' from scratch or use a 'pretrained' model?")
 
         if train_or_pretrained == "pretrained":
+            self.get_logger().info("Getting pretrained model ready...")
             self.get_pretrained_model()
 
         elif train_or_pretrained == "train":
-            self.get_logger().info((f"training ddpg model from scratch..."))
+            self.get_logger().info((f"Training ddpg model from scratch..."))
             self.get_plain_model()
 
         else:
@@ -34,7 +35,7 @@ class Inference(Node):
 
 
     def get_pretrained_model(self):
-        self.get_logger().info((f"using pretrained model located in {model_path} ..."))
+        self.get_logger().info((f"Using pretrained model located in {model_path} ..."))
 
         model_name = self.config.model_name
         model_path = os.path.expanduser(f'~/tfg/Simulation/src/models/{model_name}')
@@ -47,6 +48,9 @@ class Inference(Node):
         self.ddpg_model.critic.load_state_dict(checkpoint['critic_state_dict'])
 
     def get_plain_model(self):
+        pass
+
+    def train(self):
         pass
 
 
