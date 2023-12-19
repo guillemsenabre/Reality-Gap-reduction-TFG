@@ -1,14 +1,15 @@
 import torch
 import torch.nn as nn
+import os
 
-from arm_pkg.arm_pkg.drl.ddpg import DDPGAgent
+from  import DDPGAgent
 from arm_pkg.arm_pkg.drl.configuration import Configuration
 
-
+# Instantiate DDPGAgent and Configuration
 ddpg_model = DDPGAgent()
 config = Configuration()
 
-model_path = "../../../models/"
+model_path = os.path.expanduser('~/tfg/Simulation/src/models/')
 model_name = config.model_name
 
 train_or_pretrained = input("Do you want to 'train' or use a 'pretrained' model?")
@@ -27,4 +28,12 @@ if train_or_pretrained == "pretrained":
 
 elif train_or_pretrained == "train":
     print(f"training ddpg model from scratch...")
-    
+
+# Print model parameters and layers
+print("\nModel Parameters:")
+for name, param in ddpg_model.named_parameters():
+    print(f"{name}: {param.shape}")
+
+print("\nModel Layers:")
+for name, layer in ddpg_model.named_children():
+    print(f"{name}: {layer}")
