@@ -43,3 +43,7 @@ class Configuration:
         #SECTION REWARD VARIABLES #
 
         self.deviation_multiplier = 2
+
+        #SECTION INFERENCE VARIABLES #
+
+        self.model_name = ""

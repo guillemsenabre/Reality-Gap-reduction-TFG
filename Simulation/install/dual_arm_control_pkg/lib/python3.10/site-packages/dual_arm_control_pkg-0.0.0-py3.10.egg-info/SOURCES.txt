@@ -9,5 +9,4 @@ setup.py
 ../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/top_level.txt
 ../../build/dual_arm_control_pkg/dual_arm_control_pkg.egg-info/zip-safe
 dual_arm_control_pkg/__init__.py
-dual_arm_control_pkg/real_states.py
 resource/dual_arm_control_pkg
