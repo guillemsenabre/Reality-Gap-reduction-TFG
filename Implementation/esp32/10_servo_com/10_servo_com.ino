@@ -24,7 +24,7 @@ void loop() {
     byte torqueBytes[NUM_SERVOS * sizeof(float)];
     Serial.readBytes(torqueBytes, NUM_SERVOS * sizeof(float));
 
-    // Interpret bytes as float values
+    // Interpret bytes as float values using pointer casting.
     float torqueValues[NUM_SERVOS];
     for (int i = 0; i < NUM_SERVOS; i++) {
       torqueValues[i] = *((float*)&torqueBytes[i * sizeof(float)]);
@@ -32,7 +32,7 @@ void loop() {
 
     // Map torque values to servo angles and control servos
     for (int i = 0; i < NUM_SERVOS; i++) {
-      int angle = map(torqueValues[i], 0, 1, 0, 180);
+      int angle = map(torqueValues[i], 0, 1, 0, 120);
       servos[i].write(angle);
     }
   }
