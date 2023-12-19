@@ -23,8 +23,6 @@ Both in simulation and in real-life applications, two robotic arms composed by 5
 
 Both robots are learning through a custom algorithm based on DDPG (Deep Deterministic Policy Gradient) agent. The structure of it is explained below:
 
-Certainly! I'll continue the explanation about the DDPG (Deep Deterministic Policy Gradient) agent in a concise and structured manner for your GitHub README repository.
-
 ### DDPG Agent Structure and Operation
 
 The DDPG agent, or Deep Deterministic Policy Gradient agent, is a powerful algorithm employed in this project to facilitate the learning process of the robotic arms in a multi-agent reinforcement learning (MARL) setting. Below is a breakdown of its structure and operation:
@@ -62,5 +60,3 @@ The DDPG agent is trained through an iterative process involving the following s
 DDPG is chosen for its suitability in continuous action spaces, making it well-suited for robotic control tasks where actions are often parameterized. Its ability to handle high-dimensional action spaces and continuous state spaces aligns with the requirements of the multi-agent robotic arms scenario.
 
 By leveraging the DDPG algorithm, this project aims to bridge the gap between simulation and real-world application, enabling a smoother transfer of knowledge from simulated environments to actual robotic systems.
-
-Feel free to customize and expand on this explanation based on specific details or additional considerations in your project.
