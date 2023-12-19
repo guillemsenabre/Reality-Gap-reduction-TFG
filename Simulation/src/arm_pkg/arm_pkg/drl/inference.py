@@ -4,12 +4,12 @@ from rclpy.node import Node
 import torch
 import torch.nn as nn
 import os
+import time
 
 from ddpg import DDPGAgent
 from configuration import Configuration
 from reset import Reset
-
-
+from sub_modules.move_joints import MoveJoints
 
 class Inference(Node):
     def __init__(self):
@@ -17,13 +17,17 @@ class Inference(Node):
 
         self.get_logger().info("Starting inference node...")
 
-        # Instantiate DDPGAgent and Configuration
+        time.sleep(100)
+
+        self.get_logger().info("Getting esp32 ports...")
+
+        self.port1 = self.config.port1
+        self.port2 = self.config.port2
+
+        self.move = MoveJoints()
         self.config = Configuration()
         self.reset = Reset()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
-        
-        self.port1 = self.config.port1
-        self.port2 = self.config.port2
                 
         train_or_pretrained = input("Hey do you want to 'train' from scratch or use a 'pretrained' model?")
 
@@ -64,14 +68,12 @@ class Inference(Node):
             param.requires_grad = False
         for param in self.ddpg_model.critic.fc2.parameters():
             param.requires_grad = False
-    
-    def move_joints(self):
-        pass
+
 
     def train(self, model):
         #TODO - state = 
         #action = self.ddpg_model.select_action(state)
-        #self.move_joints(action)
+        #self.move(action)
         #TODO - next_state = 
         #TODO - reward = 
         #TODO - terminal_condition
