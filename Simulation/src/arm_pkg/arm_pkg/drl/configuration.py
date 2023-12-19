@@ -46,4 +46,4 @@ class Configuration:
 
         #SECTION INFERENCE VARIABLES #
 
-        self.model_name = ""
+        self.model_name = "ddpg_model.pth"

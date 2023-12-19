@@ -2,20 +2,22 @@ import torch
 import torch.nn as nn
 import os
 
-from .ddpg import DDPGAgent
-from .configuration import Configuration
+from ddpg import DDPGAgent
+from configuration import Configuration
+
 
 # Instantiate DDPGAgent and Configuration
+config = Configuration()
+ddpg_model = DDPGAgent(config.state_dim, config.action_dim)
+
 
 def main():
-    ddpg_model = DDPGAgent()
-    config = Configuration()
-
-    model_path = os.path.expanduser('~/tfg/Simulation/src/models/')
+    print("FUCKING STARTED")
     model_name = config.model_name
+    model_path = os.path.expanduser(f'~/tfg/Simulation/src/models/{model_name}')
 
     train_or_pretrained = input("Do you want to 'train' or use a 'pretrained' model?")
-
+    
     if train_or_pretrained == "pretrained":
         print(f"using pretrained model located in {model_path} ...")
 
