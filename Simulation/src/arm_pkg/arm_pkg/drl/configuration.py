@@ -47,3 +47,5 @@ class Configuration:
         #SECTION INFERENCE VARIABLES #
 
         self.model_name = "ddpg_model.pth"
+        self.port1 = ""
+        self.port2 = ""
