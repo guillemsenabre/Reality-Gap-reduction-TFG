@@ -21,12 +21,14 @@ class Actor(nn.Module):
         self.dropout = nn.Dropout(p=config.actor_dropout_p)
         self.fc1 = nn.Linear(state_dim, 256)
         self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, action_dim)
+        self.fc3 = nn.Linear(128, 64)
+        self.fc4 = nn.Linear(64, action_dim)
 
     def forward(self, state):
         x = F.relu(self.dropout(self.fc1(state)))
         x = F.relu(self.dropout(self.fc2(x)))
-        action = torch.tanh(self.fc3(x)) # normalise [-1, 1]
+        x = F.relu(self.dropout(self.fc3(x)))
+        action = torch.tanh(self.fc4(x)) # normalise [-1, 1]
         return action
 
 #!SECTION
@@ -42,13 +44,15 @@ class Critic(nn.Module):
         self.dropout = nn.Dropout(p=config.critic_dropout_p)
         self.fc1 = nn.Linear(state_dim + action_dim, 256)
         self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 1) 
+        self.fc3 = nn.Linear(128, 64)
+        self.fc4 = nn.Linear(64, 1) 
 
     def forward(self, state, action):
         x = torch.cat([state, action], dim=1)
         x = F.relu(self.dropout(self.fc1(x)))
         x = F.relu(self.dropout(self.fc2(x)))
-        value = self.fc3(x) # Estimated Q-Value for a given state-action pair
+        x = F.relu(self.dropout(self.fc3(x)))
+        value = self.fc4(x) # Estimated Q-Value for a given state-action pair
         return value
 
 #!SECTION
