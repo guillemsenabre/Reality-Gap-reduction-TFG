@@ -18,8 +18,8 @@ class Configuration:
         self.margin_value = 0.01
         self.maximum_accumulative_reward = 300
 
-        self.state_dim = 12
-        self.action_dim = 8
+        self.action_dim = int(input("Select action dimensions"))
+        self.state_dim = int(input("Select state dim"))
 
         self.joint_names = [
             'joint0_1', 'joint1_1', 'joint2_1', 'joint3_1',
