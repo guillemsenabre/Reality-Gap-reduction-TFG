@@ -34,7 +34,8 @@ setup(
 	    'sac = arm_pkg.drl.sac:main',
 		'ddpg = arm_pkg.drl.ddpg:main',
         'training = arm_pkg.drl.training_loop:main',
-		'reward_function = arm_pkg.drl.reward_function:main'
+		'reward_function = arm_pkg.drl.reward_function:main',
+        'inference = arm_pkg.drl.inference:main'
         ],
     },
 )

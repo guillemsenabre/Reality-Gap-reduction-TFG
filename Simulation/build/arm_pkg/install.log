@@ -12,6 +12,7 @@
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__init__.py
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/ddpg.py
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/reset.py
+/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/inference.py
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/rosdata.py
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/plots.py
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/training_loop.py
@@ -33,6 +34,7 @@
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/__init__.cpython-310.pyc
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/ddpg.cpython-310.pyc
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/reset.cpython-310.pyc
+/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/inference.cpython-310.pyc
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/rosdata.cpython-310.pyc
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/plots.cpython-310.pyc
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/__pycache__/training_loop.cpython-310.pyc
@@ -53,6 +55,7 @@
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg/controller
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg/ddpg
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg/gripper_test
+/home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg/inference
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg/listener
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg/processor
 /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg/reset_controller

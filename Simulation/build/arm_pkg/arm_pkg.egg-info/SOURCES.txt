@@ -12,6 +12,7 @@ arm_pkg/__init__.py
 arm_pkg/drl/__init__.py
 arm_pkg/drl/configuration.py
 arm_pkg/drl/ddpg.py
+arm_pkg/drl/inference.py
 arm_pkg/drl/plots.py
 arm_pkg/drl/rbuffer.py
 arm_pkg/drl/reset.py
