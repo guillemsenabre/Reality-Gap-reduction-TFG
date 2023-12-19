@@ -5,5 +5,10 @@ class MoveJoints():
         self.ser1 = serial.Serial(port1, baudrate=115200, timeout=1)
         self.ser2 = serial.Serial(port2, baudrate=115200, timeout=1)
 
-    def move_joints(self, actions):
+    def get_actions(self, actions):
         pass
+    
+    def move_joints(self):
+        pass
+
+
