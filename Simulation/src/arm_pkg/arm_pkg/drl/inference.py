@@ -7,6 +7,7 @@ import os
 
 from ddpg import DDPGAgent
 from configuration import Configuration
+from reset import Reset
 
 
 
@@ -18,6 +19,7 @@ class Inference(Node):
 
         # Instantiate DDPGAgent and Configuration
         self.config = Configuration()
+        self.reset = Reset()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
                 
         train_or_pretrained = input("Hey do you want to 'train' from scratch or use a 'pretrained' model?")
@@ -46,6 +48,18 @@ class Inference(Node):
         # Load the state dictionaries into the actor and critic models
         self.ddpg_model.actor.load_state_dict(checkpoint['actor_state_dict'])
         self.ddpg_model.critic.load_state_dict(checkpoint['critic_state_dict'])
+
+        # Freeze the first two layers (fc1 and fc2) of the actor model
+        for param in self.ddpg_model.actor.fc1.parameters():
+            param.requires_grad = False
+        for param in self.ddpg_model.actor.fc2.parameters():
+            param.requires_grad = False
+
+        # Freeze the first two layers (fc1 and fc2) of the critic model
+        for param in self.ddpg_model.critic.fc1.parameters():
+            param.requires_grad = False
+        for param in self.ddpg_model.critic.fc2.parameters():
+            param.requires_grad = False
 
     def get_plain_model(self):
         pass
