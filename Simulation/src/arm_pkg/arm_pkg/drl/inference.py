@@ -26,15 +26,15 @@ class Inference(Node):
             self.get_pretrained_model()
 
         elif train_or_pretrained == "train":
-            print(f"training ddpg model from scratch...")
+            self.get_logger().info((f"training ddpg model from scratch..."))
             self.get_plain_model()
 
         else:
-            print("STFU goodbye")
+            self.get_logger().info(("STFU goodbye"))
 
 
     def get_pretrained_model(self):
-        print(f"using pretrained model located in {model_path} ...")
+        self.get_logger().info((f"using pretrained model located in {model_path} ..."))
 
         model_name = self.config.model_name
         model_path = os.path.expanduser(f'~/tfg/Simulation/src/models/{model_name}')
