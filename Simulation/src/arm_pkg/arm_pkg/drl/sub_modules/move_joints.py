@@ -1,5 +1,5 @@
 import serial
-import time
+import struct
 
 class MoveJoints:
     def __init__(self, port):
@@ -18,6 +18,5 @@ class MoveJoints:
             self.ser.close()
 
     def _send_list(self, ser, values):
-        values_str = ','.join(map(str, values))
-        ser.write(values_str.encode())
-        print(f"Sent values to {ser.port}: {values_str}")
+        ser.write(struct.pack('!10f', *values))
+        print(f"Sent values to {ser.port}: {values}")
