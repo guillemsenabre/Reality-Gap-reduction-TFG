@@ -9,7 +9,7 @@ Servo servos[NUM_SERVOS];
 
 void setup() {
   Serial.begin(115200);
-  while(!Serial);
+  while (!Serial);
 
   // Attach each servo to its respective pin
   for (int i = 0; i < NUM_SERVOS; i++) {
@@ -20,15 +20,19 @@ void setup() {
 void loop() {
   // Wait for serial input with torque values for each servo
   if (Serial.available() >= NUM_SERVOS * sizeof(float)) {
-    // Read torque values for each servo
+    // Read raw bytes into an array
+    byte torqueBytes[NUM_SERVOS * sizeof(float)];
+    Serial.readBytes(torqueBytes, NUM_SERVOS * sizeof(float));
+
+    // Interpret bytes as float values
+    float torqueValues[NUM_SERVOS];
     for (int i = 0; i < NUM_SERVOS; i++) {
-      float torqueValue = 0.0;
-      Serial.readBytes((char*)&torqueValue, sizeof(float));
+      torqueValues[i] = *((float*)&torqueBytes[i * sizeof(float)]);
+    }
 
-      // Map torque value to servo angle (adjust mapping as needed)
-      int angle = map(torqueValue, 0, 1, 0, 180);
-
-      // Write the mapped angle to the servo
+    // Map torque values to servo angles and control servos
+    for (int i = 0; i < NUM_SERVOS; i++) {
+      int angle = map(torqueValues[i], 0, 1, 0, 180);
       servos[i].write(angle);
     }
   }
