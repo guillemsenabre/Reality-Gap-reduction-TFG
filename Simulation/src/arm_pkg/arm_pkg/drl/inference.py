@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import os
 
-from  import DDPGAgent
-from arm_pkg.arm_pkg.drl.configuration import Configuration
+from .ddpg import DDPGAgent
+from .configuration import Configuration
 
 # Instantiate DDPGAgent and Configuration
 ddpg_model = DDPGAgent()
