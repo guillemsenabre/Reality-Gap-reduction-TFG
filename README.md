@@ -51,6 +51,14 @@ The DDPG agent is trained through an iterative process involving the following s
 
 3. **Bellman Equation:**
    - The agent optimizes its policy by minimizing the temporal difference error, computed using the Bellman equation. This guides the agent towards actions that maximize expected cumulative reward over time.
+  
+Bellman equation definition:
+      \[ Q(s, a) = \mathbb{E}\left[r + \gamma \cdot \max_{a'} Q(s', a') \mid s, a\right] \]
+
+Python Implementation:
+```python
+Q_sa = reward + gamma * torch.max(Q_s_prime_a_prime)
+```
 
 4. **Gradient Ascent:**
    - The actor network is updated through gradient ascent, aiming to increase the expected cumulative reward. The critic network is updated to minimize the temporal difference error.
