@@ -53,9 +53,11 @@ The DDPG agent is trained through an iterative process involving the following s
    - The agent optimizes its policy by minimizing the temporal difference error, computed using the Bellman equation. This guides the agent towards actions that maximize expected cumulative reward over time.
   
 Bellman equation definition:
-      \[ Q(s, a) = \mathbb{E}\left[r + \gamma \cdot \max_{a'} Q(s', a') \mid s, a\right] \]
+
+      Q(s,a)=E[r+γ⋅max a′Q(s′,a′)∣s,a]
 
 Python Implementation:
+
 ```python
 Q_sa = reward + gamma * torch.max(Q_s_prime_a_prime)
 ```
