@@ -21,16 +21,20 @@ class Inference(Node):
         self.config = Configuration()
         self.reset = Reset()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
+        
+        self.port1 = self.config.port1
+        self.port2 = self.config.port2
                 
         train_or_pretrained = input("Hey do you want to 'train' from scratch or use a 'pretrained' model?")
 
         if train_or_pretrained == "pretrained":
             self.get_logger().info("Getting pretrained model ready...")
             self.get_pretrained_model()
+            #self.train()??
 
         elif train_or_pretrained == "train":
             self.get_logger().info((f"Training ddpg model from scratch..."))
-            self.get_plain_model()
+            self.train(self.ddpg_model)
 
         else:
             self.get_logger().info(("STFU goodbye"))
@@ -60,12 +64,25 @@ class Inference(Node):
             param.requires_grad = False
         for param in self.ddpg_model.critic.fc2.parameters():
             param.requires_grad = False
-
-    def get_plain_model(self):
+    
+    def move_joints(self):
         pass
 
-    def train(self):
+    def train(self, model):
+        #TODO - state = 
+        #action = self.ddpg_model.select_action(state)
+        #self.move_joints(action)
+        #TODO - next_state = 
+        #TODO - reward = 
+        #TODO - terminal_condition
+
+        # - Add safety protocols
+        # - Velocity, object drop, base join angle,...
+        # - Add a reset joints, to position the joints at 0.
+
+        #self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
         pass
+
 
 
 
