@@ -18,6 +18,7 @@ const int servoPins[] = {26, 27, 28, 29, 30, 31, 32, 33, 34, 35};
 const int numServos = 10;
 Servo servos[numServos];
 
+// Packed data to be sent through Serial
 struct SensorData {
   int servoAngles[10];
   float distance;
@@ -49,6 +50,7 @@ void setup() {
   pinMode(echo2Pin, INPUT);
 }
 
+
 void loop() {
 
   SensorData sensorData
@@ -61,21 +63,21 @@ void loop() {
 }
 
 
-
-
-
+// attach each servor to its Pin in ESP32
 void attachServoMotors() {
   for (int i = 0; i < numServos; i++) {
     servos[i].attach(servoPins[i]);
   }
 }
 
+// Read angle for each motor
 void getMotorAngles(int angles[]) {
   for (int i = 0; i < numServos; i++) {
     angles[i] = servos[i].read();
   }
 }
 
+// Read distance (cm) for each HSCR04
 float readUltrasonicDistance() {
 
 }
