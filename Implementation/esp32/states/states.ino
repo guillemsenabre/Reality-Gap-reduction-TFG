@@ -20,9 +20,12 @@ Servo servos[numServos];
 
 // Packed data to be sent through Serial
 struct SensorData {
-  int angles[10];
-  float distanceRB1;
-  float distanceRB2;
+  int angles[10];     // LIST WITH 10 INTEGERS VALUES (JOINT ANGLES)
+  float distanceRB1;  // FLOAT WITH DISTANCE IN CM FROM ROBOT1
+  float distanceRB2;  // FLOAT WITH DISTANCE IN CM FROM ROBOT2
+  int object_pitch;
+  int object_yaw;
+  int object_roll;
 };
 
 void setup() {
@@ -79,7 +82,7 @@ void getMotorAngles(int angles[]) {
 }
 
 // Read distance (cm) for each HSCR04
-float readUltrasonicDistance(float &distance1, float &distance2) {
+void readUltrasonicDistance(float &distance1, float &distance2) {
   // Clears the trigPin
   digitalWrite(trig1Pin, LOW);
   digitalWrite(trig2Pin, LOW);
@@ -100,3 +103,12 @@ float readUltrasonicDistance(float &distance1, float &distance2) {
   distance1 = duration1 * SOUND_SPEED/2;
   distance2 = duration2 * SOUND_SPEED/2;
 }
+
+void readOrientation(int &pitch, int &yaw, int &roll) {
+  mpu.update();
+  pitch = mpu.getAngleX();
+  yaw = mpu.getAngleY();
+  roll = mpu.getAngleZ();
+}
+
+
