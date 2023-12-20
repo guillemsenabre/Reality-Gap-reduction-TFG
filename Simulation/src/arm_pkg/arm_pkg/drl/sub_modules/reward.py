@@ -1,8 +1,10 @@
 from states import States
+from ..configuration import Configuration
 
 class Reward():
     def __init__(self):
         self.states = States()
+        self.config = Configuration()
         self.distanceRB1 = self.states.read_sensor_data[10]
         self.distanceRB2 = self.states.read_sensor_data[11]
         self.object_orientation = self.states.read_sensor_data[12:14]
@@ -17,14 +19,8 @@ class Reward():
 
         return distance_value
 
-    def _orientation_reward(self):
-
-
-        orientation_value = 
-        
-        return orientation_value
-
     def _drop_velocity_reward(self):
+
         # This function gets higher values as the velocity of the joints (
         #or, what is the same, the how much the angle of a joint has changed per time)
         #decreases when the distanceRB1 and distanceRB2 also decreases, to avoid 
