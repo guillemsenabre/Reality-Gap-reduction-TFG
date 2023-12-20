@@ -40,9 +40,13 @@ class Configuration:
         self.after_kill_time = 3
         self.after_run_time = 7
 
-        #SECTION REWARD VARIABLES #
+        #SECTION SIMULATION REWARD VARIABLES #
 
         self.deviation_multiplier = 2
+
+        #SECTION REAL REWARD VARIABLES #
+
+        self.scaling_factor_velocity = 1
 
         #SECTION INFERENCE VARIABLES #
 

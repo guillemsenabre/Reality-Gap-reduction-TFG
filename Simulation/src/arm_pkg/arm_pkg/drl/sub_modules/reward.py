@@ -5,9 +5,12 @@ class Reward():
     def __init__(self):
         self.states = States()
         self.config = Configuration()
+        self.angles = self.states.read_sensor_data[:10]
         self.distanceRB1 = self.states.read_sensor_data[10]
         self.distanceRB2 = self.states.read_sensor_data[11]
         self.object_orientation = self.states.read_sensor_data[12:14]
+
+        self.scaling_factor_velocity = self.config.scaling_factor_velocity
     
     def _distance_reward(self):
 
@@ -21,6 +24,18 @@ class Reward():
 
     def _drop_velocity_reward(self):
 
+            # Calculate the change in joint angles
+        delta_angles = [current - prev for current, prev in zip(self.angles, self.prev_angles)]
+
+        # Calculate the sum of absolute changes as a measure of velocity
+        velocity = sum(map(abs, delta_angles))
+
+        # Apply a reward function (e.g., inverse of velocity)
+        scaled_velocity_reward = velocity / (self.distanceRB1 + 
+                                             self.distanceRB2 + 
+                                             self.scaling_factor_velocity)
+
+        
         # This function gets higher values as the velocity of the joints (
         #or, what is the same, the how much the angle of a joint has changed per time)
         #decreases when the distanceRB1 and distanceRB2 also decreases, to avoid 
