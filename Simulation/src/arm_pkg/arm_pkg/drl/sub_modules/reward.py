@@ -10,8 +10,13 @@ class Reward():
         self.distanceRB2 = self.states.read_sensor_data[11]
         self.object_orientation = self.states.read_sensor_data[12:14]
 
-        self.scaling_factor_velocity = self.config.scaling_factor_velocity
+        self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity
         self.prev_angles = previous_angles
+
+        #Scaling factors
+        self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity_1
+        self.scaling_factor_velocity_2 = self.config.scaling_factor_velocity_2
+        self.scaling_distance_reward = self.config.scaling_distance_reward
     
     def _distance_reward(self):
 
@@ -34,7 +39,7 @@ class Reward():
         # Apply a reward function (e.g., inverse of velocity)
         scaled_velocity_reward = velocity // (self.distanceRB1 + 
                                              self.distanceRB2 + 
-                                             self.scaling_factor_velocity)
+                                             self.scaling_factor_velocity_1)
 
         
         # This function gets higher values as the velocity of the joints (
@@ -46,4 +51,6 @@ class Reward():
         return scaled_velocity_reward
 
     def reward(self):
-        pass
+        total_reward = (self._distance_reward() * self.scaling_distance_reward +
+                        self._drop_velocity_reward() * self.scaling_factor_velocity_2)
+        return total_reward

@@ -46,7 +46,9 @@ class Configuration:
 
         #SECTION REAL REWARD VARIABLES #
 
-        self.scaling_factor_velocity = 1
+        self.scaling_factor_velocity_1 = 1
+        self.scaling_factor_velocity_2 = 1
+        self.scaling_distance_reward = 1
 
         #SECTION INFERENCE VARIABLES #
 
