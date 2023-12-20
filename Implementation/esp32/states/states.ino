@@ -23,9 +23,9 @@ struct SensorData {
   int angles[10];     // LIST WITH 10 INTEGERS VALUES (JOINT ANGLES)
   float distanceRB1;  // FLOAT WITH DISTANCE IN CM FROM ROBOT1
   float distanceRB2;  // FLOAT WITH DISTANCE IN CM FROM ROBOT2
-  int object_pitch;
-  int object_yaw;
-  int object_roll;
+  float object_pitch;
+  float object_yaw;
+  float object_roll;
 };
 
 void setup() {
@@ -104,7 +104,7 @@ void readUltrasonicDistance(float &distance1, float &distance2) {
   distance2 = duration2 * SOUND_SPEED/2;
 }
 
-void readOrientation(int &pitch, int &yaw, int &roll) {
+void readOrientation(float &pitch, float &yaw, float &roll) {
   mpu.update();
   pitch = mpu.getAngleX();
   yaw = mpu.getAngleY();
