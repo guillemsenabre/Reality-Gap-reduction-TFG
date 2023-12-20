@@ -21,7 +21,8 @@ Servo servos[numServos];
 // Packed data to be sent through Serial
 struct SensorData {
   int servoAngles[10];
-  float distance1;
+  float distanceRB1;
+  float distanceRB2;
 };
 
 void setup() {
@@ -53,7 +54,7 @@ void setup() {
 
 void loop() {
 
-  SensorData sensorData
+  SensorData sensorData;
 
   getMotorAngles(sensorData.servoAngles);
   sensorData.distance = readUltrasonicDistance()
