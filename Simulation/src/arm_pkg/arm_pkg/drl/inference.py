@@ -11,6 +11,7 @@ from configuration import Configuration
 from reset import Reset
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
+from sub_modules.reward import Reward
 
 class Inference(Node):
     def __init__(self):
@@ -23,10 +24,10 @@ class Inference(Node):
         self.get_logger().info("Getting esp32 ports...")
 
         self.port1 = self.config.port1
-        self.port2 = self.config.port2
 
         self.move = MoveJoints()
         self.states = States()
+        self.reward = Reward()
         self.config = Configuration()
         self.reset = Reset()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
@@ -79,10 +80,12 @@ class Inference(Node):
         # - 2 HSCR04 distances
         # - 3 quaternions from 3 IMUs
 
+        prev_angles = state[:10] #dynamic velocity reward
+
         action = self.ddpg_model.select_action(state)
         self.move(action)
         next_state = self.states.read_sensor_data
-        #TODO - reward = 
+        reward = self.reward(prev_angles)
         #TODO - terminal_condition
 
         # - Add safety protocols
@@ -90,7 +93,6 @@ class Inference(Node):
         # - Add a reset joints, to position the joints at 0.
 
         #self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
-        pass
 
 
 

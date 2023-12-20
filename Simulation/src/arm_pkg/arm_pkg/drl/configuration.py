@@ -40,11 +40,17 @@ class Configuration:
         self.after_kill_time = 3
         self.after_run_time = 7
 
-        #SECTION REWARD VARIABLES #
+        #SECTION SIMULATION REWARD VARIABLES #
 
         self.deviation_multiplier = 2
+
+        #SECTION REAL REWARD VARIABLES #
+
+        self.scaling_factor_velocity_1 = 1
+        self.scaling_factor_velocity_2 = 1
+        self.scaling_distance_reward = 1
 
         #SECTION INFERENCE VARIABLES #
 
         self.model_name = "ddpg_model.pth"
-        self.port1 = ""
+        self.port1 = "/dev/ttyUSB0"
