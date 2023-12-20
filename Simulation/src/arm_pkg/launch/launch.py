@@ -23,8 +23,18 @@ def generate_launch_description():
                 name='robots_state'
             )
         ])
+    
     elif user_input.lower() == 'inference':
-        print("Nothing to run here yet...")
+        return LaunchDescription([
+            Node(
+                package='arm_pkg',
+                executable='inference',
+                name='inference'
+            ),
+        ])
+        
+
+
     else:
         print("Invalid input. Please type 'learning' or 'inference'.")
 
