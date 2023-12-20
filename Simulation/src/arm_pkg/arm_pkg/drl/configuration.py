@@ -57,3 +57,7 @@ class Configuration:
 
         self.model_name = "ddpg_model.pth"
         self.port1 = "/dev/ttyUSB0"
+
+        #SECTION - ABORT OR SAVE #
+
+        self.number_of_values = 20
