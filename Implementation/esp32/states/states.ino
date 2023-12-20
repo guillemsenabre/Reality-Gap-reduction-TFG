@@ -20,10 +20,9 @@ const int servo24Pin = 34;
 const int servo25Pin = 35;
 
 MPU6050 mpu(Wire);
+
 unsigned long timer = 0;
-
 const float SOUND_SPEED = 0.034;
-
 long duration;
 float distanceCm;
 
@@ -56,7 +55,6 @@ void setup() {
 
   while (!Serial) {}
 
-  int angles[10];
   attachServoMotors();
 
   pinMode(trig1Pin, OUTPUT);
@@ -66,7 +64,8 @@ void setup() {
 }
 
 void loop() {
-  // Main code loop
+  int angles[10];
+  getMotorAngles(angles);
 }
 
 
