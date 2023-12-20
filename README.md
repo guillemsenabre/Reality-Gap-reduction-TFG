@@ -44,13 +44,23 @@ The DDPG agent follows an actor-critic architecture, consisting of two main comp
 The DDPG agent is trained through an iterative process involving the following steps:
 
 1. **Experience Replay:**
-   - To enhance learning stability, the agent employs experience replay. It stores and randomly samples past experiences (state, action, reward, next state) from its replay buffer during training.
+   - To enhance learning stability, the agent employs experience replay, also called buffer replay (the class containing this file in the project has this name). It stores and randomly samples past experiences (state, action, reward, next state) from its replay buffer during training.
 
 2. **Target Networks:**
    - The agent utilizes target networks for both the actor and critic. These target networks slowly track the learned networks to provide more stable target values during the training process.
 
 3. **Bellman Equation:**
    - The agent optimizes its policy by minimizing the temporal difference error, computed using the Bellman equation. This guides the agent towards actions that maximize expected cumulative reward over time.
+  
+Bellman equation definition:
+
+      Q(s,a)=E[r+γ⋅max a′Q(s′,a′)∣s,a]
+
+Python Implementation:
+
+```python
+Q_sa = reward + gamma * torch.max(Q_s_prime_a_prime)
+```
 
 4. **Gradient Ascent:**
    - The actor network is updated through gradient ascent, aiming to increase the expected cumulative reward. The critic network is updated to minimize the temporal difference error.
