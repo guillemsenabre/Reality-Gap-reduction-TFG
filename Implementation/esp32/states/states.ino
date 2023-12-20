@@ -56,6 +56,7 @@ void setup() {
 
   while (!Serial) {}
 
+  int angles[10];
   attachServoMotors();
 
   pinMode(trig1Pin, OUTPUT);
@@ -82,4 +83,18 @@ void attachServoMotors() {
   servoMotor23.attach(servo23Pin);
   servoMotor24.attach(servo24Pin);
   servoMotor25.attach(servo25Pin);
+}
+
+void getMotorAngles(int angles[]) {
+  angles[0] = servoMotor11.read();
+  angles[1] = servoMotor12.read();
+  angles[2] = servoMotor13.read();
+  angles[3] = servoMotor14.read();
+  angles[4] = servoMotor15.read();
+  
+  angles[5] = servoMotor21.read();
+  angles[6] = servoMotor22.read();
+  angles[7] = servoMotor23.read();
+  angles[8] = servoMotor24.read();
+  angles[9] = servoMotor25.read();
 }
