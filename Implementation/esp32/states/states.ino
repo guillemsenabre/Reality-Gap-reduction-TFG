@@ -20,7 +20,7 @@ Servo servos[numServos];
 
 // Packed data to be sent through Serial
 struct SensorData {
-  int servoAngles[10];
+  int angles[10];
   float distanceRB1;
   float distanceRB2;
 };
@@ -97,6 +97,6 @@ float readUltrasonicDistance(float &distance1, float &distance2) {
   duration2 = pulseIn(echo2Pin, HIGH);
   
   // Calculate the distance
-  distanceRB1 = duration1 * SOUND_SPEED/2;
-  distanceRB2 = duration2 * SOUND_SPEED/2;
+  distance1 = duration1 * SOUND_SPEED/2;
+  distance2 = duration2 * SOUND_SPEED/2;
 }
