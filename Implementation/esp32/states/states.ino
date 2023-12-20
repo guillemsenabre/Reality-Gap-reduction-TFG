@@ -44,9 +44,30 @@ void setup() {
   Serial.begin(115200);
   Wire.begin();
 
+  byte status = mpu.begin();
+
+  while(status != 0);
+
+  mpu.calcOffsets();
+  Serial.println("Mpu calibration completed!")
+  
   while(!Serial);
 
-  servoMotor1.attach(servo11Pin)
+  servoMotor11.attach(servo11Pin);
+  servoMotor12.attach(servo12Pin);
+  servoMotor13.attach(servo13Pin);
+  servoMotor14.attach(servo14Pin);
+  servoMotor15.attach(servo15Pin);
+
+  servoMotor21.attach(servo21Pin);
+  servoMotor22.attach(servo22Pin);
+  servoMotor23.attach(servo23Pin);
+  servoMotor24.attach(servo24Pin);
+  servoMotor25.attach(servo25Pin);
+
+
+
+
   
 
 }
