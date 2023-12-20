@@ -11,8 +11,8 @@ MPU6050 mpu(Wire);
 
 unsigned long timer = 0;
 const float SOUND_SPEED = 0.034;
-long duration;
-float distanceCm;
+long duration1, duration2;
+float distanceRB1, distanceRB2;
 
 const int servoPins[] = {26, 27, 28, 29, 30, 31, 32, 33, 34, 35};
 const int numServos = 10;
@@ -21,7 +21,7 @@ Servo servos[numServos];
 // Packed data to be sent through Serial
 struct SensorData {
   int servoAngles[10];
-  float distance;
+  float distance1;
 };
 
 void setup() {
@@ -79,5 +79,23 @@ void getMotorAngles(int angles[]) {
 
 // Read distance (cm) for each HSCR04
 float readUltrasonicDistance() {
+  // Clears the trigPin
+  digitalWrite(trig1Pin, LOW);
+  digitalWrite(trig2Pin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(trig1Pin, HIGH);
+  digitalWrite(trig2Pin, HIGH);
+  delayMicroseconds(10);
 
+  digitalWrite(trig1Pin, LOW);
+  digitalWrite(trig2Pin, LOW);
+  
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration1 = pulseIn(echo1Pin, HIGH);
+  duration2 = pulseIn(echo2Pin, HIGH);
+  
+  // Calculate the distance
+  distanceRB1 = duration1 * SOUND_SPEED/2;
+  distanceRB2 = duration2 * SOUND_SPEED/2;
 }
