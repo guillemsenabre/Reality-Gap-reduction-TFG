@@ -18,6 +18,11 @@ const int servoPins[] = {26, 27, 28, 29, 30, 31, 32, 33, 34, 35};
 const int numServos = 10;
 Servo servos[numServos];
 
+struct SensorData {
+  int servoAngles[10];
+  float distance;
+};
+
 void setup() {
   Serial.begin(115200);
 
@@ -45,9 +50,16 @@ void setup() {
 }
 
 void loop() {
-  int angles[10];
-  getMotorAngles(angles);
+
+  SensorData sensorData
+
+  getMotorAngles(sensorData.servoAngles);
+  sensorData.distance = readUltrasonicDistance()
+
+  //what?
+  Serial.write((uint8_t*)&sensorData, sizeof(sensorData));
 }
+
 
 
 
@@ -62,4 +74,8 @@ void getMotorAngles(int angles[]) {
   for (int i = 0; i < numServos; i++) {
     angles[i] = servos[i].read();
   }
+}
+
+float readUltrasonicDistance() {
+
 }
