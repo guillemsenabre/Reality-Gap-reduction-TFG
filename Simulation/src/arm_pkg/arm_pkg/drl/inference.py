@@ -10,6 +10,7 @@ from ddpg import DDPGAgent
 from configuration import Configuration
 from reset import Reset
 from sub_modules.move_joints import MoveJoints
+from sub_modules.states import States
 
 class Inference(Node):
     def __init__(self):
@@ -25,6 +26,7 @@ class Inference(Node):
         self.port2 = self.config.port2
 
         self.move = MoveJoints()
+        self.states = States()
         self.config = Configuration()
         self.reset = Reset()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
@@ -71,10 +73,15 @@ class Inference(Node):
 
 
     def train(self, model):
-        #TODO - state = 
-        #action = self.ddpg_model.select_action(state)
-        #self.move(action)
-        #TODO - next_state = 
+        state = self.states.read_sensor_data
+
+        # - 10 servo motor angles
+        # - 2 HSCR04 distances
+        # - 3 quaternions from 3 IMUs
+
+        action = self.ddpg_model.select_action(state)
+        self.move(action)
+        next_state = self.states.read_sensor_data
         #TODO - reward = 
         #TODO - terminal_condition
 
