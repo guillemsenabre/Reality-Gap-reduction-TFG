@@ -72,6 +72,11 @@ class Inference(Node):
 
     def train(self, model):
         #TODO - state = 
+
+        # - 10 servo motor angles
+        # - 2 HSCR04 distances
+        # - 3 quaternions from 3 IMUs
+
         #action = self.ddpg_model.select_action(state)
         #self.move(action)
         #TODO - next_state = 
