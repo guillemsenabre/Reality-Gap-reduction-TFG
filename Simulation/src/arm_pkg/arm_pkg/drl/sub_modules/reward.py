@@ -2,7 +2,7 @@ from states import States
 from ..configuration import Configuration
 
 class Reward():
-    def __init__(self):
+    def __init__(self, previous_angles):
         self.states = States()
         self.config = Configuration()
         self.angles = self.states.read_sensor_data[:10]
@@ -11,6 +11,7 @@ class Reward():
         self.object_orientation = self.states.read_sensor_data[12:14]
 
         self.scaling_factor_velocity = self.config.scaling_factor_velocity
+        self.prev_angles = previous_angles
     
     def _distance_reward(self):
 
