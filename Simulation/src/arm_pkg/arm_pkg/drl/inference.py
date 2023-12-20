@@ -80,10 +80,12 @@ class Inference(Node):
         # - 2 HSCR04 distances
         # - 3 quaternions from 3 IMUs
 
+        prev_angles = state[:10] #dynamic velocity reward
+
         action = self.ddpg_model.select_action(state)
         self.move(action)
         next_state = self.states.read_sensor_data
-        #TODO - reward = 
+        reward = self.reward(prev_angles)
         #TODO - terminal_condition
 
         # - Add safety protocols

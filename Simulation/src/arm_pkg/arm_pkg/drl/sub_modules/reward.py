@@ -31,7 +31,7 @@ class Reward():
         velocity = sum(map(abs, delta_angles))
 
         # Apply a reward function (e.g., inverse of velocity)
-        scaled_velocity_reward = velocity / (self.distanceRB1 + 
+        scaled_velocity_reward = velocity // (self.distanceRB1 + 
                                              self.distanceRB2 + 
                                              self.scaling_factor_velocity)
 
@@ -41,7 +41,8 @@ class Reward():
         #decreases when the distanceRB1 and distanceRB2 also decreases, to avoid 
         #coliding with the object at high speed and, ideally, to stop the robots when 
         #the distances are 0.
-        pass
+        
+        return scaled_velocity_reward
 
     def reward(self):
         pass
