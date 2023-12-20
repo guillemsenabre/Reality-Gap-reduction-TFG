@@ -57,7 +57,7 @@ void loop() {
   SensorData sensorData;
 
   getMotorAngles(sensorData.servoAngles);
-  sensorData.distance = readUltrasonicDistance()
+  readUltrasonicDistance(sensorData.distanceRB1, sensorData.distanceRB2);
 
   //what?
   Serial.write((uint8_t*)&sensorData, sizeof(sensorData));
@@ -79,7 +79,7 @@ void getMotorAngles(int angles[]) {
 }
 
 // Read distance (cm) for each HSCR04
-float readUltrasonicDistance() {
+float readUltrasonicDistance(float &distance1, float &distance2) {
   // Clears the trigPin
   digitalWrite(trig1Pin, LOW);
   digitalWrite(trig2Pin, LOW);
