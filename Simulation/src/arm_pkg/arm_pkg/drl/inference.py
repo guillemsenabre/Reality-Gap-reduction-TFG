@@ -24,7 +24,6 @@ class Inference(Node):
         self.get_logger().info("Getting esp32 ports...")
 
         self.port1 = self.config.port1
-        self.port2 = self.config.port2
 
         self.move = MoveJoints()
         self.states = States()
