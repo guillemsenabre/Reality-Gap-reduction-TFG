@@ -45,7 +45,10 @@ class Configuration:
         self.deviation_multiplier = 2
 
         #SECTION REAL REWARD VARIABLES #
-
+        
+        # The bigger, the more important will be the reward
+        # To not affect the function, set to 1
+        # Don't set to 0, may divide by 0 at some point
         self.scaling_factor_velocity_1 = 1
         self.scaling_factor_velocity_2 = 1
         self.scaling_distance_reward = 1
