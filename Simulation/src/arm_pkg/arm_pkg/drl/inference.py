@@ -28,6 +28,7 @@ class Inference(Node):
 
         self.move = MoveJoints()
         self.states = States()
+        self.reward = Reward()
         self.config = Configuration()
         self.reset = Reset()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
