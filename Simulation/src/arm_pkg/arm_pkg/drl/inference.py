@@ -11,6 +11,7 @@ from configuration import Configuration
 from reset import Reset
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
+from sub_modules.reward import Reward
 
 class Inference(Node):
     def __init__(self):
@@ -90,7 +91,6 @@ class Inference(Node):
         # - Add a reset joints, to position the joints at 0.
 
         #self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
-        pass
 
 
 
