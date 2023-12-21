@@ -3,6 +3,7 @@ from arm_pkg.drl.configuration import Configuration
 
 class Reward():
     def __init__(self):
+        print("Initializing Reward module skiii")
         self.states = States()
         self.config = Configuration()
         self.angles = self.states.read_sensor_data[:10]

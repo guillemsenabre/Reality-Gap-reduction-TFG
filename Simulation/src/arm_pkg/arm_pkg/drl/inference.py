@@ -14,10 +14,6 @@ class Inference:
     def __init__(self):
         print("Starting inference node...")
 
-        time.sleep(0.5)
-
-        print("Getting esp32 port...")
-
         self.config = Configuration()
         self.move = MoveJoints()
         self.states = States()

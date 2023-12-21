@@ -4,6 +4,8 @@ from arm_pkg.drl.configuration import Configuration
 
 class AbortOrSave():
     def __init__(self):
+
+        print("Initializing Abort or Save yeee")
         self.reward = Reward()
         self.states = States()
         self.config = Configuration()

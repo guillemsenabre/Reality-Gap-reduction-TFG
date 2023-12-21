@@ -4,6 +4,7 @@ from arm_pkg.drl.configuration import Configuration
 
 class MoveJoints:
     def __init__(self):
+        print("Initializing Move Joints module eiaau let's movee")
         config = Configuration()
         self.ser = serial.Serial(config.port1, baudrate=115200, timeout=1)
 
