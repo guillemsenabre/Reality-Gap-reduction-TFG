@@ -6,12 +6,13 @@ class AbortOrSave():
         self.reward = Reward(config)
         self.states = States(config)
         self.config = config
-        self.angles = self.states.read_sensor_data[:10]
+        self.angles = []
         self.velocity_history = []
         self.reward_history = []
 
     def _null_velocity(self):
         # Calculate the average angle
+        self.angles = self.states.read_sensor_data[:10]
         average_angle = sum(self.angles) / 10
         
         # Append the average angle to the history
