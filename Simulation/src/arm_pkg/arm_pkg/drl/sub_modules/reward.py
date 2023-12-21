@@ -1,5 +1,5 @@
 from sub_modules.states import States
-from drl.configuration import Configuration
+from arm_pkg.drl.configuration import Configuration
 
 class Reward():
     def __init__(self, previous_angles):

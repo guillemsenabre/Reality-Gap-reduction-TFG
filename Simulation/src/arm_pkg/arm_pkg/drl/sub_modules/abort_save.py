@@ -1,6 +1,6 @@
-from .reward import Reward
-from .states import States
-from ..configuration import Configuration
+from sub_modules.reward import Reward
+from sub_modules.states import States
+from arm_pkg.drl.configuration import Configuration
 
 class AbortOrSave():
     def __init__(self):
