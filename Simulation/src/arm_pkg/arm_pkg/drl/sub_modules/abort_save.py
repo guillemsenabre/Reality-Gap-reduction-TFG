@@ -9,6 +9,7 @@ class AbortOrSave():
         self.config = Configuration()
         self.angles = self.states.read_sensor_data[:10]
         self.velocity_history = []
+        self.reward_history = []
 
     def _null_velocity(self):
         # Calculate the average angle
@@ -18,7 +19,7 @@ class AbortOrSave():
         self.velocity_history.append(average_angle)
 
         # Check if the history has reached the desired length
-        if len(self.velocity_history) == self.config.number_of_values:
+        if len(self.velocity_history) == self.config.number_of_velocity_values:
             # Check if the first, middle, and last items are the same
             if self.velocity_history[0] == self.velocity_history[len(self.velocity_history)//2] == self.velocity_history[-1]:
                 return True
@@ -29,6 +30,18 @@ class AbortOrSave():
         return False 
 
     def _local_minimum(self):
+        
+        self.reward_history.append(self.reward.reward)
+
+        if len(self.reward_history) == self.config.number_of_reward_values:
+            if self.reward_history[0] == self.reward_history[len(self.reward_history)//2] == self.reward_history[-1]:
+                return True
+            
+            self.reward_history = []
+
+        return False
+    
+    def _unwanted_joint_angles(self):
         pass
 
     def terminal_condition(self):

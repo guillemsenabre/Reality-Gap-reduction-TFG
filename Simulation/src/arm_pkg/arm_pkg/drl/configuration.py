@@ -60,4 +60,5 @@ class Configuration:
 
         #SECTION - ABORT OR SAVE #
 
-        self.number_of_values = 20
+        self.number_of_velocity_values = 20
+        self.number_of_reward_values = 30
