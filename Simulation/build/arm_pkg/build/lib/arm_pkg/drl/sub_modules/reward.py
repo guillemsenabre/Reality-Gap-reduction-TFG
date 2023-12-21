@@ -1,4 +1,4 @@
-from drl.sub_modules.states import States
+from sub_modules.states import States
 from drl.configuration import Configuration
 
 class Reward():
