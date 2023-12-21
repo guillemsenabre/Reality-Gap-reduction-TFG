@@ -15,7 +15,7 @@ class Inference:
     def __init__(self):
         print("Starting inference node...")
 
-        time.sleep(100)
+        time.sleep(0.5)
 
         print("Getting esp32 port...")
 
