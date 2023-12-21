@@ -3,8 +3,8 @@ from sub_modules.states import States
 
 class AbortOrSave():
     def __init__(self, config):
-        self.reward = Reward()
-        self.states = States()
+        self.reward = Reward(config)
+        self.states = States(config)
         self.config = config
         self.angles = self.states.read_sensor_data[:10]
         self.velocity_history = []
