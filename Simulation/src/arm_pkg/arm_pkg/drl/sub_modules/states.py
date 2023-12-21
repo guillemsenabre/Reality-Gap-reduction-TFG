@@ -3,7 +3,7 @@ import struct
 from arm_pkg.drl.configuration import Configuration
 
 class States():
-    def __init__(self, port):
+    def __init__(self):
         config = Configuration()
         self.ser = serial.Serial(config.port1, baudrate=115200, timeout=1)
 
