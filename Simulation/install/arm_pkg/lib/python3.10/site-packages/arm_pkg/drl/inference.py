@@ -98,12 +98,12 @@ class Inference(Node):
         self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
 
 
-
-
-
-if __name__ == '__main__':
+def main(args=None):
     rclpy.init()
     inference = Inference()
     rclpy.spin(inference)
     inference.destroy_node()
     rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
