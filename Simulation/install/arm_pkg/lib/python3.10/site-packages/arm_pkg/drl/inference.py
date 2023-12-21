@@ -8,7 +8,7 @@ import time
 
 from ddpg import DDPGAgent
 from configuration import Configuration
-from reset import Reset
+#from reset import Reset
 from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
@@ -30,7 +30,7 @@ class Inference(Node):
         self.states = States()
         self.reward = Reward()
         self.config = Configuration()
-        self.reset = Reset()
+        #self.reset = Reset()
         self.abort = AbortOrSave()
         self.save = AbortOrSave()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
