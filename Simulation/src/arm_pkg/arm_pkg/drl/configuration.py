@@ -1,8 +1,6 @@
 class Configuration:
     def __init__(self):
         print("Initializing Configuration yey!")
-    
-    def variables(self):
 
         #SECTION DDPG AGENT VARIABLES #
 
@@ -20,9 +18,6 @@ class Configuration:
 
         self.margin_value = 0.01
         self.maximum_accumulative_reward = 300
-
-        self.action_dim = int(input("Select action dimensions --> "))
-        self.state_dim = int(input("Select state dim --> "))
 
         self.joint_names = [
             'joint0_1', 'joint1_1', 'joint2_1', 'joint3_1',
@@ -65,3 +60,8 @@ class Configuration:
 
         self.number_of_velocity_values = 20
         self.number_of_reward_values = 30
+
+        
+    def dimensions(self):
+        self.action_dim = int(input("Select action dimensions --> "))
+        self.state_dim = int(input("Select state dim --> "))

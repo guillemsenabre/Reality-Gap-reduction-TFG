@@ -24,6 +24,7 @@ class Inference:
         self.reward = Reward()
         self.abort = AbortOrSave()
         self.save = AbortOrSave()
+        self.config.dimensions()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
