@@ -71,13 +71,13 @@ class Reset():
 
         if self.maximum_accumulative_reward == len(self.reward_list):
             margin = abs(self.margin_value * self.reward_list[0])
-            difference = abs(self.reward_list[0] - self.reward_list[-1]) 
+            difference1 = abs(self.reward_list[0] - self.reward_list[-1])
+            difference2 = abs(self.reward_list[len(self.reward_list)//2] - self.reward_list[-1])
+            difference3 = abs(self.reward_list[len(self.reward_list)//2] - self.reward_list[0]) 
             self.reward_list = []
 
-            if difference <= margin:
+            if (difference1 <= margin) and (difference2 <= margin) and (difference3 <= margin):
                 print(f'Reached local minimum!')
-                print(f'Difference: {round(difference, 4)}')
-                print(f'Margin: {round(margin, 4)}')
                 return True
                         
         elif (state[11] or state[8]) < self.config.deviation_threshold:

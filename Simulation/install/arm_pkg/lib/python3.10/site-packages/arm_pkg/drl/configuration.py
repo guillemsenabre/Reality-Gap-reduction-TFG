@@ -18,8 +18,8 @@ class Configuration:
         self.margin_value = 0.01
         self.maximum_accumulative_reward = 300
 
-        self.state_dim = 12
-        self.action_dim = 8
+        self.action_dim = int(input("Select action dimensions"))
+        self.state_dim = int(input("Select state dim"))
 
         self.joint_names = [
             'joint0_1', 'joint1_1', 'joint2_1', 'joint3_1',
@@ -40,10 +40,25 @@ class Configuration:
         self.after_kill_time = 3
         self.after_run_time = 7
 
-        #SECTION REWARD VARIABLES #
+        #SECTION SIMULATION REWARD VARIABLES #
 
         self.deviation_multiplier = 2
 
+        #SECTION REAL REWARD VARIABLES #
+        
+        # The bigger, the more important will be the reward
+        # To not affect the function, set to 1
+        # Don't set to 0, may divide by 0 at some point
+        self.scaling_factor_velocity_1 = 1
+        self.scaling_factor_velocity_2 = 1
+        self.scaling_distance_reward = 1
+
         #SECTION INFERENCE VARIABLES #
 
-        self.model_name = ""
+        self.model_name = "ddpg_model.pth"
+        self.port1 = "/dev/ttyUSB0"
+
+        #SECTION - ABORT OR SAVE #
+
+        self.number_of_velocity_values = 20
+        self.number_of_reward_values = 30
