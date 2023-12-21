@@ -1,4 +1,4 @@
-from states import States
+from .states import States
 from ..configuration import Configuration
 
 class Reward():
