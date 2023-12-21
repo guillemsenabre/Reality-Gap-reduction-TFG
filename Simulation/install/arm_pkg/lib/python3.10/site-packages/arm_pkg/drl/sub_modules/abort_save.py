@@ -1,5 +1,5 @@
-from .reward import Reward
-from .states import States
+from reward import Reward
+from states import States
 from ..configuration import Configuration
 
 class AbortOrSave():
