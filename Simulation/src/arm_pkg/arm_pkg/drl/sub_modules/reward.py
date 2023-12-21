@@ -2,16 +2,13 @@ from sub_modules.states import States
 from arm_pkg.drl.configuration import Configuration
 
 class Reward():
-    def __init__(self, previous_angles):
+    def __init__(self):
         self.states = States()
         self.config = Configuration()
         self.angles = self.states.read_sensor_data[:10]
         self.distanceRB1 = self.states.read_sensor_data[10]
         self.distanceRB2 = self.states.read_sensor_data[11]
         self.object_orientation = self.states.read_sensor_data[12:14]
-
-        self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity
-        self.prev_angles = previous_angles
 
         #Scaling factors
         self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity_1
@@ -28,10 +25,10 @@ class Reward():
 
         return distance_value
 
-    def _drop_velocity_reward(self):
+    def _drop_velocity_reward(self, prev_angles):
 
             # Calculate the change in joint angles
-        delta_angles = [current - prev for current, prev in zip(self.angles, self.prev_angles)]
+        delta_angles = [current - prev for current, prev in zip(self.angles, prev_angles)]
 
         # Calculate the sum of absolute changes as a measure of velocity
         velocity = sum(map(abs, delta_angles))
@@ -50,7 +47,7 @@ class Reward():
         
         return scaled_velocity_reward
 
-    def reward(self):
+    def reward(self, prev_angles):
         total_reward = (self._distance_reward() * self.scaling_distance_reward +
-                        self._drop_velocity_reward() * self.scaling_factor_velocity_2)
+                        self._drop_velocity_reward(prev_angles) * self.scaling_factor_velocity_2)
         return total_reward
