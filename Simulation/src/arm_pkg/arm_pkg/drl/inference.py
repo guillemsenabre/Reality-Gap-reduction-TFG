@@ -6,13 +6,13 @@ import torch.nn as nn
 import os
 import time
 
-from .ddpg import DDPGAgent
-from .configuration import Configuration
-from .reset import Reset
-from .sub_modules.abort_save import AbortOrSave
-from .sub_modules.move_joints import MoveJoints
-from .sub_modules.states import States
-from .sub_modules.reward import Reward
+from ddpg import DDPGAgent
+from configuration import Configuration
+from reset import Reset
+from sub_modules.abort_save import AbortOrSave
+from sub_modules.move_joints import MoveJoints
+from sub_modules.states import States
+from sub_modules.reward import Reward
 
 class Inference(Node):
     def __init__(self):
