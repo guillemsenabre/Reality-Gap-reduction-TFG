@@ -59,7 +59,7 @@ void loop() {
 
   SensorData sensorData;
 
-  getMotorAngles(sensorData.servoAngles);
+  getMotorAngles(sensorData.angles);
   readUltrasonicDistance(sensorData.distanceRB1, sensorData.distanceRB2);
 
   //what?
