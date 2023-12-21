@@ -21,7 +21,7 @@ class Inference:
 
         self.config = Configuration()
         self.move = MoveJoints(self.config.port1)
-        self.states = States()
+        self.states = States(self.config.port1)
         self.reward = Reward()
         #self.reset = Reset()
         self.abort = AbortOrSave()
