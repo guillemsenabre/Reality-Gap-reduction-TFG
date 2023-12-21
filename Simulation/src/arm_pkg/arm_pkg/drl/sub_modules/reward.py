@@ -1,5 +1,5 @@
 from sub_modules.states import States
-from arm_pkg.drl.configuration import Configuration
+from sub_modules.configuration import Configuration
 
 class Reward():
     def __init__(self):

@@ -4,7 +4,7 @@ import os
 import time
 
 from ddpg import DDPGAgent
-from configuration import Configuration
+from sub_modules.configuration import Configuration
 from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
@@ -14,14 +14,14 @@ class Inference:
     def __init__(self):
         print("Starting inference node...")
 
-        self.config = Configuration()
         self.move = MoveJoints()
         self.states = States()
         self.reward = Reward()
         self.abort = AbortOrSave()
         self.save = AbortOrSave()
-        self.config.dimensions()
-        self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
+        self.config = Configuration()
+        #self.config.dimensions()
+        self.ddpg_model = DDPGAgent()
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
 

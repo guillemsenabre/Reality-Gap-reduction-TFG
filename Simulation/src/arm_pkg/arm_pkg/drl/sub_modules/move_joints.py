@@ -1,6 +1,6 @@
 import serial
 import struct
-from arm_pkg.drl.configuration import Configuration
+from sub_modules import Configuration
 
 class MoveJoints:
     def __init__(self):
