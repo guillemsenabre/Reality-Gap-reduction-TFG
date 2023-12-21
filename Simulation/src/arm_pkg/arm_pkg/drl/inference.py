@@ -20,10 +20,10 @@ class Inference:
 
         self.config = Configuration()
         self.move = MoveJoints(self.config.port1)
-        self.states = States(self.config)
-        self.reward = Reward(self.config)
-        self.abort = AbortOrSave(self.config)
-        self.save = AbortOrSave(self.config)
+        self.states = States()
+        self.reward = Reward()
+        self.abort = AbortOrSave()
+        self.save = AbortOrSave()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")

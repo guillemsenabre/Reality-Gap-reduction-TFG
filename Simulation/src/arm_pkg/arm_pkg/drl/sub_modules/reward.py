@@ -1,9 +1,14 @@
 from sub_modules.states import States
+from arm_pkg.drl.configuration import Configuration
 
 class Reward():
-    def __init__(self,):
+    def __init__(self):
         self.states = States()
-        self.angles = []
+        self.config = Configuration()
+        self.angles = self.states.read_sensor_data[:10]
+        self.distanceRB1 = self.states.read_sensor_data[10]
+        self.distanceRB2 = self.states.read_sensor_data[11]
+        self.object_orientation = self.states.read_sensor_data[12:14]
 
         #Scaling factors
         self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity_1
@@ -11,10 +16,6 @@ class Reward():
         self.scaling_distance_reward = self.config.scaling_distance_reward
     
     def _distance_reward(self):
-        self.angles = self.states.read_sensor_data[:10]
-        self.distanceRB1 = self.states.read_sensor_data[10]
-        self.distanceRB2 = self.states.read_sensor_data[11]
-        self.object_orientation = self.states.read_sensor_data[12:14]
 
         # The smaller the distance the greater the reward (using f(x)=1/x, x>0)
         reward1 = 1/self.distanceRB1 

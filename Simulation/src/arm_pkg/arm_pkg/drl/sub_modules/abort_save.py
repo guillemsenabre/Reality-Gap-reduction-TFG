@@ -1,11 +1,12 @@
 from sub_modules.reward import Reward
 from sub_modules.states import States
+from arm_pkg.drl.configuration import Configuration
 
 class AbortOrSave():
-    def __init__(self, config):
-        self.reward = Reward(config)
-        self.states = States(config)
-        self.config = config
+    def __init__(self):
+        self.reward = Reward()
+        self.states = States()
+        self.config = Configuration()
         self.angles = []
         self.velocity_history = []
         self.reward_history = []
