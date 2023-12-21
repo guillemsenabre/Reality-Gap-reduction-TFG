@@ -26,9 +26,8 @@ def generate_launch_description():
         ])
     
     elif user_input.lower() == 'inference':
-        print("Running inference file...")
-        subprocess.run(['python3', '~/tfg/Simulation/src/arm_pkg/arm_pkg/drl/inference.py'])
-
+        inference_script_path = '/home/kyu8/tfg/Simulation/src/arm_pkg/arm_pkg/drl/inference.py'
+        subprocess.run(['python3', inference_script_path])
     else:
         print("Invalid input. Please type 'learning' or 'inference'.")
 
