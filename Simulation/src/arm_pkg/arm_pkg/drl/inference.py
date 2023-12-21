@@ -9,6 +9,7 @@ import time
 from ddpg import DDPGAgent
 from configuration import Configuration
 from reset import Reset
+from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
 from sub_modules.reward import Reward
@@ -21,7 +22,7 @@ class Inference(Node):
 
         time.sleep(100)
 
-        self.get_logger().info("Getting esp32 ports...")
+        self.get_logger().info("Getting esp32 port...")
 
         self.port1 = self.config.port1
 
@@ -30,6 +31,8 @@ class Inference(Node):
         self.reward = Reward()
         self.config = Configuration()
         self.reset = Reset()
+        self.abort = AbortOrSave()
+        self.save = AbortOrSave()
         self.ddpg_model = DDPGAgent(self.config.state_dim, self.config.action_dim)
                 
         train_or_pretrained = input("Hey do you want to 'train' from scratch or use a 'pretrained' model?")
@@ -84,15 +87,15 @@ class Inference(Node):
 
         action = self.ddpg_model.select_action(state)
         self.move(action)
-        next_state = self.states.read_sensor_data
+        next_state = self.states.read_sensor_data()
         reward = self.reward(prev_angles)
-        #TODO - terminal_condition
+        terminal_condition = self.abort.terminal_condition()
 
         # - Add safety protocols
         # - Velocity, object drop, base join angle,...
         # - Add a reset joints, to position the joints at 0.
 
-        #self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
+        self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
 
 
 
