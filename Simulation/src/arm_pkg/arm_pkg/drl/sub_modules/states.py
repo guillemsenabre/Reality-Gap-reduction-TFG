@@ -2,8 +2,8 @@ import serial
 import struct
 
 class States():
-    def __init__(self, config):
-        self.ser = serial.Serial(config.port1, baudrate=115200, timeout=1)
+    def __init__(self, port):
+        self.ser = serial.Serial(port, baudrate=115200, timeout=1)
 
     def read_sensor_data(self):
         try:

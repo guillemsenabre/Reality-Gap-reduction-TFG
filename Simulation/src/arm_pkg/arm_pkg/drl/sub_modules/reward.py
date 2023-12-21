@@ -1,11 +1,10 @@
 from sub_modules.states import States
 
 class Reward():
-    def __init__(self, config):
-        self.config = config
-        self.states = States(config)
+    def __init__(self,):
+        self.states = States()
         self.angles = []
-        
+
         #Scaling factors
         self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity_1
         self.scaling_factor_velocity_2 = self.config.scaling_factor_velocity_2

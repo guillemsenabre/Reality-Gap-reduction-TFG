@@ -1,5 +1,8 @@
 class Configuration:
     def __init__(self):
+        print("Initializing Configuration yey!")
+    
+    def variables(self):
 
         #SECTION DDPG AGENT VARIABLES #
 
