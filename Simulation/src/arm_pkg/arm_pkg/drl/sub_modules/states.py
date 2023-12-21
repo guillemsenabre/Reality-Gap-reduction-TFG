@@ -1,10 +1,8 @@
 import serial
 import struct
-from arm_pkg.drl.configuration import Configuration
 
 class States():
-    def __init__(self):
-        config = Configuration()
+    def __init__(self, config):
         self.ser = serial.Serial(config.port1, baudrate=115200, timeout=1)
 
     def read_sensor_data(self):

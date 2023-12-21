@@ -1,10 +1,9 @@
 from sub_modules.states import States
-from arm_pkg.drl.configuration import Configuration
 
 class Reward():
-    def __init__(self):
-        self.states = States()
-        self.config = Configuration()
+    def __init__(self, config):
+        self.config = config
+        self.states = States(config)
         self.angles = self.states.read_sensor_data[:10]
         self.distanceRB1 = self.states.read_sensor_data[10]
         self.distanceRB2 = self.states.read_sensor_data[11]
