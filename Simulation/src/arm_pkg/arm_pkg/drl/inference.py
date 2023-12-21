@@ -19,7 +19,7 @@ class Inference:
         print("Getting esp32 port...")
 
         self.config = Configuration()
-        self.move = MoveJoints(self.config.port1)
+        self.move = MoveJoints()
         self.states = States()
         self.reward = Reward()
         self.abort = AbortOrSave()
