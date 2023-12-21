@@ -1,5 +1,5 @@
-from states import States
-from ..configuration import Configuration
+from sub_modules.states import States
+from arm_pkg.drl.configuration import Configuration
 
 class Reward():
     def __init__(self, previous_angles):
@@ -37,7 +37,7 @@ class Reward():
         velocity = sum(map(abs, delta_angles))
 
         # Apply a reward function (e.g., inverse of velocity)
-        scaled_velocity_reward = velocity // (self.distanceRB1 + 
+        scaled_velocity_reward = velocity / (self.distanceRB1 + 
                                              self.distanceRB2 + 
                                              self.scaling_factor_velocity_1)
 

@@ -1,0 +1,58 @@
+[2.204s] Invoking command in '/home/kyu8/tfg/Simulation/src/arm_pkg': PYTHONPATH=/home/kyu8/tfg/Simulation/build/arm_pkg/prefix_override:/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/Simulation/build/arm_pkg/build install --record /home/kyu8/tfg/Simulation/build/arm_pkg/install.log --single-version-externally-managed
+[2.710s] running egg_info
+[2.711s] writing ../../build/arm_pkg/arm_pkg.egg-info/PKG-INFO
+[2.712s] writing dependency_links to ../../build/arm_pkg/arm_pkg.egg-info/dependency_links.txt
+[2.712s] writing entry points to ../../build/arm_pkg/arm_pkg.egg-info/entry_points.txt
+[2.713s] writing requirements to ../../build/arm_pkg/arm_pkg.egg-info/requires.txt
+[2.713s] writing top-level names to ../../build/arm_pkg/arm_pkg.egg-info/top_level.txt
+[2.718s] reading manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[2.720s] writing manifest file '../../build/arm_pkg/arm_pkg.egg-info/SOURCES.txt'
+[2.721s] running build
+[2.721s] running build_py
+[2.723s] creating /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules
+[2.724s] copying arm_pkg/drl/sub_modules/__init__.py -> /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules
+[2.724s] copying arm_pkg/drl/sub_modules/move_joints.py -> /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules
+[2.725s] copying arm_pkg/drl/sub_modules/reward.py -> /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules
+[2.725s] copying arm_pkg/drl/sub_modules/abort_save.py -> /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules
+[2.725s] copying arm_pkg/drl/sub_modules/states.py -> /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules
+[2.726s] running install
+[2.726s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.727s]   warnings.warn(
+[2.727s] running install_lib
+[2.731s] creating /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules
+[2.731s] copying /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules/__init__.py -> /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules
+[2.732s] copying /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules/move_joints.py -> /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules
+[2.732s] copying /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules/reward.py -> /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules
+[2.733s] copying /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules/abort_save.py -> /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules
+[2.733s] copying /home/kyu8/tfg/Simulation/build/arm_pkg/build/lib/arm_pkg/drl/sub_modules/states.py -> /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules
+[2.735s] byte-compiling /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py to distributed.cpython-310.pyc
+[2.735s]   File "/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/distributed.py", line 2
+[2.735s]     import JointStateListener from joint_listener.py
+[2.735s]                               ^^^^
+[2.735s] SyntaxError: invalid syntax
+[2.735s] 
+[2.736s] byte-compiling /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules/__init__.py to __init__.cpython-310.pyc
+[2.736s] byte-compiling /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules/move_joints.py to move_joints.cpython-310.pyc
+[2.737s] byte-compiling /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules/reward.py to reward.cpython-310.pyc
+[2.738s] byte-compiling /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules/abort_save.py to abort_save.cpython-310.pyc
+[2.739s] byte-compiling /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg/drl/sub_modules/states.py to states.cpython-310.pyc
+[2.739s] running install_data
+[2.740s] running install_egg_info
+[2.744s] removing '/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[2.744s] Copying ../../build/arm_pkg/arm_pkg.egg-info to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages/arm_pkg-0.0.0-py3.10.egg-info
+[2.746s] running install_scripts
+[2.788s] Installing controller script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.790s] Installing ddpg script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.790s] Installing gripper_test script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.791s] Installing inference script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.791s] Installing listener script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.791s] Installing processor script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.792s] Installing reset_controller script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.792s] Installing reward_function script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.792s] Installing robots_state script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.792s] Installing sac script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.792s] Installing state_test script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.793s] Installing storage script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.793s] Installing training script to /home/kyu8/tfg/Simulation/install/arm_pkg/lib/arm_pkg
+[2.794s] writing list of installed files to '/home/kyu8/tfg/Simulation/build/arm_pkg/install.log'
+[2.932s] Invoked command in '/home/kyu8/tfg/Simulation/src/arm_pkg' returned '0': PYTHONPATH=/home/kyu8/tfg/Simulation/build/arm_pkg/prefix_override:/home/kyu8/tfg/Simulation/install/arm_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_pkg build --build-base /home/kyu8/tfg/Simulation/build/arm_pkg/build install --record /home/kyu8/tfg/Simulation/build/arm_pkg/install.log --single-version-externally-managed

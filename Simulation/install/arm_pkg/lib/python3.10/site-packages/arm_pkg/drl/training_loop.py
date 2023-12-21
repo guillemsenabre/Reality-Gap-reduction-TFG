@@ -63,9 +63,15 @@ def main(args=None):
             
             elif len(episode_reward_list) == config.reward_count_to_save_model:
                 avg_reward = np.mean(episode_reward_list)
+
                 if abs(avg_reward) <= config.avg_reward_threshold_to_save_model:
                     model_path = os.path.expanduser('~/tfg/models/ddpg_model.pth')
-                    torch.save(ros_data.agent, model_path)
+
+                    torch.save({
+                        'actor_state_dict': ros_data.agent.actor.state_dict(),
+                        'critic_state_dict': ros_data.agent.critic.state_dict(),
+                    }, 'ddpg_model.pth')
+
                     print(f'Model saved due to average reward less than {config.avg_reward_threshold_to_save_model}: {avg_reward}')
                     break
 

@@ -45,7 +45,10 @@ class Configuration:
         self.deviation_multiplier = 2
 
         #SECTION REAL REWARD VARIABLES #
-
+        
+        # The bigger, the more important will be the reward
+        # To not affect the function, set to 1
+        # Don't set to 0, may divide by 0 at some point
         self.scaling_factor_velocity_1 = 1
         self.scaling_factor_velocity_2 = 1
         self.scaling_distance_reward = 1
@@ -54,3 +57,8 @@ class Configuration:
 
         self.model_name = "ddpg_model.pth"
         self.port1 = "/dev/ttyUSB0"
+
+        #SECTION - ABORT OR SAVE #
+
+        self.number_of_velocity_values = 20
+        self.number_of_reward_values = 30

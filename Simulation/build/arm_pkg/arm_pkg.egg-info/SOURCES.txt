@@ -20,6 +20,11 @@ arm_pkg/drl/reward_function.py
 arm_pkg/drl/robots_state.py
 arm_pkg/drl/rosdata.py
 arm_pkg/drl/training_loop.py
+arm_pkg/drl/sub_modules/__init__.py
+arm_pkg/drl/sub_modules/abort_save.py
+arm_pkg/drl/sub_modules/move_joints.py
+arm_pkg/drl/sub_modules/reward.py
+arm_pkg/drl/sub_modules/states.py
 arm_pkg/tests/__init__.py
 arm_pkg/tests/data_gripper_test.py
 arm_pkg/tests/joint_controller.py
