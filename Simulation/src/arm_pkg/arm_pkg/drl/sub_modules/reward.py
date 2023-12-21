@@ -6,10 +6,7 @@ class Reward():
         print("Initializing Reward module skiii")
         self.states = States()
         self.config = Configuration()
-        self.angles = self.states.read_sensor_data[:10]
-        self.distanceRB1 = self.states.read_sensor_data[10]
-        self.distanceRB2 = self.states.read_sensor_data[11]
-        self.object_orientation = self.states.read_sensor_data[12:14]
+        self.angles = []
 
         #Scaling factors
         self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity_1
@@ -17,6 +14,10 @@ class Reward():
         self.scaling_distance_reward = self.config.scaling_distance_reward
     
     def _distance_reward(self):
+        self.angles = self.states.read_sensor_data[:10]
+        self.distanceRB1 = self.states.read_sensor_data[10]
+        self.distanceRB2 = self.states.read_sensor_data[11]
+        self.object_orientation = self.states.read_sensor_data[12:14]
 
         # The smaller the distance the greater the reward (using f(x)=1/x, x>0)
         reward1 = 1/self.distanceRB1 

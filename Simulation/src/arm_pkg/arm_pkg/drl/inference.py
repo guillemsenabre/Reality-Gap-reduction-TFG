@@ -18,10 +18,10 @@ class Inference:
         self.states = States()
         self.reward = Reward()
         self.abort = AbortOrSave()
-        self.save = AbortOrSave()
         self.config = Configuration()
-        #self.config.dimensions()
-        self.ddpg_model = DDPGAgent()
+
+        action_dim, state_dim = self.config.dimensions()
+        self.ddpg_model = DDPGAgent(action_dim, state_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
 

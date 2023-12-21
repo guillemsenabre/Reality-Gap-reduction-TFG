@@ -1,6 +1,6 @@
 import serial
 import struct
-from sub_modules import Configuration
+from sub_modules.configuration import Configuration
 
 class MoveJoints:
     def __init__(self):

@@ -60,13 +60,10 @@ class Configuration:
 
         self.number_of_velocity_values = 20
         self.number_of_reward_values = 30
-
-'''
+        
     def dimensions(self):
         print("selecting actions...")
         action_dim = int(input("Select action dimensions --> "))
         state_dim = int(input("Select state dim --> "))
 
         return action_dim, state_dim
-
-'''

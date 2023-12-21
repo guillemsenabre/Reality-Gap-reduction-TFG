@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 from rbuffer import ReplayBuffer
-from .sub_modules.configuration import Configuration
+from sub_modules.configuration import Configuration
 
 #SECTION - POLICY DRL ALGORITHM -
 
