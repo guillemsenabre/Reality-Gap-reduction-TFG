@@ -1,3 +1,5 @@
+import time
+
 class Configuration:
     def __init__(self):
         print("Initializing Configuration yey!")
@@ -60,6 +62,8 @@ class Configuration:
 
         self.number_of_velocity_values = 20
         self.number_of_reward_values = 30
+
+        time.sleep(0.3)
 
     def dimensions(self):
         print("selecting network dimensions...")
