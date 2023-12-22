@@ -66,7 +66,7 @@ class Inference:
 
         # - 10 servo motor angles
         # - 2 HSCR04 distances
-        # - 3 quaternions from 3 IMUs
+        # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
 
         prev_angles = state[:10] #dynamic velocity reward
 
