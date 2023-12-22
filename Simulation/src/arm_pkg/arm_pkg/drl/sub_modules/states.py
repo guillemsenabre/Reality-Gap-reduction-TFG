@@ -27,13 +27,19 @@ class States():
             finally:
                 if self.ser is not None:
                     self.ser.close()
-
+                    
     def _receive_sensor_data(self, ser):
-
-        format_string = f'!{self.config.number_motors}i {self.config.number_sensors}f'  # 10 integers (motors), 5 floats (sensors)
+        format_string = '!10i 2f 3f'
+        expected_size = struct.calcsize(format_string)
+        count = 0
+        print("Waiting for state data...")
+        while ser.in_waiting < expected_size:
+            print(f"{count}...")
+            time.sleep(1)
+            count += 1
 
         # Read the packed data from the serial port
-        packed_data = ser.read(struct.calcsize(format_string))
+        packed_data = ser.read(expected_size)
 
         # Unpack the received data
         unpacked_data = struct.unpack(format_string, packed_data)
