@@ -1,10 +1,10 @@
-from sub_modules.states import States
+import time
 from sub_modules.configuration import Configuration
 
 class Reward():
-    def __init__(self):
+    def __init__(self, states):
         print("Initializing Reward module skiii")
-        self.states = States()
+        self.states = states
         self.config = Configuration()
         self.angles = []
 
@@ -12,7 +12,8 @@ class Reward():
         self.scaling_factor_velocity_1 = self.config.scaling_factor_velocity_1
         self.scaling_factor_velocity_2 = self.config.scaling_factor_velocity_2
         self.scaling_distance_reward = self.config.scaling_distance_reward
-    
+
+        time.sleep(0.3)
     def _distance_reward(self):
         self.angles = self.states.read_sensor_data[:10]
         self.distanceRB1 = self.states.read_sensor_data[10]

@@ -1,3 +1,4 @@
+import time
 import serial
 import struct
 from sub_modules.configuration import Configuration
@@ -6,6 +7,8 @@ class MoveJoints:
     def __init__(self):
         print("Initializing Move Joints module eiaau let's movee")
         self.config = Configuration()
+
+        time.sleep(0.3)
 
     def move_joints(self, actions):
 

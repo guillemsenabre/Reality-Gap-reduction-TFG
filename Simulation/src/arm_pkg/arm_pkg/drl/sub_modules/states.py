@@ -1,3 +1,4 @@
+import time
 import serial
 import struct
 from sub_modules.configuration import Configuration
@@ -6,6 +7,8 @@ class States():
     def __init__(self):
         print("Initializing States module fiiisss")
         self.config = Configuration()
+
+        time.sleep(0.3)
 
     def read_sensor_data(self):
         ser = serial.Serial(self.config.port1, baudrate=115200, timeout=1)

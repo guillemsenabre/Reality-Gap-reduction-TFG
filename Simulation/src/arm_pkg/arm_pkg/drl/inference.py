@@ -16,9 +16,10 @@ class Inference:
 
         self.move = MoveJoints()
         self.states = States()
-        self.reward = Reward()
-        self.abort = AbortOrSave()
+        self.reward = Reward(self.states)
+        self.abort = AbortOrSave(self.states, self.reward)
         self.config = Configuration()
+        time.sleep(0.3)
 
         action_dim, state_dim = self.config.dimensions()
         self.ddpg_model = DDPGAgent(action_dim, state_dim)
