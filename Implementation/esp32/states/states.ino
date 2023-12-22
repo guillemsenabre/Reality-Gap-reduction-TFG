@@ -81,10 +81,6 @@ void getMotorAngles(int angles[]) {
   }
 }
 
-voi sendMotorAngles() {
-  break
-}
-
 // Read distance (cm) for each HSCR04
 void readUltrasonicDistance(float &distance1, float &distance2) {
   // Clears the trigPin
