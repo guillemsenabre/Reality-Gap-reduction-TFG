@@ -5,12 +5,12 @@ from sub_modules.configuration import Configuration
 class States():
     def __init__(self):
         print("Initializing States module fiiisss")
-        config = Configuration()
-        self.ser = serial.Serial(config.port1, baudrate=115200, timeout=1)
+        self.config = Configuration()
 
     def read_sensor_data(self):
+        ser = serial.Serial(self.config.port1, baudrate=115200, timeout=1)
         try:
-            return self._receive_sensor_data(self.ser)
+            return self._receive_sensor_data(ser)
         except Exception as e:
             print(f"Error: {e}")
         finally:
