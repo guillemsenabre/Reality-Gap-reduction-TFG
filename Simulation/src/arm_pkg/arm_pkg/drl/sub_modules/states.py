@@ -19,10 +19,10 @@ class States():
             except serial.serialutil.SerialException as e:
                 print(f"Error: {e}")
                 print(f"Waiting for {self.config.retry_delay} seconds before retrying...")
-                for second in range(self.config.retry_delay, 0, 1):
+                for second in range(self.config.retry_delay, 0, -1):
                     print("{second}...")
                     time.sleep(1)
-                    if second == 0:
+                    if second == 1:
                         break
             finally:
                 if self.ser is not None:
