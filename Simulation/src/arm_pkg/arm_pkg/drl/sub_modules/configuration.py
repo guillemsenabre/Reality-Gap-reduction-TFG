@@ -58,6 +58,8 @@ class Configuration:
         self.model_name = "ddpg_model.pth"
         self.port1 = "/dev/ttyUSB0"
         self.retry_delay = 4 # In seconds
+        self.number_motors = 1
+        self.number_sensors = 1
 
         #SECTION - ABORT OR SAVE #
 

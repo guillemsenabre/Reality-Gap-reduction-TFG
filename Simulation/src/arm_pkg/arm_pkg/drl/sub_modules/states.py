@@ -30,7 +30,7 @@ class States():
 
     def _receive_sensor_data(self, ser):
 
-        format_string = '!10i 2f 3f'  # 10 integers, 2 floats, 3 floats
+        format_string = f'!{self.config.number_motors}i {self.config.number_sensors}f'  # 10 integers (motors), 5 floats (sensors)
 
         # Read the packed data from the serial port
         packed_data = ser.read(struct.calcsize(format_string))
