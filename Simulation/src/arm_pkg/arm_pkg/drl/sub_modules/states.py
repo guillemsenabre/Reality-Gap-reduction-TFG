@@ -7,20 +7,22 @@ class States():
     def __init__(self):
         print("Initializing States module fiiisss")
         self.config = Configuration()
+        self.ser = None
 
         time.sleep(0.3)
 
     def read_sensor_data(self):
         while True:
             try:
-                ser = serial.Serial(self.config.port1, baudrate=115200, timeout=1)
-                return self._receive_sensor_data(ser)
+                self.ser = serial.Serial(self.config.port1, baudrate=115200, timeout=1)
+                return self._receive_sensor_data(self.ser)
             except serial.serialutil.SerialException as e:
                 print(f"Error: {e}")
                 print(f"Waiting for {self.config.retry_delay} seconds before retrying...")
                 time.sleep(self.config.retry_delay)
             finally:
-                ser.close()
+                if self.ser != None:
+                    self.ser.close()
 
     def _receive_sensor_data(self, ser):
 
