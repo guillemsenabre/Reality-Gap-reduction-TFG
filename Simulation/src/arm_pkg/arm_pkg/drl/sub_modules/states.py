@@ -19,9 +19,13 @@ class States():
             except serial.serialutil.SerialException as e:
                 print(f"Error: {e}")
                 print(f"Waiting for {self.config.retry_delay} seconds before retrying...")
-                time.sleep(self.config.retry_delay)
+                for second in range(self.config.retry_delay, 0, 1):
+                    print("{second}...")
+                    time.sleep(1)
+                    if second == 0:
+                        break
             finally:
-                if self.ser != None:
+                if self.ser is not None:
                     self.ser.close()
 
     def _receive_sensor_data(self, ser):
