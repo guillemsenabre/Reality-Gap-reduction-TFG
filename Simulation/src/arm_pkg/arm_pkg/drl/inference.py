@@ -62,25 +62,34 @@ class Inference:
             param.requires_grad = False
 
     def train(self):
+        print("Getting states...")
         state = self.states.read_sensor_data()
 
         # - 10 servo motor angles
         # - 2 HSCR04 distances
-        # - 3 quaternions from 3 IMUs
+        # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
 
+        print("Getting angles...")
         prev_angles = state[:10] #dynamic velocity reward
-
+        print("Passing states to ddpg...")
         action = self.ddpg_model.select_action(state)
         self.move(action)
+        print("Getting new states...")
         next_state = self.states.read_sensor_data()
+        print("Calculating reward...")
         reward = self.reward(prev_angles)
+        print("Getting terminal condition status...")
         terminal_condition = self.abort.terminal_condition()
 
         # - Add safety protocols
         # - Velocity, object drop, base join angle,...
         # - Add a reset joints, to position the joints at 0.
 
+        print("Updating model...")
+
         self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
+
+        #TODO - Add LOOP
 
 
 if __name__ == '__main__':
