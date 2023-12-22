@@ -20,7 +20,7 @@ class States():
                 print(f"Error: {e}")
                 print(f"Waiting for {self.config.retry_delay} seconds before retrying...")
                 for second in range(self.config.retry_delay, 0, -1):
-                    print("{second}...")
+                    print(f"{second}...")
                     time.sleep(1)
                     if second == 1:
                         break
