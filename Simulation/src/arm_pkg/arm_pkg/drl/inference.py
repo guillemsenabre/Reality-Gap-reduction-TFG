@@ -29,7 +29,7 @@ class Inference:
         if train_or_pretrained == "pretrained":
             print("Getting pretrained model ready...")
             self.get_pretrained_model()
-            #self.train()??
+            self.train()
 
         elif train_or_pretrained == "train":
             print("Training ddpg model from scratch...")
@@ -61,7 +61,7 @@ class Inference:
         for param in self.ddpg_model.critic.fc2.parameters():
             param.requires_grad = False
 
-    def train(self, model):
+    def train(self):
         state = self.states.read_sensor_data
 
         # - 10 servo motor angles

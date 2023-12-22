@@ -17,7 +17,7 @@ class States():
         except Exception as e:
             print(f"Error: {e}")
         finally:
-            self.ser.close()
+            ser.close()
 
     def _receive_sensor_data(self, ser):
 
