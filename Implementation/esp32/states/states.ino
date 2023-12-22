@@ -59,7 +59,7 @@ void loop() {
 
   SensorData sensorData;
 
-  getMotorAngles(sensorData.servoAngles);
+  getMotorAngles(sensorData.angles);
   readUltrasonicDistance(sensorData.distanceRB1, sensorData.distanceRB2);
 
   //what?
@@ -79,6 +79,10 @@ void getMotorAngles(int angles[]) {
   for (int i = 0; i < numServos; i++) {
     angles[i] = servos[i].read();
   }
+}
+
+voi sendMotorAngles() {
+  break
 }
 
 // Read distance (cm) for each HSCR04

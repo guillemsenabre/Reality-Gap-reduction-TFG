@@ -1,18 +1,21 @@
-from sub_modules.reward import Reward
-from sub_modules.states import States
-from arm_pkg.drl.configuration import Configuration
+import time
+from sub_modules.configuration import Configuration
 
 class AbortOrSave():
-    def __init__(self):
-        self.reward = Reward()
-        self.states = States()
+    def __init__(self, states, reward):
+
+        print("Initializing Abort or Save yeee")
+        self.reward = reward
+        self.states = states
         self.config = Configuration()
-        self.angles = self.states.read_sensor_data[:10]
+        self.angles = []
         self.velocity_history = []
         self.reward_history = []
 
+        time.sleep(0.3)
     def _null_velocity(self):
         # Calculate the average angle
+        self.angles = self.states.read_sensor_data[:10]
         average_angle = sum(self.angles) / 10
         
         # Append the average angle to the history

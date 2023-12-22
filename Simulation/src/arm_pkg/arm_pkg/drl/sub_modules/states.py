@@ -1,17 +1,23 @@
+import time
 import serial
 import struct
+from sub_modules.configuration import Configuration
 
 class States():
-    def __init__(self, port):
-        self.ser = serial.Serial(port, baudrate=115200, timeout=1)
+    def __init__(self):
+        print("Initializing States module fiiisss")
+        self.config = Configuration()
+
+        time.sleep(0.3)
 
     def read_sensor_data(self):
+        ser = serial.Serial(self.config.port1, baudrate=115200, timeout=1)
         try:
-            return self._receive_sensor_data(self.ser)
+            return self._receive_sensor_data(ser)
         except Exception as e:
             print(f"Error: {e}")
         finally:
-            self.ser.close()
+            ser.close()
 
     def _receive_sensor_data(self, ser):
 

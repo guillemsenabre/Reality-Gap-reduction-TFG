@@ -5,7 +5,7 @@ import numpy as np
 from std_msgs.msg import Float64, Float32
 from ros_gz_interfaces.msg import Float32Array
 
-from .configuration import Configuration
+from .sub_modules.configuration import Configuration
 from .ddpg import DDPGAgent
 
 

@@ -4,7 +4,7 @@ from rclpy.node import Node
 from ros_gz_interfaces.msg import Float32Array
 from std_msgs.msg import Float32
 
-from .configuration import Configuration
+from .sub_modules.configuration import Configuration
 
 
 

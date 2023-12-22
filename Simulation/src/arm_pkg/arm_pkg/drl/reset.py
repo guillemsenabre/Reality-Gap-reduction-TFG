@@ -3,7 +3,7 @@ import os
 import time
 import psutil
 
-from .configuration import Configuration
+from .sub_modules.configuration import Configuration
 
 class Reset():
     def __init__(self):
