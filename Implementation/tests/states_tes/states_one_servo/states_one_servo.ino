@@ -29,6 +29,7 @@ struct SensorData {
 
 void setup() {
   Serial.begin(115200);
+  Serial.println("Initializing...");
 
   Wire.begin();
 
@@ -46,6 +47,7 @@ void setup() {
   while (!Serial) {}
 
   attachServoMotor();
+  Serial.println("Servo attached.");
 
   pinMode(trig1Pin, OUTPUT);
   pinMode(trig2Pin, OUTPUT);
@@ -57,10 +59,18 @@ void loop() {
   SensorData sensorData;
 
   getMotorAngle(sensorData.angles[0]);  // Only one servo angle
+  Serial.print("Servo Angle: ");
+  Serial.println(sensorData.angles[0]);
+
   readUltrasonicDistance(sensorData.distanceRB1, sensorData.distanceRB2);
+  Serial.print("Distance RB1: ");
+  Serial.println(sensorData.distanceRB1);
+  Serial.print("Distance RB2: ");
+  Serial.println(sensorData.distanceRB2);
 
   // Send the packed data through Serial
   Serial.write((uint8_t*)&sensorData, sizeof(sensorData));
+  delay(1000);  // Add a delay for readability in the Serial Monitor
 }
 
 // Attach the servo to its Pin in ESP32
@@ -71,6 +81,7 @@ void attachServoMotor() {
 // Read angle for the single motor
 void getMotorAngle(int &angle) {
   angle = servo.read();  // Read the angle from the single servo
+  Serial.println("Reading Servo Angle...");
 }
 
 // Read distance (cm) for each HSCR04
@@ -90,6 +101,11 @@ void readUltrasonicDistance(float &distance1, float &distance2) {
   // Reads the echoPin, returns the sound wave travel time in microseconds
   duration1 = pulseIn(echo1Pin, HIGH);
   duration2 = pulseIn(echo2Pin, HIGH);
+
+  Serial.print("Duration 1: ");
+  Serial.println(duration1);
+  Serial.print("Duration 2: ");
+  Serial.println(duration2);
   
   // Calculate the distance
   distance1 = duration1 * SOUND_SPEED/2;
