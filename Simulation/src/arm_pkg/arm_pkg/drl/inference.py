@@ -16,7 +16,7 @@ class Inference:
 
         self.move = MoveJoints()
         self.states = States()
-        self.reward = Reward(self.states)
+        self.reward = Reward()
         self.abort = AbortOrSave(self.states, self.reward)
         self.config = Configuration()
         time.sleep(0.3)
@@ -63,23 +63,23 @@ class Inference:
 
     def train(self):
         print("Getting states...")
-        state = self.states.read_sensor_data()
-        print(state)
+        states = self.states.read_sensor_data()
+        print(states)
 
         # - 10 servo motor angles
         # - 2 HSCR04 distances
         # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
 
         print("Getting angles...")
-        prev_angles = state[:10] #dynamic velocity reward
+        prev_angles = states[:10] #dynamic velocity reward
         print(prev_angles)
         print("Passing states to ddpg...")
-        action = self.ddpg_model.select_action(state)
+        action = self.ddpg_model.select_action(states)
         self.move.move_joints(action)
         print("Getting new states...")
         next_state = self.states.read_sensor_data()
         print("Calculating reward...")
-        reward = self.reward.reward(prev_angles)
+        reward = self.reward.reward(prev_angles, states)
         print("Getting terminal condition status...")
         terminal_condition = self.abort.terminal_condition()
 
@@ -89,7 +89,7 @@ class Inference:
 
         print("Updating model...")
 
-        self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
+        self.ddpg_model.update(states, action, reward, next_state, terminal_condition)
 
         #TODO - Add LOOP
 
