@@ -45,8 +45,9 @@ void setup() {
   Serial.println("MPU calibration completed!");
 
   //while (!Serial) {}
+  servos[0].attach(servoPins[0])
 
-  attachServoMotors();
+  //attachServoMotors();
 
   pinMode(trig1Pin, OUTPUT);
   pinMode(trig2Pin, OUTPUT);
