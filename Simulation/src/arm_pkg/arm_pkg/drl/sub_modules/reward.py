@@ -13,12 +13,12 @@ class Reward():
         self.scaling_distance_reward = self.config.scaling_distance_reward
 
         time.sleep(0.3)
-        
+
     def _distance_reward(self, state):
         self.angles = state[:self.config.number_motors]
-        self.distanceRB1 = state[self.config.number_motors + 1]
-        self.distanceRB2 = state[self.config.number_motors + 2]
-        self.object_orientation = state[self.config.number_motors + 3]
+        self.distanceRB1 = state[self.config.number_motors]
+        self.distanceRB2 = state[self.config.number_motors + 1] #EX: with 10 motors, this would be position 10 (index) and motors would be 0-9
+        self.object_orientation = state[self.config.number_motors + 2]
 
         # The smaller the distance the greater the reward (using f(x)=1/x, x>0)
         reward1 = 1/self.distanceRB1 
