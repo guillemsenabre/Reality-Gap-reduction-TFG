@@ -78,10 +78,12 @@ class Inference:
         self.move.move_joints(action)
         print("Getting new states...")
         next_state = self.states.read_sensor_data()
+        print("Getting new angles...")
+        current_angles = states[:self.config.number_motors] #for the terminal condition
         print("Calculating reward...")
         reward = self.reward.reward(prev_angles, states)
         print("Getting terminal condition status...")
-        terminal_condition = self.abort.terminal_condition()
+        terminal_condition = self.abort.terminal_condition(current_angles, reward)
 
         # - Add safety protocols
         # - Velocity, object drop, base join angle,...

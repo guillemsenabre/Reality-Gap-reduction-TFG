@@ -2,21 +2,17 @@ import time
 from sub_modules.configuration import Configuration
 
 class AbortOrSave():
-    def __init__(self, states, reward):
+    def __init__(self):
 
         print("Initializing Abort or Save yeee")
-        self.reward = reward
-        self.states = states
         self.config = Configuration()
-        self.angles = []
         self.velocity_history = []
         self.reward_history = []
 
         time.sleep(0.3)
-    def _null_velocity(self):
+    def _null_velocity(self, angles):
         # Calculate the average angle
-        self.angles = self.states.read_sensor_data[:10]
-        average_angle = sum(self.angles) / 10
+        average_angle = sum(angles) / 10
         
         # Append the average angle to the history
         self.velocity_history.append(average_angle)
@@ -32,9 +28,9 @@ class AbortOrSave():
 
         return False 
 
-    def _local_minimum(self):
+    def _local_minimum(self, reward_value):
         
-        self.reward_history.append(self.reward.reward)
+        self.reward_history.append(reward_value)
 
         if len(self.reward_history) == self.config.number_of_reward_values:
             if self.reward_history[0] == self.reward_history[len(self.reward_history)//2] == self.reward_history[-1]:
@@ -47,8 +43,8 @@ class AbortOrSave():
     def _unwanted_joint_angles(self):
         pass
 
-    def terminal_condition(self):
-        if self._null_velocity() or self._local_minimum():
+    def terminal_condition(self, angles, reward_value):
+        if self._null_velocity(angles) or self._local_minimum(reward_value):
             return True
         else:
             return False
