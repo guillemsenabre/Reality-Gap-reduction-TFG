@@ -15,10 +15,11 @@ class Reward():
 
         time.sleep(0.3)
     def _distance_reward(self):
-        self.angles = self.states.read_sensor_data[:10]
-        self.distanceRB1 = self.states.read_sensor_data[10]
-        self.distanceRB2 = self.states.read_sensor_data[11]
-        self.object_orientation = self.states.read_sensor_data[12:14]
+        self.state = self.states.read_sensor_data()
+        self.angles = self.state[:10]
+        self.distanceRB1 = self.state[10]
+        self.distanceRB2 = self.state[11]
+        self.object_orientation = self.state[12:14]
 
         # The smaller the distance the greater the reward (using f(x)=1/x, x>0)
         reward1 = 1/self.distanceRB1 
