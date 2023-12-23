@@ -17,7 +17,7 @@ class Inference:
         self.move = MoveJoints()
         self.states = States()
         self.reward = Reward()
-        self.abort = AbortOrSave(self.states, self.reward)
+        self.abort = AbortOrSave()
         self.config = Configuration()
         time.sleep(0.3)
 
