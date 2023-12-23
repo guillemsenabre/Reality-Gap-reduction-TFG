@@ -14,9 +14,8 @@ const float SOUND_SPEED = 0.034;
 long duration1, duration2;
 float distanceRB1, distanceRB2;
 
-const int servoPins[] = {26, 27, 28, 29, 30, 31, 32, 33, 34, 35};
-const int numServos = 10;
-Servo servos[numServos];
+const int servoPin = 25;  // Change to GPIO 25 for the single servo
+Servo servo;  // Change to a single servo object
 
 // Packed data to be sent through Serial
 struct SensorData {
@@ -46,7 +45,7 @@ void setup() {
 
   while (!Serial) {}
 
-  attachServoMotors();
+  attachServoMotor();
 
   pinMode(trig1Pin, OUTPUT);
   pinMode(trig2Pin, OUTPUT);
@@ -54,31 +53,24 @@ void setup() {
   pinMode(echo2Pin, INPUT);
 }
 
-
 void loop() {
-
   SensorData sensorData;
 
-  getMotorAngles(sensorData.angles);
+  getMotorAngle(sensorData.angles[0]);  // Only one servo angle
   readUltrasonicDistance(sensorData.distanceRB1, sensorData.distanceRB2);
 
-  //what?
+  // Send the packed data through Serial
   Serial.write((uint8_t*)&sensorData, sizeof(sensorData));
 }
 
-
-// attach each servor to its Pin in ESP32
-void attachServoMotors() {
-  for (int i = 0; i < numServos; i++) {
-    servos[i].attach(servoPins[i]);
-  }
+// Attach the servo to its Pin in ESP32
+void attachServoMotor() {
+  servo.attach(servoPin);  // Attach the servo to GPIO 25
 }
 
-// Read angle for each motor
-void getMotorAngles(int angles[]) {
-  for (int i = 0; i < numServos; i++) {
-    angles[i] = servos[i].read();
-  }
+// Read angle for the single motor
+void getMotorAngle(int &angle) {
+  angle = servo.read();  // Read the angle from the single servo
 }
 
 // Read distance (cm) for each HSCR04
@@ -87,7 +79,7 @@ void readUltrasonicDistance(float &distance1, float &distance2) {
   digitalWrite(trig1Pin, LOW);
   digitalWrite(trig2Pin, LOW);
   delayMicroseconds(2);
-  // Sets the trigPin on HIGH state for 10 micro seconds
+  // Sets the trigPin on HIGH state for 10 microseconds
   digitalWrite(trig1Pin, HIGH);
   digitalWrite(trig2Pin, HIGH);
   delayMicroseconds(10);
@@ -103,12 +95,3 @@ void readUltrasonicDistance(float &distance1, float &distance2) {
   distance1 = duration1 * SOUND_SPEED/2;
   distance2 = duration2 * SOUND_SPEED/2;
 }
-
-void readOrientation(float &pitch, float &yaw, float &roll) {
-  mpu.update();
-  pitch = mpu.getAngleX();
-  yaw = mpu.getAngleY();
-  roll = mpu.getAngleZ();
-}
-
-
