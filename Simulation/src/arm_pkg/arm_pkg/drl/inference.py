@@ -79,7 +79,7 @@ class Inference:
         print("Getting new states...")
         next_state = self.states.read_sensor_data()
         print("Calculating reward...")
-        reward = self.reward(prev_angles)
+        reward = self.reward.reward(prev_angles)
         print("Getting terminal condition status...")
         terminal_condition = self.abort.terminal_condition()
 
