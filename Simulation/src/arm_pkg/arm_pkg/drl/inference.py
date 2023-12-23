@@ -75,6 +75,7 @@ class Inference:
         print(prev_angles)
         print("Passing states to ddpg...")
         action = self.ddpg_model.select_action(states)
+        print(action)
         self.move.move_joints(action)
         print("Getting new states...")
         next_state = self.states.read_sensor_data()

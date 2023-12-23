@@ -44,7 +44,7 @@ void setup() {
   mpu.calcOffsets();
   Serial.println("MPU calibration completed!");
 
-  while (!Serial) {}
+  //while (!Serial) {}
 
   attachServoMotors();
 
