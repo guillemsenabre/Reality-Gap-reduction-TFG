@@ -22,7 +22,7 @@ class Inference:
         time.sleep(0.3)
 
         action_dim, state_dim = self.config.dimensions()
-        self.ddpg_model = DDPGAgent(action_dim, state_dim)
+        self.ddpg_model = DDPGAgent(state_dim, action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
 
