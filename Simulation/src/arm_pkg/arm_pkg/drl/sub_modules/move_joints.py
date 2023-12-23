@@ -26,5 +26,5 @@ class MoveJoints:
             ser.close()
 
     def _send_list(self, ser, values):
-        ser.write(struct.pack('!10f', *values))
+        ser.write(struct.pack(f'!{self.config.number_motors}f', *values))
         print(f"Sent values to {self.config.port1}: {values}")

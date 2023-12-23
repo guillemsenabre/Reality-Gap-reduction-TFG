@@ -64,6 +64,7 @@ class Inference:
     def train(self):
         print("Getting states...")
         state = self.states.read_sensor_data()
+        print(state)
 
         # - 10 servo motor angles
         # - 2 HSCR04 distances
@@ -71,6 +72,7 @@ class Inference:
 
         print("Getting angles...")
         prev_angles = state[:10] #dynamic velocity reward
+        print(prev_angles)
         print("Passing states to ddpg...")
         action = self.ddpg_model.select_action(state)
         self.move(action)
