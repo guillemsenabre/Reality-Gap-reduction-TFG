@@ -1,8 +1,7 @@
 # Ignore CMake files
-CMakeFiles/
-CMakeCache.txt
-CMakeScripts/
-Simulation\build
+*CMakeFiles/
+*CMakeCache.txt
+*CMakeScripts/
 
 
 # Ignore shell files
@@ -11,10 +10,10 @@ Simulation\build
 *.ps1
 
 # Ignore Python __pycache__ directories and install
-Implementation\inference\sub_modules\__pycache__
-Simulation\build
-Simulation\log
-Simulation\install
+*__pycache__/
+*build/
+*log/
+*install/
 
 # Other files of no interest
 *.log
