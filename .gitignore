@@ -1,0 +1,15 @@
+# Ignore CMake files
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+
+# Ignore shell files
+*.sh
+
+# Ignore Python __pycache__ directories
+__pycache__/
+
+# Other files of no interest
+*.log
+*.tmp
+*.swp
