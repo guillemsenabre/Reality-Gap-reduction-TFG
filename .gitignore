@@ -3,5 +3,21 @@
 *CMakeCache.txt
 *CMakeScripts/
 
+# Ignore shell files
+*.sh
+*.zsh
+*.ps1
 
+# Ignore Python __pycache__ directories and install
+*__pycache__/
+*build/
+*log/
+*install/
 
+# Other files of no interest
+*.log
+*.tmp
+*.swp
+Simulation/install/
+Simulation/build/
+Simulation/log/
