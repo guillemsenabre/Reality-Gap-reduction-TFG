@@ -19,3 +19,6 @@
 *.log
 *.tmp
 *.swp
+Simulation/install/
+Simulation/build/
+Simulation/log/
