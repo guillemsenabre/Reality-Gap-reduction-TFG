@@ -7,14 +7,13 @@ class States():
         print("Initializing States module fiiisss")
         self.ser = None
         self.retry_delay = 4
-        self.port = "/dev/ttyUSB0"
         time.sleep(0.1)
 
 
-    def read_sensor_data(self, number_motors=10, number_sensors=15):
+    def read_sensor_data(self, port, number_motors=10, number_sensors=15):
         while True:
             try:
-                self.ser = serial.Serial(self.port, baudrate=115200, timeout=1)
+                self.ser = serial.Serial(port, baudrate=115200, timeout=1)
                 return self._receive_sensor_data(self.ser, number_motors, number_sensors)
             
             #except serial.serialutil.SerialException as e: # --> linux

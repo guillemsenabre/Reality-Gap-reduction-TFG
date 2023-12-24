@@ -16,6 +16,7 @@ class Main:
         self.model_name = "ddpg_model.pth"
         self.number_motors = 1
         self.number_sensors = 3
+        self.port = "/dev/ttyUSB0"
 
         print("Initializing modules...")
 
@@ -70,7 +71,7 @@ class Main:
     def train(self):
         while True:
             print("Getting states...")
-            states = self.states.read_sensor_data(self.number_motors, self.number_sensors)
+            states = self.states.read_sensor_data(self.port, self.number_motors, self.number_sensors)
             print(states)
 
             # - 10 servo motor angles
@@ -83,7 +84,7 @@ class Main:
             print("Passing states to ddpg...")
             action = self.ddpg_model.select_action(states)
             print(action)
-            self.move.move_joints(action)
+            self.move.move_joints(action, self.port, self.number_motors)
             print("Getting new states...")
             next_state = self.states.read_sensor_data()
             print("Getting new angles...")
