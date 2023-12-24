@@ -4,7 +4,6 @@ import os
 import time
 
 from sub_modules.ddpg import DDPGAgent
-from sub_modules.configuration import Configuration
 from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
@@ -15,8 +14,6 @@ class Main:
         print("Initializing variables...")
 
         self.model_name = "ddpg_model.pth"
-        self.port = "/dev/ttyUSB0"
-        self.retry_delay = 4 # In seconds
         self.number_motors = 1
         self.number_sensors = 3
 
@@ -26,7 +23,6 @@ class Main:
         self.states = States()
         self.reward = Reward()
         self.abort = AbortOrSave()
-        self.config = Configuration()
         time.sleep(0.3)
 
         print("selecting network dimensions...")
@@ -49,7 +45,7 @@ class Main:
             print("STFU goodbye")
 
     def get_pretrained_model(self):
-        model_name = self.config.model_name
+        model_name = self.model_name
         model_path = os.path.expanduser(f'~/tfg/Simulation/src/models/{model_name}')
 
         # Load the state dictionaries
@@ -74,7 +70,7 @@ class Main:
     def train(self):
         while True:
             print("Getting states...")
-            states = self.states.read_sensor_data()
+            states = self.states.read_sensor_data(self.number_motors, self.number_sensors)
             print(states)
 
             # - 10 servo motor angles
@@ -91,7 +87,7 @@ class Main:
             print("Getting new states...")
             next_state = self.states.read_sensor_data()
             print("Getting new angles...")
-            current_angles = states[:self.config.number_motors] #for the terminal condition
+            current_angles = states[:self.number_motors] #for the terminal condition
             print("Calculating reward...")
             reward = self.reward.reward(prev_angles, states)
             print("Getting terminal condition status...")
