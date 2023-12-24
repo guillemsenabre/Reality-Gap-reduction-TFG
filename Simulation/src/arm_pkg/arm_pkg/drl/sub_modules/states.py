@@ -16,7 +16,9 @@ class States():
             try:
                 self.ser = serial.Serial(self.config.port1, baudrate=115200, timeout=1)
                 return self._receive_sensor_data(self.ser)
-            except serial.serialutil.SerialException as e:
+            
+            #except serial.serialutil.SerialException as e: # --> linux
+            except Exception as e: # --> Windows
                 print(f"Error: {e}")
                 print(f"Waiting for {self.config.retry_delay} seconds before retrying...")
                 for second in range(self.config.retry_delay, 0, -1):
