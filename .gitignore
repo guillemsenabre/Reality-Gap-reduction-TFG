@@ -3,13 +3,15 @@ CMakeFiles/
 CMakeCache.txt
 CMakeScripts/
 
+
 # Ignore shell files
 *.sh
 *.zsh
 *.ps1
 
-# Ignore Python __pycache__ directories
+# Ignore Python __pycache__ directories and install
 __pycache__/
+install/
 
 # Other files of no interest
 *.log
