@@ -5,7 +5,6 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 from rbuffer import ReplayBuffer
-from configuration import Configuration
 
 #SECTION - POLICY DRL ALGORITHM -
 
@@ -63,22 +62,29 @@ class Critic(nn.Module):
 class DDPGAgent:
     def __init__(self, state_dim, action_dim, buffer_size = 10000):
 
+        self.actor_lr = 0.5e-4
+        self.critic_lr = 1e-4
+        self.discount_factor = 0.95
+        self.soft_update_rate = 0.01
+        self.actor_dropout_p = 0.5
+        self.critic_dropout_p = 0.5
+        self.batch_size = 64
+
         self.replay_bufer = ReplayBuffer(buffer_size)
-        self.config = Configuration()
 
         self.actor_losses = []
         self.critic_losses = []
 
-        self.actor = Actor(state_dim, action_dim)
+        self.actor = Actor(state_dim, action_dim, self.actor_dropout_p)
         self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
         self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
 
-        self.critic = Critic(state_dim, action_dim)
+        self.critic = Critic(state_dim, action_dim, self.critic_dropout_p)
         self.critic_target = Critic(state_dim, action_dim)
         self.critic_target.load_state_dict(self.critic.state_dict())
 
-        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=self.config.actor_lr) # Adam optimizer To update the weights during training
-        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=self.config.critic_lr)
+        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=self.actor_lr) # Adam optimizer To update the weights during training
+        self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=self.critic_lr)
     
     #SECTION - Select action
 
@@ -96,7 +102,7 @@ class DDPGAgent:
         self.replay_bufer.add((state, action, reward, next_state, terminal_condition))
 
         # Sample a batch from the replay buffer
-        batch_size = self.config.batch_size
+        batch_size = self.batch_size
         buffer_batch = self.replay_bufer.sample(batch_size)
 
         # Unpacking buffer_batch into separate lists for each variable
@@ -122,7 +128,7 @@ class DDPGAgent:
         buffer_next_values = self.critic_target(buffer_next_states, buffer_next_actions.detach())
 
         # BELLMAN EQUATION
-        buffer_target_values = buffer_rewards + self.config.discount_factor * buffer_next_values * (1 - buffer_terminal_condition)
+        buffer_target_values = buffer_rewards + self.discount_factor * buffer_next_values * (1 - buffer_terminal_condition)
         
         # Critic loss for buffer data
         critic_loss = F.mse_loss(buffer_values, buffer_target_values)
@@ -144,8 +150,8 @@ class DDPGAgent:
         self.critic_optimizer.step()
 
         # Update target networks with soft updates
-        self.soft_update(self.actor, self.actor_target, self.config.soft_update_rate)
-        self.soft_update(self.critic, self.critic_target, self.config.soft_update_rate)
+        self.soft_update(self.actor, self.actor_target, self.soft_update_rate)
+        self.soft_update(self.critic, self.critic_target, self.soft_update_rate)
 
     def soft_update(self, local_model, target_model, tau):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
