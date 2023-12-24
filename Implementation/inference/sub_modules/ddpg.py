@@ -83,7 +83,7 @@ class DDPGAgent:
         self.critic_target = Critic(state_dim, action_dim, self.critic_dropout_p)
         self.critic_target.load_state_dict(self.critic.state_dict())
 
-        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=self.actor_lr) # Adam optimizer To update the weights during training
+        self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=self.actor_lr)
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=self.critic_lr)
     
     #SECTION - Select action
@@ -99,7 +99,12 @@ class DDPGAgent:
 
     def update(self, state, action, reward, next_state, terminal_condition):
         # Add the real-time experience to the replay buffer    
-        self.replay_bufer.add((state, action, reward, next_state, terminal_condition))
+        self.replay_bufer.add((state, 
+                               action,
+                               reward, 
+                               next_state, 
+                               terminal_condition)
+        )
 
         # Sample a batch from the replay buffer
         batch_size = self.batch_size
