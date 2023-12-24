@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from rbuffer import ReplayBuffer
+from sub_modules.rbuffer import ReplayBuffer
 
 #SECTION - POLICY DRL ALGORITHM -
 
@@ -76,11 +76,11 @@ class DDPGAgent:
         self.critic_losses = []
 
         self.actor = Actor(state_dim, action_dim, self.actor_dropout_p)
-        self.actor_target = Actor(state_dim, action_dim) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
+        self.actor_target = Actor(state_dim, action_dim, self.actor_dropout_p) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
         self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
 
         self.critic = Critic(state_dim, action_dim, self.critic_dropout_p)
-        self.critic_target = Critic(state_dim, action_dim)
+        self.critic_target = Critic(state_dim, action_dim, self.critic_dropout_p)
         self.critic_target.load_state_dict(self.critic.state_dict())
 
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=self.actor_lr) # Adam optimizer To update the weights during training
