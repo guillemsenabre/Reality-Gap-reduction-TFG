@@ -17,7 +17,7 @@ class States():
                 return self._receive_sensor_data(self.ser, number_motors, number_sensors)
             
             #except serial.serialutil.SerialException as e: # --> linux
-            except Exception as e: # --> Windows
+            except Exception as e: # --> Windows (it's a general exception)
                 print(f"Error: {e}")
                 print(f"Waiting for {self.retry_delay} seconds before retrying...")
                 for second in range(self.retry_delay, 0, -1):
