@@ -89,7 +89,7 @@ class Main:
             print("Getting new angles...")
             current_angles = states[:self.number_motors] #for the terminal condition
             print("Calculating reward...")
-            reward = self.reward.reward(prev_angles, states)
+            reward = self.reward.reward(prev_angles, states, self.number_motors)
             print("Getting terminal condition status...")
             terminal_condition = self.abort.terminal_condition(current_angles, reward)
 
