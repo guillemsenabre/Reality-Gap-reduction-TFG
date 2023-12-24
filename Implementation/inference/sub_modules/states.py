@@ -1,27 +1,26 @@
 import time
 import serial
 import struct
-from sub_modules.configuration import Configuration
 
 class States():
     def __init__(self):
         print("Initializing States module fiiisss")
-        self.config = Configuration()
         self.ser = None
+        self.retry_delay = 4
+        time.sleep(0.1)
 
-        time.sleep(0.3)
 
-    def read_sensor_data(self):
+    def read_sensor_data(self, port, number_motors=10, number_sensors=15):
         while True:
             try:
-                self.ser = serial.Serial(self.config.port1, baudrate=115200, timeout=1)
-                return self._receive_sensor_data(self.ser)
+                self.ser = serial.Serial(port, baudrate=115200, timeout=1)
+                return self._receive_sensor_data(self.ser, number_motors, number_sensors)
             
             #except serial.serialutil.SerialException as e: # --> linux
             except Exception as e: # --> Windows
                 print(f"Error: {e}")
-                print(f"Waiting for {self.config.retry_delay} seconds before retrying...")
-                for second in range(self.config.retry_delay, 0, -1):
+                print(f"Waiting for {self.retry_delay} seconds before retrying...")
+                for second in range(self.retry_delay, 0, -1):
                     print(f"{second}...")
                     time.sleep(1)
                     if second == 1:
@@ -30,8 +29,8 @@ class States():
                 if self.ser is not None:
                     self.ser.close()
                     
-    def _receive_sensor_data(self, ser):
-        format_string = f'!{self.config.number_motors}i {self.config.number_sensors}f'
+    def _receive_sensor_data(self, ser, number_motors, number_sensors):
+        format_string = f'!{number_motors}i {number_sensors}f'
         expected_size = struct.calcsize(format_string)
         count = 0
         print("Waiting for state data...")

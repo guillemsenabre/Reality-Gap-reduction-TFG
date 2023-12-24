@@ -3,25 +3,32 @@ import torch.nn as nn
 import os
 import time
 
-from ddpg import DDPGAgent
-from sub_modules.configuration import Configuration
+from sub_modules.ddpg import DDPGAgent
 from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
 from sub_modules.reward import Reward
 
-class Inference:
+class Main:
     def __init__(self):
-        print("Starting inference node...")
+        print("Initializing variables...")
+
+        self.model_name = "ddpg_model.pth"
+        self.number_motors = 1
+        self.number_sensors = 3
+        self.port = "/dev/ttyUSB0"
+
+        print("Initializing modules...")
 
         self.move = MoveJoints()
         self.states = States()
         self.reward = Reward()
         self.abort = AbortOrSave()
-        self.config = Configuration()
         time.sleep(0.3)
 
-        action_dim, state_dim = self.config.dimensions()
+        print("selecting network dimensions...")
+        state_dim = int(input("Select state dim --> "))
+        action_dim = int(input("Select action dimensions --> "))
         self.ddpg_model = DDPGAgent(state_dim, action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
@@ -39,7 +46,7 @@ class Inference:
             print("STFU goodbye")
 
     def get_pretrained_model(self):
-        model_name = self.config.model_name
+        model_name = self.model_name
         model_path = os.path.expanduser(f'~/tfg/Simulation/src/models/{model_name}')
 
         # Load the state dictionaries
@@ -64,7 +71,7 @@ class Inference:
     def train(self):
         while True:
             print("Getting states...")
-            states = self.states.read_sensor_data()
+            states = self.states.read_sensor_data(self.port, self.number_motors, self.number_sensors)
             print(states)
 
             # - 10 servo motor angles
@@ -77,13 +84,13 @@ class Inference:
             print("Passing states to ddpg...")
             action = self.ddpg_model.select_action(states)
             print(action)
-            self.move.move_joints(action)
+            self.move.move_joints(action, self.port, self.number_motors)
             print("Getting new states...")
             next_state = self.states.read_sensor_data()
             print("Getting new angles...")
-            current_angles = states[:self.config.number_motors] #for the terminal condition
+            current_angles = states[:self.number_motors] #for the terminal condition
             print("Calculating reward...")
-            reward = self.reward.reward(prev_angles, states)
+            reward = self.reward.reward(prev_angles, states, self.number_motors)
             print("Getting terminal condition status...")
             terminal_condition = self.abort.terminal_condition(current_angles, reward)
 
@@ -100,4 +107,4 @@ class Inference:
 
 
 if __name__ == '__main__':
-    Inference()
+    Main()
