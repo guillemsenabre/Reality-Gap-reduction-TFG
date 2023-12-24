@@ -1,15 +1,15 @@
 import time
-from sub_modules.configuration import Configuration
 
 class AbortOrSave():
     def __init__(self):
-
         print("Initializing Abort or Save yeee")
-        self.config = Configuration()
+
+        self.number_of_velocity_values = 20
+        self.number_of_reward_values = 30
         self.velocity_history = []
         self.reward_history = []
+        time.sleep(0.1)
 
-        time.sleep(0.3)
     def _null_velocity(self, angles):
         # Calculate the average angle
         average_angle = sum(angles) / 10
@@ -18,7 +18,7 @@ class AbortOrSave():
         self.velocity_history.append(average_angle)
 
         # Check if the history has reached the desired length
-        if len(self.velocity_history) == self.config.number_of_velocity_values:
+        if len(self.velocity_history) == self.number_of_velocity_values:
             # Check if the first, middle, and last items are the same
             if self.velocity_history[0] == self.velocity_history[len(self.velocity_history)//2] == self.velocity_history[-1]:
                 return True
@@ -32,7 +32,7 @@ class AbortOrSave():
         
         self.reward_history.append(reward_value)
 
-        if len(self.reward_history) == self.config.number_of_reward_values:
+        if len(self.reward_history) == self.number_of_reward_values:
             if self.reward_history[0] == self.reward_history[len(self.reward_history)//2] == self.reward_history[-1]:
                 return True
             
