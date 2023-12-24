@@ -3,16 +3,24 @@ import torch.nn as nn
 import os
 import time
 
-from ddpg import DDPGAgent
+from sub_modules.ddpg import DDPGAgent
 from sub_modules.configuration import Configuration
 from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
 from sub_modules.reward import Reward
 
-class Inference:
+class Main:
     def __init__(self):
-        print("Starting inference node...")
+        print("Initializing variables...")
+
+        self.model_name = "ddpg_model.pth"
+        self.port = "/dev/ttyUSB0"
+        self.retry_delay = 4 # In seconds
+        self.number_motors = 1
+        self.number_sensors = 3
+
+        print("Initializing modules...")
 
         self.move = MoveJoints()
         self.states = States()
@@ -21,7 +29,9 @@ class Inference:
         self.config = Configuration()
         time.sleep(0.3)
 
-        action_dim, state_dim = self.config.dimensions()
+        print("selecting network dimensions...")
+        state_dim = int(input("Select state dim --> "))
+        action_dim = int(input("Select action dimensions --> "))
         self.ddpg_model = DDPGAgent(state_dim, action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
@@ -100,4 +110,4 @@ class Inference:
 
 
 if __name__ == '__main__':
-    Inference()
+    Main()
