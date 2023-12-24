@@ -5,6 +5,8 @@ CMakeScripts/
 
 # Ignore shell files
 *.sh
+*.zsh
+*.ps1
 
 # Ignore Python __pycache__ directories
 __pycache__/
