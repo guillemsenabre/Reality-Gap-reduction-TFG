@@ -20,6 +20,7 @@ class Actor(nn.Module):
 
         self.dropout = nn.Dropout(p=config.actor_dropout_p)
         self.fc1 = nn.Linear(state_dim, 256)
+        print(self.fc1)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 64)
         self.fc4 = nn.Linear(64, action_dim)

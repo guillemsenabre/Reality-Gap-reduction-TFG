@@ -16,13 +16,13 @@ class Inference:
 
         self.move = MoveJoints()
         self.states = States()
-        self.reward = Reward(self.states)
-        self.abort = AbortOrSave(self.states, self.reward)
+        self.reward = Reward()
+        self.abort = AbortOrSave()
         self.config = Configuration()
         time.sleep(0.3)
 
         action_dim, state_dim = self.config.dimensions()
-        self.ddpg_model = DDPGAgent(action_dim, state_dim)
+        self.ddpg_model = DDPGAgent(state_dim, action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
 
@@ -62,34 +62,41 @@ class Inference:
             param.requires_grad = False
 
     def train(self):
-        print("Getting states...")
-        state = self.states.read_sensor_data()
-        print(state)
+        while True:
+            print("Getting states...")
+            states = self.states.read_sensor_data()
+            print(states)
 
-        # - 10 servo motor angles
-        # - 2 HSCR04 distances
-        # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
+            # - 10 servo motor angles
+            # - 2 HSCR04 distances
+            # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
 
-        print("Getting angles...")
-        prev_angles = state[:10] #dynamic velocity reward
-        print(prev_angles)
-        print("Passing states to ddpg...")
-        action = self.ddpg_model.select_action(state)
-        self.move(action)
-        print("Getting new states...")
-        next_state = self.states.read_sensor_data()
-        print("Calculating reward...")
-        reward = self.reward(prev_angles)
-        print("Getting terminal condition status...")
-        terminal_condition = self.abort.terminal_condition()
+            print("Getting angles...")
+            prev_angles = states[:10] #dynamic velocity reward
+            print(prev_angles)
+            print("Passing states to ddpg...")
+            action = self.ddpg_model.select_action(states)
+            print(action)
+            self.move.move_joints(action)
+            print("Getting new states...")
+            next_state = self.states.read_sensor_data()
+            print("Getting new angles...")
+            current_angles = states[:self.config.number_motors] #for the terminal condition
+            print("Calculating reward...")
+            reward = self.reward.reward(prev_angles, states)
+            print("Getting terminal condition status...")
+            terminal_condition = self.abort.terminal_condition(current_angles, reward)
 
-        # - Add safety protocols
-        # - Velocity, object drop, base join angle,...
-        # - Add a reset joints, to position the joints at 0.
+            # - Add safety protocols
+            # - Velocity, object drop, base join angle,...
+            # - Add a reset joints, to position the joints at 0.
 
-        print("Updating model...")
+            print("Updating model...")
 
-        self.ddpg_model.update(state, action, reward, next_state, terminal_condition)
+            self.ddpg_model.update(states, action, reward, next_state, terminal_condition)
+
+            if terminal_condition:
+                break
 
         #TODO - Add LOOP
 
