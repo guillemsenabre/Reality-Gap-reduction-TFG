@@ -68,10 +68,19 @@ void loop() {
   Serial.print("Distance RB2: ");
   Serial.println(sensorData.distanceRB2);
 
+  readOrientation(sensorData.object_pitch, sensorData.object_yaw, sensorData.object_roll);
+  Serial.print("Object Pitch: ");
+  Serial.println(sensorData.object_pitch);
+  Serial.print("Object Yaw: ");
+  Serial.println(sensorData.object_yaw);
+  Serial.print("Object Roll: ");
+  Serial.println(sensorData.object_roll);
+
   // Send the packed data through Serial
   Serial.write((uint8_t*)&sensorData, sizeof(sensorData));
-  delay(1000);  // Add a delay for readability in the Serial Monitor
+  delay(100);  // Add a delay for readability in the Serial Monitor
 }
+
 
 // Attach the servo to its Pin in ESP32
 void attachServoMotor() {
@@ -101,13 +110,15 @@ void readUltrasonicDistance(float &distance1, float &distance2) {
   // Reads the echoPin, returns the sound wave travel time in microseconds
   duration1 = pulseIn(echo1Pin, HIGH);
   duration2 = pulseIn(echo2Pin, HIGH);
-
-  Serial.print("Duration 1: ");
-  Serial.println(duration1);
-  Serial.print("Duration 2: ");
-  Serial.println(duration2);
   
   // Calculate the distance
   distance1 = duration1 * SOUND_SPEED/2;
   distance2 = duration2 * SOUND_SPEED/2;
+}
+
+void readOrientation(float &pitch, float &yaw, float &roll) {
+  mpu.update();
+  pitch = mpu.getAngleX();
+  yaw = mpu.getAngleY();
+  roll = mpu.getAngleZ();
 }
