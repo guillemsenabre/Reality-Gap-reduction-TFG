@@ -8,8 +8,8 @@ Adafruit_PWMServoDriver pca9685 = Adafruit_PWMServoDriver(0x40);
 #define SERVOMIN  80
 #define SERVOMAX  600
 
-#define SER0  0
-#define SER1  12
+#define SER0  12
+#define SER1  0
 
 int pwm0;
 int pwm1;
@@ -30,20 +30,22 @@ void loop() {
   // Move Motor 0 and Motor 1 simultaneously
   for (int posDegrees = 0; posDegrees <= 180; posDegrees++) {
     pwm0 = map(posDegrees, 0, 180, SERVOMIN, SERVOMAX);
-    pwm1 = map(posDegrees, 180, 0, SERVOMIN, SERVOMAX);
+    //pwm1 = map(posDegrees, 180, 0, SERVOMIN, SERVOMAX);
 
     pca9685.setPWM(SER0, 0, pwm0);
-    pca9685.setPWM(SER1, 0, pwm1);
+    //pca9685.setPWM(SER1, 0, pwm1);
 
     Serial.print("Motor 0 = ");
     Serial.print(posDegrees);
     Serial.print("\tMotor 1 = ");
     Serial.println(180 - posDegrees);
 
+    delay(100);
+
     // Check if the specified interval has elapsed
     if (currentMillis - previousMillis >= interval) {
       previousMillis = currentMillis;
-      delay(1); // Allow some time for the PCA9685 to process the command
+      delay(500); // Allow some time for the PCA9685 to process the command
     }
   }
 }
