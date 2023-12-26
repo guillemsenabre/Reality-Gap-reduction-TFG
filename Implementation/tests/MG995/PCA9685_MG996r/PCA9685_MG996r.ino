@@ -33,17 +33,13 @@ void loop() {
 
   // Move Motor 0 and Motor 1 simultaneously
   for (int posDegrees = rot_limit_1; posDegrees <= rot_limit_2; posDegrees++) {
-    for (int = 0; int < number_motors; i++) {
+    for (int i = 0; int i < number_motors; i++) {
       pwm0 = map(posDegrees, 0, 180, SERVOMIN, SERVOMAX);
       pca9685.setPWM(SER0, 0, pwm0);
+      Serial.print(pca9685.getServoValue(SER(i)));
+      Serial.print("\t");
     }
-
-    Serial.print("Motor 0 = ");
-    Serial.print(posDegrees);
-    Serial.print("\tMotor 1 = ");
-    Serial.println(180 - posDegrees);
-
-    delay(100);
+    Serial.println();
 
     // Check if the specified interval has elapsed
     if (currentMillis - previousMillis >= interval) {
