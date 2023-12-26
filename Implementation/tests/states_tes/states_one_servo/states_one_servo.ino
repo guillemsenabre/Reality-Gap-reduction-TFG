@@ -22,6 +22,8 @@ const int rot_limit_1 = 20;
 const int rot_limit_2 = 160;
 unsigned long previousMillis = 0;
 const long interval = 30; // Adjust to change the speed
+const int SERVOMIN = 80;  // Adjust these values based on your servo
+const int SERVOMAX = 600;
 
 // Packed data to be sent through Serial
 struct SensorData {
@@ -66,9 +68,14 @@ void setup() {
 void loop() {
   SensorData sensorData;
 
-  getMotorAngle(sensorData.angles[0]);  // Only one servo angle
-  Serial.print("Servo Angle: ");
-  Serial.println(sensorData.angles[0]);
+  moveMotors(sensorData.angles);
+
+  Serial.print("Servo Angles: ");
+  for (int i = 0; i < number_motors; i++) {
+    Serial.print(sensorData.angles[i]);
+    Serial.print("\t");
+  }
+  Serial.println();
 
   readUltrasonicDistance(sensorData.distanceRB1, sensorData.distanceRB2);
   Serial.print("Distance RB1: ");
@@ -95,12 +102,6 @@ void defineServoMotor() {
   for (int i = 0; i < number_motors; i++) {
     #define SER(i) i
   }
-}
-
-// Read angle for the single motor
-void getMotorAngle(int &angle) {
-  angle = servo.read();  // Read the angle from the single servo
-  Serial.println("Reading Servo Angle...");
 }
 
 void moveMotors(int angles[]) {
