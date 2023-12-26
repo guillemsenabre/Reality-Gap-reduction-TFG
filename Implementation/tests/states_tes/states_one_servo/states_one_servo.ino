@@ -68,7 +68,20 @@ void setup() {
 void loop() {
   SensorData sensorData;
 
-  moveMotors(sensorData.angles);
+  if (Serial.available() >= number_motors * sizeof(float)) {
+    // Read raw bytes into an array
+    byte torqueBytes[number_motors * sizeof(float)];
+    Serial.readBytes(torqueBytes, number_motors * sizeof(float));
+
+    // Interpret bytes as float values using pointer casting.
+    float torqueValues[number_motors];
+    for (int i = 0; i < number_motors; i++) {
+      torqueValues[i] = *((float*)&torqueBytes[i * sizeof(float)]);
+    }
+
+    // Moving motors based on ddpg torque values.
+    moveMotors(sensorData.angles, torqueValues);
+  }
 
   Serial.print("Servo Angles: ");
   for (int i = 0; i < number_motors; i++) {
@@ -104,13 +117,12 @@ void defineServoMotor() {
   }
 }
 
-void moveMotors(int angles[]) {
-  // Move all 10 servos simultaneously
+// Map torque values to servo angles and control servos
+void moveMotors(int angles[], float torqueValues[]) {
   for (int i = 0; i < number_motors; i++) {
-    int posDegrees = map(i, 0, number_motors - 1, rot_limit_1, rot_limit_2);
+    int posDegrees = map(torqueValues[i], 0, 1, rot_limit_1, rot_limit_2);
     int pwm = map(posDegrees, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
     pca9685.setPWM(i, 0, pwm);
-    angles[i] = posDegrees;
   }
 }
 
