@@ -32,6 +32,7 @@ class Main:
         self.ddpg_model = DDPGAgent(state_dim, action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
+        begin = input("Type 'start' to begin training and initialize the motors")
 
         if train_or_pretrained == "pretrained":
             print("Getting pretrained model ready...")
@@ -40,6 +41,7 @@ class Main:
 
         elif train_or_pretrained == "train":
             print("Training ddpg model from scratch...")
+            
             self.train()
 
         else:

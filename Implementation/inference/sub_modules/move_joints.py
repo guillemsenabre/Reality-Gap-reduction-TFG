@@ -17,7 +17,7 @@ class MoveJoints:
         :param port: Serial port for communication.
         :param number_motors: Number of motors or joints; default is 10.
         """
-
+        
         # Establish a serial connection with the specified port at a baud rate of 115200
         self.ser = serial.Serial(port, baudrate=115200, timeout=1)
 
@@ -26,7 +26,7 @@ class MoveJoints:
             print("Error: there has to be an even amount of values")
             return
 
-        try:
+        try:          
             # Send the list of joint values to the specified serial port 
             self._send_list(actions, number_motors)
         except Exception as e:
@@ -51,4 +51,9 @@ class MoveJoints:
         """
         Reset the connected motors using a specific command
         """
-        self.ser.write(b'motors init\n')
+        try:
+            self.ser.write(b'motors init\n')
+        except Exception as e:
+            print(f"Error: {e}")
+        finally:
+            self.ser.close()
