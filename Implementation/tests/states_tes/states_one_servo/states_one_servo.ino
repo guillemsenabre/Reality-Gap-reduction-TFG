@@ -10,12 +10,16 @@ const int echo2Pin = 18;
 MPU6050 mpu(Wire);
 Adafruit_PWMServoDriver pca9685 = Adafruit_PWMServoDriver(0x40);
 
+// HCSR04 Values
 unsigned long timer = 0;
 const float SOUND_SPEED = 0.034;
 long duration1, duration2;
 float distanceRB1, distanceRB2;
 
+// PCA9685 AND SERVO VALUES
 const int number_motors;
+unsigned long previousMillis = 0;
+const long interval = 30; // Adjust to change the speed
 
 // Packed data to be sent through Serial
 struct SensorData {
