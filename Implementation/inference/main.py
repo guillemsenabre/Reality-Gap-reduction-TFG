@@ -16,6 +16,7 @@ class Main:
         self.model_name = "ddpg_model.pth"
         self.number_motors = 1
         self.number_sensors = 3
+        self.episodes = 10
         self.port = "/dev/ttyUSB0"
 
         print("Initializing modules...")
@@ -36,11 +37,6 @@ class Main:
         if train_or_pretrained == "pretrained":
             print("Getting pretrained model ready...")
             self.get_pretrained_model()
-
-            begin = input("Type 'start' to begin training and initialize the motors")
-            if begin == 'start':
-                
-            self.train()
 
         elif train_or_pretrained == "train":
             print("Training ddpg model from scratch...")
@@ -74,42 +70,50 @@ class Main:
             param.requires_grad = False
 
     def train(self):
-        while True:
-            print("Getting states...")
-            states = self.states.read_sensor_data(self.port, self.number_motors, self.number_sensors)
-            print(states)
+        for episode in range(self.episodes):
+            while True:
+                print("Getting states...")
+                states = self.states.read_sensor_data(self.port, self.number_motors, self.number_sensors)
+                print(states)
 
-            # - 10 servo motor angles
-            # - 2 HSCR04 distances
-            # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
+                # - 10 servo motor angles
+                # - 2 HSCR04 distances
+                # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
 
-            print("Getting angles...")
-            prev_angles = states[:10] #dynamic velocity reward
-            print(prev_angles)
-            print("Passing states to ddpg...")
-            action = self.ddpg_model.select_action(states)
-            print(action)
-            self.move.move_joints(action, self.port, self.number_motors)
-            print("Getting new states...")
-            next_state = self.states.read_sensor_data()
-            print("Getting new angles...")
-            current_angles = states[:self.number_motors] #for the terminal condition
-            print("Calculating reward...")
-            reward = self.reward.reward(prev_angles, states, self.number_motors)
-            print("Getting terminal condition status...")
-            terminal_condition = self.abort.terminal_condition(current_angles, reward)
+                print("Getting angles...")
+                prev_angles = states[:10] #dynamic velocity reward
+                print(prev_angles)
+                print("Passing states to ddpg...")
+                action = self.ddpg_model.select_action(states)
+                print(action)
+                self.move.move_joints(action, self.port, self.number_motors)
+                print("Getting new states...")
+                next_state = self.states.read_sensor_data()
+                print("Getting new angles...")
+                current_angles = states[:self.number_motors] #for the terminal condition
+                print("Calculating reward...")
+                reward = self.reward.reward(prev_angles, states, self.number_motors)
+                print("Getting terminal condition status...")
+                terminal_condition = self.abort.terminal_condition(current_angles, reward)
 
-            # - Add safety protocols
-            # - Velocity, object drop, base join angle,...
-            # - Add a reset joints, to position the joints at 0.
+                # - Add safety protocols
+                # - Velocity, object drop, base join angle,...
+                # - Add a reset joints, to position the joints at 0.
 
-            print("Updating model...")
+                print("Updating model...")
 
-            self.ddpg_model.update(states, action, reward, next_state, terminal_condition)
+                self.ddpg_model.update(states, action, reward, next_state, terminal_condition)
 
-            if terminal_condition:
-                break
+                if terminal_condition:
+                    break
 
+            # Giving the option to reset the motors (to 90º) or random (#TODO -)
+            begin = input("Type 'start' to begin training and initialize the motors")
+            if begin == 'start':
+                self.move.reset_motors()
+            else:
+                continue
+            
 
 if __name__ == '__main__':
     Main()
