@@ -17,7 +17,9 @@ long duration1, duration2;
 float distanceRB1, distanceRB2;
 
 // PCA9685 AND SERVO VALUES
-const int number_motors;
+const int number_motors = 10;
+const int rot_limit_1 = 20;
+const int rot_limit_2 = 160;
 unsigned long previousMillis = 0;
 const long interval = 30; // Adjust to change the speed
 
@@ -51,15 +53,9 @@ void setup() {
   // PCA AND SERVOS INIT
   pca9685.begin();
   pca9685.setPWMFreq(50);
-
-  for (int i = 0; i < number_motors; i++) {
-    #define SER(i) i
-  }
+  defineServoMotor()
 
   while (!Serial) {}
-
-  attachServoMotor();
-  Serial.println("Servo attached.");
 
   pinMode(trig1Pin, OUTPUT);
   pinMode(trig2Pin, OUTPUT);
@@ -94,9 +90,11 @@ void loop() {
 }
 
 
-// Attach the servo to its Pin in ESP32
-void attachServoMotor() {
-  servo.attach(servoPin);  // Attach the servo to GPIO 25
+// define n servo objects
+void defineServoMotor() {
+  for (int i = 0; i < number_motors; i++) {
+    #define SER(i) i
+  }
 }
 
 // Read angle for the single motor
@@ -104,6 +102,17 @@ void getMotorAngle(int &angle) {
   angle = servo.read();  // Read the angle from the single servo
   Serial.println("Reading Servo Angle...");
 }
+
+void moveMotors(int angles[]) {
+  // Move all 10 servos simultaneously
+  for (int i = 0; i < number_motors; i++) {
+    int posDegrees = map(i, 0, number_motors - 1, rot_limit_1, rot_limit_2);
+    int pwm = map(posDegrees, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
+    pca9685.setPWM(i, 0, pwm);
+    angles[i] = posDegrees;
+  }
+}
+
 
 // Read distance (cm) for each HSCR04
 void readUltrasonicDistance(float &distance1, float &distance2) {
