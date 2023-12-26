@@ -83,7 +83,10 @@ void setup() {
 }
 
 void loop() {
+  // Initialize variables which will store the sensor data
   SensorData sensorData;
+
+  // Using millis instead of delay to avoid synchronization issues
   unsigned long currentMillis = millis();
 
   if (Serial.available() >= sizeof(float) * number_motors) {
@@ -101,6 +104,7 @@ void loop() {
     moveMotors(sensorData.angles, torqueValues);
   }
 
+  // Read motors angle (it's still quite vague and not precise)
   Serial.print("Servo Angles: ");
   for (int i = 0; i < number_motors; i++) {
     Serial.print(sensorData.angles[i]);
@@ -108,12 +112,14 @@ void loop() {
   }
   Serial.println();
 
+  // Read and print distances from HCSR04
   readUltrasonicDistance(sensorData.distanceRB1, sensorData.distanceRB2);
   Serial.print("Distance RB1: ");
   Serial.println(sensorData.distanceRB1);
   Serial.print("Distance RB2: ");
   Serial.println(sensorData.distanceRB2);
 
+  // Read and print MPU6050 orientations
   readOrientation(sensorData.object_pitch, sensorData.object_yaw, sensorData.object_roll);
   Serial.print("Object Pitch: ");
   Serial.println(sensorData.object_pitch);
@@ -130,7 +136,7 @@ void loop() {
     previousMillis = currentMillis;
     unsigned long delayStart = millis();
     while (millis() - delayStart < 500) {
-        // Do nothing
+        // Do nothing for x time
     }
   }
 }
@@ -178,6 +184,7 @@ void readUltrasonicDistance(float &distance1, float &distance2) {
   distance2 = duration2 * SOUND_SPEED/2;
 }
 
+// Reads orientation using a custom library
 void readOrientation(float &pitch, float &yaw, float &roll) {
   mpu.update();
   pitch = mpu.getAngleX();
