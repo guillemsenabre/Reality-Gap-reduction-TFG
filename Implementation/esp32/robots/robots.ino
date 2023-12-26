@@ -131,12 +131,23 @@ void loop() {
   }
 }
 
-// Map torque values to servo angles and control servos
+// Map torque values ([0,1]) to servo angles ([limit1, limit2]) and control servos (PWM signal, servomin, servomax)
+//Limit1 and limit2 are set to 20 and 160, respectively, for safety purposes.
 void moveMotors(int angles[], float torqueValues[]) {
   for (int i = 0; i < number_motors; i++) {
     int posDegrees = map(torqueValues[i], 0, 1, rot_limit_1, rot_limit_2);
     int pwm = map(posDegrees, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
     pca9685.setPWM(i, 0, pwm);
+  }
+}
+
+// When a trigger (string) is received from Python, reset/init the motor angles
+// [0, 200] Since we want to initialize the motors, this has to be more accurate
+// Motor's range In MG996Rs' datasheet is 120º, although in reality is around 200º
+void initializeMotors() {
+  for (int i = 0; i < number_motors; i++) {
+    int pwm = map(90, 0, 200, 0, 4095)
+    pca9685.setPWM(i, 0, pwm) 
   }
 }
 
