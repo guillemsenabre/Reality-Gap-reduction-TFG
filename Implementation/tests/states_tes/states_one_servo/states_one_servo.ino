@@ -1,6 +1,6 @@
-#include <Servo.h>
 #include <Wire.h>
 #include <MPU6050_light.h>
+#include <Adafruit_PWMServoDriver.h>
 
 const int trig1Pin = 2;
 const int echo1Pin = 4;
@@ -8,18 +8,18 @@ const int trig2Pin = 5;
 const int echo2Pin = 18;
 
 MPU6050 mpu(Wire);
+Adafruit_PWMServoDriver pca9685 = Adafruit_PWMServoDriver(0x40);
 
 unsigned long timer = 0;
 const float SOUND_SPEED = 0.034;
 long duration1, duration2;
 float distanceRB1, distanceRB2;
 
-const int servoPin = 25;  // Change to GPIO 25 for the single servo
-Servo servo;  // Change to a single servo object
+const int number_motors;
 
 // Packed data to be sent through Serial
 struct SensorData {
-  int angles[10];     // LIST WITH 10 INTEGERS VALUES (JOINT ANGLES)
+  int angles[number_motors];     // LIST WITH n INTEGERS VALUES (JOINT ANGLES)
   float distanceRB1;  // FLOAT WITH DISTANCE IN CM FROM ROBOT1
   float distanceRB2;  // FLOAT WITH DISTANCE IN CM FROM ROBOT2
   float object_pitch;
@@ -31,8 +31,8 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Initializing...");
 
+  // MPU INIT:
   Wire.begin();
-
   byte status = mpu.begin();
 
   while (status != 0) {
@@ -43,6 +43,14 @@ void setup() {
 
   mpu.calcOffsets();
   Serial.println("MPU calibration completed!");
+
+  // PCA AND SERVOS INIT
+  pca9685.begin();
+  pca9685.setPWMFreq(50);
+
+  for (int i = 0; i < number_motors; i++) {
+    #define SER(i) i
+  }
 
   while (!Serial) {}
 
