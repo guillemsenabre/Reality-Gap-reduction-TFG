@@ -42,7 +42,7 @@ struct SensorData {
   int angles[number_motors];     // LIST WITH n INTEGERS VALUES (JOINT ANGLES)
   float distanceRB1;  // FLOAT WITH DISTANCE IN CM FROM ROBOT1
   float distanceRB2;  // FLOAT WITH DISTANCE IN CM FROM ROBOT2
-  float object_pitch;
+  float object_pitch; 
   float object_yaw;
   float object_roll;
 };
@@ -61,17 +61,21 @@ void setup() {
     status = mpu.begin();
   }
 
+  // Calibrate MPU6050
   mpu.calcOffsets();
   Serial.println("MPU calibration completed!");
 
   // PCA AND SERVOS INIT
   pca9685.begin();
   pca9685.setPWMFreq(50);
+  // Initialize motors to ~90º
+  initializeMotors();
 
   delay(500);
 
   while (!Serial) {}
 
+  // Set HCSR04 pin state
   pinMode(trig1Pin, OUTPUT);
   pinMode(trig2Pin, OUTPUT);
   pinMode(echo1Pin, INPUT);
@@ -146,8 +150,8 @@ void moveMotors(int angles[], float torqueValues[]) {
 // Motor's range In MG996Rs' datasheet is 120º, although in reality is around 200º
 void initializeMotors() {
   for (int i = 0; i < number_motors; i++) {
-    int pwm = map(90, 0, 200, 0, 4095)
-    pca9685.setPWM(i, 0, pwm) 
+    int pwm = map(90, 0, 200, 0, 4095);
+    pca9685.setPWM(i, 0, pwm) ;
   }
 }
 
