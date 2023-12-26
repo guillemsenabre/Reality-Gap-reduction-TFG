@@ -22,7 +22,7 @@ const int rot_limit_1 = 20;
 const int rot_limit_2 = 160;
 unsigned long previousMillis = 0;
 const long interval = 30; // Adjust to change the speed
-const int SERVOMIN = 80;  // Adjust these values based on your servo
+const int SERVOMIN = 80;
 const int SERVOMAX = 600;
 
 // Packed data to be sent through Serial
@@ -56,6 +56,8 @@ void setup() {
   pca9685.begin();
   pca9685.setPWMFreq(50);
   defineServoMotor()
+
+  delay(500);
 
   while (!Serial) {}
 
@@ -106,7 +108,8 @@ void loop() {
 
   // Send the packed data through Serial
   Serial.write((uint8_t*)&sensorData, sizeof(sensorData));
-  delay(100);  // Add a delay for readability in the Serial Monitor
+  
+
 }
 
 
