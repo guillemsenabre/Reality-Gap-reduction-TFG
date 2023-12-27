@@ -184,7 +184,7 @@ void readUltrasonicDistance(float &distance1, float &distance2) {
   distance2 = duration2 * SOUND_SPEED/2;
 }
 
-// Reads orientation using a custom library
+// Reads orientation using MPU6050
 void readOrientation(float &pitch, float &yaw, float &roll) {
   mpu.update();
   pitch = mpu.getAngleX();
