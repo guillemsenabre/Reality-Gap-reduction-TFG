@@ -30,12 +30,11 @@ setup(
 		'reset_controller = arm_pkg.tests.joint_position_reset:main',
 		'gripper_test = arm_pkg.tests.data_gripper_test:main',
 		'state_test = arm_pkg.tests.state_test:main',
-		'robots_state = arm_pkg.drl.robots_state:main',
+		'robots_state = arm_pkg.drl.sub_modules.robots_state:main',
 	    'sac = arm_pkg.drl.sac:main',
-		'ddpg = arm_pkg.drl.ddpg:main',
+		'ddpg = arm_pkg.drl.sub_modules.ddpg:main',
         'main = arm_pkg.drl.main:main',
-		'reward_function = arm_pkg.drl.reward_function:main',
-        'inference = arm_pkg.drl.inference:main'
+		'reward_function = arm_pkg.drl.sub_modules.reward_function:main',
         ],
     },
 )
