@@ -9,8 +9,8 @@ def generate_launch_description():
         return LaunchDescription([
             Node(
                 package='arm_pkg',
-                executable='training',
-                name='training'
+                executable='main',
+                name='main'
             ),
             Node(
                 package='arm_pkg',

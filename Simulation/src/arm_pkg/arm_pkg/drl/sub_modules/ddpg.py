@@ -4,8 +4,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from .sub_modules.rbuffer import ReplayBuffer
-from .sub_modules.configuration import Configuration
+from .rbuffer import ReplayBuffer
+from .configuration import Configuration
 
 #SECTION - POLICY DRL ALGORITHM -
 

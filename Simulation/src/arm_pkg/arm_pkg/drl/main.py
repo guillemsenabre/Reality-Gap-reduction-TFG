@@ -1,10 +1,10 @@
 import rclpy
 import os
 
-from .rosdata import RosData
-from .reset import Reset
+from .sub_modules.rosdata import RosData
+from .sub_modules.reset import Reset
 from .sub_modules.configuration import Configuration
-from .plots import plot_results
+from .sub_modules.plots import plot_results
 
 import numpy as np
 import torch
