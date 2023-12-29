@@ -11,7 +11,6 @@ import torch
 
 
 #TODO - Tune hyperparameters (lr)
-#TODO - Understanding losses behaviour
 
 
 #SECTION - TRAINING LOOP -
