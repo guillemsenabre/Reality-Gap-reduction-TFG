@@ -33,7 +33,7 @@ class Main:
         self.ddpg_model = DDPGAgent(state_dim, action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
-
+        print(f"Decision made! {train_or_pretrained}")
         if train_or_pretrained == "pretrained":
             print("Getting pretrained model ready...")
             self.get_pretrained_model()
@@ -70,7 +70,7 @@ class Main:
             param.requires_grad = False
 
     def train(self):
-        for episode in range(self.episodes):
+        while self.episodes != 0:
             while True:
                 print("Getting states...")
                 states = self.states.read_sensor_data(self.port, self.number_motors, self.number_sensors)
@@ -112,7 +112,7 @@ class Main:
             if begin == 'start':
                 self.move.reset_motors()
             else:
-                continue
+                c -= 1
             
 
 if __name__ == '__main__':
