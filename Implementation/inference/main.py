@@ -34,6 +34,7 @@ class Main:
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
         print(f"Decision made! {train_or_pretrained}")
+        
         if train_or_pretrained == "pretrained":
             print("Getting pretrained model ready...")
             self.get_pretrained_model()

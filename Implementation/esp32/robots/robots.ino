@@ -2,10 +2,10 @@
 #include <MPU6050_light.h>
 #include <Adafruit_PWMServoDriver.h>
 
-const int trig1Pin = 2;
-const int echo1Pin = 4;
-const int trig2Pin = 5;
-const int echo2Pin = 18;
+const int trig1Pin = 34;
+const int echo1Pin = 35;
+const int trig2Pin = 32;
+const int echo2Pin = 33;
 
 MPU6050 mpu(Wire);
 Adafruit_PWMServoDriver pca9685 = Adafruit_PWMServoDriver(0x40);
@@ -155,10 +155,12 @@ void moveMotors(int angles[], float torqueValues[]) {
 // [0, 200] Since we want to initialize the motors, this has to be more accurate
 // Motor's range In MG996Rs' datasheet is 120º, although in reality is around 200º
 void initializeMotors() {
+  Serial.print("Initializing motors...");
   for (int i = 0; i < number_motors; i++) {
     int pwm = map(90, 0, 200, 0, 4095);
     pca9685.setPWM(i, 0, pwm) ;
   }
+  Serial.print("Motors initialized!");
 }
 
 // Read distance (cm) for each HSCR04
