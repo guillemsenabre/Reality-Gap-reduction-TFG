@@ -1,10 +1,7 @@
 import torch
 import torch.nn as nn
-import os
-import sys
-sys.path.append('/path/to/tfg')
-from Simulation.src.arm_pkg.arm_pkg.drl.sub_modules.ddpg import DDPGAgent
 
+from sub_modules.ddpg import DDPGAgent
 from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
@@ -19,6 +16,7 @@ class Main:
         self.number_motors = 1
         self.number_sensors = 3
         self.episodes = 10
+        self.episode_rewards = []
         self.port = input("Select Serial port: ")
 
         print(f"Port {self.port} selected")
@@ -73,6 +71,18 @@ class Main:
             param.requires_grad = False
         for param in self.ddpg_model.critic.fc2.parameters():
             param.requires_grad = False
+    
+    def next_episode(self):
+        # Giving the option to reset the motors (to 90º) or random (#TODO -)
+        print("Do you want to keep training or see the results?")
+        begin = input("Type 't' or 'r'")
+        if begin == 'train':
+            self.episode_rewards.append([0.0, 0.0, 0.0]) # So next episode rewards are visible
+            self.move.reset_motors()
+        elif begin == 'results':
+            plot_results()
+        else:
+            c -= 1
 
     def train(self):
         while self.episodes != 0:
@@ -83,7 +93,7 @@ class Main:
 
                 # - 10 servo motor angles
                 # - 2 HSCR04 distances
-                # - 3 quaternions from 3 IMUs (for now its 3 euler angles)
+                # - Euler orientations from 1 IMUs (can be expanded to handle quaternions and more IMUs)
 
                 print("Getting angles...")
                 prev_angles = states[:10] #dynamic velocity reward
@@ -109,15 +119,13 @@ class Main:
 
                 self.ddpg_model.update(states, action, reward, next_state, terminal_condition)
 
+                self.episode_rewards.append(reward)
+                
                 if terminal_condition:
                     break
 
-            # Giving the option to reset the motors (to 90º) or random (#TODO -)
-            begin = input("Type 'start' to begin training and initialize the motors")
-            if begin == 'start':
-                self.move.reset_motors()
-            else:
-                c -= 1
+            self.next_episode()
+
             
 
 if __name__ == '__main__':
