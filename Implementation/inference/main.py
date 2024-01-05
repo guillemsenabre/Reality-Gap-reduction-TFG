@@ -2,12 +2,14 @@ import torch
 import torch.nn as nn
 import os
 import sys
+sys.path.append('/path/to/tfg')
+from Simulation.src.arm_pkg.arm_pkg.drl.sub_modules.ddpg import DDPGAgent
 
-from sub_modules.ddpg import DDPGAgent
 from sub_modules.abort_save import AbortOrSave
 from sub_modules.move_joints import MoveJoints
 from sub_modules.states import States
 from sub_modules.reward import Reward
+from sub_modules.plots import plot_results
 
 class Main:
     def __init__(self):
@@ -53,12 +55,12 @@ class Main:
 
         # Load the state dictionaries
         print(model_path)
-        pretrained = torch.load(model_path)
+        pretrained = torch.load(model_path, weights_only = True)
         print(pretrained)
 
         # Load the state dictionaries into the actor and critic models
-        self.ddpg_model.actor.load_state_dict(pretrained['actor_state_dict'], weights_only = True)
-        self.ddpg_model.critic.load_state_dict(pretrained['critic_state_dict'], weights_only = True)
+        self.ddpg_model.actor.load_state_dict(pretrained['actor_state_dict'])
+        self.ddpg_model.critic.load_state_dict(pretrained['critic_state_dict'])
 
         # Freeze the first two layers (fc1 and fc2) of the actor model
         for param in self.ddpg_model.actor.fc1.parameters():
