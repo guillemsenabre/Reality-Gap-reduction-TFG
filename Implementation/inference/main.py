@@ -49,7 +49,7 @@ class Main:
 
     def get_pretrained_model(self):
         model_name = self.model_name
-        model_path = os.path.expanduser(f'~/tfg/Simulation/src/models/{model_name}')
+        model_path = f"../models/{model_name}"    # RELATIVE
 
         # Load the state dictionaries
         pretrained = torch.load(model_path)
