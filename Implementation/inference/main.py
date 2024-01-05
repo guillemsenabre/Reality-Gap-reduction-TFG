@@ -20,16 +20,14 @@ class Main:
         self.port = input("Select Serial port: ")
 
         print(f"Port {self.port} selected")
-
         print("Initializing modules...")
 
         self.move = MoveJoints()
         self.states = States()
         self.reward = Reward()
         self.abort = AbortOrSave()
-        time.sleep(0.3)
 
-        print("selecting network dimensions...")
+        print("select network dimensions:")
         state_dim = int(input("Select state dim --> "))
         action_dim = int(input("Select action dimensions --> "))
         self.ddpg_model = DDPGAgent(state_dim, action_dim)
@@ -54,11 +52,11 @@ class Main:
         model_path = os.path.expanduser(f'~/tfg/Simulation/src/models/{model_name}')
 
         # Load the state dictionaries
-        checkpoint = torch.load(model_path)
+        pretrained = torch.load(model_path)
 
         # Load the state dictionaries into the actor and critic models
-        self.ddpg_model.actor.load_state_dict(checkpoint['actor_state_dict'])
-        self.ddpg_model.critic.load_state_dict(checkpoint['critic_state_dict'])
+        self.ddpg_model.actor.load_state_dict(pretrained['actor_state_dict'])
+        self.ddpg_model.critic.load_state_dict(pretrained['critic_state_dict'])
 
         # Freeze the first two layers (fc1 and fc2) of the actor model
         for param in self.ddpg_model.actor.fc1.parameters():
