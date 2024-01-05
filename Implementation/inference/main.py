@@ -17,7 +17,9 @@ class Main:
         self.number_motors = 1
         self.number_sensors = 3
         self.episodes = 10
-        self.port = "/dev/ttyUSB0"
+        self.port = input("Select Serial port: ")
+
+        print(f"Port {self.port} selected")
 
         print("Initializing modules...")
 
@@ -34,7 +36,7 @@ class Main:
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
         print(f"Decision made! {train_or_pretrained}")
-        
+
         if train_or_pretrained == "pretrained":
             print("Getting pretrained model ready...")
             self.get_pretrained_model()
