@@ -76,13 +76,16 @@ class Main:
         # Giving the option to reset the motors (to 90º) or random (#TODO -)
         print("Do you want to keep training or see the results?")
         begin = input("Type 't' or 'r'")
+
         if begin == 'train':
             self.episode_rewards.append([0.0, 0.0, 0.0]) # So next episode rewards are visible
             self.move.reset_motors()
+
         elif begin == 'results':
-            plot_results()
+            plot_results(self.episode_rewards, self.ddpg_model.actor_losses, self.ddpg_model.critic_losses)
+
         else:
-            c -= 1
+            self.episodes -= 1
 
     def train(self):
         while self.episodes != 0:
@@ -98,27 +101,29 @@ class Main:
                 print("Getting angles...")
                 prev_angles = states[:10] #dynamic velocity reward
                 print(prev_angles)
+
                 print("Passing states to ddpg...")
                 action = self.ddpg_model.select_action(states)
+
                 print(action)
                 self.move.move_joints(action, self.port, self.number_motors)
+
                 print("Getting new states...")
                 next_state = self.states.read_sensor_data()
+
                 print("Getting new angles...")
                 current_angles = states[:self.number_motors] #for the terminal condition
+
                 print("Calculating reward...")
                 reward = self.reward.reward(prev_angles, states, self.number_motors)
+
                 print("Getting terminal condition status...")
                 terminal_condition = self.abort.terminal_condition(current_angles, reward)
 
-                # - Add safety protocols
-                # - Velocity, object drop, base join angle,...
-                # - Add a reset joints, to position the joints at 0.
-
                 print("Updating model...")
-
                 self.ddpg_model.update(states, action, reward, next_state, terminal_condition)
 
+                # Updating rewards
                 self.episode_rewards.append(reward)
                 
                 if terminal_condition:
