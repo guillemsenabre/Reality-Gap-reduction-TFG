@@ -102,7 +102,7 @@ class Main:
                 # - Euler orientations from 1 IMUs (can be expanded to handle quaternions and more IMUs)
 
                 print("Getting angles...")
-                prev_angles = states[:10] #dynamic velocity reward
+                prev_angles = states[:self.number_actuators] #dynamic velocity reward
                 print(prev_angles)
 
                 print("Passing states to ddpg...")
