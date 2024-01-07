@@ -75,9 +75,6 @@ class DDPGAgent:
         self.actor_losses = []
         self.critic_losses = []
 
-        self.state_dim_test = state_dim
-        self.action_dim_test = action_dim
-
         self.actor = Actor(state_dim, action_dim, self.actor_dropout_p)
         self.actor_target = Actor(state_dim, action_dim, self.actor_dropout_p) # Has the same architecture as the main actor network but it's updated slowly --> provides training stability
         self.actor_target.load_state_dict(self.actor.state_dict()) # Get parameters from main actor network and synchronize with acto_target
