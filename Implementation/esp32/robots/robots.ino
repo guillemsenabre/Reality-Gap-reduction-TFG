@@ -86,7 +86,7 @@ void loop() {
     // Interpret bytes as float values using pointer casting.
     float torqueValues[number_motors];
     for (int i = 0; i < number_motors; i++) {
-      torqueValues[i] = *((float*)&torqueBytes[i * sizeof(float)]);
+      memcpy(&torqueValues[i], &torqueBytes[i * sizeof(float)], sizeof(float));
     }
 
     // Moving motors based on ddpg torque values.
