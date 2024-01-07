@@ -11,7 +11,7 @@ class States():
         time.sleep(0.1)
 
 
-    def read_sensor_data(self, port, number_motors=8, number_sensors=11):
+    def read_sensor_data(self, port, number_motors=8, number_sensors=13):
         while True:
             try:
                 self.ser = serial.Serial(port, baudrate=115200, timeout=1)

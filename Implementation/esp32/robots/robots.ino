@@ -10,18 +10,6 @@ const int echo2Pin = 33;
 MPU6050 mpu(Wire);
 Adafruit_PWMServoDriver pca9685 = Adafruit_PWMServoDriver(0x40);
 
-// Define servo pins using #define
-#define SERVO_0_PIN 2
-#define SERVO_1_PIN 3
-#define SERVO_2_PIN 4
-#define SERVO_3_PIN 5
-#define SERVO_4_PIN 6
-#define SERVO_5_PIN 7
-#define SERVO_6_PIN 8
-#define SERVO_7_PIN 9
-#define SERVO_8_PIN 10
-#define SERVO_9_PIN 11
-
 // HCSR04 Values
 unsigned long timer = 0;
 const float SOUND_SPEED = 0.034;
@@ -29,12 +17,13 @@ long duration1, duration2;
 float distanceRB1, distanceRB2;
 
 // PCA9685 AND SERVO VALUES
-const int number_motors = 10;
-const int rot_limit_1 = 100;
+const int number_motors = 8; // Change if more motors are added
+const int initial_angle = 90; // Initialize at 90º
+const int rot_limit_1 = 100; // Change to increase/decrease the rotation range
 const int rot_limit_2 = 120;
 unsigned long previousMillis = 0;
 const long interval = 50; // Adjust to change the speed
-const int SERVOMIN = 80;
+const int SERVOMIN = 80;  // For mg996r motors and pca9685 this range is adequate
 const int SERVOMAX = 600;
 
 // Packed data to be sent through Serial
@@ -141,7 +130,7 @@ void loop() {
   }
 }
 
-// Map torque values ([0,1]) to servo angles ([limit1, limit2]) and control servos (PWM signal, servomin, servomax)
+// Map torque values ([-1,1]) to servo angles ([limit1, limit2]) and control servos (PWM signal, servomin, servomax)
 //Limit1 and limit2 are set to 20 and 160, respectively, for safety purposes.
 void moveMotors(int angles[], float torqueValues[]) {
   for (int i = 0; i < number_motors; i++) {
@@ -157,7 +146,7 @@ void moveMotors(int angles[], float torqueValues[]) {
 void initializeMotors() {
   Serial.print("Initializing motors...");
   for (int i = 0; i < number_motors; i++) {
-    int pwm = map(90, 0, 200, 0, 4095);
+    int pwm = map(initial_angle, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
     pca9685.setPWM(i, 0, pwm) ;
   }
   Serial.print("Motors initialized!");

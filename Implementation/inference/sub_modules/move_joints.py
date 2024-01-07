@@ -9,7 +9,7 @@ class MoveJoints:
         # Pause execution for 0.3 seconds to allow initialization to complete
         time.sleep(0.3)
 
-    def move_joints(self, actions, port, number_motors=10):
+    def move_joints(self, actions, port, number_motors=8):
         """
         Move the specified joints based on the provided actions.
 
@@ -44,7 +44,7 @@ class MoveJoints:
         """
 
         # Pack the list of values into a binary structure and send it over the serial connection
-        self.ser.write(struct.pack(f'!{number_motors}f', *values))
+        self.ser.write(struct.pack(f'<{number_motors}f', *values))
         print(f"Sent values to {self.ser.name}: {values}")
 
     def reset_motors(self):

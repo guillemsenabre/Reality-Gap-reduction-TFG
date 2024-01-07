@@ -25,6 +25,7 @@ class Main:
         self.reward = Reward()
         self.abort = AbortOrSave()
 
+        # BE CAREFUL, MPU6050 has 3 values, counting as 3 sensors, not 1
         print("select number of components:")
         self.number_sensors = int(input("Select number of sensors --> "))
         self.number_actuators = int(input("Select number of actuators --> "))
