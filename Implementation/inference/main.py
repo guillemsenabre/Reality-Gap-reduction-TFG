@@ -13,8 +13,6 @@ class Main:
         print("Initializing variables...")
 
         self.model_name = "ddpg_model.pth"
-        self.number_motors = 1
-        self.number_sensors = 3
         self.episodes = 10
         self.episode_rewards = []
         self.port = input("Select Serial port: ")
@@ -27,10 +25,15 @@ class Main:
         self.reward = Reward()
         self.abort = AbortOrSave()
 
-        print("select network dimensions:")
-        state_dim = int(input("Select state dim --> "))
-        action_dim = int(input("Select action dimensions --> "))
-        self.ddpg_model = DDPGAgent(state_dim, action_dim)
+        print("select number of components:")
+        self.number_sensors = int(input("Select number of sensors --> "))
+        self.number_actuators = int(input("Select number of actuators --> "))
+
+        # STATES CONTAIN BOTH ACTUATORS DATA AND SENSOR DATA
+        self.state_dim = self.number_actuators + self.number_sensors
+        self.action_dim = self.number_actuators
+
+        self.ddpg_model = DDPGAgent(self.state_dim, self.action_dim)
                 
         train_or_pretrained = input("Hey, do you want to 'train' from scratch or use a 'pretrained' model? ")
         print(f"Decision made! {train_or_pretrained}")
@@ -91,7 +94,7 @@ class Main:
         while self.episodes != 0:
             while True:
                 print("Getting states...")
-                states = self.states.read_sensor_data(self.port, self.number_motors, self.number_sensors)
+                states = self.states.read_sensor_data(self.port, self.number_actuators, self.number_sensors)
                 print(states)
 
                 # - 10 servo motor angles
@@ -106,16 +109,16 @@ class Main:
                 action = self.ddpg_model.select_action(states)
 
                 print(action)
-                self.move.move_joints(action, self.port, self.number_motors)
+                self.move.move_joints(action, self.port, self.action_dim)
 
                 print("Getting new states...")
-                next_state = self.states.read_sensor_data()
+                next_state = self.states.read_sensor_data(self.port, self.number_actuators, self.number_sensors)
 
                 print("Getting new angles...")
-                current_angles = states[:self.number_motors] #for the terminal condition
+                current_angles = states[:self.action_dim] #for the terminal condition
 
                 print("Calculating reward...")
-                reward = self.reward.reward(prev_angles, states, self.number_motors)
+                reward = self.reward.reward(prev_angles, states, self.action_dim)
 
                 print("Getting terminal condition status...")
                 terminal_condition = self.abort.terminal_condition(current_angles, reward)
