@@ -1,5 +1,4 @@
 import torch
-import torch.nn as nn
 
 from sub_modules.ddpg import DDPGAgent
 from sub_modules.abort_save import AbortOrSave
@@ -14,6 +13,7 @@ class Main:
 
         self.model_name = "ddpg_model.pth"
         self.episodes = 10
+        self.steps = 5
         self.episode_rewards = []
         self.port = input("Select Serial port: ")
 
@@ -92,7 +92,8 @@ class Main:
 
     def train(self):
         while self.episodes != 0:
-            while True:
+            step = self.steps
+            while step != 0:
                 print("Getting states...")
                 states = self.states.read_sensor_data(self.port, self.number_actuators, self.number_sensors)
                 print(states)
@@ -131,6 +132,10 @@ class Main:
                 
                 if terminal_condition:
                     break
+
+                else:
+                    print(step)
+                    step -= 1
 
             self.next_episode()
 

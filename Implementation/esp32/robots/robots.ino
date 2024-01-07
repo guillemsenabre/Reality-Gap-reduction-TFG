@@ -30,10 +30,10 @@ float distanceRB1, distanceRB2;
 
 // PCA9685 AND SERVO VALUES
 const int number_motors = 10;
-const int rot_limit_1 = 20;
-const int rot_limit_2 = 160;
+const int rot_limit_1 = 100;
+const int rot_limit_2 = 120;
 unsigned long previousMillis = 0;
-const long interval = 30; // Adjust to change the speed
+const long interval = 50; // Adjust to change the speed
 const int SERVOMIN = 80;
 const int SERVOMAX = 600;
 
@@ -145,7 +145,7 @@ void loop() {
 //Limit1 and limit2 are set to 20 and 160, respectively, for safety purposes.
 void moveMotors(int angles[], float torqueValues[]) {
   for (int i = 0; i < number_motors; i++) {
-    int posDegrees = map(torqueValues[i], 0, 1, rot_limit_1, rot_limit_2);
+    int posDegrees = map(torqueValues[i], -1.0, 1.0, rot_limit_1, rot_limit_2);
     int pwm = map(posDegrees, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
     pca9685.setPWM(i, 0, pwm);
   }

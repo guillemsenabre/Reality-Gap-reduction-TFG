@@ -31,7 +31,7 @@ class States():
                     self.ser.close()
                     
     def _receive_sensor_data(self, ser, number_motors, number_sensors):
-        format_string = f'!{number_motors}i {number_sensors}f'
+        format_string = f'<{number_motors}i {number_sensors}f'
         expected_size = struct.calcsize(format_string)
         count = 0
         print("Waiting for state data...")
