@@ -83,7 +83,7 @@ void loop() {
     byte torqueBytes[number_motors * sizeof(float)];
     Serial.readBytes(torqueBytes, number_motors * sizeof(float));
 
-    // Interpret bytes as float values using pointer casting.
+    // Interpret bytes as float values using pointer casting / memcpy
     float torqueValues[number_motors];
     for (int i = 0; i < number_motors; i++) {
       memcpy(&torqueValues[i], &torqueBytes[i * sizeof(float)], sizeof(float));
@@ -137,6 +137,9 @@ void moveMotors(int angles[], float torqueValues[]) {
     int posDegrees = map(torqueValues[i], -1.0, 1.0, rot_limit_1, rot_limit_2);
     int pwm = map(posDegrees, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
     pca9685.setPWM(i, 0, pwm);
+
+    // Update angles array
+    angles[i] = posDegrees;
   }
 }
 
