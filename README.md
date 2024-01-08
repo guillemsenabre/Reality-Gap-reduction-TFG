@@ -99,15 +99,21 @@ These are the schematics for the electronic components used in this project. Up 
 
 - **Power Supply** to **ESP32** to **PCA9685**
 
-![Alt text](image-1.png)
+
+<img width="327" alt="image-1" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/be053d31-73de-4654-a551-7b66016756b0">
+
 
 - **ESP32** to **Sensors**
+- 
 
-![Alt text](image.png)
+<img width="131" alt="image-2" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/6dfd8d5e-1856-4708-abdd-f6806e34727a">
+
 
 - **PCA9685** to **MG996R**
 
-![Alt text](image-3.png)
+
+<img width="200" alt="image-3" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/3cb3eb04-ec9e-43c6-9fef-c710f58d9a2e">
+
 
 ## Communication
 
