@@ -9,6 +9,7 @@ const int echo2Pin = 33;
 
 MPU6050 mpu(Wire);
 Adafruit_PWMServoDriver pca9685 = Adafruit_PWMServoDriver(0x40);
+const int pinout_start = 4;
 
 // HCSR04 Values
 unsigned long timer = 0;
@@ -17,7 +18,7 @@ long duration1, duration2;
 float distanceRB1, distanceRB2;
 
 // PCA9685 AND SERVO VALUES
-const int number_motors = 8; // Change if more motors are added
+const int number_motors = 4; // Change if more motors are added
 const int initial_angle = 90; // Initialize at 90º
 const int rot_limit_1 = 100; // Change to increase/decrease the rotation range
 const int rot_limit_2 = 120;
@@ -136,7 +137,7 @@ void moveMotors(int angles[], float torqueValues[]) {
   for (int i = 0; i < number_motors; i++) {
     int posDegrees = map(torqueValues[i], -1.0, 1.0, rot_limit_1, rot_limit_2);
     int pwm = map(posDegrees, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
-    pca9685.setPWM(i, 0, pwm);
+    pca9685.setPWM(i+pinout_start, 0, pwm); // starting pin is nº 4. Change for your setup
 
     // Update angles array
     angles[i] = posDegrees;
@@ -150,7 +151,7 @@ void initializeMotors() {
   Serial.print("Initializing motors...");
   for (int i = 0; i < number_motors; i++) {
     int pwm = map(initial_angle, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
-    pca9685.setPWM(i, 0, pwm) ;
+    pca9685.setPWM(i+pinout_start, 0, pwm) ; // starting pin is nº 4. Change for your setup
   }
   Serial.print("Motors initialized!");
 }
