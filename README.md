@@ -43,7 +43,7 @@ Both in simulation and in real-life applications, two robotic arms composed by 4
    - Utilize Python, preferably versions greater than 3.10.
 
 3. **Setting up the Simulation:**
-   - Clone the Simulation repository into your local folder with git clone https://github.com/BakiRhina/Reality-Gap-reduction-TFG.git
+   - Clone the Simulation repository into your local folder with `git clone https://github.com/BakiRhina/Reality-Gap-reduction-TFG.git`
    - Navigate to the Simulation folder containing the ROS workspace with a package named `arm_pkg` that encompasses the simulation.
    - Open a terminal and build the workspace with the command: `colcon build`. This will install necessary dependencies among other files.
 
@@ -77,7 +77,7 @@ To implement the project and interface with physical robots, certain components 
 
 - **Sensors:**
   - MPU6050
-  - HC-SR04
+  - HC-SR04 
 
 - **Actuators:**
   - Compatible with both MG995 and MG996R. MG996R is recommended for its upgraded torque and precision.
@@ -90,6 +90,12 @@ To implement the project and interface with physical robots, certain components 
 
 - **Power Supply:**
   - When both robots and sensors are connected simultaneously, approximately 12 Amperes and 5 to 6 Volts are needed. The HS-75-5 power supply is recommended due to its cost-effectiveness and suitability for project requirements.
+
+## connections
+
+- **ESP32** to **Sensors**
+
+![Alt text](image.png)
 
 ## Communication
 
@@ -124,9 +130,9 @@ Once the hardware setup is complete, follow these steps to run the implementatio
    - Input the number of motors and sensors in your setup. The software is designed to handle any number, but a range of 5 to 10 motors is recommended.
 
 5. **Choose Training Option:**
-   - Decide whether to train the model from scratch or use transfer learning (a model trained in simulation).
+   - Decide whether to train the model from scratch or use transfer learning (a model previously trained in simulation).
   
 6. **Initiate Training:**
    - If training is selected, the training process will commence. Ensure that the robots are securely fixed to the ground to prevent falls.
 
-By following these steps, the implementation can be successfully executed, allowing for the training and operation of physical robots in the designed multi-agent reinforcement learning environment.
+
