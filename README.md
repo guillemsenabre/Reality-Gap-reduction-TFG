@@ -107,7 +107,7 @@ These are the schematics for the electronic components used in this project. Up 
 
 - **PCA9685** to **MG996R**
 
-![Alt text](image-2.png)
+![Alt text](image-3.png)
 
 ## Communication
 
@@ -136,8 +136,8 @@ Once the hardware setup is complete, follow these steps to run the implementatio
    - Execute `main.py` in `Implementation/Inference/main.py`.
 
 3. **Provide Port Information:**
-   - Enter the port where your ESP32 is connected (usually COM6).
-
+   - Enter the port where your ESP32 is connected
+   - In Windows usually `COM6`, in Linux its usually `/dev/ttyUSB0`
 4. **Specify Motors and Sensors:**
    - Input the number of motors and sensors in your setup. The software is designed to handle any number, but a range of 5 to 10 motors is recommended.
 
@@ -146,5 +146,14 @@ Once the hardware setup is complete, follow these steps to run the implementatio
   
 6. **Initiate Training:**
    - If training is selected, the training process will commence. Ensure that the robots are securely fixed to the ground to prevent falls.
+
+
+## Recommandations and notes
+
+- Gazebo simulator is more supported in Linux OS than Windows. If you are not familiar with this OS, we recommend using another simulator such as PyBullet or Isaac Gym as a replacement. Isaac Gym provides Python APIs to communicate with and works directly with the GPU. When escalating this project, the simulation section would have been shifted to this simulator instead of Gazebo.
+
+- Start more simple. Simplicity will be your friend and makes things more organized, clear ,and scalable with less errors in the long run. Choose a simpler robots in a simpler environment. Even if it seems it is toot simple, when the project starts growing it will be more efficient and clear to have simpler modular areas than a confusing and complex system.
+
+- For deeper information about the project, refer to the Thesis in `thesis_docs/Thesis.docx`
 
 
