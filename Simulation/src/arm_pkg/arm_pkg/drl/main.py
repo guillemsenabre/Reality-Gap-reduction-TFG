@@ -69,7 +69,7 @@ def main(args=None):
                     torch.save({
                         'actor_state_dict': ros_data.agent.actor.state_dict(),
                         'critic_state_dict': ros_data.agent.critic.state_dict(),
-                    }, 'ddpg_model.pth')
+                    }, model_path)
 
                     print(f'Model saved due to average reward less than {config.avg_reward_threshold_to_save_model}: {avg_reward}')
                     break

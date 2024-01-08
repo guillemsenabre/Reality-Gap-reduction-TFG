@@ -43,15 +43,18 @@ Both in simulation and in real-life applications, two robotic arms composed by 4
    - Utilize Python, preferably versions greater than 3.10.
 
 3. **Setting up the Simulation:**
-   - Navigate to the Simulation folder containing a ROS workspace with a package named `arm_pkg` that encompasses the simulation.
-   - Open a terminal and build the workspace locally with the command: `colcon build`.
+   - Clone the Simulation repository into your local folder with git clone https://github.com/BakiRhina/Reality-Gap-reduction-TFG.git
+   - Navigate to the Simulation folder containing the ROS workspace with a package named `arm_pkg` that encompasses the simulation.
+   - Open a terminal and build the workspace with the command: `colcon build`. This will install necessary dependencies among other files.
 
 4. **Running the Simulation:**
    - Execute the following command to launch the necessary packages from the custom launch file: `ros2 launch arm_pkg launch`.
-   - Simultaneously, a bridge is required to facilitate data transfer from Gazebo to ROS2. Refer to `/bridge_commands/rosgzbridge.txt` and copy the last command specified, which includes the necessary data for simulating two robots with 5 joints each.
 
-5. **Training the Agents:**
-   - Once the bridge is operational, run the launch file. This action will open a Gazebo window displaying the simulation, and after a brief initialization period, the training process will commence.
+5. **Bridge Gazebo and ROS 2 with ros_gz_bridge**
+   - Simultaneously, a bridge is required to facilitate data transfer from Gazebo to ROS2. Refer to `/Simulation/src/bridge_commands/rosgzbridge.txt`. Copy and run in a separate terminal the last command specified, which includes the necessary data for simulating two robots with 5 joints each.
+
+5. **Training the Agent:**
+   - Once the bridge is operational, run the launch file with `/Simulation/src/bridge_commands/rosgzbridge.txt`. This action will open a Gazebo window displaying the simulation, and after a brief initialization period, the training process will commence.
    - The simulation will continue until a predefined terminal condition is met, at which point the results will be automatically presented.
 
 By carefully following these steps, one can replicate the project and delve into the efforts aimed at enhancing MARL to mitigate the challenges posed by the reality gap.
