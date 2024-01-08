@@ -79,22 +79,24 @@ void loop() {
   // Using millis instead of delay to avoid synchronization issues
   unsigned long currentMillis = millis();
 
+  // Debug: Print the number of available bytes before the if condition
+  Serial.print("Available bytes before if: ");
+  Serial.println(Serial.available());
+
+  // Check if there are enough bytes available in the serial buffer
   if (Serial.available() >= sizeof(float) * number_motors) {
-      // Read raw bytes into an array
-      byte torqueBytes[number_motors * sizeof(float)];
-      Serial.readBytes(torqueBytes, number_motors * sizeof(float));
+    // Debug: Print a message when the condition is met
+    Serial.println("Condition met: Data available!");
 
-      // Interpret bytes as float values using pointer casting
-      float torqueValues[number_motors];
-      for (int i = 0; i < number_motors; i++) {
-          // Use pointer casting to interpret bytes as float
-          byte* bytePtr = &torqueBytes[i * sizeof(float)];
-          float* floatPtr = reinterpret_cast<float*>(bytePtr);
-          torqueValues[i] = *floatPtr;
-      }
+    // Rest of the code...
+    byte torqueBytes[number_motors * sizeof(float)];
+    Serial.readBytes(torqueBytes, number_motors * sizeof(float));
+    float torqueValues[number_motors];
+    for (int i = 0; i < number_motors; i++) {
+      memcpy(&torqueValues[i], &torqueBytes[i * sizeof(float)], sizeof(float));
+    }
+    moveMotors(sensorData.angles, torqueValues);
 
-      // Moving motors based on ddpg torque values.
-      moveMotors(sensorData.angles, torqueValues);
   }
 
   // Read motors angle (it's still quite vague and not precise)
@@ -155,8 +157,19 @@ void initializeMotors() {
   for (int i = 0; i < number_motors; i++) {
     int pwm = map(initial_angle, 0, 180, SERVOMIN, SERVOMAX);
     pca9685.setPWM(i+pinout_start, 0, pwm) ; // starting pin is nº 4. Change for your setup
+    
+    // Read and print servo angles initialization
+    int pulse = pca9685.getPWM(i + pinout_start);
+    int angle = map(pulse, SERVOMIN, SERVOMAX, 0, 180);
+    
+    Serial.print("Motor ");
+    Serial.print(i);
+    Serial.print(": Angle = ");
+    Serial.println(angle);
   }
-  Serial.print("Motors initialized!");
+
+  Serial.println("Motors initialized at:");
+  Serial.println();
 }
 
 // Read distance (cm) for each HSCR04
