@@ -36,8 +36,10 @@ Both in simulation and in real-life applications, two robotic arms composed by 4
 ### Step by step tutorial to launch the simulation
 
 1. **Software Requirements:**
-   - Install ROS 2 Humble and Gazebo Fortress (Ignition gazebo).
-   - Alternatively, consider using other simulators like NVIDIA's Isaac Gym for ease of use and if full customization is not required.
+   - ROS 2 Humble --> https://control.ros.org/humble/doc/getting_started/getting_started.html.
+   - Gazebo Fortress/Ignition gazebo --> https://gazebosim.org/docs/fortress/getstarted.
+   - Alternatively, consider using other simulators like NVIDIA's Isaac Gym (https://developer.nvidia.com/isaac-gym) for ease of use and if full customization is not required.
+   - We recommend VSCode as a compiler and program development, both in Linux and Windows
 
 2. **Programming Languages:**
    - Utilize Python, preferably versions greater than 3.10.
@@ -52,6 +54,7 @@ Both in simulation and in real-life applications, two robotic arms composed by 4
 
 5. **Bridge Gazebo and ROS 2 with ros_gz_bridge**
    - Simultaneously, a bridge is required to facilitate data transfer from Gazebo to ROS2. Refer to `/Simulation/src/bridge_commands/rosgzbridge.txt`. Copy and run in a separate terminal the last command specified, which includes the necessary data for simulating two robots with 5 joints each.
+   - For more information about ros_gz_bridge refer to https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_bridge/README.md. Moreover, in the Appendix I (/thesis_docs/Thesis.docx) there is a small tutorial to learn how the command works very clearly.
 
 5. **Training the Agent:**
    - Once the bridge is operational, run the launch file with `/Simulation/src/bridge_commands/rosgzbridge.txt`. This action will open a Gazebo window displaying the simulation, and after a brief initialization period, the training process will commence.
