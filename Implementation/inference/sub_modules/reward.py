@@ -22,8 +22,8 @@ class Reward():
         self.object_orientation = state[number_motors + 2]
 
         # The smaller the distance the greater the reward (using f(x)=1/x, x>0)
-        reward1 = 1/self.distanceRB1 
-        reward2 = 1/self.distanceRB2
+        reward1 = 1/(self.distanceRB1 + 0.1) # Some BIAS is added in case distance is 0
+        reward2 = 1/(self.distanceRB2 + 0.1)
 
         distance_value = reward1 + reward2
 

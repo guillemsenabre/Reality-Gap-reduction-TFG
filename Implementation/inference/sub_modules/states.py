@@ -62,11 +62,11 @@ class States():
         if len(states) == (nmotors + nsensors):
 
             # Calculate min and max values
-            min_value = states.min()
-            max_value = states.max()
+            min_value = min(states)
+            max_value = max(states)
 
             # Normalize between 0 and 100
-            norm_states = [((val - min_value) / (max_value - min_value)) * 100 for val in states]
+            norm_states = [((1+(val - min_value)) / (max_value - min_value)) * 100 for val in states]
 
             # To use tanh normalization, uncomment the following line and import Torch
             # norm_states = torch.tanh(norm_states)
@@ -83,8 +83,8 @@ class States():
             twisted_states = states + random_values
 
             # Calculate min and max values
-            min_value = twisted_states.min()
-            max_value = twisted_states.max()
+            min_value = min(twisted_states)
+            max_value = max(twisted_states)
 
             # Normalize between 0 and 100
             twisted_norm_states = [((val - min_value) / (max_value - min_value)) * 100 for val in twisted_states]
