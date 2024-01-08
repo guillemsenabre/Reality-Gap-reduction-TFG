@@ -97,6 +97,9 @@ To implement the project and interface with physical robots, certain components 
 
 These are the schematics for the electronic components used in this project. Up to 12 servomotoros can be controlled by one PCA9685. If more motors are used, more PCA9685 can be added in cascade using the I2C bus and shortcircuiting the 12 bit adderesses.
 
+(*Click an image to make it bigger)
+
+
 - **Power Supply** to **ESP32** to **PCA9685**
 
 
@@ -104,7 +107,7 @@ These are the schematics for the electronic components used in this project. Up 
 
 
 - **ESP32** to **Sensors**
-- 
+
 
 <img width="131" alt="image-2" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/6dfd8d5e-1856-4708-abdd-f6806e34727a">
 
