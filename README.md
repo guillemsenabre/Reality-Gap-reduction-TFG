@@ -21,52 +21,35 @@ Both in simulation and in real-life applications, two robotic arms composed by 5
 
 
 
-Both robots are learning through a custom algorithm based on DDPG (Deep Deterministic Policy Gradient) agent. The structure of it is explained below:
+# Enhancing MARL for Reality Gap Reduction
 
-### DDPG Agent Structure and Operation
+## Introduction
 
-The DDPG agent, or Deep Deterministic Policy Gradient agent, is a powerful algorithm employed in this project to facilitate the learning process of the robotic arms in a multi-agent reinforcement learning (MARL) setting. Below is a breakdown of its structure and operation:
+Reinforcement Learning (RL) is a computational approach that enables agents to learn optimal behaviors through interaction with an environment. Multi-Agent Reinforcement Learning (MARL) extends this concept to multiple interacting agents, allowing them to learn and adapt collectively. However, one significant challenge in deploying RL agents in the real world is the "reality gap." The reality gap refers to the mismatch between the training environment (simulation) and the real-world conditions, which can hinder the performance of learned policies when applied to the actual scenario. This project aims to address the reality gap in MARL for more effective real-world deployment.
 
-#### Actor-Critic Architecture:
+## Replicating the Project
 
-The DDPG agent follows an actor-critic architecture, consisting of two main components:
+To replicate this project, follow the steps outlined below:
 
-1. **Actor Network:**
-   - The actor network is responsible for learning and representing the policy function. In the context of robotic control, the policy defines the optimal actions the robotic arms should take in different states to achieve the desired objectives.
-   - It takes the current state of the environment as input and outputs a continuous action space, which represents the joint angles and gripper position of the robotic arms.
+### Simulation
 
-2. **Critic Network:**
-   - The critic network evaluates the actions chosen by the actor by estimating the expected cumulative reward. It helps the agent understand the value of its chosen actions in a given state.
-   - The critic network takes both the current state and the action as inputs and outputs a Q-value, representing the expected cumulative reward.
+1. **Software Requirements:**
+   - Install ROS 2 Humble and Gazebo Fortress (Ignition gazebo).
+   - Alternatively, consider using other simulators like NVIDIA's Isaac Gym for ease of use and if full customization is not required.
 
-#### Training Process:
+2. **Programming Languages:**
+   - Utilize Python, preferably versions greater than 3.10.
 
-The DDPG agent is trained through an iterative process involving the following steps:
+3. **Setting up the Simulation:**
+   - Navigate to the Simulation folder containing a ROS workspace with a package named `arm_pkg` that encompasses the simulation.
+   - Open a terminal and build the workspace locally with the command: `colcon build`.
 
-1. **Experience Replay:**
-   - To enhance learning stability, the agent employs experience replay, also called buffer replay (the class containing this file in the project has this name). It stores and randomly samples past experiences (state, action, reward, next state) from its replay buffer during training.
+4. **Running the Simulation:**
+   - Execute the following command to launch the necessary packages from the custom launch file: `ros2 launch arm_pkg launch`.
+   - Simultaneously, a bridge is required to facilitate data transfer from Gazebo to ROS2. Refer to `/bridge_commands/rosgzbridge.txt` and copy the last command specified, which includes the necessary data for simulating two robots with 5 joints each.
 
-2. **Target Networks:**
-   - The agent utilizes target networks for both the actor and critic. These target networks slowly track the learned networks to provide more stable target values during the training process.
+5. **Training the Agents:**
+   - Once the bridge is operational, run the launch file. This action will open a Gazebo window displaying the simulation, and after a brief initialization period, the training process will commence.
+   - The simulation will continue until a predefined terminal condition is met, at which point the results will be automatically presented.
 
-3. **Bellman Equation:**
-   - The agent optimizes its policy by minimizing the temporal difference error, computed using the Bellman equation. This guides the agent towards actions that maximize expected cumulative reward over time.
-  
-Bellman equation definition:
-
-      Q(s,a)=E[r+γ⋅max a′Q(s′,a′)∣s,a]
-
-Python Implementation:
-
-```python
-Q_sa = reward + gamma * torch.max(Q_s_prime_a_prime)
-```
-
-4. **Gradient Ascent:**
-   - The actor network is updated through gradient ascent, aiming to increase the expected cumulative reward. The critic network is updated to minimize the temporal difference error.
-
-#### Why DDPG:
-
-DDPG is chosen for its suitability in continuous action spaces, making it well-suited for robotic control tasks where actions are often parameterized. Its ability to handle high-dimensional action spaces and continuous state spaces aligns with the requirements of the multi-agent robotic arms scenario.
-
-By leveraging the DDPG algorithm, this project aims to bridge the gap between simulation and real-world application, enabling a smoother transfer of knowledge from simulated environments to actual robotic systems.
+By carefully following these steps, one can replicate the project and delve into the efforts aimed at enhancing MARL to mitigate the challenges posed by the reality gap.
