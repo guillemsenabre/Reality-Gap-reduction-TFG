@@ -1,4 +1,5 @@
 import time
+import random
 
 class Reward():
     def __init__(self):
@@ -16,13 +17,13 @@ class Reward():
         time.sleep(0.3)
 
     def _distance_reward(self, state, number_motors):
-        self.angles = state[:number_motors]
-        self.distanceRB1 = state[number_motors]
-        self.distanceRB2 = state[number_motors + 1] #EX: with 10 motors, this would be position 10 (index) and motors would be 0-9
-        self.object_orientation = state[number_motors + 2]
+        self.angles = state[:number_motors] # LIST
+        self.distanceRB1 = state[number_motors] + random.uniform(0.2, 0.3) # Bias is added (FLOAT)
+        self.distanceRB2 = state[number_motors + 1] + random.uniform(0.2, 0.3) #EX: with 10 motors, this would be position 10 (index) and motors would be 0-9
+        self.object_orientation = state[number_motors + 2] # List of floats
 
         # The smaller the distance the greater the reward (using f(x)=1/x, x>0)
-        reward1 = 1/(self.distanceRB1 + 0.1) # Some BIAS is added in case distance is 0
+        reward1 = 1/(self.distanceRB1 + 0.1) # Some BIAS are added in case of null values
         reward2 = 1/(self.distanceRB2 + 0.1)
 
         distance_value = reward1 + reward2
