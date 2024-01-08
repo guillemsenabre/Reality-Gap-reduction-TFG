@@ -58,5 +58,75 @@ Both in simulation and in real-life applications, two robotic arms composed by 4
    - The simulation will continue until a predefined terminal condition is met, at which point the results will be automatically presented.
 
 6. **Saving the model**
-   - It is possible to save the model after each episode or after an 'n' number of episodes. The model will automatically be saved in /models/.
+   - It is possible to save the model after each episode or after an 'n' number of episodes. The model will automatically be saved in `models/`.
 
+
+---
+
+# Implementation
+
+To implement the project and interface with physical robots, certain components and steps need to be considered.
+
+## Components Required
+
+- **Microcontroller:**
+  - Choose between ESP32, Arduino UNO, or Raspberry Pi. The project uses ESP32.
+
+- **PCA9685:**
+  - Although not mandatory, using PCA9685 simplifies hardware complexities. 
+
+- **Sensors:**
+  - MPU6050
+  - HC-SR04
+
+- **Actuators:**
+  - Compatible with both MG995 and MG996R. MG996R is recommended for its upgraded torque and precision.
+
+- **Breadboard:**
+  - Useful for testing connections.
+
+- **Robot Structure:**
+  - Utilize aluminum parts from a robotic kit, allowing customization for building a robot with up to 6 degrees of freedom.
+
+- **Power Supply:**
+  - When both robots and sensors are connected simultaneously, approximately 12 Amperes and 5 to 6 Volts are needed. The HS-75-5 power supply is recommended due to its cost-effectiveness and suitability for project requirements.
+
+## Communication
+
+- **ESP32 Communication:**
+  - Establishes communication with the main computer (laptop, PC, or Raspberry Pi) through the serial port using UART. A micro-USB cable is sufficient.
+
+- **Sensor Communication:**
+  - MPU6050 and PCA9685 communicate with the ESP32 using I2C, customizable to addresses 0x68 and 0x40, respectively.
+  - HCSR04 uses GPIO pins for sending distance values.
+
+- **PCA9685 Operation:**
+  - Utilizes PWM signals and "ticks" to control motors as needed.
+
+- **Main Computer:**
+  - Contains the agent/algorithm processing state data from ESP32.
+  - Returns float values representing torque forces, mapped to angles and then to PWM signals for PCA9685.
+
+## Running the Implementation
+
+Once the hardware setup is complete, follow these steps to run the implementation:
+
+1. **Clone the Implementation Repository:**
+   - Clone the Implementation repository or use the same directory where the simulation repo was cloned.
+
+2. **Run main.py:**
+   - Execute `main.py` in `Implementation/Inference/main.py`.
+
+3. **Provide Port Information:**
+   - Enter the port where your ESP32 is connected (usually COM6).
+
+4. **Specify Motors and Sensors:**
+   - Input the number of motors and sensors in your setup. The software is designed to handle any number, but a range of 5 to 10 motors is recommended.
+
+5. **Choose Training Option:**
+   - Decide whether to train the model from scratch or use transfer learning (a model trained in simulation).
+  
+6. **Initiate Training:**
+   - If training is selected, the training process will commence. Ensure that the robots are securely fixed to the ground to prevent falls.
+
+By following these steps, the implementation can be successfully executed, allowing for the training and operation of physical robots in the designed multi-agent reinforcement learning environment.
