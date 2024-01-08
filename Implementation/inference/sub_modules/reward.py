@@ -53,6 +53,6 @@ class Reward():
         return scaled_velocity_reward
 
     def reward(self, prev_angles, states, number_motors=10):
-        total_reward = (self._distance_reward(states, number_motors) * self.scaling_distance_reward +
+        total_reward = -(self._distance_reward(states, number_motors) * self.scaling_distance_reward +
                         self._drop_velocity_reward(prev_angles) * self.scaling_factor_velocity_2)
         return total_reward

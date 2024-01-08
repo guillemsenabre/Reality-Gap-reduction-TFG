@@ -23,7 +23,7 @@ const int initial_angle = 90; // Initialize at 90º
 const int rot_limit_1 = 100; // Change to increase/decrease the rotation range
 const int rot_limit_2 = 120;
 unsigned long previousMillis = 0;
-const long interval = 50; // Adjust to change the speed
+const long interval = 100; // Adjust to change the speed
 const int SERVOMIN = 80;  // For mg996r motors and pca9685 this range is adequate
 const int SERVOMAX = 600;
 
@@ -80,18 +80,21 @@ void loop() {
   unsigned long currentMillis = millis();
 
   if (Serial.available() >= sizeof(float) * number_motors) {
-    // Read raw bytes into an array
-    byte torqueBytes[number_motors * sizeof(float)];
-    Serial.readBytes(torqueBytes, number_motors * sizeof(float));
+      // Read raw bytes into an array
+      byte torqueBytes[number_motors * sizeof(float)];
+      Serial.readBytes(torqueBytes, number_motors * sizeof(float));
 
-    // Interpret bytes as float values using pointer casting / memcpy
-    float torqueValues[number_motors];
-    for (int i = 0; i < number_motors; i++) {
-      memcpy(&torqueValues[i], &torqueBytes[i * sizeof(float)], sizeof(float));
-    }
+      // Interpret bytes as float values using pointer casting
+      float torqueValues[number_motors];
+      for (int i = 0; i < number_motors; i++) {
+          // Use pointer casting to interpret bytes as float
+          byte* bytePtr = &torqueBytes[i * sizeof(float)];
+          float* floatPtr = reinterpret_cast<float*>(bytePtr);
+          torqueValues[i] = *floatPtr;
+      }
 
-    // Moving motors based on ddpg torque values.
-    moveMotors(sensorData.angles, torqueValues);
+      // Moving motors based on ddpg torque values.
+      moveMotors(sensorData.angles, torqueValues);
   }
 
   // Read motors angle (it's still quite vague and not precise)
@@ -150,7 +153,7 @@ void moveMotors(int angles[], float torqueValues[]) {
 void initializeMotors() {
   Serial.print("Initializing motors...");
   for (int i = 0; i < number_motors; i++) {
-    int pwm = map(initial_angle, rot_limit_1, rot_limit_2, SERVOMIN, SERVOMAX);
+    int pwm = map(initial_angle, 0, 180, SERVOMIN, SERVOMAX);
     pca9685.setPWM(i+pinout_start, 0, pwm) ; // starting pin is nº 4. Change for your setup
   }
   Serial.print("Motors initialized!");
