@@ -56,7 +56,7 @@ class RobotState(Node):
         ######  GRIPPER GENERAL COORDENATES FUNCTIONS ######
     
     # Gripper coordinates functions
-    def extract_coordinates(self, pose):
+    def _extract_coordinates(self, pose):
         return [
             pose.position.x, pose.position.y, pose.position.z,
             pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w
@@ -64,9 +64,9 @@ class RobotState(Node):
 
     def gripper_object_pose(self, msg: PoseArray):
 
-        self.latest_end_effector_pose_1 = self.extract_coordinates(msg.poses[15])
-        self.latest_end_effector_pose_2 = self.extract_coordinates(msg.poses[27])
-        self.latest_object_pose = self.extract_coordinates(msg.poses[4])
+        self.latest_end_effector_pose_1 = self._extract_coordinates(msg.poses[15])
+        self.latest_end_effector_pose_2 = self._extract_coordinates(msg.poses[27])
+        self.latest_object_pose = self._extract_coordinates(msg.poses[4])
 
         self.states_pack()
 

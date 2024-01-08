@@ -13,6 +13,8 @@ class Configuration:
         self.actor_dropout_p = 0.5
         self.critic_dropout_p = 0.5
         self.batch_size = 64
+        self.action_dim = 8
+        self.state_dim = 12
 
         #SECTION ROS DATA VARIABLES #
 
