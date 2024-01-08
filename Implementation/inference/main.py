@@ -81,11 +81,11 @@ class Main:
         print("Do you want to keep training or see the results?")
         begin = input("Type 't' or 'r'")
 
-        if begin == 'train':
+        if begin == 't':
             self.episode_rewards.append([0.0, 0.0, 0.0]) # So next episode rewards are visible
             self.move.reset_motors()
 
-        elif begin == 'results':
+        elif begin == 'r':
             plot_results(self.episode_rewards, self.ddpg_model.actor_losses, self.ddpg_model.critic_losses)
 
         else:

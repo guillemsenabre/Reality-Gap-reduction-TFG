@@ -50,43 +50,46 @@ class States():
         unpacked_list_data = list(unpacked_data)
 
         # Normalize and process the states
-        #processed_states = self._process_states(unpacked_list_data, number_motors, number_sensors)
+        processed_states = self._process_states(unpacked_list_data, number_motors, number_sensors)
 
-        return unpacked_list_data
-        #return processed_states
+        #return unpacked_list_data
+        return processed_states
 
 
-        def _process_states(self, states, nmotors, nsensors):
+    def _process_states(self, states, nmotors, nsensors):
 
-            # Check all data has been received
-            if len(states) == (nmotors + nsensors):
+        # Check all data has been received
+        if len(states) == (nmotors + nsensors):
 
-                # Calculate min and max values
-                min_value = states_tensor.min()
-                max_value = states_tensor.max()
+            # Calculate min and max values
+            min_value = states.min()
+            max_value = states.max()
 
-                # Normalize between 0 and 100
-                norm_states = [((val - min_value) / (max_value - min_value)) * 100 for val in states]
+            # Normalize between 0 and 100
+            norm_states = [((val - min_value) / (max_value - min_value)) * 100 for val in states]
 
-                # To use tanh normalization, uncomment the following line and import Torch
-                # norm_states = torch.tanh(norm_states)
+            # To use tanh normalization, uncomment the following line and import Torch
+            # norm_states = torch.tanh(norm_states)
 
-                return norm_states
-            
-            else:
-                print("Not all states have been received, adding average values")
+            return norm_states
+        
+        else:
+            print("Not all states have been received, adding average values")
 
-                # Filling the states list with average values
-                num_random_values = (nmotors + nsensors) - len(states)
-                avg_states = sum(states)/len(states)
-                random_values = [random.uniform(avg_states - 1.0, avg_states + 1.0) for _ in range(num_random_values)]
-                twisted_states = states + random_values
+            # Filling the states list with average values
+            num_random_values = (nmotors + nsensors) - len(states)
+            avg_states = sum(states)/len(states)
+            random_values = [random.uniform(avg_states - 1.0, avg_states + 1.0) for _ in range(num_random_values)]
+            twisted_states = states + random_values
 
-                # Calculate min and max values
-                min_value = twisted_states.min()
-                max_value = twisted_states.max()
+            # Calculate min and max values
+            min_value = twisted_states.min()
+            max_value = twisted_states.max()
 
-                # Normalize between 0 and 100
-                twisted_norm_states = [((val - min_value) / (max_value - min_value)) * 100 for val in twisted_states]
+            # Normalize between 0 and 100
+            twisted_norm_states = [((val - min_value) / (max_value - min_value)) * 100 for val in twisted_states]
 
-                return twisted_norm_states
+            # To use tanh normalization, uncomment the following line and import Torch
+            # twisted_norm_states = torch.tanh(norm_states)
+
+            return twisted_norm_states
