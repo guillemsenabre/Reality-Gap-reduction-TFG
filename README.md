@@ -74,6 +74,8 @@ To implement the project and interface with physical robots, certain components 
 
 - **PCA9685:**
   - Although not mandatory, using PCA9685 simplifies hardware complexities. 
+  - 1 module can control up to 12 motors. Can upgrade adding more modules in cascade if needed.
+  - Uses I2c with a default address in 0x40. 
 
 - **Sensors:**
   - MPU6050
@@ -91,11 +93,21 @@ To implement the project and interface with physical robots, certain components 
 - **Power Supply:**
   - When both robots and sensors are connected simultaneously, approximately 12 Amperes and 5 to 6 Volts are needed. The HS-75-5 power supply is recommended due to its cost-effectiveness and suitability for project requirements.
 
-## connections
+## Connection schematics
+
+These are the schematics for the electronic components used in this project. Up to 12 servomotoros can be controlled by one PCA9685. If more motors are used, more PCA9685 can be added in cascade using the I2C bus and shortcircuiting the 12 bit adderesses.
+
+- **Power Supply** to **ESP32** to **PCA9685**
+
+![Alt text](image-1.png)
 
 - **ESP32** to **Sensors**
 
 ![Alt text](image.png)
+
+- **PCA9685** to **MG996R**
+
+![Alt text](image-2.png)
 
 ## Communication
 
