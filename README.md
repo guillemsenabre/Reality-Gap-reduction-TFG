@@ -2,9 +2,23 @@
 
 Welcome to my Final Bachelor Thesis!
 
+---
+
+## Introduction
+
+Reinforcement Learning (RL) is a computational approach that enables agents to learn optimal behaviors through interaction with an environment. Multi-Agent Reinforcement Learning (MARL) extends this concept to multiple interacting agents, allowing them to learn and adapt collectively. However, one significant challenge in deploying RL agents in the real world is the "reality gap." The reality gap refers to the mismatch between the training environment (simulation) and the real-world conditions, which can hinder the performance of learned policies when applied to the actual scenario. This project aims to address the reality gap in MARL for more effective real-world deployment.
+
+---
+
 ### Scope and Goals
 
 This project is divided in two main parts, simulation and implementation. The goal is to apply some techniques to diminish the reality gap when transfering trained MARL (Multi-Agent RL) from the simulation to the real-world application.
+
+---
+
+## Replicating the Project
+
+To replicate this project, follow the steps outlined below:
 
 ### Simulation
 
@@ -15,23 +29,11 @@ Gazebo simulator (https://gazebosim.org/home) is used to cope with the simulatio
 
 
 
-Both in simulation and in real-life applications, two robotic arms composed by 5 joints and a gripper as end-effector will be used. The environment has both robots on a desktop table facing each other. In between them there is an object to be lifted, carried and placed in a specific area. The following screenshot shows the environment in a visual way:
+Both in simulation and in real-life applications, two robotic arms composed by 4 joint. The environment has both robots on a desktop table facing each other. In between them there is an object to be lifted, carried and placed in a specific area. The following screenshot shows the environment in a visual way:
 
 <img width="706" alt="image" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/db0fb80f-8833-45d1-93c4-047db9460709">
 
-
-
-# Enhancing MARL for Reality Gap Reduction
-
-## Introduction
-
-Reinforcement Learning (RL) is a computational approach that enables agents to learn optimal behaviors through interaction with an environment. Multi-Agent Reinforcement Learning (MARL) extends this concept to multiple interacting agents, allowing them to learn and adapt collectively. However, one significant challenge in deploying RL agents in the real world is the "reality gap." The reality gap refers to the mismatch between the training environment (simulation) and the real-world conditions, which can hinder the performance of learned policies when applied to the actual scenario. This project aims to address the reality gap in MARL for more effective real-world deployment.
-
-## Replicating the Project
-
-To replicate this project, follow the steps outlined below:
-
-### Simulation
+### Step by step tutorial to launch the simulation
 
 1. **Software Requirements:**
    - Install ROS 2 Humble and Gazebo Fortress (Ignition gazebo).
