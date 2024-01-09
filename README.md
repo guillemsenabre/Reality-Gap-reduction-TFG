@@ -61,6 +61,10 @@ Both in simulation and in real-life applications, two robotic arms composed by 4
    - Once the bridge is operational, run the launch file with `/Simulation/src/bridge_commands/rosgzbridge.txt`. This action will open a Gazebo window displaying the simulation, and after a brief initialization period, the training process will commence.
    - The simulation will continue until a predefined terminal condition is met, at which point the results will be automatically presented.
 
+
+![gazebo_sketch](https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/1d8b33f3-02f7-4f26-96b0-e527d843ae75)
+
+
 6. **Saving the model**
    - It is possible to save the model after each episode or after an 'n' number of episodes. The model will automatically be saved in `models/`.
 
