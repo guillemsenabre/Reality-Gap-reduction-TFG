@@ -2,10 +2,10 @@
 #include <MPU6050_light.h>
 #include <Adafruit_PWMServoDriver.h>
 
-const int trig1Pin = 34;
-const int echo1Pin = 35;
-const int trig2Pin = 32;
-const int echo2Pin = 33;
+const int trig1Pin = 25;
+const int echo1Pin = 26;
+const int trig2Pin = 27;
+const int echo2Pin = 14;
 
 MPU6050 mpu(Wire);
 Adafruit_PWMServoDriver pca9685 = Adafruit_PWMServoDriver(0x40);
@@ -19,9 +19,9 @@ float distanceRB1, distanceRB2;
 
 // PCA9685 AND SERVO VALUES
 const int number_motors = 4; // Change if more motors are added
-const int initial_angle = 90; // Initialize at 90º
+const int initial_angle = 120; // Initialize at xº
 const int rot_limit_1 = 100; // Change to increase/decrease the rotation range
-const int rot_limit_2 = 120;
+const int rot_limit_2 = 110;
 unsigned long previousMillis = 0;
 const long interval = 100; // Adjust to change the speed
 const int SERVOMIN = 80;  // For mg996r motors and pca9685 this range is adequate
