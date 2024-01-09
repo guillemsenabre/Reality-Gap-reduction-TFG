@@ -91,6 +91,7 @@ To implement the project and interface with physical robots, certain components 
 
 - **Actuators:**
   - Compatible with both MG995 and MG996R. MG996R is recommended for its upgraded torque and precision.
+  - In `Implementation/esp32/web_server/` I created an esp32 web server to calibrate the motors. If you need to use it, just connect the MG996R/MG995 to the ESP32, upload the `web_server.ino` file and run it. A website will open on your default browser with a slide bar to calibrate your motor. 
 
 - **Breadboard:**
   - Useful for testing connections.
