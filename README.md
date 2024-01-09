@@ -179,7 +179,7 @@ Inside the `implementation/esp32/tests/` folder, you will many C++ files to cali
    - `10_PCA_com.ino` -> tests PCA9685 controlling 10 servomotors
    - `10_Servo_com.ino` -> tests communication with 10 servomotors without PCA9685
    - `HC-SR04_test.ino` -> Can calibrate several ultrasonic sensors
-   - `IMU` -> Calibrates and substracts the angle positions (overcoming integration drift)from angular accelerations with custom libraries
+   - `IMU/IMU_angle_pos.ino` -> Calibrates and substracts the angle positions (overcoming integration drift)from angular accelerations with custom libraries
    - `Wifi_com/socket_test.ino` -> Tests the WiFi capabilites of ESP32
    - `web_server.ino` -> provides an esp32 web server to calibrate the motors. 
 
@@ -203,7 +203,7 @@ Links of hardware used:
    - Raspberry Pi 3 -> https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
    - HS-75-5 -> https://www.meanwell-web.com/en-gb/ac-dc-single-output-enclosed-power-supply-output-rs--75--5
 
-All hardware links provide its datasheet and its price. Moreover, most of them can be bought locally. If you are an student of NCU, refer to (No. 59, Zhongping Rd, Zhongli District, Taoyuan City, 320).
+All hardware links provided contains datasheets and prices. Moreover, most of them can be bought locally. If you are an student of NCU, refer to (No. 59, Zhongping Rd, Zhongli District, Taoyuan City, 320).
 
 
 ## Recommandations and notes
