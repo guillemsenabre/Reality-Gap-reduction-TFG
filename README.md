@@ -137,6 +137,11 @@ These are the schematics for the electronic components used in this project. Up 
 - **Main Computer:**
   - Contains the agent/algorithm processing state data from ESP32.
   - Returns float values representing torque forces, mapped to angles and then to PWM signals for PCA9685.
+ 
+### Basic setup:
+
+![robot_setup](https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/1ee1720a-9c63-4696-983a-df54fde959bc)
+
 
 ## Running the Implementation
 
