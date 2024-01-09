@@ -13,7 +13,7 @@ class Main:
 
         self.model_name = "ddpg_model.pth"
         self.episodes = 10
-        self.steps = 5
+        self.steps = 50
         self.episode_rewards = []
         self.port = input("Select Serial port: ")
 

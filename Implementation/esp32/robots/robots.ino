@@ -20,10 +20,11 @@ float distanceRB1, distanceRB2;
 // PCA9685 AND SERVO VALUES
 const int number_motors = 4; // Change if more motors are added
 const int initial_angle = 120; // Initialize at xº
+const int motor_speed = 30; // This controls the velocity (LOWER values, more velocity)
 const int rot_limit_1 = 100; // Change to increase/decrease the rotation range
 const int rot_limit_2 = 110;
 unsigned long previousMillis = 0;
-const long interval = 100; // Adjust to change the speed
+const long interval = 50; // Adjust to change the update rate (frequency)
 const int SERVOMIN = 80;  // For mg996r motors and pca9685 this range is adequate
 const int SERVOMAX = 600;
 
@@ -155,22 +156,27 @@ void moveMotors(int angles[], float torqueValues[]) {
 void initializeMotors() {
   Serial.print("Initializing motors...");
   for (int i = 0; i < number_motors; i++) {
-    int pwm = map(initial_angle, 0, 180, SERVOMIN, SERVOMAX);
-    pca9685.setPWM(i+pinout_start, 0, pwm) ; // starting pin is nº 4. Change for your setup
-    
+    int current_angle = pca9685.getPWM(i + pinout_start);
+    for (int angle; angle <= initial_angle; angle += 5) {
+      int pwm = map(angle, 0, 180, SERVOMIN, SERVOMAX);
+      pca9685.setPWM(i + pinout_start, 0, pwm);
+      delay(motor_speed);
+    }
+
     // Read and print servo angles initialization
     int pulse = pca9685.getPWM(i + pinout_start);
-    int angle = map(pulse, SERVOMIN, SERVOMAX, 0, 180);
-    
+    int finalAngle = map(pulse, SERVOMIN, SERVOMAX, 0, 180);
+
     Serial.print("Motor ");
     Serial.print(i);
-    Serial.print(": Angle = ");
-    Serial.println(angle);
+    Serial.print(": Final Angle = ");
+    Serial.println(finalAngle);
   }
 
   Serial.println("Motors initialized at:");
   Serial.println();
 }
+
 
 // Read distance (cm) for each HSCR04
 void readUltrasonicDistance(float &distance1, float &distance2) {
