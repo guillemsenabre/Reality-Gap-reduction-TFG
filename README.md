@@ -48,9 +48,10 @@ Both in simulation and in real-life applications, two robotic arms composed by 4
    - Clone the Simulation repository into your local folder with `git clone https://github.com/BakiRhina/Reality-Gap-reduction-TFG.git`
    - Navigate to the Simulation folder containing the ROS workspace with a package named `arm_pkg` that encompasses the simulation.
    - Open a terminal and build the workspace with the command: `colcon build`. This will install necessary dependencies among other files.
+   - In linux, source the workspace in the terminal with `source install/setup.bash`.
 
 4. **Running the Simulation:**
-   - Execute the following command to launch the necessary packages from the custom launch file: `ros2 launch arm_pkg launch`.
+   - Inside Simulation/ (ros workspace) Execute the following command to launch the necessary packages from the custom launch.py file: `ros2 launch arm_pkg launch`.
 
 5. **Bridge Gazebo and ROS 2 with ros_gz_bridge**
    - Simultaneously, a bridge is required to facilitate data transfer from Gazebo to ROS2. Refer to `/Simulation/src/bridge_commands/rosgzbridge.txt`. Copy and run in a separate terminal the last command specified, which includes the necessary data for simulating two robots with 5 joints each.
