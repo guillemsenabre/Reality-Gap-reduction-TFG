@@ -170,6 +170,41 @@ Once the hardware setup is complete, follow these steps to run the implementatio
 6. **Initiate Training:**
    - If training is selected, the training process will commence. Ensure that the robots are securely fixed to the ground to prevent falls.
 
+## Resources
+
+#### Calibration and testing
+
+Inside the `implementation/esp32/tests/` folder, you will many C++ files to calibrate and test all sensors and actuators used in this project. Below there is a list with all test files created for this project, that can be of used when replicating or using the same sensors or motors:
+
+   - `10_PCA_com.ino` -> tests PCA9685 controlling 10 servomotors
+   - `10_Servo_com.ino` -> tests communication with 10 servomotors without PCA9685
+   - `HC-SR04_test.ino` -> Can calibrate several ultrasonic sensors
+   - `IMU` -> Calibrates and substracts the angle positions (overcoming integration drift)from angular accelerations with custom libraries
+   - `Wifi_com/socket_test.ino` -> Tests the WiFi capabilites of ESP32
+   - `web_server.ino` -> provides an esp32 web server to calibrate the motors. 
+
+### Useful links
+
+Links of software used can be found below:
+
+   - ROS 2 Humble -> Simulation control (https://control.ros.org/humble/doc/getting_started/getting_started.html#)
+   - Gazebo Fortress -> Simulator (https://gazebosim.org/docs/fortress/getstarted)
+   - Linux 22.04 (Jammy Jellyfish) -> Simulation development (https://releases.ubuntu.com/jammy/)
+   - VSCode -> As Python Compiler and development (https://code.visualstudio.com/)
+   - ArduinoIDE (2.2) -> As C++ interpreter and compiler (https://www.arduino.cc/en/software)
+   - Isaac Gym -> (https://developer.nvidia.com/isaac-gym)
+
+Links of hardware used:
+
+   - ESP-Wroom-32 -> https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf
+   - MPU6050 -> https://shop.cpu.com.tw/product/45284/info/
+   - HC-SR04 -> https://www.sparkfun.com/products/15569
+   - PCA9685 -> https://www.adafruit.com/product/815
+   - Raspberry Pi 3 -> https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
+   - HS-75-5 -> https://www.meanwell-web.com/en-gb/ac-dc-single-output-enclosed-power-supply-output-rs--75--5
+
+All hardware links provide its datasheet and its price. Moreover, most of them can be bought locally. If you are an student of NCU, refer to (No. 59, Zhongping Rd, Zhongli District, Taoyuan City, 320).
+
 
 ## Recommandations and notes
 
