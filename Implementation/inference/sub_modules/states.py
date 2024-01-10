@@ -5,7 +5,7 @@ import random
 
 class States():
     def __init__(self):
-        print("Initializing States module fiiisss")
+        print("Initializing States module...")
         self.ser = None
         self.retry_delay = 4
         time.sleep(0.1)

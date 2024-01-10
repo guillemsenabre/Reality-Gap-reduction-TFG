@@ -17,7 +17,6 @@ class Actor(nn.Module):
 
         self.dropout = nn.Dropout(p=actor_dropout_p)
         self.fc1 = nn.Linear(state_dim, 256)
-        print(self.fc1)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 64)
         self.fc4 = nn.Linear(64, action_dim)
@@ -61,6 +60,8 @@ class Critic(nn.Module):
 
 class DDPGAgent:
     def __init__(self, state_dim, action_dim, buffer_size = 10000):
+
+        print("Initializing Policy...")
 
         self.actor_lr = 0.5e-4
         self.critic_lr = 1e-4

@@ -3,7 +3,7 @@ import random
 
 class Reward():
     def __init__(self):
-        print("Initializing Reward module skiii")
+        print("Initializing Reward module...")
         self.angles = []
 
         # The bigger, the more important will be the reward

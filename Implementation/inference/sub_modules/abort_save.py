@@ -2,7 +2,7 @@ import time
 
 class AbortOrSave():
     def __init__(self):
-        print("Initializing Abort or Save yeee")
+        print("Initializing Terminal condition...")
 
         self.number_of_velocity_values = 20
         self.number_of_reward_values = 30

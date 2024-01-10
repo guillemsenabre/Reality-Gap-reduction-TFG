@@ -4,7 +4,7 @@ import struct
 
 class MoveJoints:
     def __init__(self):
-        print("Initializing Move Joints module eiaau let's movee")
+        print("Initializing Move Joints module...")
 
         # Pause execution for 0.3 seconds to allow initialization to complete
         time.sleep(0.3)
