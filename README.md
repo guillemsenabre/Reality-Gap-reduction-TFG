@@ -126,6 +126,10 @@ These are the schematics for the electronic components used in this project. Up 
 
 <img width="200" alt="image-3" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/3cb3eb04-ec9e-43c6-9fef-c710f58d9a2e">
 
+Be careful with when connecting the power supply. Remember to "ground" all components at the same reference point, for noise reduction and safety, including the power supply, all actuators, sensors, modules and microcontrollers.
+
+![power_supply](https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/7997bb9e-c775-4562-bac8-49c995aa3add)
+
 
 ## Communication
 
