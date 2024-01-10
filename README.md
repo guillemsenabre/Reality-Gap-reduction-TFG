@@ -167,6 +167,9 @@ Once the hardware setup is complete, follow these steps to run the implementatio
 5. **Choose Training Option:**
    - Decide whether to train the model from scratch or use transfer learning (a model previously trained in simulation).
   
+<img width="363" alt="parameters" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/4c6b95f7-e465-45e6-aada-f86128b9406b">
+
+  
 6. **Initiate Training:**
    - If training is selected, the training process will commence. Ensure that the robots are securely fixed to the ground to prevent falls.
 
