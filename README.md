@@ -167,7 +167,8 @@ Once the hardware setup is complete, follow these steps to run the implementatio
 5. **Choose Training Option:**
    - Decide whether to train the model from scratch or use transfer learning (a model previously trained in simulation).
   
-<img width="363" alt="parameters" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/4c6b95f7-e465-45e6-aada-f86128b9406b">
+<img width="364" alt="parameters" src="https://github.com/BakiRhina/Reality-Gap-reduction-TFG/assets/108484177/f4c2616a-f2ce-4864-b855-91f09bfabd0f">
+
 
   
 6. **Initiate Training:**
