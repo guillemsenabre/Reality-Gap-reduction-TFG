@@ -216,9 +216,9 @@ All hardware links provided contains datasheets and prices. Moreover, most of th
 
 ## Recommandations and notes
 
-- Gazebo simulator is more supported in Linux OS than Windows. If you are not familiar with this OS, we recommend using another simulator such as PyBullet or Isaac Gym as a replacement. Isaac Gym provides Python APIs to communicate with and works directly with the GPU. When escalating this project, the simulation section would have been shifted to this simulator instead of Gazebo.
+- Gazebo simulator is more supported in Linux OS than Windows. If you are not familiar with this OS, we recommend using another simulator such as PyBullet or Isaac Gym as a replacement. Isaac Gym provides Python APIs to communicate with and works directly with the GPU. When escalating this project, the simulation section should be shifted to this simulator instead of Gazebo.
 
-- Start more simple. Simplicity will be your friend and makes things more organized, clear ,and scalable with less errors in the long run. Choose a simpler robots in a simpler environment. Even if it seems it is toot simple, when the project starts growing it will be more efficient and clear to have simpler modular areas than a confusing and complex system.
+- Start simpler. Simplicity will be your friend and makes things more organized, clear, and escalable with less errors in the long run. Choose simpler robots in a simpler environment. Even if it seems it is toot simple, when the project starts growing it will be more efficient and clear to have simplified modular areas than a confusing and complex system.
 
 - For deeper information about the project, refer to the Thesis in `thesis_docs/Thesis.docx`
 
